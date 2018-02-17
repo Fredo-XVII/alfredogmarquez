@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2467127232",
+    "hash" : "3816335012",
     "id" : "AA9236DF",
-    "lastKnownWriteTime" : 1518899040,
-    "last_content_update" : 1518899040657,
+    "lastKnownWriteTime" : 1518899174,
+    "last_content_update" : 1518899174004,
     "path" : "~/blog/alfredogmarquez/config.toml",
     "project_path" : "config.toml",
     "properties" : {
-        "cursorPosition" : "216,64",
-        "scrollLine" : "196"
+        "cursorPosition" : "217,2",
+        "scrollLine" : "197"
     },
     "relative_order" : 1,
     "source_on_save" : false,
