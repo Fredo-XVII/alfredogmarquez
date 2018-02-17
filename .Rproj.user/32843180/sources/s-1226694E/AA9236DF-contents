@@ -23,7 +23,7 @@ paginate = 7
 canonifyurls = true
 
 [permalinks]
-  post = "/:year/:month/:slug/"
+  post = "/:year/:month/:day/:slug/"
 
 [taxonomies]
   tag = "tags"
@@ -214,5 +214,9 @@ location = "US"
   # [params.footer]
   #   copyright = "<a href=\"https://github.com/kakawait\">kakawait</a>"
 
+  # Recommended options by blogdown book
+
   # Ignore Files
   ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+  enableEmoji = true
