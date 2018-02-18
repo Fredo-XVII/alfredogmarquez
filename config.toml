@@ -15,10 +15,10 @@
 baseURL = "https://www.alfredogmarquez.com/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
-title = "Hugo tranquilpeak theme"
+title = "Alfredo's R Open Lab"
 theme = "hugo-tranquilpeak-theme"
 disqusShortname = "hugo-tranquilpeak-theme"
-# googleAnalytics = "UA-123-45"
+# googleAnalytics = "UA-114303412-1"
 paginate = 7
 canonifyurls = true
 
@@ -32,8 +32,8 @@ canonifyurls = true
 
 [author]
 name = "Alfredo G Marquez"
-bio = "Super bio with markdown support **COOL**"
-job = "Data Aficionado"
+bio = "**Data and R Aficionado**"
+job = "Sr. Data Analyst"
 location = "US"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "thibaud.lepretre@gmail.com"
