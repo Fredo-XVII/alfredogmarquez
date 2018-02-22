@@ -17,7 +17,7 @@ languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "Alfredo's R Open Lab"
 theme = "hugo-tranquilpeak-theme"
-disqusShortname = "hugo-tranquilpeak-theme"
+disqusShortname = "alfredogmarquez"
 # googleAnalytics = "UA-114303412-1"
 paginate = 7
 canonifyurls = true
@@ -211,8 +211,8 @@ location = "US"
   #   url = "/#about"
 
   # Customize copyright value "© 2017 <CUSTOMIZATION>. All Rights Reserved"
-  # [params.footer]
-  #   copyright = "<a href=\"https://github.com/kakawait\">kakawait</a>"
+   [params.footer]
+     copyright = "<a href=\"https://github.com/kakawait\">kakawait</a>"
 
   # Recommended options by blogdown book
 
