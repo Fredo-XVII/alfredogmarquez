@@ -18,7 +18,7 @@ defaultContentLanguage = "en-us"
 title = "Alfredo's R Open Lab"
 theme = "hugo-tranquilpeak-theme"
 disqusShortname = "alfredogmarquez"
-# googleAnalytics = "UA-114303412-1"
+googleAnalytics = "UA-114303412-1"
 paginate = 7
 canonifyurls = true
 
@@ -105,7 +105,7 @@ location = "US"
   # dateFormat = "2 January 2006"
 
   # Global keywords configuration. Following keywords will be add to every pages
-  # keywords = ["development", "next-gen"]
+  keywords = ["R", "data analysis", "statistic", "analytics"]
 
   # Syntax highlighter, possible choice between: "highlight.js" (recommanded) and "prism.js" (experimental)
   # You can comment it to disable syntax highlighting
