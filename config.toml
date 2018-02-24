@@ -15,7 +15,7 @@
 baseURL = "https://www.alfredogmarquez.com/"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
-title = "Alfredo's R Open Lab"
+title = "Alfredo's Sandbox"
 theme = "hugo-tranquilpeak-theme"
 disqusShortname = "alfredogmarquez"
 googleAnalytics = "UA-114303412-1"
