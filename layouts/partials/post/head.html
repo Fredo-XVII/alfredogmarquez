@@ -24,6 +24,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
+    {{ partial "google/AdSense" . }}
     {{ partial "head_start.html" . }}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,5 +106,4 @@
       {{ template "_internal/google_analytics.html" . }}
     {{ end }}
     {{ partial "head_end.html" . }}
-    {{ partial "google/AdSense" . }}
   </head>
