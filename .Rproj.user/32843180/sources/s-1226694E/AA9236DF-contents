@@ -222,7 +222,8 @@ location = "US"
   enableEmoji = true
 
   # adsbygoogle
-  #[params.adsbygoogle]
+  [params.adsbygoogle]
+    data-ad-client="ca-pub-5682145105593159"
   #[params.enable_page_level_ads]
-  [params.adsense]
-  content = "google/AdSense"
+  #[params.adsense]
+  #content = "google/AdSense"
