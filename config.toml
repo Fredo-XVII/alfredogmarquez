@@ -220,3 +220,6 @@ location = "US"
   ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
   enableEmoji = true
+
+  # adsbygoogle
+  [params.enable_page_level_ads]
