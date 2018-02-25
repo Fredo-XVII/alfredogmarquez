@@ -222,4 +222,5 @@ location = "US"
   enableEmoji = true
 
   # adsbygoogle
+  [params.adsbygoogle]
   [params.enable_page_level_ads]
