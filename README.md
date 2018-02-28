@@ -6,3 +6,4 @@
 # backlog of ideas:
   - sparkR -
     - groupby with ifelse
+    - SparkR::read.df(path, "csv", inferSchema = "true")
