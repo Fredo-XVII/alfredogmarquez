@@ -208,8 +208,8 @@ location = "US"
     url = "/#about"
 
   # Customize link of author avatar in sidebar
-  # [params.sidebar.profile]
-  #   url = "/#about"
+  [params.sidebar.profile]
+     url = "/#about"
 
   # Customize copyright value "© 2017 <CUSTOMIZATION>. All Rights Reserved"
   # [params.footer]
