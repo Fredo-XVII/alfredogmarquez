@@ -1,4 +1,3 @@
-{{ with .Site.google_adsense }}
   {{ if not (in (printf "%#v" .Site.BaseURL) "localhost") }}
       {{ with .Site.google_adsense }}
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -10,4 +9,3 @@
           </script>
       {{ end }}
   {{ end }}
-{{ end }}
