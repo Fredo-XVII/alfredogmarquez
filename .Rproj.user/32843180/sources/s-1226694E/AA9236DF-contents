@@ -81,8 +81,8 @@ location = "US"
   weight = 5
   identifier = "codesnippets"
   name = "Code Snippets"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-hand-scissors\"></i>"
-  url = "/#codesnippetsS"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-scissors\"></i>"
+  url = "/#codesnippets"
 
 
 
