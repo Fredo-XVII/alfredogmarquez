@@ -1,5 +1,5 @@
   {{ if not (in (printf "%#v" .Site.BaseURL) "localhost") }}
-      {{ with .Site.google_adsense }}
+      {{ with .Site.Params.google_adsense }}
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <script>
               (adsbygoogle = window.adsbygoogle || []).push({
