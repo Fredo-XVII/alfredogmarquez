@@ -77,6 +77,14 @@ location = "US"
   name = "About"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
   url = "/#about"
+[[menu.main]]
+  weight = 5
+  identifier = "codesnippets"
+  name = "Code Snippets"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-hand-scissors\"></i>"
+  url = "/#codesnippetsS"
+
+
 
 [[menu.links]]
   weight = 1
