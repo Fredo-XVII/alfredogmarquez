@@ -101,6 +101,7 @@
 
     {{ if .Params.ga.async }}
       {{ template "_internal/google_analytics_async.html" . }}
+      {{ partial "AdSense.html" . }}
     {{ else }}
       {{ template "_internal/google_analytics.html" . }}
     {{ end }}
