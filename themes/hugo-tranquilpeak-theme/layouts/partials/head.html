@@ -101,10 +101,10 @@
 
     {{ if .Params.ga.async }}
       {{ template "_internal/google_analytics_async.html" . }}
-      {{ partial "AdSense_original.html" . }}
+      {{ partial "google/AdSense_original.html" . }}
     {{ else }}
       {{ template "_internal/google_analytics.html" . }}
-      {{ partial "AdSense_original.html" . }}
+      {{ partial "google/AdSense_original.html" . }}
     {{ end }}
     {{ partial "head_end.html" . }}
   </head>
