@@ -51,7 +51,7 @@ location = "US"
   weight = 1
   identifier = "home"
   name = "Home"
-  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
+  pre = "<i class=\"sidebar-button-icon fas fa-lg fa-home\"></i>"
   url = "/"
 [[menu.main]]
   weight = 2
