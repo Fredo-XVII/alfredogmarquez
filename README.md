@@ -7,3 +7,4 @@
   - sparkR -
     - groupby with ifelse
     - SparkR::read.df(path, "csv", inferSchema = "true")
+    - Baruta package (feature selection) on economic variables
