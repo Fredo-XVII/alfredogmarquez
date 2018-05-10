@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525492576184.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7BAD5DB7",
+    "lastKnownWriteTime" : 1525957930,
+    "last_content_update" : 1525957930570,
+    "path" : "~/blog/alfredogmarquez/config.toml",
+    "project_path" : "config.toml",
+    "properties" : {
+        "cursorPosition" : "84,21",
+        "scrollLine" : "69"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "toml"
+}

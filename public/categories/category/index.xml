@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Category on Alfredo&#39;s Sandbox</title>
+    <link>https://www.alfredogmarquez.com/categories/category/</link>
+    <description>Recent content in Category on Alfredo&#39;s Sandbox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 May 2018 16:11:03 -0500</lastBuildDate>
+    
+	<atom:link href="https://www.alfredogmarquez.com/categories/category/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Library</title>
+      <link>https://www.alfredogmarquez.com/page/library/</link>
+      <pubDate>Wed, 09 May 2018 16:11:03 -0500</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/page/library/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
