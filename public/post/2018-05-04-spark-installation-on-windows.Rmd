@@ -23,36 +23,15 @@ coverImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_log
 metaAlignment: center
 coverMeta: out
 summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
-draft: true
+draft: false
 ---
 
 
 # Intro
-```md
-Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-```
 
+> Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+----------
 
 # Software needed
 
@@ -61,5 +40,9 @@ Today I will discuss how to install Apache Spark onto a Windows machine. I have 
 # Testing Install
 
 
+-----
+
 Kuddos for the Spark image goes to: 
-  - Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155
+```md
+>  - Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155
+```

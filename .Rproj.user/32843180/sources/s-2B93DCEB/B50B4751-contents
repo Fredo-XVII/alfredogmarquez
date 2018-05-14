@@ -28,31 +28,10 @@ draft: true
 
 
 # Intro
-```md
-Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-```
 
+> Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+----------
 
 # Software needed
 
@@ -60,6 +39,65 @@ Today I will discuss how to install Apache Spark onto a Windows machine. I have 
 
 # Testing Install
 
+# from RPubs : https://rpubs.com/wendyu/sparkr
+
+# Download and Installation
+# Spark can be downloaded directly from the link: http://spark.apache.org/downloads.html
+
+# After downloading, save the zipped file to a directory of choice, and then unzip the file. 
+# We can then set up Spark in R environment.
+
+# Set system environmental variables to run Spark (either in windows, or R):
+  ## SPARK_HOME:
+  Sys.setenv(SPARK_HOME = "C:\\Apps\\Apache\\spark-2.0.0\\")
+
+  ## SPARKR_DRIVER_R: R_HOME from sys.getenv
+
+  ## JAVA_HOME:
+
+  ## WINUTILS_HOME:
+
+# Set library path and load SparkR library
+.libPaths(c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib"), .libPaths()))
+library(SparkR)
+
+
+# This script for running Spark code from the R Console, or Rstudio
+Sys.getenv() # ensure the environmental variables are set as stated above
+
+library(SparkR, lib.loc = c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib")))
+
+# note: did not run Start up file to get this to work...start_up changes the Java directory, don't forget!!!!
+# Java: make sure that you set the Java directory with JRE - is working, currently version Java8 is working.
+sparkR.session(enableHiveSupport = FALSE ,
+               master = "local[*]", 
+               sparkHome = Sys.getenv("SPARK_HOME") , # this was the missing link!!
+               sparkConfig = list(spark.driver.memory = "2g", 
+                                  spark.sql.warehouse.dir="C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1") # winutils path directory
+)
+
+df <- as.DataFrame(faithful)
+str(df)
+colnames(df)
+histogram(df$waiting)
+
+createOrReplaceTempView(df, "df")
+
+waiting_70 <- sql("select * from df where waiting > 70")
+str(waiting_70)
+collect(waiting_70)
+
+collect(summary(df))
+
+corr(df, "waiting", "eruptions")
+
+model <- spark.glm(df, eruptions ~ waiting)
+summary(model)
+
+
+-----
 
 Kuddos for the Spark image goes to: 
-  - Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155
+```md
+>  - Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155
+```
