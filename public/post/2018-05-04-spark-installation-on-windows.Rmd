@@ -23,13 +23,15 @@ coverImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_log
 metaAlignment: center
 coverMeta: out
 summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
+draft: true
 ---
 
-<p>
+
 # Intro
+```md
 Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-</p>
-<br></br>
+```
+
 
 
 
