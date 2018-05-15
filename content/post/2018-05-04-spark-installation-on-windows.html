@@ -23,7 +23,7 @@ coverImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_log
 metaAlignment: center
 coverMeta: out
 summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
-draft: false
+draft: true
 ---
 
 
@@ -39,10 +39,13 @@ draft: false
 <div id="download-and-installation" class="section level1">
 <h1>Download and Installation</h1>
 <p><strong>Install Spark</strong> First you will need to download Spark, which comes with the package for SparkR. Note, as of this posting, the SparkR package was removed from CRAN, so you can only get SparkR from the Apache website. Spark can be downloaded directly from Apache <a href="http://spark.apache.org/downloads.html">here</a>.</p>
-<p>After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (C:) folder where I put all the software that I download and install. This make it easy to transition to another laptop as all I have to do is go down the list installing software.</p>
+<p>After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (C:) folder where I put all the software that I download and install. This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the folder name for simplicity and ease of typing.</p>
 <p><img src="/images/Apache_folder.png" /><!-- --> <br></br></p>
-<p><strong>Install Java</strong> As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloadning.</p>
+<p><strong>Install Java</strong></p>
+<p>As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloadning.</p>
 <p>Unlike Spark, I will let the system determine where to install Java. I feel like this works best to reduce future issues.</p>
+<p><strong>Install WINUTILS_HOME</strong></p>
+<p>This step tripped me up for a long time when I first started to learning about Spark. Not many blog posts would talk about installing these feature. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>.</p>
 </div>
 <div id="we-can-then-set-up-spark-in-r-environment." class="section level1">
 <h1>We can then set up Spark in R environment.</h1>

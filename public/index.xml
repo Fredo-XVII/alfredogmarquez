@@ -6,20 +6,10 @@
     <description>Recent content on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.alfredogmarquez.com/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Spark Installation on Windows</title>
-      <link>https://www.alfredogmarquez.com/2018/05/04/spark-installation-on-windows/</link>
-      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/2018/05/04/spark-installation-on-windows/</guid>
-      <description>IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-&amp;lt;!--more--&amp;gt;Download and InstallationInstall Spark First you will need to download Spark, which comes with the package for SparkR.</description>
-    </item>
     
     <item>
       <title>Ode to R, Happy 25th Birthday</title>
