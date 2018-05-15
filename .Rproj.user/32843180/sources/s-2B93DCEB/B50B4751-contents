@@ -23,7 +23,7 @@ coverImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_log
 metaAlignment: center
 coverMeta: out
 summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
-draft: true
+draft: false
 ---
 
 
@@ -44,7 +44,7 @@ First you will need to download Spark, which comes with the package for SparkR. 
 After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (C:\Apps) folder where I put all the software that I download and install.  This make it easy to transition to another laptop as all I have to do is go down the list installing software.  
 
 ```{r, echo=FALSE, }
-knitr::include_graphics("\\img\\Apache_folder.png")
+knitr::include_graphics("/images/Apache_folder.png")
 ```
 <br></br>
 
