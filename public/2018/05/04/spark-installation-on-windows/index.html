@@ -304,14 +304,27 @@ ga('send', 'pageview');
 <p>As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloadning.</p>
 <p>Unlike Spark, I will let the system determine where to install Java. I feel like this works best to reduce future issues.</p>
 <p><strong>Install WINUTILS</strong></p>
-<p>This step tripped me up for a long time when I first started to learning about Spark. Not many blog posts would talk about installing this software. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>. You can download the winutils software from the github repo <a href="https://github.com/steveloughran/winutils">here</a>. Click on the green button (“clone or download”) on the upper right of the page and download the zip file. I would put this in your “C:Apps\winutils” folder so you can reference it easily. Extract all the files to this location using decompression software like <a href="http://www.peazip.org/">PeaZip</a> or WinZip. Pea7 is free and open source.</p>
+<p>This step tripped me up for a long time when I first started to learning about Spark. Not many blog posts would talk about installing this software. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>. You can download the winutils software from the github repo <a href="https://github.com/steveloughran/winutils">here</a>. Click on the green button (“clone or download”) on the upper right of the page and download the zip file. I would put this in your “C:Apps\winutils” folder so you can reference it easily (you will need it later). Extract all the files to this location using decompression software like <a href="http://www.peazip.org/">PeaZip</a> or WinZip. Pea7 is free and open source.</p>
+<p>Once you have unzipped the file it should look like this: <img src="https://www.alfredogmarquez.com/images/winutils_folder_2018_05_15.png" /><!-- --> <br></br></p>
 </div>
 <div id="step-2-set-up-system-environmental-variables-to-run-spark-either-in-windows-or-r" class="section level1">
 <h1>Step #2: Set up system environmental variables to run Spark (either in windows, or R):</h1>
-<p>## SPARK_HOME: Sys.setenv(SPARK_HOME = “C:\Apps\Apache\Spark\spark-2.3.0\bin”)</p>
+<blockquote>
+<p>NOTE: if you decide to set the environmental variables through R, you need to remember that it does not change them on your machine, nor does it flow through to the next session unless they are establish in your .Renviron script. The code to do it in R is below, however, I will discuss setting up on your machine next.</p>
+</blockquote>
+<blockquote>
+<p>Sys.setenv(SPARK_HOME = “C:\Apps\Apache\Spark\spark-2.3.0\bin”)</p>
+</blockquote>
+<div id="spark_home" class="section level4">
+<h4>SPARK_HOME:</h4>
+<p>The process to set up the environmental variables on your machine will be the same for Spark as it is for the other variables below. So I will use Spark as a example that you can apply to the other variables.</p>
+<ol style="list-style-type: decimal">
+<li>Locate the “bin” file path for the software you want to add to your environmental list. For Spark, the path is in my “C:\Apps” folder, or “C:\Apps\Apache\Spark\spark-2.3.0\bin”</li>
+</ol>
 <p>## SPARKR_DRIVER_R: R_HOME from sys.getenv</p>
 <p>## JAVA_HOME:</p>
 <p>## WINUTILS_HOME:</p>
+</div>
 </div>
 <div id="testing-install" class="section level1">
 <h1>Testing Install</h1>

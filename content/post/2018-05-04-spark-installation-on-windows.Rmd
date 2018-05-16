@@ -57,12 +57,34 @@ Unlike Spark, I will let the system determine where to install Java.  I feel lik
 
 **Install WINUTILS**
 
-This step tripped me up for a long time when I first started to learning about Spark.  Not many blog posts would talk about installing this software.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems). You can download the winutils software from the github repo [here](https://github.com/steveloughran/winutils).  Click on the green button ("clone or download") on the upper right of the page and download the zip file.  I would put this in your "C:Apps\\winutils" folder so you can reference it easily.  Extract all the files to this location using decompression software like [PeaZip](http://www.peazip.org/) or WinZip. Pea7 is free and open source.
+This step tripped me up for a long time when I first started to learning about Spark.  Not many blog posts would talk about installing this software.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems). You can download the winutils software from the github repo [here](https://github.com/steveloughran/winutils).  Click on the green button ("clone or download") on the upper right of the page and download the zip file.  I would put this in your "C:Apps\\winutils" folder so you can reference it easily (you will need it later).  Extract all the files to this location using decompression software like [PeaZip](http://www.peazip.org/) or WinZip. Pea7 is free and open source.
+
+Once you have unzipped the file it should look like this:
+```{r, echo=FALSE, }
+knitr::include_graphics("/images/winutils_folder_2018_05_15.png")
+```
+<br></br>
 
 
 # Step #2: Set up system environmental variables to run Spark (either in windows, or R):
-  ## SPARK_HOME:
-  Sys.setenv(SPARK_HOME = "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin")
+  > NOTE: if you decide to set the environmental variables through R, you need to remember that it does not change them on your machine, nor does it flow through to the next session unless they are establish in your .Renviron script.  The code to do it in R is below, however, I will discuss setting up on your machine next.
+  
+  > Sys.setenv(SPARK_HOME = "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin")
+  
+  
+#### SPARK_HOME:
+The process to set up the environmental variables on your machine will be the same for Spark as it is for the other variables below.  So I will use Spark as a example that you can apply to the other variables.
+
+  1. Locate the "bin" file path for the software you want to add to your environmental list.  For Spark, the path is in my "C:\\Apps" folder, or "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin", copy the file path using ctrl + c.
+  2. Locate you environmental varialbes. On Windows 10, you can type environmental into the search bar at the bottom of you screen, then click on "edit system variables." On previous versions of Windows, click on the start menu, right click on computer or control panel, select properties.
+ 
+Once you have unzipped the file it should look like this:
+```{r, echo=FALSE, }
+knitr::include_graphics("/images/winutils_folder_2018_05_15.png")
+```
+<br></br>
+ 
+  System_Properties_2018_05_15
 
   ## SPARKR_DRIVER_R: R_HOME from sys.getenv
 

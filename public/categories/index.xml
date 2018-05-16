@@ -46,5 +46,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Spark</title>
+      <link>https://www.alfredogmarquez.com/categories/spark/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/categories/spark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sparkr</title>
+      <link>https://www.alfredogmarquez.com/categories/sparkr/</link>
+      <pubDate>Fri, 04 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/categories/sparkr/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
