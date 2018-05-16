@@ -36,15 +36,16 @@ draft: true
 ```
 ----------
 
-# Download and Installation
+# Step #1: Download and Installation
 
 **Install Spark**
+
 First you will need to download Spark, which comes with the package for SparkR.  Note, as of this posting, the SparkR package was removed from CRAN, so you can only get SparkR from the Apache website. Spark can be downloaded directly from Apache [here](http://spark.apache.org/downloads.html).
 
-After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (C:\Apps) folder where I put all the software that I download and install.  This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the folder name for simplicity and ease of typing.
+After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps ("C:\\Apps") folder where I put all the software that I download and install.  This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the Spark folder name for simplicity and ease of typing.
 
 ```{r, echo=FALSE, }
-knitr::include_graphics("/images/Apache_folder.png")
+knitr::include_graphics("/images/Apache_folder_2018_05_15.png")
 ```
 <br></br>
 
@@ -54,13 +55,12 @@ As of this writing, Java 9 has been having a ton of issues and is not stable.  I
 
 Unlike Spark, I will let the system determine where to install Java.  I feel like this works best to reduce future issues.
 
-**Install WINUTILS_HOME**
+**Install WINUTILS**
 
-This step tripped me up for a long time when I first started to learning about Spark.  Not many blog posts would talk about installing these feature.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems).
+This step tripped me up for a long time when I first started to learning about Spark.  Not many blog posts would talk about installing this software.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems). You can download the winutils software from the github repo [here](https://github.com/steveloughran/winutils).  Click on the green button ("clone or download") on the upper right of the page and download the zip file.  I would put this in your "C:Apps\\winutils" folder so you can reference it easily.  Extract all the files to this location using decompression software like [PeaZip](http://www.peazip.org/) or WinZip. Pea7 is free and open source.
 
-# We can then set up Spark in R environment.
 
-# Set system environmental variables to run Spark (either in windows, or R):
+# Step #2: Set up system environmental variables to run Spark (either in windows, or R):
   ## SPARK_HOME:
   Sys.setenv(SPARK_HOME = "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin")
 

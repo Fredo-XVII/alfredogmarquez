@@ -29,9 +29,11 @@
 
     
     <meta name="description" content="IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-&lt;!--more--&gt;Download and InstallationInstall Spark First you will need to download Spark, which comes with the package for SparkR.">
+&lt;!--more--&gt;Step #1: Download and InstallationInstall Spark
+First you will need to download Spark, which comes with the package for SparkR.">
     <meta property="og:description" content="IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-&lt;!--more--&gt;Download and InstallationInstall Spark First you will need to download Spark, which comes with the package for SparkR.">
+&lt;!--more--&gt;Step #1: Download and InstallationInstall Spark
+First you will need to download Spark, which comes with the package for SparkR.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Spark Installation on Windows">
     <meta property="og:url" content="/2018/05/04/spark-installation-on-windows/">
@@ -39,7 +41,8 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Alfredo&#39;s Sandbox">
     <meta name="twitter:description" content="IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-&lt;!--more--&gt;Download and InstallationInstall Spark First you will need to download Spark, which comes with the package for SparkR.">
+&lt;!--more--&gt;Step #1: Download and InstallationInstall Spark
+First you will need to download Spark, which comes with the package for SparkR.">
     
     
 
@@ -291,20 +294,20 @@ ga('send', 'pageview');
 <pre class="md"><code>&lt;!--more--&gt;</code></pre>
 <hr />
 </div>
-<div id="download-and-installation" class="section level1">
-<h1>Download and Installation</h1>
-<p><strong>Install Spark</strong> First you will need to download Spark, which comes with the package for SparkR. Note, as of this posting, the SparkR package was removed from CRAN, so you can only get SparkR from the Apache website. Spark can be downloaded directly from Apache <a href="http://spark.apache.org/downloads.html">here</a>.</p>
-<p>After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (C:) folder where I put all the software that I download and install. This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the folder name for simplicity and ease of typing.</p>
-<p><img src="https://www.alfredogmarquez.com/images/Apache_folder.png" /><!-- --> <br></br></p>
-<p><strong>Install Java</strong> As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloadning.</p>
+<div id="step-1-download-and-installation" class="section level1">
+<h1>Step #1: Download and Installation</h1>
+<p><strong>Install Spark</strong></p>
+<p>First you will need to download Spark, which comes with the package for SparkR. Note, as of this posting, the SparkR package was removed from CRAN, so you can only get SparkR from the Apache website. Spark can be downloaded directly from Apache <a href="http://spark.apache.org/downloads.html">here</a>.</p>
+<p>After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (“C:\Apps”) folder where I put all the software that I download and install. This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the Spark folder name for simplicity and ease of typing.</p>
+<p><img src="https://www.alfredogmarquez.com/images/Apache_folder_2018_05_15.png" /><!-- --> <br></br></p>
+<p><strong>Install Java</strong></p>
+<p>As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloadning.</p>
 <p>Unlike Spark, I will let the system determine where to install Java. I feel like this works best to reduce future issues.</p>
-<p><strong>Install WINUTILS_HOME</strong> This step tripped me up for a long time when I first started to learning about Spark. Not many blog posts would talk about installing these feature. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a></p>
+<p><strong>Install WINUTILS</strong></p>
+<p>This step tripped me up for a long time when I first started to learning about Spark. Not many blog posts would talk about installing this software. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>. You can download the winutils software from the github repo <a href="https://github.com/steveloughran/winutils">here</a>. Click on the green button (“clone or download”) on the upper right of the page and download the zip file. I would put this in your “C:Apps\winutils” folder so you can reference it easily. Extract all the files to this location using decompression software like <a href="http://www.peazip.org/">PeaZip</a> or WinZip. Pea7 is free and open source.</p>
 </div>
-<div id="we-can-then-set-up-spark-in-r-environment." class="section level1">
-<h1>We can then set up Spark in R environment.</h1>
-</div>
-<div id="set-system-environmental-variables-to-run-spark-either-in-windows-or-r" class="section level1">
-<h1>Set system environmental variables to run Spark (either in windows, or R):</h1>
+<div id="step-2-set-up-system-environmental-variables-to-run-spark-either-in-windows-or-r" class="section level1">
+<h1>Step #2: Set up system environmental variables to run Spark (either in windows, or R):</h1>
 <p>## SPARK_HOME: Sys.setenv(SPARK_HOME = “C:\Apps\Apache\Spark\spark-2.3.0\bin”)</p>
 <p>## SPARKR_DRIVER_R: R_HOME from sys.getenv</p>
 <p>## JAVA_HOME:</p>
@@ -611,7 +614,8 @@ ga('send', 'pageview');
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather">IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
-&lt;!--more--&gt;Download and InstallationInstall Spark First you will need to download Spark, which comes with the package for SparkR.</div>
+&lt;!--more--&gt;Step #1: Download and InstallationInstall Spark
+First you will need to download Spark, which comes with the package for SparkR.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
