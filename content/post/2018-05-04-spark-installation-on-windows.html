@@ -54,10 +54,8 @@ draft: false
 <blockquote>
 <p>NOTE: if you decide to set the environmental variables through R, you need to remember that it does not change them on your machine, nor does it flow through to the next session unless they are establish in your .Renviron script. The code to do it in R is below, however, I will discuss setting up on your machine next.</p>
 </blockquote>
-<ul>
-<li>Sys.setenv(Variable Name = “Variable Value”)</li>
-<li>Sys.setenv(SPARK_HOME = “C:\Apps\Apache\Spark\spark-2.3.0\bin”)</li>
-</ul>
+<pre><code>  Sys.setenv(Variable Name = &quot;Variable Value&quot;)
+  Sys.setenv(SPARK_HOME = &quot;C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin&quot;)</code></pre>
 <div id="spark_home" class="section level4">
 <h4>SPARK_HOME:</h4>
 <p>The process to set up the environmental variables on your machine will be the same for Spark as it is for the other variables below. So I will use Spark as a example that you can apply to the other variables.</p>
