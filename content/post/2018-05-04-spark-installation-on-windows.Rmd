@@ -76,9 +76,9 @@ knitr::include_graphics("/images/winutils_folder_2018_05_15.png")
 The process to set up the environmental variables on your machine will be the same for Spark as it is for the other variables below.  So I will use Spark as a example that you can apply to the other variables.
 
   1. Locate the "bin" file path for the software you want to add to your environmental list.  For Spark, the path is in my "C:\\Apps" folder, or "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin", copy the file path using ctrl + c.
-  2. Locate you environmental variables On Windows 10, you can type environmental into the search bar at the bottom of you screen, then click on "edit system variables." On previous versions of Windows, click on the start menu, right click on computer or control panel, select properties.  Click on the icon that says environmental variables.
+  2. Locate you environmental variables On Windows 10, you can type environmental into the search bar at the bottom of you screen, then click on "edit system variables." On previous versions of Windows, click on the start menu, right click on computer or control panel, select properties.  Click on the icon that says environmental variables at the bottom.
  
-Once you have unzipped the file it should look like this:
+Your system properties should look like this:
 ```{r, echo=FALSE, }
 knitr::include_graphics("/images/System_Properties_2018_05_15.png")
 ```
@@ -90,7 +90,7 @@ knitr::include_graphics("/images/System_Properties_2018_05_15.png")
       - Variable Value: C:\Apps\Apache\Spark\spark-2.3.0\bin ( or path to your Spark bin folder)
       
 ```{r, echo=FALSE, }
-knitr::include_graphics("/images/C:\Apps\Apache\Spark\spark-2.3.0\bin.png")
+knitr::include_graphics("/images/New_Var_SPARK_HOME_1_2018_05_15.png")
 ```     
     2. The next step is to add the new variable to your user Path variable.  In the list of variables in the "user variables" section, you are going to see a variable called "Path."  Select this variable and click on the "Edit" icon.  On Windows 10, you get a nice looking list of what is included in the path, but in older versions, you get a long string of variables separated by semi-colons. 
 
