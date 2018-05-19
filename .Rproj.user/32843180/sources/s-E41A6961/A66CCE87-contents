@@ -53,7 +53,7 @@ knitr::include_graphics("/images/Apache_folder_2018_05_15.png")
 
 As of this writing, Java 9 has been having a ton of issues and is not stable.  I was able to use the most recent version of Java 8.  You can download the most recent version for Windows at this [link](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). You have to accept their license agreement before downloadning.  
 
-Unlike Spark, I will let the system determine where to install Java.  I feel like this works best to reduce future issues.
+Unlike Spark, I will let the system determine where to install Java.  I feel like this works best to reduce future issues.  When you install Java, pay attention to the folder location of the installation.  This is where you will find the bin folder. You will need to know this path to create the JAVA_HOME environmental variable.
 
 **Install WINUTILS**
 
@@ -94,9 +94,10 @@ knitr::include_graphics("/images/New_Var_SPARK_HOME_1_2018_05_15.png")
 ```     
 <br></br>
     2. The next step is to add the new variable to your user Path variable.  In the list of variables in the "user variables" section, you are going to see a variable called "Path."  Select this variable and click on the "Edit" icon.  On Windows 10, you get a nice looking list of what is included in the path, but in older versions, you get a long string of variables separated by semi-colons. For example, to add the SPARK_HOME environmental variable you would add the following to the end of the Path variable:
+    
     - ;%SPARK_HOME%
 
-  For Windows 10, once you have clicked on the "Edit" icon you see the window below. Click on the "New" icon and add the name of the variable as we did above, %SPARK_HOME%, in one of the lines, then click "OK" at the bottom of the window.
+  For Windows 10, once you have clicked on the "Edit" icon to edit the "Path" variable you will see the window below. Click on the "New" icon and add the name of the variable as we did above but without the semi-colon, %SPARK_HOME%, in one of the lines then click "OK" at the bottom of the window.
   Your "Path" should now have the SPARK_HOME environmental variable as below:
 ```{r, echo=FALSE, }
 knitr::include_graphics("/images/Path_Add_New_Var_2018_05_15.png")
@@ -104,11 +105,12 @@ knitr::include_graphics("/images/Path_Add_New_Var_2018_05_15.png")
 <br></br>  
   
 
+#### JAVA_HOME:
+Go to the folder where you Java is installed. I installed the 64bit version, so the Java folder is in my C:\\Programs directory.  If you have installed the JDK version of Java, you will see 2 folders in the Java directory. One for JDK, and the other for JRE. Go into the JRE directory and locate the path to the bin folder.  Copy and add it to your system's environmental variables. (See the picture below)
+
+#### WINUTILS_HOME:
+  
   ## SPARKR_DRIVER_R: R_HOME from sys.getenv
-
-  ## JAVA_HOME:
-
-  ## WINUTILS_HOME:
 
 
 # Testing Install

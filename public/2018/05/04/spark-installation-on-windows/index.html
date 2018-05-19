@@ -326,7 +326,8 @@ ga('send', 'pageview');
 <pre><code>  - Variable Name: SPARK_HOME
   - Variable Value: C:\Apps\Apache\Spark\spark-2.3.0\bin ( or path to your Spark bin folder)
   </code></pre>
-<p><img src="https://www.alfredogmarquez.com/images/New_Var_SPARK_HOME_1_2018_05_15.png" /><!-- --> <br></br> 2. The next step is to add the new variable to your user Path variable. In the list of variables in the “user variables” section, you are going to see a variable called “Path.” Select this variable and click on the “Edit” icon. On Windows 10, you get a nice looking list of what is included in the path, but in older versions, you get a long string of variables separated by semi-colons. For example, to add the SPARK_HOME environmental variable you would add the following to the end of the Path variable: - ;%SPARK_HOME%</p>
+<p><img src="https://www.alfredogmarquez.com/images/New_Var_SPARK_HOME_1_2018_05_15.png" /><!-- --> <br></br> 2. The next step is to add the new variable to your user Path variable. In the list of variables in the “user variables” section, you are going to see a variable called “Path.” Select this variable and click on the “Edit” icon. On Windows 10, you get a nice looking list of what is included in the path, but in older versions, you get a long string of variables separated by semi-colons. For example, to add the SPARK_HOME environmental variable you would add the following to the end of the Path variable:</p>
+<pre><code>- ;%SPARK_HOME%</code></pre>
 <p>For Windows 10, once you have clicked on the “Edit” icon you see the window below. Click on the “New” icon and add the name of the variable as we did above, %SPARK_HOME%, in one of the lines, then click “OK” at the bottom of the window. Your “Path” should now have the SPARK_HOME environmental variable as below: <img src="https://www.alfredogmarquez.com/images/Path_Add_New_Var_2018_05_15.png" /><!-- --> <br></br></p>
 <p>## SPARKR_DRIVER_R: R_HOME from sys.getenv</p>
 <p>## JAVA_HOME:</p>
