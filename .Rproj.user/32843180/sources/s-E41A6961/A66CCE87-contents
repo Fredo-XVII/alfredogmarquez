@@ -109,6 +109,8 @@ knitr::include_graphics("/images/Path_Add_New_Var_2018_05_15.png")
 Go to the folder where you Java is installed. I installed the 64bit version, so the Java folder is in my C:\\Programs directory.  If you have installed the JDK version of Java, you will see 2 folders in the Java directory. One for JDK, and the other for JRE. Go into the JRE directory and locate the path to the bin folder.  Copy and add it to your system's environmental variables. (See the picture below)
 
 #### WINUTILS_HOME:
+Since I have installed winutils in my C:\Apps directory, I will copy the path from there.
+Winutils is different than the programs above as it has no bin folder.
   
   ## SPARKR_DRIVER_R: R_HOME from sys.getenv
 
