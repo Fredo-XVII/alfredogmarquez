@@ -108,7 +108,7 @@ knitr::include_graphics("/images/New_Var_SPARK_HOME_1_2018_05_15.png")
   ;%SPARK_HOME%
 ```
 
-  For Windows 10, once you have clicked on the "Edit" icon to edit the "Path" variable you will see the window below. Click on the "New" icon and add the name of the variable as we did above but without the semi-colon, %SPARK_HOME%, in one of the lines then click "OK" at the bottom of the window.
+  * For Windows 10, once you have clicked on the "Edit" icon to edit the "Path" variable you will see the window below. Click on the "New" icon and add the name of the variable as we did above but without the semi-colon, %SPARK_HOME%, in one of the lines then click "OK" at the bottom of the window.
   Your "Path" should now have the SPARK_HOME environmental variable as below:
 ```{r, echo=FALSE, }
 knitr::include_graphics("/images/Path_Add_New_Var_2018_05_15.png")
