@@ -118,7 +118,7 @@ Winutils is different than the programs above as it has no "bin" folder. Because
   - Variable Name: WINUTILS_HOME 
   - Variable Value: C:\\Apps\\winutils\\winutils-master
   
-#### SPARKR_DRIVER_R: R_HOME from sys.getenv
+#### SPARKR_DRIVER_R: (Optional)
 The SPARKR_DRIVER_R environmental variable I tripped over on my work's hadoop system when I was looking for something else.  I noticed their SPARKR_DRIVER_R was set to their R home directory.  You can find your R home directory with the command below in your R console. Note, R may give you a path with a tidla, but if you paste it into a folder browser you can get the full path.  Exampe, C://Apps//R//R-34~1.3 means C:\\Apps\\R\\R-3.4.3. As you can see, my R is installed in my C:\\Apps folder.
 
   - Sys.getenv() - all environmental variables
@@ -129,6 +129,11 @@ You know have the information to create your own SPARKR_DRIVER_R environmental v
   - Variable Name: SPARKR_DRIVER_R
   - Variable Value: 
 
+Once you have all your environmental variables your Path variable they should look like this:
+```{r, echo=FALSE, }
+knitr::include_graphics("/images/Path_Env_Vars_Complete_2018_05_15.png")
+```     
+<br></br>  
 
 # Testing Install
 
