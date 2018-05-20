@@ -37,7 +37,7 @@ _Today I will discuss how to install Apache Spark onto a Windows machine. I have
 
 **Install Spark**
 
-First you will need to download Spark, which comes with the package for SparkR.  Note, as of this posting, the SparkR package was removed from CRAN, so you can only get SparkR from the Apache website. Spark can be downloaded directly from Apache [here](http://spark.apache.org/downloads.html).
+First you will need to download Spark, which comes with the package for SparkR.  Note, as of this posting, the SparkR package was removed from CRAN, so you can only get SparkR from the Apache website. Spark can be downloaded directly from Apache [here](http://spark.apache.org/downloads.html). I downloaded Spark 2.3.0 Pre-built for Apache Hadoop 2.7 and later.
 
 After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps ("C:\\Apps") folder where I put all the software that I download and install.  This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the Spark folder name for simplicity and ease of typing.
 
@@ -50,11 +50,11 @@ knitr::include_graphics("/images/Apache_folder_2018_05_15.png")
 
 As of this writing, Java 9 has been having a ton of issues and is not stable.  I was able to use the most recent version of Java 8.  You can download the most recent version for Windows at this [link](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). You have to accept their license agreement before downloadning.  
 
-Unlike Spark, I will let the system determine where to install Java.  I feel like this works best to reduce future issues.  When you install Java, pay attention to the folder location of the installation.  This is where you will find the bin folder. You will need to know this path to create the JAVA_HOME environmental variable.
+Unlike Spark, I will let the system determine where to install Java.  I feel like this works best to reduce future issues.  When you install Java, pay attention to the folder location of the installation.  You will need to know this path to create the JAVA_HOME environmental variable.
 
 **Install WINUTILS**
 
-This step tripped me up for a long time when I first started to learning about Spark.  Not many blog posts would talk about installing this software.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems). You can download the winutils software from the github repo [here](https://github.com/steveloughran/winutils).  Click on the green button ("clone or download") on the upper right of the page and download the zip file.  I would put this in your "C:Apps\\winutils" folder so you can reference it easily (you will need it later).  Extract all the files to this location using decompression software like [PeaZip](http://www.peazip.org/) or WinZip. Pea7 is free and open source.
+This step tripped me up for a long time when I first started to learning about Spark.  Not many blog posts would talk about installing this software.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems). You can download the winutils software from the github repo [here](https://github.com/steveloughran/winutils).  Click on the green button ("clone or download") on the upper right of the page and download the zip file.  I would put this in your "C:Apps\\winutils" folder so you can reference it easily (you will need it later).  Extract all the files to this location using decompression software like [PeaZip](http://www.peazip.org/) or WinZip. PeaZip is free and open source.
 
 Once you have unzipped the file it should look like this:
 ```{r, echo=FALSE, }
@@ -73,12 +73,12 @@ knitr::include_graphics("/images/winutils_folder_2018_05_15.png")
 ```
   
 #### SPARK_HOME:
-The process to set up the environmental variables on your machine will be the similar for Spark as it is for the other variables below, where you provide a variable name, variable value and at it to the Path variable.  So I will use Spark as a example that you can apply to the other variables.
+The process to set up the environmental variables on your machine will be the similar for Spark as it is for the other variables below, where you provide a variable name, variable value and add it to the Path variable.  So I will use Spark as a example that you can apply to the other variables.
 
-  1. Locate the "bin" file path for the Spark version you downloaded to add to your environmental list.  For Spark, the path is in my "C:\\Apps" folder, or "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin", copy the file path using ctrl + c.
+  1. Locate the master or top level file path for the Spark version you downloaded to add to your environmental list.  For Spark, the path is in my "C:\\Apps" folder, or "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\", copy the file path using ctrl + c.
   2. To locate your environmental variables On Windows 10, you can type "environmental" into the search bar at the bottom of you screen, then click on "edit system variables," and click on the icon that says environmental variables at the bottom. On previous versions of Windows, click on the start menu, right click on computer or control panel, select properties and click on the icon that says "environmental variables"" at the bottom.
  
-Your system properties should look like this:
+In both cases your system properties should look like this:
 ```{r, echo=FALSE, }
 knitr::include_graphics("/images/System_Properties_2018_05_15.png")
 ```
@@ -95,7 +95,7 @@ knitr::include_graphics("/images/System_Add_New_Var_2018_05_15.png")
     
 ```
   Variable Name: SPARK_HOME
-  Variable Value: C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin ( or path to your Spark bin folder)
+  Variable Value: C:\\Apps\\Apache\\Spark\\spark-2.3.0\\ ( or path to your Spark bin folder)
 ```
 
 <br></br>
@@ -128,7 +128,7 @@ Go to the folder where you Java is installed. I installed the 64bit version, so 
 
 #### WINUTILS_HOME:
 Since I have installed winutils in my C:\Apps directory, I will copy the path from there.
-Like Java, Winutils does not reference the "bin" folder. I will reference the path of the master folder. 
+I will reference the path of the master folder. 
 
 ```
   Variable Name: WINUTILS_HOME 
@@ -160,8 +160,14 @@ knitr::include_graphics("/images/Path_Env_Vars_Complete_2018_05_15.png")
 
 
 # Set library path and load SparkR library
-.libPaths(c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib"), .libPaths()))
-library(SparkR)
+```{r}
+
+#.libPaths(c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib"), .libPaths()))
+#library(SparkR)
+
+```
+
+
 
 
 # This script for running Spark code from the R Console, or Rstudio
