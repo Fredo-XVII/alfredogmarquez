@@ -94,8 +94,8 @@ draft: false
 <pre><code>  Variable Name: WINUTILS_HOME 
   Variable Value: C:\Apps\winutils\winutils-master\</code></pre>
 </div>
-<div id="sparkr_driver_r-optional" class="section level4">
-<h4>SPARKR_DRIVER_R: (Optional)</h4>
+<div id="sparkr_driver_r-optional-maybe-needed-on-a-hadoop-system" class="section level4">
+<h4>SPARKR_DRIVER_R: (Optional, maybe needed on a hadoop system)</h4>
 <p>The SPARKR_DRIVER_R environmental variable I tripped over on my work’s hadoop system when I was looking for something else. I noticed their SPARKR_DRIVER_R was set to their R home directory. You can find your R home directory with the command below in your R console. Note, R may give you a path with a tidla, but if you paste it into a folder browser you can get the full path. Exampe, C://Apps//R//R-34~1.3 means C:\Apps\R\R-3.4.3. As you can see, my R is installed in my C:\Apps folder.</p>
 <pre><code>  Sys.getenv() - all environmental variables
   Sys.getenv(&quot;R_HOME&quot;) - Value for the R_HOME environmental variables.</code></pre>
@@ -103,27 +103,48 @@ draft: false
 <pre><code>  Variable Name: SPARKR_DRIVER_R
   Variable Value: C:\\Apps\\R\\R-3.4.3</code></pre>
 <p>Once you have all your environmental variables your Path variable they should look like this: <img src="/images/Path_Env_Vars_Complete_2018_05_15.png" /><!-- --> <br></br></p>
+<p>Now that you have everything set up you will have to restart your R and RStudio, meaning close out and open back up, so that they pick up the changes made to the environmental variables.</p>
 </div>
 </div>
 <div id="testing-install" class="section level1">
 <h1>Testing Install</h1>
-</div>
-<div id="set-library-path-and-load-sparkr-library" class="section level1">
-<h1>Set library path and load SparkR library</h1>
-<pre class="r"><code>#.libPaths(c(file.path(Sys.getenv(&quot;SPARK_HOME&quot;), &quot;R&quot;, &quot;lib&quot;), .libPaths()))
-#library(SparkR)</code></pre>
-</div>
-<div id="this-script-for-running-spark-code-from-the-r-console-or-rstudio" class="section level1">
-<h1>This script for running Spark code from the R Console, or Rstudio</h1>
-<p>Sys.getenv() # ensure the environmental variables are set as stated above</p>
-<p>library(SparkR, lib.loc = c(file.path(Sys.getenv(“SPARK_HOME”), “R”, “lib”)))</p>
-</div>
-<div id="note-did-not-run-start-up-file-to-get-this-to-workstart_up-changes-the-java-directory-dont-forget" class="section level1">
-<h1>note: did not run Start up file to get this to work…start_up changes the Java directory, don’t forget!!!!</h1>
-</div>
-<div id="java-make-sure-that-you-set-the-java-directory-with-jre---is-working-currently-version-java8-is-working." class="section level1">
-<h1>Java: make sure that you set the Java directory with JRE - is working, currently version Java8 is working.</h1>
-<p>sparkR.session(enableHiveSupport = FALSE , master = “local[*]”, sparkHome = Sys.getenv(“SPARK_HOME”) , # this was the missing link!! sparkConfig = list(spark.driver.memory = “2g”, spark.sql.warehouse.dir=“C:\Apps\winutils\winutils-master\hadoop-2.7.1”) # winutils path directory )</p>
+<p>First run <code>Sys.getenv()</code> to ensure the environmental variables are set as stated above in you R session. If not go back and figure out what you missed.</p>
+<div id="set-library-path-and-load-sparkr-library" class="section level4">
+<h4>Set library path and load SparkR library</h4>
+<p>This is one way to load your SparkR packages.</p>
+<pre class="r"><code>.libPaths(c(file.path(Sys.getenv(&quot;SPARK_HOME&quot;), &quot;R&quot;, &quot;lib&quot;), .libPaths()))
+library(SparkR)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;SparkR&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     cov, filter, lag, na.omit, predict, sd, var, window</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.data.frame, colnames, colnames&lt;-, drop, endsWith,
+##     intersect, rank, rbind, sample, startsWith, subset, summary,
+##     transform, union</code></pre>
+<p>This version of code is commonly used in the SparkR documentation.</p>
+<pre class="r"><code>library(SparkR, lib.loc = c(file.path(Sys.getenv(&quot;SPARK_HOME&quot;), &quot;R&quot;, &quot;lib&quot;)))</code></pre>
+<p>Use the code that best suites your style of coding, there is no right way.</p>
+<p>Now that you have the SparkR package loaded, you can create a spark session on you local machine. There are 4 options below that are mandatory.</p>
+<ul>
+<li>The “enableHiveSupport” must be set to FALSE if you are running on local with no HIVE, otherwise and erros trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.</li>
+<li>The “master” variable has to be set to local “local[*]” or to “local[K]” to be used by Spark. This [*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use.</li>
+<li>The “sparkHome” field also took me a long time to figure out. I came across on some blog a while ago, so I can’t give them credit, but that was a big win. Provide the path to your Spark home directory to this field.</li>
+<li>The spark.sql.warehouse.dir in the options list was also a big headache. The way I resolved this was trial and error, copy and pasting what other people were doing to see if it would get me past the errors messages.</li>
+</ul>
+<pre class="r"><code>sparkR.session(enableHiveSupport = FALSE ,
+               master = &quot;local[*]&quot;, 
+               sparkHome = Sys.getenv(&quot;SPARK_HOME&quot;) , # this was the missing link!!
+               sparkConfig = 
+                 list(spark.driver.memory = &quot;2g&quot;, 
+                      spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
+)</code></pre>
+<pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\Rtmpo9klzE\backend_portcf4477c1431</code></pre>
+<pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
+<p><br></br> All the other settings are optional from what I found, such as the spark.driver.memory. Best practices is that you should set this, but it should work without it.</p>
 <p>sparkR.uiWebUrl() get # of cores - set cores</p>
 <p>df &lt;- as.DataFrame(faithful) str(df) colnames(df) histogram(df$waiting)</p>
 <p>createOrReplaceTempView(df, “df”)</p>
@@ -131,6 +152,7 @@ draft: false
 <p>collect(summary(df))</p>
 <p>corr(df, “waiting”, “eruptions”)</p>
 <p>model &lt;- spark.glm(df, eruptions ~ waiting) summary(model)</p>
+</div>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>

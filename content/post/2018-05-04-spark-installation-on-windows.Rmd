@@ -135,7 +135,7 @@ I will reference the path of the master folder.
   Variable Value: C:\Apps\winutils\winutils-master\
 ```
 
-#### SPARKR_DRIVER_R: (Optional)
+#### SPARKR_DRIVER_R: (Optional, maybe needed on a hadoop system)
 The SPARKR_DRIVER_R environmental variable I tripped over on my work's hadoop system when I was looking for something else.  I noticed their SPARKR_DRIVER_R was set to their R home directory.  You can find your R home directory with the command below in your R console. Note, R may give you a path with a tidla, but if you paste it into a folder browser you can get the full path.  Exampe, C://Apps//R//R-34~1.3 means C:\\Apps\\R\\R-3.4.3. As you can see, my R is installed in my C:\\Apps folder.
 
 ```
@@ -154,35 +154,48 @@ Once you have all your environmental variables your Path variable they should lo
 ```{r, echo=FALSE, }
 knitr::include_graphics("/images/Path_Env_Vars_Complete_2018_05_15.png")
 ```     
-<br></br>  
+<br></br> 
+
+Now that you have everything set up you will have to restart your R and RStudio, meaning close out and open back up, so that they pick up the changes made to the environmental variables.
 
 # Testing Install
+First run `Sys.getenv()` to ensure the environmental variables are set as stated above in you R session.  If not go back and figure out what you missed.
 
-
-# Set library path and load SparkR library
+#### Set library path and load SparkR library
+This is one way to load your SparkR packages.  
 ```{r}
-
-#.libPaths(c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib"), .libPaths()))
-#library(SparkR)
-
+.libPaths(c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib"), .libPaths()))
+library(SparkR)
 ```
 
-
-
-
-# This script for running Spark code from the R Console, or Rstudio
-Sys.getenv() # ensure the environmental variables are set as stated above
-
+This version of code is commonly used in the SparkR documentation.
+```{r}
 library(SparkR, lib.loc = c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib")))
+```
+Use the code that best suites your style of coding, there is no right way.
 
-# note: did not run Start up file to get this to work...start_up changes the Java directory, don't forget!!!!
-# Java: make sure that you set the Java directory with JRE - is working, currently version Java8 is working.
+
+Now that you have the SparkR package loaded, you can create a spark session on you local machine. There are 4 options below that are mandatory.  
+
+  - The "enableHiveSupport" must be set to FALSE if you are running on local with no HIVE, otherwise and erros trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.
+  - The "master" variable has to be set to local "local[*]" or to "local[K]" to be used by Spark. This [\*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use.  On hadoop this will be "YARN" or some other configuration depending on your system build.  
+  - The "sparkHome" field also took me a long time to figure out. I came across on some blog a while ago, so I can't give them credit, but that was a big win.  Provide the path to your Spark home directory to this field. 
+  - The spark.sql.warehouse.dir in the options list was also a big headache.  The way I resolved this was trial and error, copy and pasting what other people were doing to see if it would get me past the errors messages.
+  
+```{r}
+
 sparkR.session(enableHiveSupport = FALSE ,
                master = "local[*]", 
                sparkHome = Sys.getenv("SPARK_HOME") , # this was the missing link!!
-               sparkConfig = list(spark.driver.memory = "2g", 
-                                  spark.sql.warehouse.dir="C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1") # winutils path directory
+               sparkConfig = 
+                 list(spark.driver.memory = "2g", 
+                      spark.sql.warehouse.dir="C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1") # winutils path directory
 )
+
+```
+<br></br>
+All the other settings are optional from what I found, such as the spark.driver.memory.  Best practices is that you should set this, but it should work without it.
+
 
 sparkR.uiWebUrl()
 get # of cores - set cores
