@@ -1,0 +1,10 @@
+"0","waiting_70 <- sql(""select * from df where waiting > 70"")"
+"0","str(waiting_70)"
+"1","'SparkDataFrame': 2 variables:
+"
+"1"," $ eruptions: num 3.6 3.333 4.533 4.7 3.6 4.35"
+"1","
+"
+"1"," $ waiting  : num 79 74 85 88 85 85"
+"1","
+"

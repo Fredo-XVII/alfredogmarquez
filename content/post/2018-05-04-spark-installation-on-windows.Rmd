@@ -158,7 +158,7 @@ knitr::include_graphics("/images/Path_Env_Vars_Complete_2018_05_15.png")
 
 Now that you have everything set up you will have to restart your R and RStudio, meaning close out and open back up, so that they pick up the changes made to the environmental variables.
 
-# Testing Install
+# Testing Installation
 First run `Sys.getenv()` to ensure the environmental variables are set as stated above in you R session.  If not go back and figure out what you missed.
 
 #### Set library path and load SparkR library
@@ -174,10 +174,10 @@ library(SparkR, lib.loc = c(file.path(Sys.getenv("SPARK_HOME"), "R", "lib")))
 ```
 Use the code that best suites your style of coding, there is no right way.
 
-
+#### Create a Spark Session
 Now that you have the SparkR package loaded, you can create a spark session on you local machine. There are 4 options below that are mandatory.  
 
-  - The "enableHiveSupport" must be set to FALSE if you are running on local with no HIVE, otherwise and erros trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.
+  - The "enableHiveSupport" must be set to FALSE if you are running on local with no HIVE, otherwise Spark erros trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.
   - The "master" variable has to be set to local "local[*]" or to "local[K]" to be used by Spark. This [\*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use.  On hadoop this will be "YARN" or some other configuration depending on your system build.  
   - The "sparkHome" field also took me a long time to figure out. I came across on some blog a while ago, so I can't give them credit, but that was a big win.  Provide the path to your Spark home directory to this field. 
   - The spark.sql.warehouse.dir in the options list was also a big headache.  The way I resolved this was trial and error, copy and pasting what other people were doing to see if it would get me past the errors messages.
@@ -193,32 +193,55 @@ sparkR.session(enableHiveSupport = FALSE ,
 )
 
 ```
-<br></br>
+
 All the other settings are optional from what I found, such as the spark.driver.memory.  Best practices is that you should set this, but it should work without it.
 
-
+#### Look at your Spark Session Stats:
+Paste the url provided below to look at the Spark session running on your machine.  You will able to see a history of the Spark commands you submit on this site.
+```{r}
 sparkR.uiWebUrl()
-get # of cores - set cores
+```
 
+PICTURE HERE
+
+#### Load data into Spark
+
+```{r}
 df <- as.DataFrame(faithful)
 str(df)
 colnames(df)
-histogram(df$waiting)
+```
+
+
+```{r}
 
 createOrReplaceTempView(df, "df")
+```
 
+```{r}
 waiting_70 <- sql("select * from df where waiting > 70")
 str(waiting_70)
+```
+
+```{r}
 collect(waiting_70)
+```
 
+```{r}
 collect(summary(df))
+```
 
+```{r}
 corr(df, "waiting", "eruptions")
+```
 
+```{r}
 model <- spark.glm(df, eruptions ~ waiting)
 summary(model)
 
+```
 
+-----
 # References
 
   - RPubs : https://rpubs.com/wendyu/sparkr

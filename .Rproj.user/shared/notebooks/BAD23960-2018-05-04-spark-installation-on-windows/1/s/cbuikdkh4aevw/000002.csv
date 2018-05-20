@@ -1,0 +1,4 @@
+"0","sparkR.uiWebUrl()"
+"2","Error in getSparkContext() : 
+  SparkR has not been initialized. Please call sparkR.session()
+"

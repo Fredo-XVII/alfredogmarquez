@@ -1,0 +1,4 @@
+"0","histogram(df$waiting)"
+"2","Error in (function (classes, fdef, mtable)  : 
+  unable to find an inherited method for function ‘histogram’ for signature ‘""Column"", ""missing""’
+"
