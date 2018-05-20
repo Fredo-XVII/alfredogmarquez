@@ -106,8 +106,8 @@ draft: false
 <p>Now that you have everything set up you will have to restart your R and RStudio, meaning close out and open back up, so that they pick up the changes made to the environmental variables.</p>
 </div>
 </div>
-<div id="testing-install" class="section level1">
-<h1>Testing Install</h1>
+<div id="testing-installation" class="section level1">
+<h1>Testing Installation</h1>
 <p>First run <code>Sys.getenv()</code> to ensure the environmental variables are set as stated above in you R session. If not go back and figure out what you missed.</p>
 <div id="set-library-path-and-load-sparkr-library" class="section level4">
 <h4>Set library path and load SparkR library</h4>
@@ -127,10 +127,14 @@ library(SparkR)</code></pre>
 <p>This version of code is commonly used in the SparkR documentation.</p>
 <pre class="r"><code>library(SparkR, lib.loc = c(file.path(Sys.getenv(&quot;SPARK_HOME&quot;), &quot;R&quot;, &quot;lib&quot;)))</code></pre>
 <p>Use the code that best suites your style of coding, there is no right way.</p>
+</div>
+<div id="create-a-spark-session" class="section level4">
+<h4>Create a Spark Session</h4>
 <p>Now that you have the SparkR package loaded, you can create a spark session on you local machine. There are 4 options below that are mandatory.</p>
 <ul>
-<li>The “enableHiveSupport” must be set to FALSE if you are running on local with no HIVE, otherwise and erros trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.</li>
-<li>The “master” variable has to be set to local “local[*]” or to “local[K]” to be used by Spark. This [*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use.</li>
+<li>The “enableHiveSupport” must be set to FALSE if you are running on local with no HIVE, otherwise Spark erros trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.</li>
+<li>The “master” variable has to be set to local “local[*]” or to “local[K]” to be used by Spark. This [*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use. On hadoop this will be “YARN” or some other configuration depending on your system build.<br />
+</li>
 <li>The “sparkHome” field also took me a long time to figure out. I came across on some blog a while ago, so I can’t give them credit, but that was a big win. Provide the path to your Spark home directory to this field.</li>
 <li>The spark.sql.warehouse.dir in the options list was also a big headache. The way I resolved this was trial and error, copy and pasting what other people were doing to see if it would get me past the errors messages.</li>
 </ul>
@@ -142,24 +146,245 @@ library(SparkR)</code></pre>
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\Rtmpo9klzE\backend_portcf4477c1431</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\Rtmpe85rh0\backend_port35183e0bd58</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
-<p><br></br> All the other settings are optional from what I found, such as the spark.driver.memory. Best practices is that you should set this, but it should work without it.</p>
-<p>sparkR.uiWebUrl() get # of cores - set cores</p>
-<p>df &lt;- as.DataFrame(faithful) str(df) colnames(df) histogram(df$waiting)</p>
-<p>createOrReplaceTempView(df, “df”)</p>
-<p>waiting_70 &lt;- sql(“select * from df where waiting &gt; 70”) str(waiting_70) collect(waiting_70)</p>
-<p>collect(summary(df))</p>
-<p>corr(df, “waiting”, “eruptions”)</p>
-<p>model &lt;- spark.glm(df, eruptions ~ waiting) summary(model)</p>
+<p>All the other settings are optional from what I found, such as the spark.driver.memory. Best practices is that you should set this, but it should work without it.</p>
 </div>
+<div id="look-at-your-spark-session-stats" class="section level4">
+<h4>Look at your Spark Session Stats:</h4>
+<p>Paste the url provided below to look at the Spark session running on your machine. You will able to see a history of the Spark commands you submit on this site.</p>
+<pre class="r"><code>sparkR.uiWebUrl()</code></pre>
+<pre><code>## [1] &quot;http://192.168.86.59:4041&quot;</code></pre>
+<p>PICTURE HERE</p>
 </div>
-<div id="references" class="section level1">
-<h1>References</h1>
-<ul>
-<li>RPubs : <a href="https://rpubs.com/wendyu/sparkr" class="uri">https://rpubs.com/wendyu/sparkr</a></li>
-</ul>
-<hr />
+<div id="load-data-into-spark" class="section level4">
+<h4>Load data into Spark</h4>
+<pre class="r"><code>df &lt;- as.DataFrame(faithful)
+str(df)</code></pre>
+<pre><code>## &#39;SparkDataFrame&#39;: 2 variables:
+##  $ eruptions: num 3.6 1.8 3.333 2.283 4.533 2.883
+##  $ waiting  : num 79 54 74 62 85 55</code></pre>
+<pre class="r"><code>colnames(df)</code></pre>
+<pre><code>## [1] &quot;eruptions&quot; &quot;waiting&quot;</code></pre>
+<pre class="r"><code>createOrReplaceTempView(df, &quot;df&quot;)</code></pre>
+<pre class="r"><code>waiting_70 &lt;- sql(&quot;select * from df where waiting &gt; 70&quot;)
+str(waiting_70)</code></pre>
+<pre><code>## &#39;SparkDataFrame&#39;: 2 variables:
+##  $ eruptions: num 3.6 3.333 4.533 4.7 3.6 4.35
+##  $ waiting  : num 79 74 85 88 85 85</code></pre>
+<pre class="r"><code>collect(waiting_70)</code></pre>
+<pre><code>##     eruptions waiting
+## 1       3.600      79
+## 2       3.333      74
+## 3       4.533      85
+## 4       4.700      88
+## 5       3.600      85
+## 6       4.350      85
+## 7       3.917      84
+## 8       4.200      78
+## 9       4.700      83
+## 10      4.800      84
+## 11      4.250      79
+## 12      3.450      78
+## 13      4.533      74
+## 14      3.600      83
+## 15      4.083      76
+## 16      3.850      78
+## 17      4.433      79
+## 18      4.300      73
+## 19      4.467      77
+## 20      4.033      80
+## 21      3.833      74
+## 22      4.833      80
+## 23      4.783      90
+## 24      4.350      80
+## 25      4.567      84
+## 26      4.533      73
+## 27      3.317      83
+## 28      4.633      82
+## 29      4.800      75
+## 30      4.716      90
+## 31      4.833      80
+## 32      4.883      83
+## 33      3.717      71
+## 34      4.567      77
+## 35      4.317      81
+## 36      4.500      84
+## 37      4.800      82
+## 38      4.400      92
+## 39      4.167      78
+## 40      4.700      78
+## 41      4.700      73
+## 42      4.033      82
+## 43      4.500      79
+## 44      4.000      71
+## 45      5.067      76
+## 46      4.567      78
+## 47      3.883      76
+## 48      3.600      83
+## 49      4.133      75
+## 50      4.333      82
+## 51      4.067      73
+## 52      4.933      88
+## 53      3.950      76
+## 54      4.517      80
+## 55      4.000      86
+## 56      4.333      90
+## 57      4.817      78
+## 58      4.300      72
+## 59      4.667      84
+## 60      3.750      75
+## 61      4.900      82
+## 62      4.367      88
+## 63      4.500      83
+## 64      4.050      81
+## 65      4.700      84
+## 66      4.850      86
+## 67      3.683      81
+## 68      4.733      75
+## 69      4.900      89
+## 70      4.417      79
+## 71      4.633      81
+## 72      4.600      85
+## 73      4.417      87
+## 74      4.250      77
+## 75      4.600      88
+## 76      3.767      81
+## 77      4.500      82
+## 78      4.650      90
+## 79      4.167      83
+## 80      4.333      89
+## 81      4.383      82
+## 82      4.933      86
+## 83      3.733      79
+## 84      4.233      81
+## 85      4.533      82
+## 86      4.817      77
+## 87      4.333      76
+## 88      4.633      80
+## 89      5.100      96
+## 90      5.033      77
+## 91      4.000      77
+## 92      4.600      81
+## 93      3.567      71
+## 94      4.500      81
+## 95      4.083      93
+## 96      3.967      89
+## 97      4.150      86
+## 98      3.833      78
+## 99      4.583      76
+## 100     5.000      88
+## 101     4.617      93
+## 102     4.583      77
+## 103     4.167      81
+## 104     4.333      81
+## 105     4.500      73
+## 106     4.000      85
+## 107     4.167      74
+## 108     4.583      77
+## 109     4.250      83
+## 110     3.767      83
+## 111     4.433      78
+## 112     4.083      84
+## 113     4.417      83
+## 114     4.800      81
+## 115     4.800      76
+## 116     4.100      84
+## 117     3.966      77
+## 118     4.233      81
+## 119     3.500      87
+## 120     4.366      77
+## 121     4.667      78
+## 122     4.350      82
+## 123     4.133      91
+## 124     4.600      78
+## 125     4.367      77
+## 126     3.850      84
+## 127     4.500      83
+## 128     2.383      71
+## 129     4.700      80
+## 130     3.833      75
+## 131     4.233      76
+## 132     4.800      94
+## 133     4.150      76
+## 134     4.267      82
+## 135     4.483      75
+## 136     4.000      78
+## 137     4.117      79
+## 138     4.083      78
+## 139     4.267      78
+## 140     4.550      79
+## 141     4.183      86
+## 142     4.450      90
+## 143     4.283      77
+## 144     3.950      79
+## 145     4.150      75
+## 146     4.933      86
+## 147     4.583      85
+## 148     3.833      82
+## 149     4.367      82
+## 150     4.350      74
+## 151     4.450      83
+## 152     3.567      73
+## 153     4.500      73
+## 154     4.150      88
+## 155     3.817      80
+## 156     3.917      71
+## 157     4.450      83
+## 158     4.283      79
+## 159     4.767      78
+## 160     4.533      84
+## 161     4.250      83
+## 162     4.750      75
+## 163     4.117      81
+## 164     4.417      90
+## 165     4.467      74</code></pre>
+<pre class="r"><code>collect(summary(df))</code></pre>
+<pre><code>##   summary          eruptions            waiting
+## 1   count                272                272
+## 2    mean 3.4877830882352936   70.8970588235294
+## 3  stddev 1.1413712511052083 13.594973789999392
+## 4     min                1.6               43.0
+## 5     25%               2.15               58.0
+## 6     50%                4.0               76.0
+## 7     75%               4.45               82.0
+## 8     max                5.1               96.0</code></pre>
+<pre class="r"><code>corr(df, &quot;waiting&quot;, &quot;eruptions&quot;)</code></pre>
+<pre><code>## [1] 0.9008112</code></pre>
+<pre class="r"><code>model &lt;- spark.glm(df, eruptions ~ waiting)
+summary(model)</code></pre>
+<pre><code>## 
+## Deviance Residuals: 
+## (Note: These are approximate quantiles with relative error &lt;= 0.01)
+##      Min        1Q    Median        3Q       Max  
+## -1.29917  -0.38945   0.02252   0.33776   1.19329  
+## 
+## Coefficients:
+##               Estimate  Std. Error  t value  Pr(&gt;|t|)
+## (Intercept)  -1.874016   0.1601433  -11.702         0
+## waiting       0.075628   0.0022185   34.089         0
+## 
+## (Dispersion parameter for gaussian family taken to be 0.2465251)
+## 
+##     Null deviance: 353.039  on 271  degrees of freedom
+## Residual deviance:  66.562  on 270  degrees of freedom
+## AIC: 395
+## 
+## Number of Fisher Scoring iterations: 1</code></pre>
+<table style="width:7%;">
+<colgroup>
+<col width="6%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td># References</td>
+</tr>
+<tr class="even">
+<td>- RPubs : <a href="https://rpubs.com/wendyu/sparkr" class="uri">https://rpubs.com/wendyu/sparkr</a></td>
+</tr>
+</tbody>
+</table>
 <p>Kuddos for the Spark image goes to:</p>
 <pre class="md"><code>&gt;  - Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155</code></pre>
+</div>
 </div>
