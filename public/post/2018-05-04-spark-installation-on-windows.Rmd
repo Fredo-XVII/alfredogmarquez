@@ -29,11 +29,8 @@ draft: false
 
 # Intro
 
-> Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.
+_Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process._
 
-```md
-<!--more-->
-```
 ----------
 
 # Step #1: Download and Installation
