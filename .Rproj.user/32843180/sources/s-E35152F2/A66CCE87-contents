@@ -244,11 +244,11 @@ summary(model)
 -----
 # References
 
+  - Spark : https://spark.apache.org/docs/latest/index.html
   - RPubs : https://rpubs.com/wendyu/sparkr
 
-
-
 -----
+
 
 Kuddos for the Spark image goes to: 
 ```md

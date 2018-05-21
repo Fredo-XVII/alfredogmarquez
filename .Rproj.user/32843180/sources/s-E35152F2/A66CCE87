@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "2796007955",
     "id" : "A66CCE87",
-    "lastKnownWriteTime" : 1526853801,
-    "last_content_update" : 1526853832456,
+    "lastKnownWriteTime" : 1526903789,
+    "last_content_update" : 1526903789358,
     "path" : "~/blog/alfredogmarquez/content/post/2018-05-04-spark-installation-on-windows.Rmd",
     "project_path" : "content/post/2018-05-04-spark-installation-on-windows.Rmd",
     "properties" : {
-        "cursorPosition" : "241,3",
-        "scrollLine" : "236"
+        "cursorPosition" : "251,0",
+        "scrollLine" : "241"
     },
     "relative_order" : 1,
     "source_on_save" : false,
