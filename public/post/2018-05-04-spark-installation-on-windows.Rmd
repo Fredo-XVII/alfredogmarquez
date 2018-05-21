@@ -19,7 +19,7 @@ keywords:
 autoThumbnailImage: false
 thumbnailImagePosition: "top"
 thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
-coverImage: "images/Apache Spark logo_80x42.png"
+coverImage: "/images/Apache Spark logo.jpeg"
 metaAlignment: center
 coverMeta: out
 summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
@@ -29,7 +29,7 @@ draft: false
 
 # Intro
 
-_Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process._
+_Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process._
 
 ----------
 
@@ -48,13 +48,13 @@ knitr::include_graphics("/images/Apache_folder_2018_05_15.png")
 
 **Install Java**
 
-As of this writing, Java 9 has been having a ton of issues and is not stable.  I was able to use the most recent version of Java 8.  You can download the most recent version for Windows at this [link](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). You have to accept their license agreement before downloadning.  
+As of this writing, Java 9 has been having a ton of issues and is not stable.  I was able to use the most recent version of Java 8.  You can download the most recent version for Windows at this [link](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). You have to accept their license agreement before downloading.  
 
 Unlike Spark, I will let the system determine where to install Java.  I feel like this works best to reduce future issues.  When you install Java, pay attention to the folder location of the installation.  You will need to know this path to create the JAVA_HOME environmental variable.
 
 **Install WINUTILS**
 
-This step tripped me up for a long time when I first started to learning about Spark.  Not many blog posts would talk about installing this software.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems). You can download the winutils software from the github repo [here](https://github.com/steveloughran/winutils).  Click on the green button ("clone or download") on the upper right of the page and download the zip file.  I would put this in your "C:Apps\\winutils" folder so you can reference it easily (you will need it later).  Extract all the files to this location using decompression software like [PeaZip](http://www.peazip.org/) or WinZip. PeaZip is free and open source.
+This step tripped me up for a long time when I first started learning about Spark.  Not many blog posts would talk about installing this software.  I am not really sure what it does, but if you want more information here is the [ApacheWiki](https://wiki.apache.org/hadoop/WindowsProblems). You can download the winutils software from the github repo [here](https://github.com/steveloughran/winutils).  Click on the green button ("clone or download") on the upper right of the page and download the zip file.  I would put this in your "C:Apps\\winutils" folder so you can reference it easily (you will need it later).  Extract all the files to this location using decompression software like [PeaZip](http://www.peazip.org/) or WinZip. PeaZip is free and open source.
 
 Once you have unzipped the file it should look like this:
 ```{r, echo=FALSE, }
@@ -73,7 +73,7 @@ knitr::include_graphics("/images/winutils_folder_2018_05_15.png")
 ```
   
 #### SPARK_HOME:
-The process to set up the environmental variables on your machine will be the similar for Spark as it is for the other variables below, where you provide a variable name, variable value and add it to the Path variable.  So I will use Spark as a example that you can apply to the other variables.
+The process to set up the environmental variables on your machine will be similar for Spark as it is for the other variables below, where you provide a variable name, variable value and add it to the Path variable.  So I will use Spark as a example that you can apply to the other variables.
 
   1. Locate the master or top level file path for the Spark version you downloaded to add to your environmental list.  For Spark, the path is in my "C:\\Apps" folder, or "C:\\Apps\\Apache\\Spark\\spark-2.3.0\\", copy the file path using ctrl + c.
   2. To locate your environmental variables On Windows 10, you can type "environmental" into the search bar at the bottom of you screen, then click on "edit system variables," and click on the icon that says environmental variables at the bottom. On previous versions of Windows, click on the start menu, right click on computer or control panel, select properties and click on the icon that says "environmental variables"" at the bottom.

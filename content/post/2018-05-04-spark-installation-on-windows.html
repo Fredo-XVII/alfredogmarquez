@@ -19,7 +19,7 @@ keywords:
 autoThumbnailImage: false
 thumbnailImagePosition: "top"
 thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
-coverImage: "images/Apache Spark logo_80x42.png"
+coverImage: "/images/Apache Spark logo.jpeg"
 metaAlignment: center
 coverMeta: out
 summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
@@ -30,7 +30,7 @@ draft: false
 
 <div id="intro" class="section level1">
 <h1>Intro</h1>
-<p><em>Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me sometime to remember all the steps to get the install right, so I thought I would document the process.</em></p>
+<p><em>Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.</em></p>
 <hr />
 </div>
 <div id="step-1-download-and-installation" class="section level1">
@@ -40,10 +40,10 @@ draft: false
 <p>After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (“C:\Apps”) folder where I put all the software that I download and install. This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the Spark folder name for simplicity and ease of typing.</p>
 <p><img src="/images/Apache_folder_2018_05_15.png" /><!-- --> <br></br></p>
 <p><strong>Install Java</strong></p>
-<p>As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloadning.</p>
+<p>As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloading.</p>
 <p>Unlike Spark, I will let the system determine where to install Java. I feel like this works best to reduce future issues. When you install Java, pay attention to the folder location of the installation. You will need to know this path to create the JAVA_HOME environmental variable.</p>
 <p><strong>Install WINUTILS</strong></p>
-<p>This step tripped me up for a long time when I first started to learning about Spark. Not many blog posts would talk about installing this software. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>. You can download the winutils software from the github repo <a href="https://github.com/steveloughran/winutils">here</a>. Click on the green button (“clone or download”) on the upper right of the page and download the zip file. I would put this in your “C:Apps\winutils” folder so you can reference it easily (you will need it later). Extract all the files to this location using decompression software like <a href="http://www.peazip.org/">PeaZip</a> or WinZip. PeaZip is free and open source.</p>
+<p>This step tripped me up for a long time when I first started learning about Spark. Not many blog posts would talk about installing this software. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>. You can download the winutils software from the github repo <a href="https://github.com/steveloughran/winutils">here</a>. Click on the green button (“clone or download”) on the upper right of the page and download the zip file. I would put this in your “C:Apps\winutils” folder so you can reference it easily (you will need it later). Extract all the files to this location using decompression software like <a href="http://www.peazip.org/">PeaZip</a> or WinZip. PeaZip is free and open source.</p>
 <p>Once you have unzipped the file it should look like this: <img src="/images/winutils_folder_2018_05_15.png" /><!-- --> <br></br></p>
 </div>
 <div id="step-2-set-up-system-environmental-variables-to-run-spark-either-in-windows-or-r" class="section level1">
@@ -55,7 +55,7 @@ draft: false
   Sys.setenv(SPARK_HOME = &quot;C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin&quot;)</code></pre>
 <div id="spark_home" class="section level4">
 <h4>SPARK_HOME:</h4>
-<p>The process to set up the environmental variables on your machine will be the similar for Spark as it is for the other variables below, where you provide a variable name, variable value and add it to the Path variable. So I will use Spark as a example that you can apply to the other variables.</p>
+<p>The process to set up the environmental variables on your machine will be similar for Spark as it is for the other variables below, where you provide a variable name, variable value and add it to the Path variable. So I will use Spark as a example that you can apply to the other variables.</p>
 <ol style="list-style-type: decimal">
 <li>Locate the master or top level file path for the Spark version you downloaded to add to your environmental list. For Spark, the path is in my “C:\Apps” folder, or “C:\Apps\Apache\Spark\spark-2.3.0\”, copy the file path using ctrl + c.</li>
 <li>To locate your environmental variables On Windows 10, you can type “environmental” into the search bar at the bottom of you screen, then click on “edit system variables,” and click on the icon that says environmental variables at the bottom. On previous versions of Windows, click on the start menu, right click on computer or control panel, select properties and click on the icon that says “environmental variables”&quot; at the bottom.</li>
@@ -146,7 +146,7 @@ library(SparkR)</code></pre>
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpaMyNdf\backend_port72c267537a0</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpQzcLZR\backend_port3fa8696a47c7</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
 <p>All the other settings are optional from what I found, such as the spark.driver.memory. Best practices is that you should set this, but it should work without it.</p>
 </div>
