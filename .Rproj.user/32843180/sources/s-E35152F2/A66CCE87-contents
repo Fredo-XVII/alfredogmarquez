@@ -19,7 +19,7 @@ keywords:
 autoThumbnailImage: false
 thumbnailImagePosition: "top"
 thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
-coverImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
+coverImage: "images/Apache Spark logo_80x42.png"
 metaAlignment: center
 coverMeta: out
 summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
@@ -244,11 +244,12 @@ summary(model)
 -----
 # References
 
-  - Spark : https://spark.apache.org/docs/latest/index.html
-  - RPubs : https://rpubs.com/wendyu/sparkr
+  Spark : https://spark.apache.org/docs/latest/index.html
+  RPubs : https://rpubs.com/wendyu/sparkr
 
 -----
 
 
 Kuddos for the Spark image goes to: 
+
 > Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155
