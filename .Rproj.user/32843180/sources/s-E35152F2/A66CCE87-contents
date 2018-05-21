@@ -205,14 +205,14 @@ sparkR.uiWebUrl()
 PICTURE HERE
 
 #### Load data into Spark
-
+Load the faithful data into Spark.  Notice that the data frame type is "SparkDataFrame," meaning that this data set is distributed and regular R commands will not be able to handle this object type.
 ```{r}
 df <- as.DataFrame(faithful)
 str(df)
 colnames(df)
 ```
 
-
+Create a volatile table in Spark memory so that you can reference the data frame with Spark SQL.
 ```{r}
 
 createOrReplaceTempView(df, "df")
@@ -224,7 +224,7 @@ str(waiting_70)
 ```
 
 ```{r}
-collect(waiting_70)
+head(collect(waiting_70), 10)
 ```
 
 ```{r}
@@ -251,6 +251,4 @@ summary(model)
 
 
 Kuddos for the Spark image goes to: 
-```md
->  - Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155
-```
+> Apache software foundation - https://spark.apache.org/images/spark-logo.eps, Apache License 2.0, https://commons.wikimedia.org/w/index.php?curid=57832155
