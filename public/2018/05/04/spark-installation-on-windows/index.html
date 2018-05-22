@@ -303,6 +303,7 @@ ga('send', 'pageview');
 <p><strong>Install WINUTILS</strong></p>
 <p>This step tripped me up for a long time when I first started learning about Spark. Not many blog posts would talk about installing this software. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>. You can download the winutils software from the github repo <a href="https://github.com/steveloughran/winutils">here</a>. Click on the green button (“clone or download”) on the upper right of the page and download the zip file. I would put this in your “C:Apps\winutils” folder so you can reference it easily (you will need it later). Extract all the files to this location using decompression software like <a href="http://www.peazip.org/">PeaZip</a> or WinZip. PeaZip is free and open source.</p>
 <p>Once you have unzipped the file it should look like this: <img src="https://www.alfredogmarquez.com/images/winutils_folder_2018_05_15.png" /><!-- --> <br></br></p>
+<hr />
 </div>
 <div id="step-2-set-up-system-environmental-variables-to-run-spark-either-in-windows-or-r" class="section level1">
 <h1>Step #2: Set up system environmental variables to run Spark (either in windows, or R):</h1>
@@ -311,8 +312,7 @@ ga('send', 'pageview');
 </blockquote>
 <pre><code>  Sys.setenv(Variable Name = &quot;Variable Value&quot;)
   Sys.setenv(SPARK_HOME = &quot;C:\\Apps\\Apache\\Spark\\spark-2.3.0\\bin&quot;)</code></pre>
-<div id="spark_home" class="section level4">
-<h4>SPARK_HOME:</h4>
+<p><strong>SPARK_HOME:</strong></p>
 <p>The process to set up the environmental variables on your machine will be similar for Spark as it is for the other variables below, where you provide a variable name, variable value and add it to the Path variable. So I will use Spark as a example that you can apply to the other variables.</p>
 <ol style="list-style-type: decimal">
 <li>Locate the master or top level file path for the Spark version you downloaded to add to your environmental list. For Spark, the path is in my “C:\Apps” folder, or “C:\Apps\Apache\Spark\spark-2.3.0\”, copy the file path using ctrl + c.</li>
@@ -339,21 +339,15 @@ ga('send', 'pageview');
 <ul>
 <li>For Windows 10, once you have clicked on the “Edit” icon to edit the “Path” variable you will see the window below. Click on the “New” icon and add the name of the variable as we did above but without the semi-colon, %SPARK_HOME%, in one of the availabe spaces then click “OK” at the bottom of the window. Your “Path” should now have the SPARK_HOME environmental variable as below: <img src="https://www.alfredogmarquez.com/images/Path_Add_New_Var_2018_05_15.png" /><!-- --> <br></br></li>
 </ul>
-</div>
-<div id="java_home" class="section level4">
-<h4>JAVA_HOME:</h4>
+<p><strong>JAVA_HOME:</strong></p>
 <p>Go to the folder where you Java is installed. I installed the 64bit version, so the Java folder is in my C:\Programs directory. If you have installed the JDK version of Java, you will see 2 folders in the Java directory. One for JDK, and the other for JRE. Go into the JRE directory and copy the path, and add it to your system’s environmental variables. NOTE: do not use the path to the “bin” folder as this will cause JVM errors when launching SparkR.</p>
 <pre><code>  Variable Name: JAVA_HOME 
   Variable Value: C:\Program Files\Java\jre1.8.0_171\</code></pre>
-</div>
-<div id="winutils_home" class="section level4">
-<h4>WINUTILS_HOME:</h4>
+<p><strong>WINUTILS_HOME:</strong></p>
 <p>Since I have installed winutils in my C:directory, I will copy the path from there. I will reference the path of the master folder.</p>
 <pre><code>  Variable Name: WINUTILS_HOME 
   Variable Value: C:\Apps\winutils\winutils-master\</code></pre>
-</div>
-<div id="sparkr_driver_r-optional-maybe-needed-on-a-hadoop-system" class="section level4">
-<h4>SPARKR_DRIVER_R: (Optional, maybe needed on a hadoop system)</h4>
+<p><strong>SPARKR_DRIVER_R: (Optional, maybe needed on a hadoop system)</strong></p>
 <p>The SPARKR_DRIVER_R environmental variable I tripped over on my work’s hadoop system when I was looking for something else. I noticed their SPARKR_DRIVER_R was set to their R home directory. You can find your R home directory with the command below in your R console. Note, R may give you a path with a tidla, but if you paste it into a folder browser you can get the full path. Exampe, C://Apps//R//R-34~1.3 means C:\Apps\R\R-3.4.3. As you can see, my R is installed in my C:\Apps folder.</p>
 <pre><code>  Sys.getenv() - all environmental variables
   Sys.getenv(&quot;R_HOME&quot;) - Value for the R_HOME environmental variables.</code></pre>
@@ -363,12 +357,10 @@ ga('send', 'pageview');
 <p>Once you have all your environmental variables your Path variable they should look like this: <img src="https://www.alfredogmarquez.com/images/Path_Env_Vars_Complete_2018_05_15.png" /><!-- --> <br></br></p>
 <p>Now that you have everything set up you will have to restart your R and RStudio, meaning close out and open back up, so that they pick up the changes made to the environmental variables.</p>
 </div>
-</div>
 <div id="testing-installation" class="section level1">
 <h1>Testing Installation</h1>
 <p>First run <code>Sys.getenv()</code> to ensure the environmental variables are set as stated above in you R session. If not go back and figure out what you missed.</p>
-<div id="set-library-path-and-load-sparkr-library" class="section level4">
-<h4>Set library path and load SparkR library</h4>
+<p><strong>Set library path and load SparkR library</strong></p>
 <p>This is one way to load your SparkR packages.</p>
 <pre class="r"><code>.libPaths(c(file.path(Sys.getenv(&quot;SPARK_HOME&quot;), &quot;R&quot;, &quot;lib&quot;), .libPaths()))
 library(SparkR)</code></pre>
@@ -385,38 +377,33 @@ library(SparkR)</code></pre>
 <p>This version of code is commonly used in the SparkR documentation.</p>
 <pre class="r"><code>library(SparkR, lib.loc = c(file.path(Sys.getenv(&quot;SPARK_HOME&quot;), &quot;R&quot;, &quot;lib&quot;)))</code></pre>
 <p>Use the code that best suites your style of coding, there is no right way.</p>
-</div>
-<div id="create-a-spark-session" class="section level4">
-<h4>Create a Spark Session</h4>
+<p><strong>Create a Spark Session</strong></p>
 <p>Now that you have the SparkR package loaded, you can create a spark session on you local machine. There are 4 options below that are mandatory.</p>
 <ul>
-<li>The “enableHiveSupport” must be set to FALSE if you are running on local with no HIVE, otherwise Spark erros trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.</li>
-<li>The “master” variable has to be set to local “local[*]” or to “local[K]” to be used by Spark. This [*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use. On hadoop this will be “YARN” or some other configuration depending on your system build.<br />
+<li><strong>enableHiveSupport</strong> - must be set to FALSE if you are running on local with no HIVE, otherwise Spark errors out trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.</li>
+<li><strong>master</strong> - must be set to local “local[*]” or to “local[K]” to be used by Spark. This [*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use. On hadoop this will be “YARN” or some other configuration depending on your system build.<br />
 </li>
-<li>The “sparkHome” field also took me a long time to figure out. I came across on some blog a while ago, so I can’t give them credit, but that was a big win. Provide the path to your Spark home directory to this field.</li>
-<li>The spark.sql.warehouse.dir in the options list was also a big headache. The way I resolved this was trial and error, copy and pasting what other people were doing to see if it would get me past the errors messages.</li>
+<li><strong>sparkHome</strong> - field also took me a long time to figure out. I came across on some blog a while ago, so I can’t give them credit, but that was a big win. Provide the path to your Spark home directory to this field. This may not have to be done on a Hadoop system.</li>
+<li><strong>spark.sql.warehouse.dir</strong> - in the options list was also a big headache. The way I resolved this was trial and error, copy and pasting what other people were doing to see if it would get me past the errors messages.</li>
 </ul>
-<pre class="r"><code>sparkR.session(enableHiveSupport = FALSE ,
+<pre class="r"><code>sparkR.session(#appName = &quot;Blog&quot;,
+               enableHiveSupport = FALSE ,
                master = &quot;local[*]&quot;, 
                sparkHome = Sys.getenv(&quot;SPARK_HOME&quot;) , # this was the missing link!!
                sparkConfig = 
-                 list(spark.driver.memory = &quot;2g&quot;, 
+                 list(spark.driver.memory = &quot;2g&quot;, # spark.executor.memory = &quot;2g&quot;, 
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpQzcLZR\backend_port3fa8696a47c7</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpYXezsr\backend_port2d836f3399e</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
-<p>All the other settings are optional from what I found, such as the spark.driver.memory. Best practices is that you should set this, but it should work without it.</p>
-</div>
-<div id="look-at-your-spark-session-stats" class="section level4">
-<h4>Look at your Spark Session Stats:</h4>
+<p>All the other settings are optional from what I found, such as the spark.driver.memory because they come with initial defaults. For example, the spark.driver.memory is defaulted to 1g.</p>
+<p><strong>Look at your Spark Session Stats:</strong></p>
 <p>Paste the url provided below to look at the Spark session running on your machine. You will able to see a history of the Spark commands you submit on this site.</p>
 <pre class="r"><code>sparkR.uiWebUrl()</code></pre>
 <pre><code>## [1] &quot;http://LAPTOP-OK0GO7H8:4041&quot;</code></pre>
 <p>PICTURE HERE</p>
-</div>
-<div id="load-data-into-spark" class="section level4">
-<h4>Load data into Spark</h4>
+<p><strong>Load data into Spark</strong></p>
 <p>Load the faithful data into Spark. Notice that the data frame type is “SparkDataFrame,” meaning that this data set is distributed and regular R commands will not be able to handle this object type.</p>
 <pre class="r"><code>df &lt;- as.DataFrame(faithful)
 str(df)</code></pre>
@@ -493,7 +480,6 @@ summary(model)</code></pre>
 <blockquote>
 <p>Apache software foundation - <a href="https://spark.apache.org/images/spark-logo.eps" class="uri">https://spark.apache.org/images/spark-logo.eps</a>, Apache License 2.0, <a href="https://commons.wikimedia.org/w/index.php?curid=57832155" class="uri">https://commons.wikimedia.org/w/index.php?curid=57832155</a></p>
 </blockquote>
-</div>
 </div>
 
               
