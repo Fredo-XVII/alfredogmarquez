@@ -1,7 +1,0 @@
-"0","df %>% collect() %>%
-  ggplot(aes(x = waiting, y = eruptions)) +
-  geom_point()
-"
-"2","Error in UseMethod(""collect"") : 
-  no applicable method for 'collect' applied to an object of class ""SparkDataFrame""
-"

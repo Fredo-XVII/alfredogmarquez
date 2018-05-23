@@ -167,7 +167,13 @@ Now that you have everything set up you will have to restart your R and RStudio,
 
 First run `Sys.getenv()` to ensure the environmental variables are set as stated above in you R session.  If not go back and figure out what you missed.
 
-**Set library path and load SparkR library**
+**Load Packages**
+I am going to load the tidyverse package to drive a point.  The Spark package masks many functions in the tidyverse universe, so it matters when you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least the SparkR functions.  For example, instead of sq(), use SparkR::sql(). 
+```{r}
+library(tidyverse)
+```
+
+**Set library path and load SparkR library:**
 
 This is one way to load your SparkR packages.  
 ```{r}
@@ -235,20 +241,20 @@ str(waiting_70)
 ```
 
 ```{r}
-head(collect(waiting_70), 10)
+head(SparkR::collect(waiting_70), 10)
 ```
 
 ```{r}
-collect(summary(df))
+SparkR::collect(SparkR::summary(df))
 ```
 
 ```{r}
-corr(df, "waiting", "eruptions")
+SparkR::corr(df, "waiting", "eruptions")
 ```
 
 ```{r}
-library(tidyverse)
-df %>% collect() %>%
+
+df %>% SparkR::collect() %>%
   ggplot(aes(x = waiting, y = eruptions)) +
   geom_point()
 ```
