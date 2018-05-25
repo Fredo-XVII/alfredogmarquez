@@ -274,7 +274,7 @@ summary(model)
 
 
 # Conclusion
-If you are interested in learning and using Spark, you should be able to do that on any PC or laptop without the need of an entire Hadoop cluster.  This blog covered the need software and installation instructions to get you up and running.  Finally, I provided a simple example of to show that the SparkR installation is working.  If you would like to learn about Spark and SparkR look up the references below.
+If you are interested in learning and using Spark, you should be able to do that now on any PC or laptop without the need of an entire Hadoop cluster.  This blog covered the need software and installation instructions to get you up and running.  Finally, I provided a simple example of to show that the SparkR installation is working.  If you would like to learn about Spark and SparkR look up the references below.
 
 
 -----
