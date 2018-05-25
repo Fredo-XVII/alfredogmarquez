@@ -1,4 +1,0 @@
-"0","df %>% SparkR::collect() %>%"
-"0","  ggplot(aes(x = waiting, y = eruptions)) +"
-"0","  geom_point() +"
-"0","  geom_smooth()"

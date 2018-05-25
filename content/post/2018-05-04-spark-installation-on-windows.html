@@ -40,7 +40,7 @@ draft: false
 <p>After downloading, save the zipped file to a directory of choice, and then unzip the file. I have an Apps (“C:\Apps”) folder where I put all the software that I download and install. This make it easy to transition to another laptop as all I have to do is go down the list installing software. I changed/shortened the Spark folder name for simplicity and ease of typing.</p>
 <p><img src="/images/Apache_folder_2018_05_15.png" /><!-- --> <br></br></p>
 <p><strong>Install Java</strong></p>
-<p>As of this writing, Java 9 has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloading.</p>
+<p>As of this writing, Java 9 (I haven’t test Java 10) has been having a ton of issues and is not stable. I was able to use the most recent version of Java 8. You can download the most recent version for Windows at this <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">link</a>. You have to accept their license agreement before downloading.</p>
 <p>Unlike Spark, I will let the system determine where to install Java. I feel like this works best to reduce future issues. When you install Java, pay attention to the folder location of the installation. You will need to know this path to create the JAVA_HOME environmental variable.</p>
 <p><strong>Install WINUTILS</strong></p>
 <p>This step tripped me up for a long time when I first started learning about Spark. Not many blog posts would talk about installing this software. I am not really sure what it does, but if you want more information here is the <a href="https://wiki.apache.org/hadoop/WindowsProblems">ApacheWiki</a>. You can download the winutils software from the github repo <a href="https://github.com/steveloughran/winutils">here</a>. Click on the green button (“clone or download”) on the upper right of the page and download the zip file. I would put this in your “C:Apps\winutils” folder so you can reference it easily (you will need it later). Extract all the files to this location using decompression software like <a href="http://www.peazip.org/">PeaZip</a> or WinZip. PeaZip is free and open source.</p>
@@ -86,7 +86,7 @@ draft: false
 <pre><code>  Variable Name: JAVA_HOME 
   Variable Value: C:\Program Files\Java\jre1.8.0_171\</code></pre>
 <p><strong>WINUTILS_HOME:</strong></p>
-<p>Since I have installed winutils in my C:directory, I will copy the path from there. I will reference the path of the master folder.</p>
+<p>Since I have installed winutils in my C:\Apps directory, I will copy the path from there. I will reference the path of the master folder.</p>
 <pre><code>  Variable Name: WINUTILS_HOME 
   Variable Value: C:\Apps\winutils\winutils-master\</code></pre>
 <p><strong>SPARKR_DRIVER_R: (Optional, maybe needed on a hadoop system)</strong></p>
@@ -101,8 +101,9 @@ draft: false
 </div>
 <div id="testing-installation" class="section level1">
 <h1>Testing Installation</h1>
-<p>First run <code>Sys.getenv()</code> to ensure the environmental variables are set as stated above in you R session. If not go back and figure out what you missed.</p>
-<p><strong>Load Packages</strong> I am going to load the tidyverse package to drive a point. The Spark package masks many functions in the tidyverse universe, so it matters when you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least the SparkR functions. For example, instead of sq(), use SparkR::sql().</p>
+<p>First run <code>Sys.getenv()</code> in R or RStudio after restarting to ensure the environmental variables are set as stated above in you R session. If not go back and figure out what you missed.</p>
+<p><strong>Load Packages</strong></p>
+<p>I am going to load the tidyverse package to drive a point. The Spark package masks many functions in the tidyverse universe, so it matters how you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least SparkR functions with common names. For example, instead of sql(), use SparkR::sql().</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## -- Attaching packages ------------------------------------------ tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 2.2.1     v purrr   0.2.4
@@ -115,7 +116,7 @@ draft: false
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p><strong>Set library path and load SparkR library:</strong></p>
-<p>This is one way to load your SparkR packages.</p>
+<p>This is one way to load your SparkR packages. Notice all the packages that are masked by SparkR.</p>
 <pre class="r"><code>.libPaths(c(file.path(Sys.getenv(&quot;SPARK_HOME&quot;), &quot;R&quot;, &quot;lib&quot;), .libPaths()))
 library(SparkR)</code></pre>
 <pre><code>## 
@@ -147,29 +148,29 @@ library(SparkR)</code></pre>
 <li><strong>enableHiveSupport</strong> - must be set to FALSE if you are running on local with no HIVE, otherwise Spark errors out trying to fine the HIVE warehouse. If you are running this on a Jupyter notebook on a Hadoop system with HIVE, this should be TRUE.</li>
 <li><strong>master</strong> - must be set to local “local[*]” or to “local[K]” to be used by Spark. This [*] option uses the maximum cores available on your machine, while K you set the number of cores for Spark to use. On hadoop this will be “YARN” or some other configuration depending on your system build.<br />
 </li>
-<li><strong>sparkHome</strong> - field also took me a long time to figure out. I came across on some blog a while ago, so I can’t give them credit, but that was a big win. Provide the path to your Spark home directory to this field. This may not have to be done on a Hadoop system.</li>
+<li><strong>sparkHome</strong> - field also took me a long time to figure out. I came across it on some blog a while ago, so I can’t give them credit, but that was a big win. Provide the path to your Spark home directory to this field. This may not have to be done on a Hadoop system.</li>
 <li><strong>spark.sql.warehouse.dir</strong> - in the options list was also a big headache. The way I resolved this was trial and error, copy and pasting what other people were doing to see if it would get me past the errors messages.</li>
 </ul>
-<pre class="r"><code>sparkR.session(#appName = &quot;Blog&quot;,
+<pre class="r"><code>sparkR.session(
                enableHiveSupport = FALSE ,
                master = &quot;local[*]&quot;, 
                sparkHome = Sys.getenv(&quot;SPARK_HOME&quot;) , # this was the missing link!!
                sparkConfig = 
-                 list(spark.driver.memory = &quot;2g&quot;, # spark.executor.memory = &quot;2g&quot;, 
+                 list(spark.driver.memory = &quot;2g&quot;, 
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpKMjvPe\backend_porte6423a6168c</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpAzHYeU\backend_port311c69f67b64</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
-<p>All the other settings are optional from what I found, such as the spark.driver.memory because they come with initial defaults. For example, the spark.driver.memory is defaulted to 1g.</p>
+<p>If you get a “Java ref type…” you have a Spark session up and running. All the other settings are optional from what I found, such as the spark.driver.memory because they come with initial defaults. For example, the spark.driver.memory is defaulted to 1g.</p>
 <p><strong>Look at your Spark Session Stats:</strong></p>
-<p>Paste the url provided below in a new browser tab to look at the Spark session running on your machine. You will able to see a history of the Spark commands you submit on this site.</p>
+<p>Paste the url provided below in a new browser tab to look at the Spark session running on your machine. You will able to see a history of the Spark jobs you submit on this site.</p>
 <pre class="r"><code>sparkR.uiWebUrl()</code></pre>
 <pre><code>## [1] &quot;http://LAPTOP-OK0GO7H8:4041&quot;</code></pre>
-<p>Sometimes you get an IP address, 172.16.0.113:4040, and sometimes you get a blob such as <a href="http://LAPTOP-OK0GO7H8:4040" class="uri">http://LAPTOP-OK0GO7H8:4040</a>. If you do get a blob, go to your cmd and type in “ipconfig /all” (<a href="https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding">link</a>) to get the IP address to your local host. There you will find the IP4v address, add the :4040 to end and paste into your browser. In any case, you should see the Spark Application UI (see below).</p>
+<p>Sometimes you get an IP address, 172.16.0.200:4040, and sometimes you get a blob such as <a href="http://LAPTOP-OK0GO7H8:4040" class="uri">http://LAPTOP-OK0GO7H8:4040</a>. If you do get a blob, go to your cmd(command line) and type in “ipconfig /all” (<a href="https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding">link</a>) to get the IP address to your local host. There you will find the IP4v address, add the :4040 to end and paste into your browser. In any case, you should see the Spark Application UI (see below).</p>
 <p><img src="/images/Spark_App_UI_2018_05_15.png" /><!-- --> <br></br></p>
 <p><strong>Load data into Spark</strong></p>
-<p>Load the faithful data into Spark. Notice that the data frame type is “SparkDataFrame,” meaning that this data set is distributed and regular R commands will not be able to handle this object type.</p>
+<p>Load the faithful data into Spark. Notice that the data frame type is “SparkDataFrame,” meaning that this data set is distributed and some regular R commands will not be able to handle this object type.</p>
 <pre class="r"><code>df &lt;- as.DataFrame(faithful)
 str(df)</code></pre>
 <pre><code>## &#39;SparkDataFrame&#39;: 2 variables:
@@ -213,7 +214,7 @@ str(waiting_70)</code></pre>
   geom_point() +
   geom_smooth()</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
-<p><img src="/post/2018-05-04-spark-installation-on-windows_files/figure-html/unnamed-chunk-20-1.png" width="672" /> The plot of faithful data shows a clear distinction between 2 clusters.</p>
+<p><img src="/post/2018-05-04-spark-installation-on-windows_files/figure-html/unnamed-chunk-20-1.png" width="672" /> The plot of faithful data shows a clear distinction between 2 clusters, which is not discernable from the correlation of .90.</p>
 <pre class="r"><code>model &lt;- spark.glm(df, eruptions ~ waiting)
 summary(model)</code></pre>
 <pre><code>## 
@@ -234,6 +235,10 @@ summary(model)</code></pre>
 ## AIC: 395
 ## 
 ## Number of Fisher Scoring iterations: 1</code></pre>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>If you are interested in learning and using Spark, you should be able to do that on any PC or laptop without the need of an entire Hadoop cluster. This blog covered the need software and installation instructions to get you up and running. Finally, I provided a simple example of to show that the SparkR installation is working. If you would like to learn about Spark and SparkR look up the references below.</p>
 <table style="width:7%;">
 <colgroup>
 <col width="6%" />
@@ -243,7 +248,7 @@ summary(model)</code></pre>
 <td># References</td>
 </tr>
 <tr class="even">
-<td>Spark : <a href="https://spark.apache.org/docs/latest/index.html" class="uri">https://spark.apache.org/docs/latest/index.html</a> RPubs : <a href="https://rpubs.com/wendyu/sparkr" class="uri">https://rpubs.com/wendyu/sparkr</a></td>
+<td>Spark : <a href="https://spark.apache.org/docs/latest/index.html" class="uri">https://spark.apache.org/docs/latest/index.html</a> RPubs : <a href="https://rpubs.com/wendyu/sparkr" class="uri">https://rpubs.com/wendyu/sparkr</a> SafariBooksOnline : <a href="https://www.safaribooksonline.com/" class="uri">https://www.safaribooksonline.com/</a> - ask your employer for access or adoption…awesome resource.</td>
 </tr>
 </tbody>
 </table>
