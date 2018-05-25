@@ -167,7 +167,13 @@ Now that you have everything set up you will have to restart your R and RStudio,
 
 First run `Sys.getenv()` to ensure the environmental variables are set as stated above in you R session.  If not go back and figure out what you missed.
 
-**Set library path and load SparkR library**
+**Load Packages**
+I am going to load the tidyverse package to drive a point.  The Spark package masks many functions in the tidyverse universe, so it matters when you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least the SparkR functions.  For example, instead of sq(), use SparkR::sql(). 
+```{r}
+library(tidyverse)
+```
+
+**Set library path and load SparkR library:**
 
 This is one way to load your SparkR packages.  
 ```{r}
@@ -207,12 +213,17 @@ All the other settings are optional from what I found, such as the spark.driver.
 
 **Look at your Spark Session Stats:**
 
-Paste the url provided below to look at the Spark session running on your machine.  You will able to see a history of the Spark commands you submit on this site.
+Paste the url provided below in a new browser tab to look at the Spark session running on your machine.  You will able to see a history of the Spark commands you submit on this site.
 ```{r}
 sparkR.uiWebUrl()
 ```
+Sometimes you get an IP address, 172.16.0.113:4040, and sometimes you get a blob such as http://LAPTOP-OK0GO7H8:4040.  If you do get a blob, go to your cmd and type in "ipconfig /all" ([link](https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding)) to get the IP address to your local host.  There you will find the IP4v address, add the :4040 to end and paste into your browser.  In any case, you should see the Spark Application UI (see below).
 
-PICTURE HERE
+```{r, echo=FALSE, }
+knitr::include_graphics("/images/Spark_App_UI_2018_05_15.png")
+```     
+<br></br>  
+
 
 **Load data into Spark**
 
@@ -235,17 +246,25 @@ str(waiting_70)
 ```
 
 ```{r}
-head(collect(waiting_70), 10)
+head(SparkR::collect(waiting_70), 10)
 ```
 
 ```{r}
-collect(summary(df))
+SparkR::collect(SparkR::summary(df))
 ```
 
 ```{r}
-corr(df, "waiting", "eruptions")
+SparkR::corr(df, "waiting", "eruptions")
 ```
 
+```{r}
+
+df %>% SparkR::collect() %>%
+  ggplot(aes(x = waiting, y = eruptions)) +
+  geom_point() +
+  geom_smooth()
+```
+The plot of faithful data shows a clear distinction between 2 clusters.  
 ```{r}
 model <- spark.glm(df, eruptions ~ waiting)
 summary(model)

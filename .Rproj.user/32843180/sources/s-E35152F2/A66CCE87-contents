@@ -168,7 +168,7 @@ Now that you have everything set up you will have to restart your R and RStudio,
 First run `Sys.getenv()` to ensure the environmental variables are set as stated above in you R session.  If not go back and figure out what you missed.
 
 **Load Packages**
-I am going to load the tidyverse package to drive a point.  The Spark package masks many functions in the tidyverse universe, so it matters when you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least the SparkR functions.  For example, instead of sq(), use SparkR::sql(). 
+I am going to load the tidyverse package to drive a point.  The Spark package masks many functions in the tidyverse universe, so it matters when you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least SparkR functions with common names.  For example, instead of sql(), use SparkR::sql(). 
 ```{r}
 library(tidyverse)
 ```
@@ -217,8 +217,13 @@ Paste the url provided below in a new browser tab to look at the Spark session r
 ```{r}
 sparkR.uiWebUrl()
 ```
+Sometimes you get an IP address, 172.16.0.200:4040, and sometimes you get a blob such as http://LAPTOP-OK0GO7H8:4040.  If you do get a blob, go to your cmd and type in "ipconfig /all" ([link](https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding)) to get the IP address to your local host.  There you will find the IP4v address, add the :4040 to end and paste into your browser.  In any case, you should see the Spark Application UI (see below).
 
-PICTURE HERE
+```{r, echo=FALSE, }
+knitr::include_graphics("/images/Spark_App_UI_2018_05_15.png")
+```     
+<br></br>  
+
 
 **Load data into Spark**
 
@@ -256,20 +261,28 @@ SparkR::corr(df, "waiting", "eruptions")
 
 df %>% SparkR::collect() %>%
   ggplot(aes(x = waiting, y = eruptions)) +
-  geom_point()
+  geom_point() +
+  geom_smooth()
 ```
-
+The plot of faithful data shows a clear distinction between 2 clusters, which is not discernable from the correlation of .90.  
 ```{r}
 model <- spark.glm(df, eruptions ~ waiting)
 summary(model)
 
 ```
 
+
+# Conclusion
+If you are interested in learning and using Spark, you should be able to do that on any PC or laptop without the need of an entire Hadoop cluster.  This blog covered the need software and installation instructions to get you up and running.  Finally, I provided a simple example of to show that the SparkR installation is working.  If you would like to learn about Spark and SparkR look up the references below.
+
+
 -----
 # References
 
   Spark : https://spark.apache.org/docs/latest/index.html
   RPubs : https://rpubs.com/wendyu/sparkr
+  SafariBooksOnline : https://www.safaribooksonline.com/
+    - ask your employer for access or adoption...awesome resource.
 
 -----
 
