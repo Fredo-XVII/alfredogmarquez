@@ -242,7 +242,7 @@ createOrReplaceTempView(df, "df")
 ```
 
 ```{r}
-waiting_70 <- sql("select * from df where waiting > 70")
+waiting_70 <- SparkR::sql("select * from df where waiting > 70")
 str(waiting_70)
 ```
 
