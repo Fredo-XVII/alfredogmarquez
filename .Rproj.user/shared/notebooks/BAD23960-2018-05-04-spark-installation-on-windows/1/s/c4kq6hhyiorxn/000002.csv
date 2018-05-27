@@ -1,4 +1,0 @@
-"0",".libPaths(c(file.path(Sys.getenv(""SPARK_HOME""), ""R"", ""lib""), .libPaths()))"
-"0","library(SparkR)"
-"2","
-"
