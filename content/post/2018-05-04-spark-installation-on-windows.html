@@ -1,7 +1,7 @@
 ---
 title: "Spark Installation on Windows"
 author: "Alfredo G Marquez"
-date: '2018-05-04'
+date: '2018-05-15'
 slug: spark-installation-on-windows
 tags: 
   - Spark
@@ -160,7 +160,7 @@ library(SparkR)</code></pre>
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpAXfap4\backend_port253c718b53df</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpeQYD2o\backend_port31b067a53777</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
 <p>If you get a “Java ref type…” you have a Spark session up and running. All the other settings are optional from what I found, such as the spark.driver.memory because they come with initial defaults. For example, the spark.driver.memory is defaulted to 1g.</p>
 <p><strong>Look at your Spark Session Stats:</strong></p>

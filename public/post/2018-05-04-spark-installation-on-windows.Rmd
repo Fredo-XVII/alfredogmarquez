@@ -1,7 +1,7 @@
 ---
 title: "Spark Installation on Windows"
 author: "Alfredo G Marquez"
-date: '2018-05-04'
+date: '2018-05-15'
 slug: spark-installation-on-windows
 tags: 
   - Spark
