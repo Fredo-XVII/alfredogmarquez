@@ -160,14 +160,14 @@ library(SparkR)</code></pre>
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpeQYD2o\backend_port31b067a53777</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpSuLw1o\backend_port4782a3421e</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
 <p>If you get a “Java ref type…” you have a Spark session up and running. All the other settings are optional from what I found, such as the spark.driver.memory because they come with initial defaults. For example, the spark.driver.memory is defaulted to 1g.</p>
 <p><strong>Look at your Spark Session Stats:</strong></p>
 <p>Paste the url provided below in a new browser tab to look at the Spark session running on your machine. You will able to see a history of the Spark jobs you submit on this site.</p>
 <pre class="r"><code>sparkR.uiWebUrl()</code></pre>
 <pre><code>## [1] &quot;http://192.168.86.68:4041&quot;</code></pre>
-<p>Sometimes you get an IP address, 172.16.0.200:4040, and sometimes you get a blob such as <a href="http://LAPTOP-OK0GO7H8:4040" class="uri">http://LAPTOP-OK0GO7H8:4040</a>. If you do get a blob, go to your cmd(command line) and type in “ipconfig /all” (<a href="https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding">link</a>) to get the IP address to your local host. There you will find the IP4v address, add the :4040 to end and paste into your browser. In any case, you should see the Spark Application UI (see below).</p>
+<p>Sometimes you get an IP address, 172.16.0.200:4040, and sometimes you get a blob such as <a href="http://LAPTOP-OK0GO9H7:4040" class="uri">http://LAPTOP-OK0GO9H7:4040</a>. If you do get a blob, go to your cmd(command line) and type in “ipconfig /all” (<a href="https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding">source</a>) to get the IP address to your local host. There you will find the IP4v address, add the :4040 or :4041 to end and paste into your browser. In any case, you should see the Spark Application UI (see below).</p>
 <p><img src="/images/Spark_App_UI_2018_05_15.png" /><!-- --> <br></br></p>
 <p><strong>Load data into Spark</strong></p>
 <p>Load the faithful data into Spark. Notice that the data frame type is “SparkDataFrame,” meaning that this data set is distributed and some regular R commands will not be able to handle this object type.</p>
@@ -218,24 +218,17 @@ df %&gt;% SparkR::collect() %&gt;%
   geom_vline(xintercept = waiting_avg$`avg(waiting)`) +
   geom_hline(yintercept = eruptions_avg$`avg(eruptions)`)</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
-<p><img src="/post/2018-05-04-spark-installation-on-windows_files/figure-html/unnamed-chunk-20-1.png" width="672" /> The scatter plot of faithful data shows a clear distinction between 2 clusters, which is not discernable from the correlation of .90. The moral of the story if you have to wait past 1 hour for old faithful to erupt, then there is a good chance you will have to wait an additional 10 to 30 minutes, but you will gain 2 minutes of eruption time on average.</p>
+<p><img src="/post/2018-05-15-spark-installation-on-windows_files/figure-html/unnamed-chunk-20-1.png" width="672" /> The scatter plot of faithful data shows a clear distinction between 2 clusters, which is not discernable from the correlation of .90. The moral of the story if you have to wait past 1 hour for old faithful to erupt, then there is a good chance you will have to wait an additional 10 to 30 minutes, but you will only gain 2 minutes of eruption time on average.</p>
 </div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
 <p>If you are interested in learning and using Spark, you should be able to do that now on any PC or laptop without the need of an entire Hadoop cluster. This blog covered the minimum software download and installation instructions to get you up and running with Spark and SparkR. Finally, I provided a simple example to show that the SparkR installation is working. If you would like to learn more about Spark and SparkR look up the references below.</p>
-<table style="width:7%;">
-<colgroup>
-<col width="6%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td># References</td>
-</tr>
-<tr class="even">
-<td>Spark : <a href="https://spark.apache.org/docs/latest/index.html" class="uri">https://spark.apache.org/docs/latest/index.html</a> RPubs : <a href="https://rpubs.com/wendyu/sparkr" class="uri">https://rpubs.com/wendyu/sparkr</a> SafariBooksOnline : <a href="https://www.safaribooksonline.com/" class="uri">https://www.safaribooksonline.com/</a> - ask your employer for access or adoption…awesome resource.</td>
-</tr>
-</tbody>
-</table>
+<hr />
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p>Spark : <a href="https://spark.apache.org/docs/latest/index.html" class="uri">https://spark.apache.org/docs/latest/index.html</a> RPubs : <a href="https://rpubs.com/wendyu/sparkr" class="uri">https://rpubs.com/wendyu/sparkr</a> SafariBooksOnline : <a href="https://www.safaribooksonline.com/" class="uri">https://www.safaribooksonline.com/</a> - ask your employer for access or adoption…awesome resource.</p>
+<hr />
 <p>Kuddos for the Spark image goes to:</p>
 <blockquote>
 <p>Apache software foundation - <a href="https://spark.apache.org/images/spark-logo.eps" class="uri">https://spark.apache.org/images/spark-logo.eps</a>, Apache License 2.0, <a href="https://commons.wikimedia.org/w/index.php?curid=57832155" class="uri">https://commons.wikimedia.org/w/index.php?curid=57832155</a></p>
