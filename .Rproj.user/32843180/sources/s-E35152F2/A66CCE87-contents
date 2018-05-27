@@ -218,7 +218,7 @@ Paste the url provided below in a new browser tab to look at the Spark session r
 ```{r}
 sparkR.uiWebUrl()
 ```
-Sometimes you get an IP address, 172.16.0.200:4040, and sometimes you get a blob such as http://LAPTOP-OK0GO7H8:4040.  If you do get a blob, go to your cmd(command line) and type in "ipconfig /all" ([link](https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding)) to get the IP address to your local host.  There you will find the IP4v address, add the :4040 to end and paste into your browser.  In any case, you should see the Spark Application UI (see below).
+Sometimes you get an IP address, 172.16.0.200:4040, and sometimes you get a blob such as http://LAPTOP-OK0GO9H7:4040.  If you do get a blob, go to your cmd(command line) and type in "ipconfig /all" ([source](https://managewp.com/blog/how-to-access-a-local-website-from-internet-with-port-forwarding)) to get the IP address to your local host.  There you will find the IP4v address, add the :4040 or :4041 to end and paste into your browser.  In any case, you should see the Spark Application UI (see below).
 
 ```{r, echo=FALSE, }
 knitr::include_graphics("/images/Spark_App_UI_2018_05_15.png")
@@ -268,7 +268,7 @@ df %>% SparkR::collect() %>%
   geom_vline(xintercept = waiting_avg$`avg(waiting)`) +
   geom_hline(yintercept = eruptions_avg$`avg(eruptions)`)
 ```
-The scatter plot of faithful data shows a clear distinction between 2 clusters, which is not discernable from the correlation of .90.  The moral of the story if you have to wait past 1 hour for old faithful to erupt, then there is a good chance you will have to wait an additional 10 to 30 minutes, but you will gain 2 minutes of eruption time on average.
+The scatter plot of faithful data shows a clear distinction between 2 clusters, which is not discernable from the correlation of .90.  The moral of the story if you have to wait past 1 hour for old faithful to erupt, then there is a good chance you will have to wait an additional 10 to 30 minutes, but you will only gain 2 minutes of eruption time on average.
 
 
 
@@ -277,6 +277,7 @@ If you are interested in learning and using Spark, you should be able to do that
 
 
 -----
+
 # References
 
   Spark : https://spark.apache.org/docs/latest/index.html
