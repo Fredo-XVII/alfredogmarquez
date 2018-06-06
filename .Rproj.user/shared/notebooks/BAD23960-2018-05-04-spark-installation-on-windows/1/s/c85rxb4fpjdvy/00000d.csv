@@ -1,8 +1,0 @@
-"0","waiting_avg <- SparkR::select(df, SparkR::mean(df$waiting)) %>% SparkR::collect()"
-"0","eruptions_avg <- SparkR::select(df, SparkR::mean(df$eruptions)) %>% SparkR::collect()"
-"0","df %>% SparkR::collect() %>%"
-"0","  ggplot(aes(x = waiting, y = eruptions)) +"
-"0","  geom_point() +"
-"0","  geom_smooth() +"
-"0","  geom_vline(xintercept = waiting_avg$`avg(waiting)`) +"
-"0","  geom_hline(yintercept = eruptions_avg$`avg(eruptions)`)"
