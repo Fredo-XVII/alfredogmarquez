@@ -280,10 +280,10 @@ If you are interested in learning and using Spark, you should be able to do that
 
 # References
 
-  Spark Docs : https://spark.apache.org/docs/latest/index.html
-  SparR Vignette : https://github.com/apache/spark/blob/master/R/pkg/vignettes/sparkr-vignettes.Rmd
-  RPubs : https://rpubs.com/wendyu/sparkr
-  SafariBooksOnline : https://www.safaribooksonline.com/
+  - Spark Docs : https://spark.apache.org/docs/latest/index.html
+  - SparR Vignette : https://github.com/apache/spark/blob/master/R/pkg/vignettes/sparkr-vignettes.Rmd
+  - RPubs : https://rpubs.com/wendyu/sparkr
+  - SafariBooksOnline : https://www.safaribooksonline.com/
     - ask your employer for access or adoption...awesome resource.
 
 -----
