@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "D87B6A03",
-    "lastKnownWriteTime" : 1553360932,
-    "last_content_update" : 1553360932723,
+    "lastKnownWriteTime" : 1553362170,
+    "last_content_update" : 1553362170447,
     "path" : "~/blog/alfredogmarquez/content/page/Julia_library.md",
     "project_path" : "content/page/Julia_library.md",
     "properties" : {
-        "cursorPosition" : "5,7",
-        "scrollLine" : "0"
+        "cursorPosition" : "77,0",
+        "scrollLine" : "42"
     },
     "relative_order" : 3,
     "source_on_save" : false,

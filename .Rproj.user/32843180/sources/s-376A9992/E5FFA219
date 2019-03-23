@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "3431537633",
     "id" : "E5FFA219",
-    "lastKnownWriteTime" : 1553361042,
-    "last_content_update" : 1553361042669,
+    "lastKnownWriteTime" : 1553362174,
+    "last_content_update" : 1553362174075,
     "path" : "~/blog/alfredogmarquez/content/page/R_library.md",
     "project_path" : "content/page/R_library.md",
     "properties" : {
-        "cursorPosition" : "8,13",
-        "scrollLine" : "0"
+        "cursorPosition" : "145,20",
+        "scrollLine" : "118"
     },
     "relative_order" : 2,
     "source_on_save" : false,
