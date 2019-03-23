@@ -82,7 +82,7 @@ location = "US"
   identifier = "libary"
   name = "Library"
   pre = "<i class=\"sidebar-button-icon fa fa-book fa-fw\"></i>"
-  url = "/public/page"
+  url = "/page/library/"
 
 
 
