@@ -79,13 +79,13 @@ location = "US"
   url = "/#about"
 [[menu.main]]
   weight = 5
-  identifier = "libary"
+  identifier = "R_libary"
   name = "R Library"
   pre = "<i class=\"sidebar-button-icon fa fa-book fa-fw\"></i>"
   url = "/page/R_library/"
 [[menu.main]]
   weight = 5
-  identifier = "libary"
+  identifier = "Julia_library"
   name = "Julia Library"
   pre = "<i class=\"sidebar-button-icon fa fa-book fa-fw\"></i>"
   url = "/page/Julia_library/"
