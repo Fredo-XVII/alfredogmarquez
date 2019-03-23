@@ -78,13 +78,13 @@ location = "US"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
   url = "/#about"
 [[menu.main]]
-  weight = 5
+  weight = 6
   identifier = "R_libary"
   name = "R Library"
   pre = "<i class=\"sidebar-button-icon fa fa-book fa-fw\"></i>"
   url = "/page/R_library/"
 [[menu.main]]
-  weight = 5
+  weight = 7
   identifier = "Julia_library"
   name = "Julia Library"
   pre = "<i class=\"sidebar-button-icon fa fa-book fa-fw\"></i>"
