@@ -67,7 +67,6 @@ https://www.r-bloggers.com/setting-up-a-datascience-server/
   
   - http://lenkiefer.com/2017/01/16/cross-talk-dashboard/
 
-
 -----
 
 ### Spark
@@ -94,14 +93,15 @@ https://www.r-bloggers.com/setting-up-a-datascience-server/
 -----
 
 ### Econometrics
-Heckman Selection: https://cran.r-project.org/web/packages/sampleSelection/vignettes/selection.pdf
+
+  - Heckman Selection: https://cran.r-project.org/web/packages/sampleSelection/vignettes/selection.pdf
 
 -----
 
 ### Machine Learning
-Twitter Kmeans     
-http://thinktostart.com/cluster-twitter-data-with-r-and-k-means/
-https://cran.r-project.org/web/packages/caret/vignettes/caret.pdf
+  - Twitter Kmeans     
+    - http://thinktostart.com/cluster-twitter-data-with-r-and-k-means/
+    - https://cran.r-project.org/web/packages/caret/vignettes/caret.pdf
 
 -----
 
@@ -112,24 +112,29 @@ https://cran.r-project.org/web/packages/caret/vignettes/caret.pdf
 -----
 
 ### Databases
-R and SQLite: Part 1: https://www.r-bloggers.com/r-and-sqlite-part-1/
-R and SpaciaLite: http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html#toc
+
+  - R and SQLite: Part 1: https://www.r-bloggers.com/r-and-sqlite-part-1/
+  - R and SpaciaLite: http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html#toc
   - http://www.gaia-gis.it/gaia-sins/
-R and Hive JDBC: https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-JDBC
-R and Googlesheets: http://shiny.rstudio.com/articles/persistent-data-storage.html
-R and Teradata: https://developer.teradata.com/blog/odbcteam/2016/02/r-with-teradata-odbc
+  - R and Hive JDBC: https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-JDBC
+  - R and Googlesheets: http://shiny.rstudio.com/articles/persistent-data-storage.html
+  - R and Teradata: https://developer.teradata.com/blog/odbcteam/2016/02/r-with-teradata-odbc
+
 -----
 
 ### RAM Memory
-https://stat.ethz.ch/R-manual/R-devel/library/utils/html/memory.size.html
+
+  - https://stat.ethz.ch/R-manual/R-devel/library/utils/html/memory.size.html
 
 -----
 
 ### Library and Package management
-https://www.stat.osu.edu/computer-support/mathstatistics-packages/installing-r-libraries-locally-your-home-directory
+
+  - https://www.stat.osu.edu/computer-support/mathstatistics-packages/installing-r-libraries-locally-your-home-directory
 
 ### Rprofile and R Environmental variables ( related to Library Management above )
-https://csgillespie.github.io/efficientR/3-3-r-startup.html
+
+  - https://csgillespie.github.io/efficientR/3-3-r-startup.html
 
 -----
 
