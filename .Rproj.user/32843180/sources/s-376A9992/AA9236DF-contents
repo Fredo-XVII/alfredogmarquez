@@ -82,8 +82,13 @@ location = "US"
   identifier = "libary"
   name = "Library"
   pre = "<i class=\"sidebar-button-icon fa fa-book fa-fw\"></i>"
-  url = "/page/library/"
-
+  url = "/page/R_library/"
+[[menu.main]]
+  weight = 5
+  identifier = "libary"
+  name = "Library"
+  pre = "<i class=\"sidebar-button-icon fa fa-book fa-fw\"></i>"
+  url = "/page/Julia_library/"
 
 
 [[menu.links]]

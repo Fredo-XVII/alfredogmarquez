@@ -8,9 +8,11 @@ tags:
 - R books
 - R references
 - R resources
+- R Programming
 keywords:
 - R
 - r
+- R programming
 comments:       false
 showMeta:       false
 showActions:    false

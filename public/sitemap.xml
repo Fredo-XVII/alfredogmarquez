@@ -78,7 +78,11 @@
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/page/library/</loc>
+    <loc>https://www.alfredogmarquez.com/page/julia_library/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/page/r_library/</loc>
   </url>
   
   <url>
@@ -187,6 +191,35 @@
   </url>
   
   <url>
+    <loc>https://www.alfredogmarquez.com/tags/julia-books/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/page/julia_library/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/tags/julia-programming/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/tags/julia-references/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/tags/julia-resources/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/tags/julialang/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.alfredogmarquez.com/tags/markdown/</loc>
     <lastmod>2015-05-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -233,12 +266,17 @@
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/page/library/</loc>
+    <loc>https://www.alfredogmarquez.com/page/r_library/</loc>
   </url>
   
   <url>
     <loc>https://www.alfredogmarquez.com/tags/r-markdown/</loc>
     <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/tags/r-programming/</loc>
     <priority>0</priority>
   </url>
   
@@ -287,25 +325,25 @@
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/spark/</loc>
-    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://www.alfredogmarquez.com/tags/spark/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/sparkr/</loc>
+    <loc>https://www.alfredogmarquez.com/categories/spark/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.alfredogmarquez.com/tags/sparkr/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.alfredogmarquez.com/categories/sparkr/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
