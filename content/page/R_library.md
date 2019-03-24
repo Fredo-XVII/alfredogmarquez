@@ -35,6 +35,7 @@ https://www.r-bloggers.com/setting-up-a-datascience-server/
 -----
 
 ### Visualization (Graphing and Plotting and Mapping and Dashboarding)
+
 #### Graphing & Plotting: 
 
   - https://www.ggplot2-exts.org/gganimate.html
@@ -45,7 +46,7 @@ https://www.r-bloggers.com/setting-up-a-datascience-server/
   - https://plotly-book.cpsievert.me/index.html - book on Plotly and R 
   - https://www.r-graph-gallery.com/
   - Radial: http://rstudio-pubs-static.s3.amazonaws.com/72298_c1ba7f77276a4f27a0f375cadc9fac5d.html
-    
+
 #### Mapping & Cartography:
 
   - **Census**
@@ -63,7 +64,7 @@ https://www.r-bloggers.com/setting-up-a-datascience-server/
     - https://www.zevross.com/ 
     - https://rpubs.com/ajlyons/rspatialdata
     
- #### Dashboards:
+#### Dashboards:
   
   - http://lenkiefer.com/2017/01/16/cross-talk-dashboard/
 
@@ -131,6 +132,8 @@ https://www.r-bloggers.com/setting-up-a-datascience-server/
 ### Library and Package management
 
   - https://www.stat.osu.edu/computer-support/mathstatistics-packages/installing-r-libraries-locally-your-home-directory
+
+-----
 
 ### Rprofile and R Environmental variables ( related to Library Management above )
 
