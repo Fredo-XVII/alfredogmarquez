@@ -17,17 +17,15 @@ keywords:
   - hive
   - query
 
-thumbnailImage: ![](/post/2019-03-24-tez-up-your-rodbc-hive-queries_files/Tez_in_Elephant.png)
-
 autoThumbnailImage: false
 thumbnailImagePosition: "top"
 #thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
 coverImage: /images/Tez_in_Elephant.png
 metaAlignment: center
 coverMeta: out
-summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
+summary: "Set Tez Options in RODBC"
 draft: false
 ---
-<!-- <img src="/post/2019-03-24-tez-up-your-rodbc-hive-queries_files/Tez_in_Elephant.png" alt="" width="80px" height="80px"/>![](/post/2019-03-24-tez-up-your-rodbc-hive-queries_files/Tez_in_Elephant.png) -->
+
 
 <!--more-->
