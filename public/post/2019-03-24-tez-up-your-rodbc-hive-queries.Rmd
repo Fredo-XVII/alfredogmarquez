@@ -1,0 +1,31 @@
+---
+title: TEZ UP YOUR RODBC HIVE QUERIES
+author: Alfredo G Marquez
+date: '2019-03-24'
+slug: tez-up-your-rodbc-hive-queries
+categories:
+  - R
+tags:
+  - TEZ
+  - RODBC
+  - HIVE
+  - QUERY
+keywords:
+  - tech
+  - tez
+  - rodbc
+  - hive
+  - query
+
+autoThumbnailImage: false
+thumbnailImagePosition: "top"
+#thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
+coverImage: /images/Tez_in_Elephant.png
+metaAlignment: center
+coverMeta: out
+summary: "Set Tez Options in RODBC"
+draft: false
+---
+
+
+<!--more-->
