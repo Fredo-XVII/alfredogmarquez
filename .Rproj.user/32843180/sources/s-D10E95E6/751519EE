@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1553566687721.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1345563741",
+    "id" : "751519EE",
+    "lastKnownWriteTime" : 1553566984,
+    "last_content_update" : 1553566984315,
+    "path" : "~/blog/alfredogmarquez/content/post/2019-03-24-tez-up-your-rodbc-hive-queries.Rmd",
+    "project_path" : "content/post/2019-03-24-tez-up-your-rodbc-hive-queries.Rmd",
+    "properties" : {
+        "cursorPosition" : "24,39",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
