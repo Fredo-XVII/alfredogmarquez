@@ -1,10 +1,11 @@
 ---
-title: TEZ UP YOUR RODBC HIVE QUERIES
-author: Alfredo G Marquez
+title: "TEZ UP YOUR RODBC HIVE QUERIES"
+author: "Alfredo G Marquez"
 date: '2019-03-24'
 slug: tez-up-your-rodbc-hive-queries
 categories:
   - R
+  - TEZ
 tags:
   - TEZ
   - RODBC
@@ -27,5 +28,8 @@ summary: "Set Tez Options in RODBC"
 draft: false
 ---
 
+# Intro
+
+In this post I will discuss how 
 
 <!--more-->
