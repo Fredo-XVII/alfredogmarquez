@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url>
@@ -91,8 +86,12 @@
   </url>
   
   <url>
+    <loc>https://www.alfredogmarquez.com/1/01/01/</loc>
+  </url>
+  
+  <url>
     <loc>https://www.alfredogmarquez.com/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -168,12 +167,6 @@
   <url>
     <loc>https://www.alfredogmarquez.com/tags/highlight-code/</loc>
     <lastmod>2015-03-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.alfredogmarquez.com/tags/hive/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -260,19 +253,13 @@
   
   <url>
     <loc>https://www.alfredogmarquez.com/post/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.alfredogmarquez.com/tags/query/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.alfredogmarquez.com/categories/r/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+    <lastmod>2018-03-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -346,12 +333,6 @@
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/rodbc/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://www.alfredogmarquez.com/tags/social/</loc>
     <lastmod>2014-08-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -402,18 +383,6 @@
   <url>
     <loc>https://www.alfredogmarquez.com/tags/test/</loc>
     <lastmod>2015-03-23T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.alfredogmarquez.com/categories/tez/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.alfredogmarquez.com/tags/tez/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
