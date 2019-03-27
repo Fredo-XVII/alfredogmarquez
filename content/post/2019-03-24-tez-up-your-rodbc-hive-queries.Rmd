@@ -22,6 +22,7 @@ autoThumbnailImage: false
 thumbnailImagePosition: "top"
 thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
 coverImage: /images/tez_elephant_right.png
+coverSize: partial
 metaAlignment: center
 coverMeta: out
 summary: "Set Tez Options in RODBC"
