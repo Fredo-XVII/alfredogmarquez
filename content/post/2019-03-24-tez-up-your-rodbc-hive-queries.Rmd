@@ -31,6 +31,17 @@ draft: false
 
 # Intro
 
-In this post I will discuss how 
+In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
 
-<!--more-->
+
+# Server Side Properties
+Hive only a few years ago was rare occurance in most corporate 
+
+
+
+
+
+
+
+
+

@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1293879919",
+    "hash" : "350371004",
     "id" : "751519EE",
-    "lastKnownWriteTime" : 1553662360,
-    "last_content_update" : 1553662360023,
+    "lastKnownWriteTime" : 1553664180,
+    "last_content_update" : 1553664180305,
     "path" : "~/blog/alfredogmarquez/content/post/2019-03-24-tez-up-your-rodbc-hive-queries.Rmd",
     "project_path" : "content/post/2019-03-24-tez-up-your-rodbc-hive-queries.Rmd",
     "properties" : {
-        "cursorPosition" : "22,46",
-        "scrollLine" : "1"
+        "cursorPosition" : "37,63",
+        "scrollLine" : "9"
     },
     "relative_order" : 3,
     "source_on_save" : false,
