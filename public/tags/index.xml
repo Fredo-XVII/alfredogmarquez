@@ -93,6 +93,15 @@
     </item>
     
     <item>
+      <title>Hive</title>
+      <link>https://www.alfredogmarquez.com/tags/hive/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/hive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Html Elements</title>
       <link>https://www.alfredogmarquez.com/tags/html-elements/</link>
       <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
@@ -192,11 +201,11 @@
     </item>
     
     <item>
-      <title>Plot</title>
-      <link>https://www.alfredogmarquez.com/tags/plot/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>Query</title>
+      <link>https://www.alfredogmarquez.com/tags/query/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/tags/plot/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/query/</guid>
       <description></description>
     </item>
     
@@ -228,15 +237,6 @@
     </item>
     
     <item>
-      <title>R Markdown</title>
-      <link>https://www.alfredogmarquez.com/tags/r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/r-markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>R Programming</title>
       <link>https://www.alfredogmarquez.com/tags/r-programming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -264,20 +264,20 @@
     </item>
     
     <item>
-      <title>Regression</title>
-      <link>https://www.alfredogmarquez.com/tags/regression/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/regression/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Responsive</title>
       <link>https://www.alfredogmarquez.com/tags/responsive/</link>
       <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/tags/responsive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rodbc</title>
+      <link>https://www.alfredogmarquez.com/tags/rodbc/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/rodbc/</guid>
       <description></description>
     </item>
     
@@ -332,6 +332,15 @@
       <pubDate>Mon, 23 Mar 2015 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tez</title>
+      <link>https://www.alfredogmarquez.com/tags/tez/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/tez/</guid>
       <description></description>
     </item>
     

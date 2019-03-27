@@ -374,7 +374,7 @@ ga('send', 'pageview');
 <p>I am going to load the tidyverse package to drive a point. The Spark package masks many functions in the tidyverse universe, so it matters how you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least SparkR functions with common names. For example, instead of sql(), use SparkR::sql().</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.3</code></pre>
-<pre><code>## -- Attaching packages ---------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## -- Attaching packages ----------------------------------- tidyverse 1.2.1 --</code></pre>
 <pre><code>## v ggplot2 3.1.0       v purrr   0.3.2  
 ## v tibble  2.1.1       v dplyr   0.8.0.1
 ## v tidyr   0.8.3       v stringr 1.4.0  
@@ -387,7 +387,7 @@ ga('send', 'pageview');
 <pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.3</code></pre>
 <pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.3</code></pre>
 <pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.3</code></pre>
-<pre><code>## -- Conflicts ------------------------------------------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts -------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p><strong>Set library path and load SparkR library:</strong></p>
@@ -438,7 +438,7 @@ library(SparkR)</code></pre>
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpQXC4wL\backend_port7cf820903118</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\Rtmpsn35jq\backend_port9b9c5b445e51</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
 <p>If you get a “Java ref type…” you have a Spark session up and running. All the other settings are optional from what I found, such as the spark.driver.memory because they come with initial defaults. For example, the spark.driver.memory is defaulted to 1g.</p>
 <p><strong>Look at your Spark Session Stats:</strong></p>
@@ -551,7 +551,7 @@ df %&gt;% SparkR::collect() %&gt;%
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/" data-tooltip="TEZ UP YOUR RODBC HIVE QUERIES">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -631,7 +631,7 @@ df %&gt;% SparkR::collect() %&gt;%
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/" data-tooltip="TEZ UP YOUR RODBC HIVE QUERIES">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -760,6 +760,25 @@ df %&gt;% SparkR::collect() %&gt;%
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/">
+                <h3 class="media-heading">TEZ UP YOUR RODBC HIVE QUERIES</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">IntroIn this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
+Server Side PropertiesHive only a few years ago was rare occurance in most corporate
+</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/">
                 <h3 class="media-heading">Spark Installation on Windows</h3>
               </a>
@@ -788,25 +807,6 @@ First you will need to download Spark, which comes with the package for SparkR.<
                 </span>
               </span>
               <div class="media-content hide-xs font-merryweather">As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2015/07/23/hello-r-markdown/">
-                <h3 class="media-heading">Hello R Markdown</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2015
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -944,7 +944,7 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
          data-message-zero="no post found"
          data-message-one="1 post found"
          data-message-other="{n} posts found">
-         16 posts found
+         15 posts found
       </p>
     </div>
   </div>

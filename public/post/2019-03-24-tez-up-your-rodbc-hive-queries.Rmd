@@ -17,7 +17,6 @@ keywords:
   - rodbc
   - hive
   - query
-
 autoThumbnailImage: false
 thumbnailImagePosition: "top"
 thumbnailImage: /images/tez_elephant_right.png

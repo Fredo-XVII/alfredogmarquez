@@ -17,8 +17,9 @@
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
-      <description>IntroIn this post I will discuss how
-</description>
+      <description>IntroIn this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
+Server Side PropertiesHive only a few years ago was rare occurance in most corporate
+</description>
     </item>
     
   </channel>
