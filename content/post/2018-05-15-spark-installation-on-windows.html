@@ -105,14 +105,21 @@ draft: false
 <p><strong>Load Packages</strong></p>
 <p>I am going to load the tidyverse package to drive a point. The Spark package masks many functions in the tidyverse universe, so it matters how you call a function. When using SparkR along side other R packages, I recommend using the double colon to call your functions, at least SparkR functions with common names. For example, instead of sql(), use SparkR::sql().</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages ------------------------------------------ tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 2.2.1     v purrr   0.2.4
-## v tibble  1.4.2     v dplyr   0.7.4
-## v tidyr   0.8.0     v stringr 1.3.0
-## v readr   1.1.1     v forcats 0.3.0</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.4.4</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.4.4</code></pre>
-<pre><code>## -- Conflicts --------------------------------------------- tidyverse_conflicts() --
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## -- Attaching packages ---------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.1.0       v purrr   0.3.2  
+## v tibble  2.1.1       v dplyr   0.8.0.1
+## v tidyr   0.8.3       v stringr 1.4.0  
+## v readr   1.3.1       v forcats 0.4.0</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.5.3</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p><strong>Set library path and load SparkR library:</strong></p>
@@ -124,13 +131,16 @@ library(SparkR)</code></pre>
 <pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
 ## 
 ##     arrange, between, coalesce, collect, contains, count,
-##     cume_dist, dense_rank, desc, distinct, explain, filter, first,
-##     group_by, intersect, lag, last, lead, mutate, n, n_distinct,
-##     ntile, percent_rank, rename, row_number, sample_frac, select,
-##     sql, summarize, union</code></pre>
+##     cume_dist, dense_rank, desc, distinct, explain, expr, filter,
+##     first, group_by, intersect, lag, last, lead, mutate, n,
+##     n_distinct, ntile, percent_rank, rename, row_number,
+##     sample_frac, select, sql, summarize, union</code></pre>
 <pre><code>## The following objects are masked from &#39;package:purrr&#39;:
 ## 
 ##     negate, when</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     expr</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
 ## 
 ##     cov, filter, lag, na.omit, predict, sd, var, window</code></pre>
@@ -160,7 +170,7 @@ library(SparkR)</code></pre>
                       spark.sql.warehouse.dir=&quot;C:\\Apps\\winutils\\winutils-master\\hadoop-2.7.1&quot;) # winutils path directory
 )</code></pre>
 <pre><code>## Spark package found in SPARK_HOME: C:\Apps\Apache\Spark\spark-2.3.0\</code></pre>
-<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpikP5WA\backend_port2e904fd55783</code></pre>
+<pre><code>## Launching java with spark-submit command C:\Apps\Apache\Spark\spark-2.3.0\/bin/spark-submit2.cmd   --driver-memory &quot;2g&quot; sparkr-shell C:\Users\marqu\AppData\Local\Temp\RtmpQXC4wL\backend_port7cf820903118</code></pre>
 <pre><code>## Java ref type org.apache.spark.sql.SparkSession id 1</code></pre>
 <p>If you get a “Java ref type…” you have a Spark session up and running. All the other settings are optional from what I found, such as the spark.driver.memory because they come with initial defaults. For example, the spark.driver.memory is defaulted to 1g.</p>
 <p><strong>Look at your Spark Session Stats:</strong></p>
@@ -217,7 +227,7 @@ df %&gt;% SparkR::collect() %&gt;%
   geom_smooth() +
   geom_vline(xintercept = waiting_avg$`avg(waiting)`) +
   geom_hline(yintercept = eruptions_avg$`avg(eruptions)`)</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/post/2018-05-15-spark-installation-on-windows_files/figure-html/unnamed-chunk-20-1.png" width="672" /> The scatter plot of faithful data shows a clear distinction between 2 clusters, which is not discernable from the correlation of .90. The moral of the story if you have to wait past 1 hour for old faithful to erupt, then there is a good chance you will have to wait an additional 10 to 30 minutes, but you will only gain 2 minutes of eruption time on average.</p>
 </div>
 <div id="conclusion" class="section level1">
@@ -229,7 +239,7 @@ df %&gt;% SparkR::collect() %&gt;%
 <h1>References</h1>
 <ul>
 <li><p>Spark Docs : <a href="https://spark.apache.org/docs/latest/index.html" class="uri">https://spark.apache.org/docs/latest/index.html</a></p></li>
-<li><p>SparR Vignette : <a href="https://github.com/apache/spark/blob/master/R/pkg/vignettes/sparkr-vignettes.Rmd" class="uri">https://github.com/apache/spark/blob/master/R/pkg/vignettes/sparkr-vignettes.Rmd</a></p></li>
+<li><p>SparkR Vignette : <a href="https://github.com/apache/spark/blob/master/R/pkg/vignettes/sparkr-vignettes.Rmd" class="uri">https://github.com/apache/spark/blob/master/R/pkg/vignettes/sparkr-vignettes.Rmd</a></p></li>
 <li><p>RPubs : <a href="https://rpubs.com/wendyu/sparkr" class="uri">https://rpubs.com/wendyu/sparkr</a></p></li>
 <li>SafariBooksOnline : <a href="https://www.safaribooksonline.com/" class="uri">https://www.safaribooksonline.com/</a>
 <ul>

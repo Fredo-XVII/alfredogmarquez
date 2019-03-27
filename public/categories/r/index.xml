@@ -6,10 +6,20 @@
     <description>Recent content in R on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 31 Mar 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.alfredogmarquez.com/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TEZ UP YOUR RODBC HIVE QUERIES</title>
+      <link>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
+      <description>IntroIn this post I will discuss how
+</description>
+    </item>
     
     <item>
       <title>Ode to R, Happy 25th Birthday</title>
