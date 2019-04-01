@@ -60,9 +60,10 @@ The instructions from the post are below and I have added a visual that includes
 5. Ensure to check "Apply properties with queries" - Add by me.
 6. Click ok and confirm the rest  
 
-![Server Side Properties](/post/2019-03-24-tez-up-your-rodbc-hive-queries_files/server_side_properties_options.PNG)
+<br></br>
+![Server Side Properties](/images/server_side_properties_options.PNG)
 
 
+# RODBC
 
-
-
+Your RODBC queries now will run with options each time you make a connection using `con <- RODBC::dbConnect("DSN", uid = .uid, pwd = .pwd)`
