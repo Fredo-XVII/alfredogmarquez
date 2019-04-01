@@ -28,21 +28,18 @@
     
 
     
-    <meta name="description" content="Intro:In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
-Server Side PropertiesHive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others are all the buzz in the corporate world.
-">
-    <meta property="og:description" content="Intro:In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
-Server Side PropertiesHive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others are all the buzz in the corporate world.
-">
+    <meta name="description" content="In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
+Hive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.">
+    <meta property="og:description" content="In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
+Hive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="TEZ UP YOUR RODBC HIVE QUERIES">
     <meta property="og:url" content="/2019/03/24/tez-up-your-rodbc-hive-queries/">
     <meta property="og:site_name" content="Alfredo&#39;s Sandbox">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Alfredo&#39;s Sandbox">
-    <meta name="twitter:description" content="Intro:In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
-Server Side PropertiesHive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others are all the buzz in the corporate world.
-">
+    <meta name="twitter:description" content="In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
+Hive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.">
     
     
 
@@ -296,14 +293,37 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <div id="intro" class="section level1">
-<h1>Intro:</h1>
+              <div id="section" class="section level1">
+<h1></h1>
 <p>In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.</p>
 <hr />
+<p>Hive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.</p>
+<hr />
+</div>
+<div id="discovering-tez" class="section level1">
+<h1>Discovering Tez</h1>
+<p>Coming from working in a relational database environment I find developing reports and analytics in Hive rather slow. It gets even more slow when you are trying to get data out of Hive using ODBC or JDBC because the data has to travel across the network. In the case where the data is considered big data, you can build a small ( &lt; 100mil rows ) sample of your data to work with, but you still need to run that Hive query to get the data out, and there are little to no advantages of map reduce on small data.</p>
+<p>Recently a coworker of my shared some code with me to run in HUE (web interface to Hive) which included some Tez options at the beginning of the query. I could not believe the improvements in my Hive queries once I ran this at the start of my session. Note, that you only have to run it once per session. It was especially impressive when working with smaller datasets and with queries that were pulling smaller data from tables that had lots of data. Using “limit” also produce rather quick results for my queries, which is great when you are iterating through your data build and you want to look at your data often.</p>
 </div>
 <div id="server-side-properties" class="section level1">
 <h1>Server Side Properties</h1>
-<p>Hive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others are all the buzz in the corporate world.</p>
+<p>This post makes the assumption that you have an ODBC connection set up for your Hive environment. If you do not, you can start by download the Hortonworks ODBC Driver for Apache Hive if you are using Hortonworks <a href="https://hortonworks.com/downloads/">here</a> and go to the “HFP Add-Ons” link on the left hand side menu.</p>
+<p>Once I realized that you can add Tez options to you Hive queries, I was on the hunt to try to add it to my ODBC connection. I found it hard to believe that there was no way to do this if Tez options where availabe for Hive. I search for several days with no luck untill I came across a small post on the Hortonworks community website <a href="https://community.hortonworks.com/content/supportkb/49486/how-to-set-hiveexecutionengine-using-hortonworks-h.html">here</a>.</p>
+<p>The instructions from the post are below and I have added a visual that includes all the windows layered on top of each other:</p>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li>In ODBC driver configuration, go to Advanced Options</li>
+<li>Click on Server Side Properties button</li>
+<li>Click Add button</li>
+<li>In Key add hive.execution.engine and Value add “tez” or “mr” (without quotes).</li>
+<li>Ensure to check “Apply properties with queries” - Add by me.</li>
+<li>Click ok and confirm the rest</li>
+</ol>
+</blockquote>
+<div class="figure">
+<img src="https://www.alfredogmarquez.com/post/2019-03-24-tez-up-your-rodbc-hive-queries_files/server_side_properties_options.PNG" alt="Server Side Properties" />
+<p class="caption">Server Side Properties</p>
+</div>
 </div>
 
               
@@ -553,9 +573,8 @@ ga('send', 'pageview');
                   Mar 3, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather">Intro:In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
-Server Side PropertiesHive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others are all the buzz in the corporate world.
-</div>
+              <div class="media-content hide-xs font-merryweather">In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
+Hive only a few years ago was rare occurance in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
