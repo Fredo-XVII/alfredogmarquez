@@ -48,7 +48,7 @@ Before I begin, I should describe [Julia](https://julialang.org/).  Julia is a n
 
 I have been using Jupyter Notebooks as my main IDE for learning Julia.  I also use it at work when I am working on our Hadoop platform to build analysis with SparkR where RStudio is not available. My experience at work is where I learned the solution below.
 
-Since I had Julia 1.2.0 already installed on my computer, when I installed JuliaPro 1.2.0 I got the Jupyter kernel list below.  So you could see my delimma, which Julia environment am I using.  This is important because Julia really focuses on isolating environments for reproducibility.  
+when I installed JuliaPro 1.2.0 I got the Jupyter kernel list shown below.  So you could see my delimma, which Julia environment am I using? JuliaPro or base Julia?  This is important because Julia really focuses on isolating environments for reproducibility.  
 
 <br></br>
 
@@ -63,11 +63,11 @@ In order to change to the name of the kernal, we will need to change the name in
 
 ## With JuliaPro/Jupyter Notebooks
 
-1. **Get App location**: Launch Julia with JuliaPro or Jupyter notebooks. Type `ENV` to get the environmetal variables associated with Julia.  Look for the "**APPDATA**" file path; you will need this below. Note, this is how I discovered that my kernel was under the **Roaming** folder.  
+1. **Get App location**: Launch Julia with JuliaPro, Julia Interpreter, or Jupyter notebooks. Type `ENV` to get the environmetal variables associated with Julia.  Look for the "**APPDATA**" file path; you will need this below. Note, this is how I discovered that my kernel was under the **Roaming** folder.  
 
 ## With GitBash (for Windows)
 
-2. **Change Directory to Jupyter's kernel folder**: cd `C:\\Users\\marqu\\AppData\Roaming\jupyter\kernels`. This folder will list all the kernels available to your Jupyter installation.
+2. **Change Directory to Jupyter's kernel folder**: `cd C:\\Users\\marqu\\AppData\Roaming\jupyter\kernels`. This folder will list all the kernels available to your Jupyter installation.
 
 3. **Check out kernel.json in folder julia-1.2**: When you cat the kernel.json in the julia-1.2 folder, you will see that the path in the `argv` is referencing the JuliaPro Julia executable.  We need to change this to the reference your julia-1.2 Julia executable. 
 
@@ -81,29 +81,37 @@ In order to change to the name of the kernal, we will need to change the name in
 
 <br></br>
 
-![Jupyter Julia-1.2 Kernel Before](/images/GitBash_JuliaPro_before.PNG)
+![Jupyter Julia-1.2.0 Kernel Before](/images/GitBash_JuliaPro_before.PNG)
 
 <br></br>
 
 ## Copy basic JuliaPro kernel to a file named juliapro-1.2
 
-4. **Make a copy of the Julia-1.2, renamed JuliaPro-1.2**: Create a kernel new file for the JuliaPro-1.2 Julia executable. Change the path name to JuliaPro 1.2.0 from Julia 1.2.0.  Now Jupyter will display JuliaPro-1.2 for the JuliaPro-1.2.0 install instead of Julia-1.2.0
+4. **Make a copy of the Julia-1.2, renamed JuliaPro-1.2**: Create a kernel new file for the JuliaPro-1.2.0 Julia executable. Change the path name to JuliaPro 1.2.0 from Julia 1.2.0.  Now Jupyter will display JuliaPro-1.2.0 for the JuliaPro-1.2.0 install instead of Julia-1.2.0.
 
  GitBash Commands:
  
  - `cp -avr /c/Users/marqu/AppData/Roaming/jupyter/kernels/julia-1.2 \ /c/Users/marqu/AppData/Roaming/jupyter/kernels/juliapro-1.2`
  
- - cd juliapro-1.2
+ - cd /kernels/juliapro-1.2
  
  - vi kernel.json
  
- - Hit "i" to insert, change "display_name": "Julia 1.2.0" to "display_name": "JuliaPro 1.2.0"
+ - Hit "i" to insert, change `"display_name": "Julia 1.2.0"` to `"display_name": "JuliaPro 1.2.0"`
  
- - Hit ESC, then type ":wq" and hit Enter.
+ - Hit ESC, then type `:wq` and hit Enter.
 
-# Fix: If you go and do a Pkg.build("IJulia") in your basic install, it should set it back.
-using Pkg
-Pkg.build("IJulia")
+## Fix Julia-1.2.0 Kernel: 
 
-#Warning: ErrorException("Please retrieve a token from \"https://pkg.juliacomputing.com/\" and store it at \"C:\\Users\\marqu\\.juliapro\\token.toml\"")
-#└ @ Pkg.Operations C:\Users\julia\AppData\Local\Julia-1.2.0\share\julia\stdlib\v1.2\Pkg\src\Operations.jl:485
+5. **Reset the Julia-1.2.0 kernel**: Open the Julia-1.2.0 interactive app and rebuild the `IJulia` package using `Pkg.build("IJulia")`.  This will reset the Julia kernel in Jupyter.  Big thanks to **Avik Sengupta** at Julia Computing for the tip; this saves me from using vi to change the kernel.json file for Julia-1.2.0.  Now the Jupyter kernel list will display the proper names for each Julia executable (see below).  You also know what packages are installed where as the packages installed on JuliaPro-1.2.0 are not in the same environment path as the ones installed in Julia-1.2.0.
+
+ Julia Interpreter Command Lind:
+ 
+  - `using Pkg`
+  - `Pkg.build("IJulia")`
+
+<br></br>
+
+![Jupyter Julia-1.2.0 Kernel After](/images/Jupyter_JuliaPro_after.PNG)
+
+<br></br>
