@@ -1,0 +1,90 @@
+---
+title: JuliaPro's Julia on Jupyter
+author: Alfredo G Marquez
+date: '2019-09-29'
+slug: juliapro-on-jupyter
+categories:
+  - Julia
+tags:
+  - Julia JuliaPro Jupyter
+keywords:
+  - Julia
+  - JuliaPro
+  - Jupyter
+  - Kernel
+  - windows
+autoThumbnailImage: false
+thumbnailImagePosition: "top"
+thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
+coverImage: /images/Apache Spark logo.jpeg
+metaAlignment: center
+coverMeta: out
+coverSize: partial
+summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
+draft: false
+---
+
+<!--more-->
+
+
+# 
+
+In this post I will show you how to set JuliaPro's installation of Julia on a separate kernel in Jupyter.  
+
+-----
+
+I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter.  If you don't currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.
+
+-----
+
+# Julia Introduction
+
+Before I begin, I should describe [Julia](https://julialang.org/).  Julia is a numerical and scientific computing programming language.  By extension, Julia is also a data analysis and data science programming language.  This is what gets me excited about Julia, the fact that it originally designed to perform mathematics and statistics, and this is the reason why I love the R programming language.  In addition, it solves the 2 language problem where you develop code once on your local and you can easily take your code and distribute it on a cluster.  Finally, it is a high level langauge that performs at the speed of low level languages such as C.
+
+
+[JuliaPro](https://juliacomputing.com/products/juliapro.html) is a solution created by the foks at Julia Computing to get you up and running with Julia fast and without dependencies to other languages such as Python. JuliaPro reminds me of Rstudio, and my favorite feature is the ability to build .jl scripts without the cell like structure of Jupyter Notebooks.
+
+# How to set Jupyter notebook for JuliaPro
+
+I have been using Jupyter Notebooks as my main IDE for learning Julia.  I also use it at work when I am working on our Hadoop platform to build analysis with SparkR where RStudio is not available. My experience at work is where I learned the solution below.
+
+Since I had Julia 1.2.0 already installed on my computer, when I installed JuliaPro 1.2.0 I got the Jupyter kernel list below.  So you could see my delimma, which Julia environment am I using.  This is important because Julia really focuses on isolating environments for reproducibility.  
+
+![Jupyter Before](/images/Jupyter_JuliaPro_before.png)
+
+<br></br
+
+# Get path to AppData
+
+
+
+
+ENV
+
+# With GitBash go to AppData directory for jupyter
+cd C:\\Users\\marqu\\AppData
+cd Roaming
+cd jupyter
+ls -la
+cd kernels
+cd julia-1.2
+ls -la
+cat kernel.json
+# Compare to Julia1.1 kernels
+
+# Copy basic JuliaPro kernel to a file named juliapro-1.x
+cp -avr /c/Users/marqu/AppData/Roaming/jupyter/kernels/julia-1.2 \
+/c/Users/marqu/AppData/Roaming/jupyter/kernels/juliapro-1.2
+
+cd ..
+cd juliapro-1.2
+vi kernel.json
+Hit "i" to insert, change "display_name": "Julia 1.2.0" to "display_name": "JuliaPro 1.2.0"
+Hit ESC, then type ":wq" and hit Enter.
+
+# Fix: If you go and do a Pkg.build("IJulia") in your basic install, it should set it back.
+using Pkg
+Pkg.build("IJulia")
+
+#Warning: ErrorException("Please retrieve a token from \"https://pkg.juliacomputing.com/\" and store it at \"C:\\Users\\marqu\\.juliapro\\token.toml\"")
+#└ @ Pkg.Operations C:\Users\julia\AppData\Local\Julia-1.2.0\share\julia\stdlib\v1.2\Pkg\src\Operations.jl:485
