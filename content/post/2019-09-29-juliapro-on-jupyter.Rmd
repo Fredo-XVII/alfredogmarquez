@@ -51,7 +51,7 @@ I have been using Jupyter Notebooks as my main IDE for learning Julia.  I also u
 Since I had Julia 1.2.0 already installed on my computer, when I installed JuliaPro 1.2.0 I got the Jupyter kernel list below.  So you could see my delimma, which Julia environment am I using.  This is important because Julia really focuses on isolating environments for reproducibility.  
 
 <br></br>
-![Jupyter Before](/images/Jupyter_JuliaPro_before.png)
+![Jupyter Before](/images/Jupyter_JuliaPro_before.PNG)
 <br></br
 
 # Get path to AppData

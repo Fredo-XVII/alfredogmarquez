@@ -190,19 +190,13 @@
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/spark/</loc>
-    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://www.alfredogmarquez.com/tags/spark/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/sparkr/</loc>
+    <loc>https://www.alfredogmarquez.com/categories/spark/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -214,19 +208,25 @@
   </url>
   
   <url>
+    <loc>https://www.alfredogmarquez.com/categories/sparkr/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.alfredogmarquez.com/tags/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/tez/</loc>
+    <loc>https://www.alfredogmarquez.com/tags/tez/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/tez/</loc>
+    <loc>https://www.alfredogmarquez.com/categories/tez/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

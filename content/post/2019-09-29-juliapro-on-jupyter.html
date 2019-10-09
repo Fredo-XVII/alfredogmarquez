@@ -43,14 +43,11 @@ draft: false
 <h1>How to set Jupyter notebook for JuliaPro</h1>
 <p>I have been using Jupyter Notebooks as my main IDE for learning Julia. I also use it at work when I am working on our Hadoop platform to build analysis with SparkR where RStudio is not available. My experience at work is where I learned the solution below.</p>
 <p>Since I had Julia 1.2.0 already installed on my computer, when I installed JuliaPro 1.2.0 I got the Jupyter kernel list below. So you could see my delimma, which Julia environment am I using. This is important because Julia really focuses on isolating environments for reproducibility.</p>
-<div class="figure">
-<img src="/images/Jupyter_JuliaPro_before.png" alt="Jupyter Before" />
-<p class="caption">Jupyter Before</p>
-</div>
-<p><br>&lt;/br</p>
+<p><br></br> <img src="/images/Jupyter_JuliaPro_before.png" alt="Jupyter Before" /> <br>&lt;/br</p>
 </div>
 <div id="get-path-to-appdata" class="section level1">
 <h1>Get path to AppData</h1>
+<p>In order to change to the name of the kernal, we will need to change the name in the <strong>kernel.json</strong> file. On Windows, this file can be found at the %APPDATA%/jupter/kernels folder. In this folder you will see folders for all the kernels that are installed in your version of Jupyter. If you are on a Mac or Linux, go to <a href="https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html">Jupyter Documentation</a> for the path to the kernels folder.</p>
 <p>ENV</p>
 </div>
 <div id="with-gitbash-go-to-appdata-directory-for-jupyter" class="section level1">

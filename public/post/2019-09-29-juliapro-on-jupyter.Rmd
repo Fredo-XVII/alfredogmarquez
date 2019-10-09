@@ -50,13 +50,13 @@ I have been using Jupyter Notebooks as my main IDE for learning Julia.  I also u
 
 Since I had Julia 1.2.0 already installed on my computer, when I installed JuliaPro 1.2.0 I got the Jupyter kernel list below.  So you could see my delimma, which Julia environment am I using.  This is important because Julia really focuses on isolating environments for reproducibility.  
 
+<br></br>
 ![Jupyter Before](/images/Jupyter_JuliaPro_before.png)
-
 <br></br
 
 # Get path to AppData
 
-
+In order to change to the name of the kernal, we will need to change the name in the **kernel.json** file.  On Windows, this file can be found at the %APPDATA%/jupter/kernels folder.  In this folder you will see folders for all the kernels that are installed in your version of Jupyter. If you are on a Mac or Linux, go to  [Jupyter Documentation](https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html) for the path to the kernels folder.
 
 
 ENV
