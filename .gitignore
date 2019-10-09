@@ -2,5 +2,5 @@
 blogdown/
 Thumbs.db
 
-^/.Rproj.user/$
+.Rproj.user/$
 ^.RData
