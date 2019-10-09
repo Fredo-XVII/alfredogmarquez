@@ -105,5 +105,4 @@ In order to change to the name of the kernal, we will need to change the name in
 using Pkg
 Pkg.build("IJulia")
 
-#Warning: ErrorException("Please retrieve a token from \"https://pkg.juliacomputing.com/\" and store it at \"C:\\Users\\marqu\\.juliapro\\token.toml\"")
-#└ @ Pkg.Operations C:\Users\julia\AppData\Local\Julia-1.2.0\share\julia\stdlib\v1.2\Pkg\src\Operations.jl:485
+
