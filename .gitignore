@@ -3,4 +3,4 @@ blogdown/
 Thumbs.db
 
 .Rproj.user/*.*
-^.RData
+^/.RData$
