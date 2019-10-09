@@ -2,6 +2,6 @@
 blogdown/
 Thumbs.db
 
-.Rproj.user
+# R files
 .RData
-.Rproj.user/32843180/
+.Rproj.user/
