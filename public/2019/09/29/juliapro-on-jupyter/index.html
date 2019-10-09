@@ -28,9 +28,9 @@
     
 
     
-    <meta name="description" content="In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter.
+    <meta name="description" content="In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
 I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.">
-    <meta property="og:description" content="In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter.
+    <meta property="og:description" content="In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
 I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="JuliaPro&#39;s Julia on Jupyter">
@@ -38,7 +38,7 @@ I recently installed JuliaPro at the suggestion by one of my coworkers, but doin
     <meta property="og:site_name" content="Alfredo&#39;s Sandbox">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Alfredo&#39;s Sandbox">
-    <meta name="twitter:description" content="In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter.
+    <meta name="twitter:description" content="In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
 I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.">
     
     
@@ -294,7 +294,7 @@ ga('send', 'pageview');
               <!--more-->
 <div id="section" class="section level1">
 <h1></h1>
-<p>In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter.</p>
+<p>In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.</p>
 <hr />
 <p>I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.</p>
 <hr />
@@ -308,22 +308,55 @@ ga('send', 'pageview');
 <h1>How to set Jupyter notebook for JuliaPro</h1>
 <p>I have been using Jupyter Notebooks as my main IDE for learning Julia. I also use it at work when I am working on our Hadoop platform to build analysis with SparkR where RStudio is not available. My experience at work is where I learned the solution below.</p>
 <p>Since I had Julia 1.2.0 already installed on my computer, when I installed JuliaPro 1.2.0 I got the Jupyter kernel list below. So you could see my delimma, which Julia environment am I using. This is important because Julia really focuses on isolating environments for reproducibility.</p>
-<p><br></br> <img src="https://www.alfredogmarquez.com/images/Jupyter_JuliaPro_before.png" alt="Jupyter Before" /> <br>&lt;/br</p>
+<p><br></br></p>
+<div class="figure">
+<img src="https://www.alfredogmarquez.com/images/Jupyter_JuliaPro_before.PNG" alt="Jupyter Before" />
+<p class="caption">Jupyter Before</p>
 </div>
-<div id="get-path-to-appdata" class="section level1">
-<h1>Get path to AppData</h1>
-<p>In order to change to the name of the kernal, we will need to change the name in the <strong>kernel.json</strong> file. On Windows, this file can be found at the %APPDATA%/jupter/kernels folder. In this folder you will see folders for all the kernels that are installed in your version of Jupyter. If you are on a Mac or Linux, go to <a href="https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html">Jupyter Documentation</a> for the path to the kernels folder.</p>
-<p>ENV</p>
+<p><br></br></p>
+<div id="file-location-and-resources" class="section level2">
+<h2>File location and Resources</h2>
+<p>In order to change to the name of the kernal, we will need to change the name in the <strong>kernel.json</strong> file. On Windows, this file can be found at the <strong>%APPDATA%/jupter/kernels</strong> folder according to the <a href="https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html">Jupyter Documentation</a>. In my installation of Windows it is under <strong>%APPDATA%/Roaming/jupter/kernels</strong>. In this folder you will see folders for all the kernels that are installed in your version of Jupyter. If you are on a Mac or Linux, go to Jupyter Documentation for the path to the kernels folder.</p>
 </div>
-<div id="with-gitbash-go-to-appdata-directory-for-jupyter" class="section level1">
-<h1>With GitBash go to AppData directory for jupyter</h1>
-<p>cd C:\Users\marqu\AppData cd Roaming cd jupyter ls -la cd kernels cd julia-1.2 ls -la cat kernel.json # Compare to Julia1.1 kernels</p>
+<div id="with-juliaprojupyter-notebooks" class="section level2">
+<h2>With JuliaPro/Jupyter Notebooks</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Get App location</strong>: Launch Julia with JuliaPro or Jupyter notebooks. Type <code>ENV</code> to get the environmetal variables associated with Julia. Look for the “<strong>APPDATA</strong>” file path; you will need this below. Note, this is how I discovered that my kernel was under the <strong>Roaming</strong> folder.</li>
+</ol>
 </div>
-<div id="copy-basic-juliapro-kernel-to-a-file-named-juliapro-1.x" class="section level1">
-<h1>Copy basic JuliaPro kernel to a file named juliapro-1.x</h1>
-<p>cp -avr /c/Users/marqu/AppData/Roaming/jupyter/kernels/julia-1.2<br />
-/c/Users/marqu/AppData/Roaming/jupyter/kernels/juliapro-1.2</p>
-<p>cd .. cd juliapro-1.2 vi kernel.json Hit “i” to insert, change “display_name”: “Julia 1.2.0” to “display_name”: “JuliaPro 1.2.0” Hit ESC, then type “:wq” and hit Enter.</p>
+<div id="with-gitbash-for-windows" class="section level2">
+<h2>With GitBash (for Windows)</h2>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Change Directory to Jupyter’s kernel folder</strong>: cd <code>C:\\Users\\marqu\\AppData\Roaming\jupyter\kernels</code>. This folder will list all the kernels available to your Jupyter installation.</p></li>
+<li><p><strong>Check out kernel.json in folder julia-1.2</strong>: When you cat the kernel.json in the julia-1.2 folder, you will see that the path in the <code>argv</code> is referencing the JuliaPro Julia executable. We need to change this to the reference your julia-1.2 Julia executable.</p></li>
+</ol>
+<p>GitBash Commands:</p>
+<ul>
+<li><p>cd julia-1.2</p></li>
+<li><p>ls -la</p></li>
+<li><p>cat kernel.json</p></li>
+</ul>
+<p><br></br></p>
+<div class="figure">
+<img src="https://www.alfredogmarquez.com/images/GitBash_JuliaPro_before.PNG" alt="Jupyter Julia-1.2 Kernel Before" />
+<p class="caption">Jupyter Julia-1.2 Kernel Before</p>
+</div>
+<p><br></br></p>
+</div>
+<div id="copy-basic-juliapro-kernel-to-a-file-named-juliapro-1.2" class="section level2">
+<h2>Copy basic JuliaPro kernel to a file named juliapro-1.2</h2>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Make a copy of the Julia-1.2, renamed JuliaPro-1.2</strong>: Create a kernel new file for the JuliaPro-1.2 Julia executable. Change the path name to JuliaPro 1.2.0 from Julia 1.2.0. Now Jupyter will display JuliaPro-1.2 for the JuliaPro-1.2.0 install instead of Julia-1.2.0</li>
+</ol>
+<p>GitBash Commands:</p>
+<ul>
+<li><p><code>cp -avr /c/Users/marqu/AppData/Roaming/jupyter/kernels/julia-1.2 \ /c/Users/marqu/AppData/Roaming/jupyter/kernels/juliapro-1.2</code></p></li>
+<li><p>cd juliapro-1.2</p></li>
+<li><p>vi kernel.json</p></li>
+<li><p>Hit “i” to insert, change “display_name”: “Julia 1.2.0” to “display_name”: “JuliaPro 1.2.0”</p></li>
+<li><p>Hit ESC, then type “:wq” and hit Enter.</p></li>
+</ul>
+</div>
 </div>
 <div id="fix-if-you-go-and-do-a-pkg.buildijulia-in-your-basic-install-it-should-set-it-back." class="section level1">
 <h1>Fix: If you go and do a Pkg.build(“IJulia”) in your basic install, it should set it back.</h1>
@@ -574,7 +607,7 @@ ga('send', 'pageview');
                   Sep 9, 2019
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather">In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter.
+              <div class="media-content hide-xs font-merryweather">In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
 I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.</div>
             </div>
             <div style="clear:both;"></div>
