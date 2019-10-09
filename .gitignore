@@ -1,3 +1,5 @@
 
 blogdown/
 Thumbs.db
+
+^.Rproj.user/
