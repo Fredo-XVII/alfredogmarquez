@@ -103,15 +103,23 @@ In order to change to the name of the kernal, we will need to change the name in
 
 ## Fix Julia-1.2.0 Kernel: 
 
-5. **Reset the Julia-1.2.0 kernel**: Open the Julia-1.2.0 interactive app and rebuild the `IJulia` package using `Pkg.build("IJulia")`.  This will reset the Julia kernel in Jupyter.  Big thanks to **Avik Sengupta** at Julia Computing for the tip; this saves me from using vi to change the kernel.json file for Julia-1.2.0.  Now the Jupyter kernel list will display the proper names for each Julia executable (see below).  You also know what packages are installed where as the packages installed on JuliaPro-1.2.0 are not in the same environment path as the ones installed in Julia-1.2.0.
+5. **Reset the Julia-1.2.0 kernel**: Open the Julia-1.2.0 interactive app and rebuild the `IJulia` package using `Pkg.build("IJulia")`.  This will reset the Julia kernel.json in Jupyter.  Big thanks to **Avik Sengupta** at Julia Computing for the tip; this saves me from using vi to change the kernel.json file for Julia-1.2.0.  Now the Jupyter kernel list will display the proper names for each Julia executable (see below).  You also know what packages are installed where as the packages installed on JuliaPro-1.2.0 are not in the same environment path as the ones installed in Julia-1.2.0.
 
  Julia Interpreter Command Lind:
  
   - `using Pkg`
   - `Pkg.build("IJulia")`
 
-<br></br>
+The code above builds this file for you, no vi needed.
+![Jupyter Julia-1.2.0 Kernel.json After](/images/GitBash_JuliaPro_after.PNG)
 
+And clarifies which Julia kernel you can choose.
 ![Jupyter Julia-1.2.0 Kernel After](/images/Jupyter_JuliaPro_after.PNG)
 
 <br></br>
+
+# Conclusion
+
+Some people may ask why go through all this work? Either chose one or the other IDE to build your Julia projects. At home this strategy makes sense, but at work you are bounded by the strategic choices made by your IT or platform team. I currently build all my analytical work in RStudio, but when I have work with big data on our Hadoop platform, then I have not joice but to use Jupyter notebooks to build my SparkR code. I hope that the folks at the Julia Computing come across this blog and consider making this change within JuliaPro.
+
+
