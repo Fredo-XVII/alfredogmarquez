@@ -1,12 +1,12 @@
 ---
-title: JuliaPro's Julia on Jupyter
+title: JuliaPro's Julia on Jupyter Notebooks
 author: Alfredo G Marquez
 date: '2019-09-29'
 slug: juliapro-on-jupyter
 categories:
   - Julia
 tags:
-  - Julia JuliaPro Jupyter
+  - Julia JuliaPro Jupyter Kernel
 keywords:
   - Julia
   - JuliaPro
@@ -15,8 +15,8 @@ keywords:
   - windows
 autoThumbnailImage: false
 thumbnailImagePosition: "top"
-thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg
-coverImage: /images/Apache Spark logo.jpeg
+thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/6/69/Julia_prog_language.svg
+coverImage: /images/256px-Julia_prog_language.svg
 metaAlignment: center
 coverMeta: out
 coverSize: partial
@@ -50,7 +50,6 @@ I have been using Jupyter Notebooks as my main IDE for learning Julia.  I also u
 
 when I installed JuliaPro 1.2.0 I got the Jupyter kernel list shown below.  So you could see my delimma, which Julia environment am I using? JuliaPro or base Julia?  This is important because Julia really focuses on isolating environments for reproducibility.  
 
-<br></br>
 
 ![Jupyter Before](/images/Jupyter_JuliaPro_before.PNG)
 
@@ -61,15 +60,15 @@ when I installed JuliaPro 1.2.0 I got the Jupyter kernel list shown below.  So y
 
 In order to change to the name of the kernal, we will need to change the name in the **kernel.json** file.  On Windows, this file can be found at the **%APPDATA%/jupter/kernels** folder according to the [Jupyter Documentation](https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html). In my installation of Windows it is under **%APPDATA%/Roaming/jupter/kernels**. In this folder you will see folders for all the kernels that are installed in your version of Jupyter. If you are on a Mac or Linux, go to Jupyter Documentation for the path to the kernels folder.  
 
-## With JuliaPro/Jupyter Notebooks
+## In Julia/JuliaPro/Jupyter Notebooks
 
 1. **Get App location**: Launch Julia with JuliaPro, Julia Interpreter, or Jupyter notebooks. Type `ENV` to get the environmetal variables associated with Julia.  Look for the "**APPDATA**" file path; you will need this below. Note, this is how I discovered that my kernel was under the **Roaming** folder.  
 
-## With GitBash (for Windows)
+## In GitBash (for Windows)
 
 2. **Change Directory to Jupyter's kernel folder**: `cd C:\\Users\\marqu\\AppData\Roaming\jupyter\kernels`. This folder will list all the kernels available to your Jupyter installation.
 
-3. **Check out kernel.json in folder julia-1.2**: When you cat the kernel.json in the julia-1.2 folder, you will see that the path in the `argv` is referencing the JuliaPro Julia executable.  We need to change this to the reference your julia-1.2 Julia executable. 
+3. **Check out kernel.json in folder julia-1.2**: When you cat the kernel.json in the julia-1.2 folder, you will see that the path in the `argv` is referencing the JuliaPro Julia executable.  We need to change this to the reference your julia-1.2 Julia executable and we will need to create a new file for in the folder JuliaPro-1.2. 
 
   GitBash Commands:
   
@@ -79,15 +78,14 @@ In order to change to the name of the kernal, we will need to change the name in
   
   - cat kernel.json
 
+
+![Jupyter Julia-1.2.0 Kernel.json Before](/images/GitBash_JuliaPro_before.PNG)
+
 <br></br>
 
-![Jupyter Julia-1.2.0 Kernel Before](/images/GitBash_JuliaPro_before.PNG)
+### Copy basic Julia-1.2.0 kernel.json to a folder named Juliapro-1.2.0
 
-<br></br>
-
-## Copy basic JuliaPro kernel to a file named juliapro-1.2
-
-4. **Make a copy of the Julia-1.2, renamed JuliaPro-1.2**: Create a kernel new file for the JuliaPro-1.2.0 Julia executable. Change the path name to JuliaPro 1.2.0 from Julia 1.2.0.  Now Jupyter will display JuliaPro-1.2.0 for the JuliaPro-1.2.0 install instead of Julia-1.2.0.
+4. **Make a copy of the Julia-1.2 folder, renamed JuliaPro-1.2**: Change the new kernel.json file in the JuliaPro-1.2.0 Julia executable. Change the `display name` to JuliaPro 1.2.0 from Julia 1.2.0.  Now Jupyter will display JuliaPro-1.2.0 for the JuliaPro-1.2.0 install instead of Julia-1.2.0.
 
  GitBash Commands:
  
@@ -101,7 +99,7 @@ In order to change to the name of the kernal, we will need to change the name in
  
  - Hit ESC, then type `:wq` and hit Enter.
 
-## Fix Julia-1.2.0 Kernel: 
+## Fix Julia-1.2.0 Jupyter Kernel
 
 5. **Reset the Julia-1.2.0 kernel**: Open the Julia-1.2.0 interactive app and rebuild the `IJulia` package using `Pkg.build("IJulia")`.  This will reset the Julia kernel.json in Jupyter.  Big thanks to **Avik Sengupta** at Julia Computing for the tip; this saves me from using vi to change the kernel.json file for Julia-1.2.0.  Now the Jupyter kernel list will display the proper names for each Julia executable (see below).  You also know what packages are installed where as the packages installed on JuliaPro-1.2.0 are not in the same environment path as the ones installed in Julia-1.2.0.
 
@@ -122,4 +120,24 @@ And clarifies which Julia kernel you can choose.
 
 Some people may ask why go through all this work? Either chose one or the other IDE to build your Julia projects. At home this strategy makes sense, but at work you are bounded by the strategic choices made by your IT or platform team. I currently build all my analytical work in RStudio, but when I have work with big data on our Hadoop platform, then I have not joice but to use Jupyter notebooks to build my SparkR code. I hope that the folks at the Julia Computing come across this blog and consider making this change within JuliaPro.
 
+# References
 
+  - Julia: https://julialang.org/
+  
+  - JuliaPro https://juliacomputing.com/products/juliapro
+
+  - Julia Discourse: https://discourse.julialang.org/
+  
+  - Join Julia Slack: https://slackinvite.julialang.org/
+  
+  - GitBash vi: https://teamtreehouse.com/community/git-bash-text-editor
+
+  - Jupyter: https://jupyter.org
+  
+  - Jupyter Common Directories: https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html
+  
+-----
+
+Kudos for the Julia image goes to: 
+
+> Julia - Julia and JuliaPro logos are trademarks of Julia Language and JuliaComputing. All other marks mentioned may be trademarks or registered trademarks of their respective owners.
