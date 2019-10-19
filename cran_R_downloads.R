@@ -63,16 +63,16 @@ down_tot_by_os %>% ggplot(aes(x = yr_wk, y = log10(total), col = os_factor, grou
 
 # What does the trend look like by version
 down_tot_by_ver <- cran_R_downloads %>% 
-  dplyr:: group_by(yr_wk,ver_lvl_factor,ver_lvl_top_factor) %>% 
+  dplyr:: group_by(yr_wk,ver_lvl_factor,ver_lvl_top_factor,os) %>% 
   dplyr::summarise(total = sum(count))
 
 down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_factor, group = ver_lvl_factor)) +
   geom_line() +
-  facet_wrap(.~ver_lvl_top_factor)
+  facet_grid(os~ver_lvl_top_factor)
 
-down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = log10(total), col = ver_lvl_factor, group = ver_lvl_factor)) +
+down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = log2(total), col = ver_lvl_factor, group = ver_lvl_factor)) +
   geom_line() +
-  facet_wrap(.~ver_lvl_factor)
+  facet_grid(os~ver_lvl_top_factor)
 
 ## Top Level
 
