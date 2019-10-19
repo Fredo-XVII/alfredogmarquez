@@ -9,26 +9,32 @@ library(gtrendsR)
 # Download R download data 
 cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
 cran_R_downloads <- cran_R_downloads_raw %>% 
+  filter(!version %in% c('devel','release','release.exe','latest')) %>% 
   mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
          ver_factor =forcats::fct_inorder(forcats::as_factor(version)),
+         ver_lvl = sub("*[.^]", "", version) %>% sub("\\..*", "", .) %>% as.integer(),
+         ver_lvl_factor =forcats::fct_inorder(forcats::as_factor(ver_lvl)),
+         ver_lvl_top = stringr::str_sub(version,1,1) %>% as.integer(),
+         ver_lvl_top_factor =forcats::fct_inorder(forcats::as_factor(ver_lvl_top)),
          year = lubridate::year(date),
          month = lubridate::month(date),
          week = lubridate::week(date),
          yr_mo = tsibble::yearmonth(date),
          yr_wk = tsibble::yearweek(date)
-  ) %>% 
-  filter(version != 'devel')
+  )
+  
+
 
 # filter out devel
 
 # EDA
-cran_R_downloads %>% 
+cran_R_downloads %>% head()
 
 cran_R_downloads %>% select(os) %>% group_by(os) %>% summarise(os_cnts = n())
 
 cran_R_downloads %>% select(date) %>% distinct() %>% nrow()
 
-cran_R_downloads %>% select(version) %>% dplyr::group_by(version) %>% summarise(version_cnts = n())
+cran_R_downloads %>% select(ver_lvl) %>% dplyr::group_by(ver_lvl) %>% summarise(version_cnts = n())
 
 # Build Aggregation Views
 # What does the trend look like?
@@ -57,17 +63,18 @@ down_tot_by_os %>% ggplot(aes(x = yr_wk, y = log10(total), col = os_factor, grou
 
 # What does the trend look like by version
 down_tot_by_ver <- cran_R_downloads %>% 
-  dplyr:: group_by(yr_wk,ver_factor) %>% 
+  dplyr:: group_by(yr_wk,ver_lvl_factor,ver_lvl_top_factor) %>% 
   dplyr::summarise(total = sum(count))
 
-down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_factor, group = ver_factor)) +
+down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_factor, group = ver_lvl_factor)) +
   geom_line() +
-  facet_wrap(.~ver_factor)
+  facet_wrap(.~ver_lvl_top_factor)
 
-down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = log10(total), col = ver_factor, group = ver_factor)) +
+down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = log10(total), col = ver_lvl_factor, group = ver_lvl_factor)) +
   geom_line() +
-  facet_wrap(.~ver_factor)
+  facet_wrap(.~ver_lvl_factor)
 
+## Top Level
 
 # Google Trends: Why is there a bump in the fall of 2018.
 
