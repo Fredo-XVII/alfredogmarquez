@@ -1,13 +1,29 @@
 # Count R download Stats
 
+
+# Libraries
 library(cranlogs)
 library(lubridate)
 library(tidyverse)
 library(tsibble)
 library(gtrendsR)
+library(rversions)
 
-# Download R download data 
-cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+# Download R download data and version dates
+R_ver_hist_raw <- rversions::r_versions() 
+R_ver_hist_raw$vers_d <- as.POSIXct(R_ver_hist_raw$date)
+
+R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>% 
+  dplyr::mutate(greg_d = lubridate::as_date(vers_d),
+                vers_i = forcats::as_factor(version),
+                nickname = forcats::as_factor(nickname),
+                yr_wk_ver = tsibble::yearweek(as.Date(greg_d))
+  ) %>% 
+  dplyr::select(vers_i,nickname,greg_d,yr_wk_ver) %>% 
+  dplyr::filter(greg_d >= as.Date('2015-01-01')) %>% 
+  dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
+
+Scran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
 cran_R_downloads <- cran_R_downloads_raw %>% 
   filter(!version %in% c('devel','release','release.exe','latest')) %>% 
   mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
@@ -21,9 +37,9 @@ cran_R_downloads <- cran_R_downloads_raw %>%
          week = lubridate::week(date),
          yr_mo = tsibble::yearmonth(date),
          yr_wk = tsibble::yearweek(date)
-  )
+  ) %>% 
+  left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
   
-
 
 # filter out devel
 
@@ -39,12 +55,14 @@ cran_R_downloads %>% select(ver_lvl) %>% dplyr::group_by(ver_lvl) %>% summarise(
 # Build Aggregation Views
 # What does the trend look like?
 down_tot_by_d <- cran_R_downloads %>% 
-  dplyr::group_by(yr_wk) %>% 
+  dplyr::group_by(yr_wk,greg_d) %>% 
   dplyr::summarise(total = sum(count)) %>% 
-  tsibble::as_tsibble()
+  tsibble::as_tsibble(index = yr_wk)
 
-down_tot_by_d %>% ggplot(aes(x = yr_wk, y = total)) +
-  geom_line()
+down_tot_by_d %>% 
+  ggplot(aes(x = yr_wk, y = total, color = greg_d)) +
+  geom_line() +
+  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red")
 
 down_tot_by_d %>% ggplot(aes(x = yr_wk, y = log10(total))) +
   geom_line() 
