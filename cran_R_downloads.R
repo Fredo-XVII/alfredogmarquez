@@ -57,6 +57,9 @@ cran_R_downloads %>% select(ver_lvl) %>% dplyr::group_by(ver_lvl) %>% summarise(
 down_tot_by_yr <- cran_R_downloads %>% 
   dplyr::group_by(year) %>% 
   dplyr::summarise(total = sum(count)) %>% 
+  dplyr::mutate(yoy = total/dplyr::lag(total),
+                yoy_perc = (total/dplyr::lag(total) - 1)*100,
+                ) %>% 
   tsibble::as_tsibble(index = year)
 
 down_tot_by_yr %>% 
