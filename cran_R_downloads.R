@@ -21,7 +21,7 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
   ) %>% 
   dplyr::select(vers_i,nickname,greg_d,yr_wk_ver) %>% 
   dplyr::filter(greg_d >= as.Date('2015-01-01')) %>% 
-  dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
+  dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.5.1","3.5.2","3.6.0"))
 
 Scran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
 cran_R_downloads <- cran_R_downloads_raw %>% 
@@ -53,9 +53,19 @@ cran_R_downloads %>% select(date) %>% distinct() %>% nrow()
 cran_R_downloads %>% select(ver_lvl) %>% dplyr::group_by(ver_lvl) %>% summarise(version_cnts = n())
 
 # Build Aggregation Views
+# What does the trend look at by Year
+down_tot_by_yr <- cran_R_downloads %>% 
+  dplyr::group_by(year) %>% 
+  dplyr::summarise(total = sum(count)) %>% 
+  tsibble::as_tsibble(index = year)
+
+down_tot_by_yr %>% 
+  ggplot(aes(x = year, y = total, color = year)) +
+  geom_line()
+
 # What does the trend look like?
 down_tot_by_d <- cran_R_downloads %>% 
-  dplyr::group_by(yr_wk,greg_d) %>% 
+  dplyr::group_by(yr_wk,greg_d,forcats::fct_explicit_na(vers_i)) %>% 
   dplyr::summarise(total = sum(count)) %>% 
   tsibble::as_tsibble(index = yr_wk)
 
@@ -86,7 +96,8 @@ down_tot_by_ver <- cran_R_downloads %>%
 
 down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_factor, group = ver_lvl_factor)) +
   geom_line() +
-  facet_grid(os~ver_lvl_top_factor)
+  facet_grid(os~ver_lvl_top_factor)+
+  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red")
 
 down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = log2(total), col = ver_lvl_factor, group = ver_lvl_factor)) +
   geom_line() +
