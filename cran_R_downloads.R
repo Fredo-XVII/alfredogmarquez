@@ -4,10 +4,13 @@
 # Libraries
 library(cranlogs)
 library(lubridate)
+library(gridExtra)
+library(ggrepel)
 library(tidyverse)
 library(tsibble)
 library(gtrendsR)
 library(rversions)
+
 
 # Download R download data and version dates
 R_ver_hist_raw <- rversions::r_versions() 
@@ -19,9 +22,9 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
                 nickname = forcats::as_factor(nickname),
                 yr_wk_ver = tsibble::yearweek(as.Date(greg_d))
   ) %>% 
-  dplyr::select(vers_i,nickname,greg_d,yr_wk_ver) %>% 
-  dplyr::filter(greg_d >= as.Date('2015-01-01')) %>% 
-  dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.5.1","3.5.2","3.6.0"))
+  dplyr::select(version,vers_i,nickname,greg_d,yr_wk_ver) %>% 
+  dplyr::filter(greg_d >= as.Date('2015-01-01'))# %>% 
+  #dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.5.1","3.5.2","3.6.0"))
 
 Scran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
 cran_R_downloads <- cran_R_downloads_raw %>% 
@@ -82,15 +85,31 @@ down_tot_by_d %>% ggplot(aes(x = yr_wk, y = log10(total))) +
 
 # What does the trend look like by os
 down_tot_by_os <- cran_R_downloads %>% 
-  dplyr:: group_by(yr_wk,os_factor) %>% 
-  dplyr::summarise(total = sum(count))
+  dplyr:: group_by(os_factor,yr_wk) %>% 
+  dplyr::summarise(total = sum(count)) %>% 
+  dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
+                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100,
+  )
 
-down_tot_by_os %>% ggplot(aes(x = yr_wk, y = total, col = os_factor, group = os_factor)) +
+g_os_lvl <- down_tot_by_os %>% 
+  ggplot(aes(x = yr_wk, y = total, col = os_factor, group = os_factor)) +
   geom_line() +
-  facet_wrap(.~os_factor) 
+  facet_grid(os_factor~., scales = 'free') +
+  geom_vline(data = R_ver_hist, aes(xintercept = yr_wk_ver), linetype = 4, color = "red") +
+  geom_text(data=R_ver_hist, mapping=aes(x=yr_wk_ver, y=0, label=version), 
+            size=4, angle=90, vjust=-2.0, hjust=0)
 
-down_tot_by_os %>% ggplot(aes(x = yr_wk, y = log10(total), col = os_factor, group = os_factor)) +
-  geom_line()
+g_os_yoy <- down_tot_by_os %>% 
+  ggplot(aes(x = yr_wk, y = yoy_perc, col = os_factor, group = os_factor)) +
+  geom_line() +
+  facet_grid(os_factor~., scales = 'free') +
+  geom_hline(yintercept = 0) +
+  geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red") +
+  annotate(geom = "text", x=R_ver_hist$yr_wk, y=0, label=R_ver_hist$version)
+
+gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
+
+down_tot_by_os %>% dplyr::group_by(os_factor) %>% summarise_all(mean)
 
 # What does the trend look like by version
 down_tot_by_ver <- cran_R_downloads %>% 
@@ -120,7 +139,7 @@ r_trends_t %>% head()
 
 r_trends_tot_wk <- r_trends_t %>% 
   dplyr::group_by(yr_wk) %>% 
-  dplyr::summarise(total = sum(hits_q)) 
+  dplyr::summarise(total = sum(hits_q, na.rm = TRUE)) 
 
 r_trends_tot_wk %>% ggplot(aes(x = yr_wk, y = total)) +
   geom_line()
