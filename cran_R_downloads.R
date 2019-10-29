@@ -23,8 +23,11 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
                 yr_wk_ver = tsibble::yearweek(as.Date(greg_d))
   ) %>% 
   dplyr::select(version,vers_i,nickname,greg_d,yr_wk_ver) %>% 
-  dplyr::filter(greg_d >= as.Date('2015-01-01'))# %>% 
-  #dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.5.1","3.5.2","3.6.0"))
+  dplyr::filter(greg_d >= as.Date('2015-01-01')) # %>%
+  #dplyr::filter(!vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
+
+R_ver_hist_major <- R_ver_hist %>%  
+  dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
 
 Scran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
 cran_R_downloads <- cran_R_downloads_raw %>% 
@@ -78,10 +81,11 @@ down_tot_by_d <- cran_R_downloads %>%
 down_tot_by_d %>% 
   ggplot(aes(x = yr_wk, y = total, color = greg_d)) +
   geom_line() +
-  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red")
+  labs(x = 'Week', y = 'Weekly Downloads') +
+  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") 
 
-down_tot_by_d %>% ggplot(aes(x = yr_wk, y = log10(total))) +
-  geom_line() 
+
 
 # What does the trend look like by os
 down_tot_by_os <- cran_R_downloads %>% 
