@@ -42,11 +42,12 @@ cran_R_downloads <- cran_R_downloads_raw %>%
          month = lubridate::month(date),
          week = lubridate::week(date),
          yr_mo = tsibble::yearmonth(date),
-         yr_wk = tsibble::yearweek(date)
+         yr_wk = tsibble::yearweek(date),
+         ver_3_5_f = ifelse(date >= subset(R_ver_hist_major, version == '3.6.0')$greg_d,1,0)
   ) %>% 
   left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
   
-
+summary(cran_R_downloads)
 # filter out devel
 
 # EDA
@@ -93,7 +94,7 @@ down_tot_by_os <- cran_R_downloads %>%
   dplyr:: group_by(os_factor,yr_wk) %>% 
   dplyr::summarise(total = sum(count)) %>% 
   dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
-                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100,
+                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
   )
 
 g_os_lvl <- down_tot_by_os %>% 
@@ -117,29 +118,47 @@ g_os_yoy <- down_tot_by_os %>%
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10) #+
-  # annotate(geom = "text", 
-  #          x=subset(R_ver_hist_major, version == '3.6.0')$yr_wk, 
-  #          y=0, label=subset(R_ver_hist_major, version == '3.6.0')$version,
-  #          size=4, angle=90, vjust=-0.10, hjust=-0.10)
+           size=4, angle=90, vjust=-0.10, hjust=-0.10) 
 
 gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
 
-down_tot_by_os %>% dplyr::group_by(os_factor) %>% summarise_all(mean)
+down_tot_by_os %>% dplyr::group_by(os_factor) %>% summarise_all(mean,na.rm = TRUE)
+down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f),
+                                    by = "yr_wk") %>% 
+  dplyr::group_by(os_factor,ver_3_5_f) %>% summarise_all(mean,na.rm = TRUE)
 
-# What does the trend look like by version
+# What does the trend look like by os by version
 down_tot_by_ver <- cran_R_downloads %>% 
-  dplyr:: group_by(yr_wk,ver_lvl_factor,ver_lvl_top_factor,os) %>% 
-  dplyr::summarise(total = sum(count))
+  dplyr:: group_by(yr_wk,ver_lvl_top_factor,os) %>% 
+  dplyr::summarise(total = sum(count)) %>% 
+  dplyr::arrange()
+  dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
+                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
+  )
 
-down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_factor, group = ver_lvl_factor)) +
+g_ver_lvl <- down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_top_factor, group = ver_lvl_top_factor)) +
   geom_line() +
   facet_grid(os~ver_lvl_top_factor)+
-  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red")
+  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10)
 
-down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = log2(total), col = ver_lvl_factor, group = ver_lvl_factor)) +
+g_ver_yoy <- down_tot_by_ver %>% 
+  ggplot(aes(x = yr_wk, y = yoy_perc, col = ver_lvl_top_factor, group = ver_lvl_top_factor)) +
   geom_line() +
-  facet_grid(os~ver_lvl_top_factor)
+  facet_grid(os~ver_lvl_top_factor, scales = 'free') +
+  geom_hline(yintercept = 0) +
+  geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10)
+
+# add layered bar chart or wave
 
 ## Top Level
 
