@@ -56,7 +56,8 @@ cran_R_downloads %>% select(os) %>% group_by(os) %>% summarise(os_cnts = n())
 
 cran_R_downloads %>% select(date) %>% distinct() %>% nrow()
 
-cran_R_downloads %>% select(ver_lvl) %>% dplyr::group_by(ver_lvl) %>% summarise(version_cnts = n())
+cran_R_downloads %>% select(ver_lvl_top_factor) %>% 
+  dplyr::group_by(ver_lvl_top_factor) %>% summarise(version_cnts = n())
 
 # Build Aggregation Views
 # What does the trend look at by Year
@@ -99,17 +100,28 @@ g_os_lvl <- down_tot_by_os %>%
   ggplot(aes(x = yr_wk, y = total, col = os_factor, group = os_factor)) +
   geom_line() +
   facet_grid(os_factor~., scales = 'free') +
-  geom_vline(data = R_ver_hist, aes(xintercept = yr_wk_ver), linetype = 4, color = "red") +
-  geom_text(data=R_ver_hist, mapping=aes(x=yr_wk_ver, y=0, label=version), 
-            size=4, angle=90, vjust=-2.0, hjust=0)
+  geom_vline(data = R_ver_hist, aes(xintercept = yr_wk_ver), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+         x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+         y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+         size=4, angle=90, vjust=-0.10, hjust=-0.10)
 
 g_os_yoy <- down_tot_by_os %>% 
   ggplot(aes(x = yr_wk, y = yoy_perc, col = os_factor, group = os_factor)) +
   geom_line() +
   facet_grid(os_factor~., scales = 'free') +
   geom_hline(yintercept = 0) +
-  geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red") +
-  annotate(geom = "text", x=R_ver_hist$yr_wk, y=0, label=R_ver_hist$version)
+  geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10) #+
+  # annotate(geom = "text", 
+  #          x=subset(R_ver_hist_major, version == '3.6.0')$yr_wk, 
+  #          y=0, label=subset(R_ver_hist_major, version == '3.6.0')$version,
+  #          size=4, angle=90, vjust=-0.10, hjust=-0.10)
 
 gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
 
