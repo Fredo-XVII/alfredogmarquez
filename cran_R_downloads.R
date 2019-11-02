@@ -1,5 +1,10 @@
 # Count R download Stats
 
+# References for blog
+# https://cran.r-project.org/web/packages/cranlogs/cranlogs.pdf
+# https://github.com/r-hub/cranlogs.app
+# 
+
 
 # Libraries
 library(cranlogs)
@@ -29,10 +34,10 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
 R_ver_hist_major <- R_ver_hist %>%  
   dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
 
-Scran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
 cran_R_downloads <- cran_R_downloads_raw %>% 
-  filter(!version %in% c('devel','release','release.exe','latest')) %>% 
-  mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
+  dplyr::filter(!version %in% c('devel','release','release.exe','latest')) %>% 
+  dplyr::mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
          ver_factor =forcats::fct_inorder(forcats::as_factor(version)),
          ver_lvl = sub("*[.^]", "", version) %>% sub("\\..*", "", .) %>% as.integer(),
          ver_lvl_factor =forcats::fct_inorder(forcats::as_factor(ver_lvl)),
@@ -45,7 +50,8 @@ cran_R_downloads <- cran_R_downloads_raw %>%
          yr_wk = tsibble::yearweek(date),
          ver_3_5_f = ifelse(date >= subset(R_ver_hist_major, version == '3.6.0')$greg_d,1,0)
   ) %>% 
-  left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
+  dplyr::filter(yr_wk != max(cran_R_downloads$yr_wk)) %>% 
+  dplyr::left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
   
 summary(cran_R_downloads)
 # filter out devel
@@ -72,7 +78,13 @@ down_tot_by_yr <- cran_R_downloads %>%
 
 down_tot_by_yr %>% 
   ggplot(aes(x = year, y = total, color = year)) +
-  geom_line()
+  geom_line() +
+  theme_light() 
+
+down_tot_by_yr %>% 
+  ggplot(aes(x = year, y = yoy_perc, fill = as.factor(year))) +
+  geom_col() +
+  theme_light() 
 
 # What does the trend look like?
 down_tot_by_d <- cran_R_downloads %>% 
@@ -81,8 +93,9 @@ down_tot_by_d <- cran_R_downloads %>%
   tsibble::as_tsibble(index = yr_wk)
 
 down_tot_by_d %>% 
-  ggplot(aes(x = yr_wk, y = total, color = greg_d)) +
+  ggplot(aes(x = yr_wk, y = total)) +
   geom_line() +
+  theme_light() +
   labs(x = 'Week', y = 'Weekly Downloads') +
   geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") 
@@ -106,7 +119,8 @@ g_os_lvl <- down_tot_by_os %>%
   annotate(geom = "text", 
          x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
          y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-         size=4, angle=90, vjust=-0.10, hjust=-0.10)
+         size=4, angle=90, vjust=-0.10, hjust=-0.10) 
+g_os_lvl
 
 g_os_yoy <- down_tot_by_os %>% 
   ggplot(aes(x = yr_wk, y = yoy_perc, col = os_factor, group = os_factor)) +
@@ -119,6 +133,7 @@ g_os_yoy <- down_tot_by_os %>%
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
            size=4, angle=90, vjust=-0.10, hjust=-0.10) 
+g_os_yoy
 
 gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
 
@@ -129,9 +144,9 @@ down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f)
 
 # What does the trend look like by os by version
 down_tot_by_ver <- cran_R_downloads %>% 
-  dplyr:: group_by(yr_wk,ver_lvl_top_factor,os) %>% 
+  dplyr:: group_by(ver_lvl_top_factor,os,yr_wk) %>%
+  #dplyr:: arrange(ver_lvl_top_factor,os,yr_wk) %>%
   dplyr::summarise(total = sum(count)) %>% 
-  dplyr::arrange()
   dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
                 yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
   )
@@ -141,22 +156,26 @@ g_ver_lvl <- down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_
   facet_grid(os~ver_lvl_top_factor)+
   geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  theme_light() +
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
            size=4, angle=90, vjust=-0.10, hjust=-0.10)
+g_ver_lvl
 
-g_ver_yoy <- down_tot_by_ver %>% 
+g_ver_yoy <- down_tot_by_ver %>% filter(ver_lvl_top_factor == 3) %>% 
   ggplot(aes(x = yr_wk, y = yoy_perc, col = ver_lvl_top_factor, group = ver_lvl_top_factor)) +
   geom_line() +
   facet_grid(os~ver_lvl_top_factor, scales = 'free') +
   geom_hline(yintercept = 0) +
   geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  theme_light() +
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
            size=4, angle=90, vjust=-0.10, hjust=-0.10)
+g_ver_yoy
 
 # add layered bar chart or wave
 
