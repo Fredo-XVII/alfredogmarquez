@@ -79,14 +79,21 @@ down_tot_by_yr <- cran_R_downloads %>%
 down_tot_by_yr %>% 
   ggplot(aes(x = year, y = total, color = year)) +
   geom_line() +
-  theme_light() 
+  theme_light() +
+  labs(x = 'Year', y = 'Total Downloads', title = "R Downloads")
 
 down_tot_by_yr %>% 
-  ggplot(aes(x = year, y = yoy_perc, fill = as.factor(year))) +
+  ggplot(aes(x = year, y = yoy_perc, fill = yoy_perc)) +
   geom_col() +
-  theme_light() 
+  theme_light() +
+  annotate(geom = "text", 
+           x=down_tot_by_yr$year, 
+           y=0, 
+           label=paste0(round(down_tot_by_yr$yoy_perc,0),'%'),
+           size=5, angle=0, vjust= -.25, hjust= 0.50) +
+  labs(x = 'Year', y = 'YOY Growth R Downloads')
 
-# What does the trend look like?
+s# What does the trend look like?
 down_tot_by_d <- cran_R_downloads %>% 
   dplyr::group_by(yr_wk,greg_d,forcats::fct_explicit_na(vers_i)) %>% 
   dplyr::summarise(total = sum(count)) %>% 
