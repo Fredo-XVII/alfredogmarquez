@@ -15,6 +15,7 @@ library(tidyverse)
 library(tsibble)
 library(gtrendsR)
 library(rversions)
+library(scales)
 
 
 # Download R download data and version dates
@@ -74,26 +75,33 @@ down_tot_by_yr <- cran_R_downloads %>%
   dplyr::mutate(yoy = total/dplyr::lag(total),
                 yoy_perc = (total/dplyr::lag(total) - 1)*100,
                 ) %>% 
-  tsibble::as_tsibble(index = year)
+  tsibble::as_tsibble(index = year) 
 
-down_tot_by_yr %>% 
+g_tot_by_yr <- down_tot_by_yr %>% 
   ggplot(aes(x = year, y = total, color = year)) +
   geom_line() +
-  theme_light() +
-  labs(x = 'Year', y = 'Total Downloads', title = "R Downloads")
+  theme_light() + theme(legend.position = "none") +
+  xlim(2015, 2020) +
+  labs(x = 'Year', y = 'Total Downloads', title = "R Downloads from RStudio Cranlogs by Year") +
+  scale_y_continuous(labels = scales::unit_format(unit = "M", scale = 1e-05, digits = 4))
 
-down_tot_by_yr %>% 
+
+g_tot_by_yoy <- down_tot_by_yr %>% 
   ggplot(aes(x = year, y = yoy_perc, fill = yoy_perc)) +
   geom_col() +
-  theme_light() +
+  theme_light() + theme(legend.position = "none") +
+  xlim(2015, 2020) +
   annotate(geom = "text", 
            x=down_tot_by_yr$year, 
            y=0, 
            label=paste0(round(down_tot_by_yr$yoy_perc,0),'%'),
            size=5, angle=0, vjust= -.25, hjust= 0.50) +
-  labs(x = 'Year', y = 'YOY Growth R Downloads')
+  labs(x = 'Year', y = 'YOY % Growth') +
+  scale_y_continuous(labels = scales::percent_format(scale = 1))
 
-s# What does the trend look like?
+gridExtra::grid.arrange(g_tot_by_yr,g_tot_by_yoy)
+
+# What does the trend look like?
 down_tot_by_d <- cran_R_downloads %>% 
   dplyr::group_by(yr_wk,greg_d,forcats::fct_explicit_na(vers_i)) %>% 
   dplyr::summarise(total = sum(count)) %>% 
@@ -103,9 +111,18 @@ down_tot_by_d %>%
   ggplot(aes(x = yr_wk, y = total)) +
   geom_line() +
   theme_light() +
-  labs(x = 'Week', y = 'Weekly Downloads') +
+  labs(x = 'Week', y = 'Weekly Downloads', title = "R Downloads from RStudio Cranlogs by Week",
+       caption = "Blue Line: R minor version releases\n
+       Red Line: R version patches \n
+       Note: No major versions released during this time.
+       ") +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
-  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") 
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10) 
 
 
 
@@ -126,12 +143,15 @@ g_os_lvl <- down_tot_by_os %>%
   annotate(geom = "text", 
          x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
          y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-         size=4, angle=90, vjust=-0.10, hjust=-0.10) 
+         size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+  theme_light() + theme(legend.position = "none") +
+  labs(x = 'Week', y = '', title = "R Downloads from RStudio Cranlogs by Week") 
 g_os_lvl
 
 g_os_yoy <- down_tot_by_os %>% 
   ggplot(aes(x = yr_wk, y = yoy_perc, col = os_factor, group = os_factor)) +
   geom_line() +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   facet_grid(os_factor~., scales = 'free') +
   geom_hline(yintercept = 0) +
   geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
@@ -139,7 +159,13 @@ g_os_yoy <- down_tot_by_os %>%
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10) 
+           size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+  theme_light() + theme(legend.position = "none") +
+  labs(x = 'Week', y = '', title = "R Downloads Year Over Year Change from RStudio Cranlogs by Week",
+       caption = "Blue Line: R minor version releases\n
+       Red Line: R version patches \n
+       Note: No major versions released during this time.
+       ")
 g_os_yoy
 
 gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
