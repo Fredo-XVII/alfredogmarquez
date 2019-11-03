@@ -190,7 +190,15 @@ g_ver_yoy
 
 # Google Trends: Why is there a bump in the fall of 2018.
 
-R_gtrends <- gtrendsR::gtrends(c("R",'r'))
+categ <- c(1299, 1252, 675, 31, 900)
+R_gtrends <- gtrendsR::gtrends(keyword = c("R",'r','r-project','dplyr','tidyverse'),
+                               geo = c("US"),
+                               time = sprintf("2010-01-01 %s",lubridate::today())
+                               #gprop = c("web","youtube"),
+                               #category = categ
+                               )
+
+plot(R_gtrends)
 
 r_trends_t <- R_gtrends$interest_over_time %>% 
   dplyr::mutate(yr_wk = tsibble::yearweek(date),
