@@ -150,7 +150,8 @@ g_os_lvl
 
 g_os_yoy <- down_tot_by_os %>% 
   ggplot(aes(x = yr_wk, y = yoy_perc, col = os_factor, group = os_factor)) +
-  geom_line() +
+  #geom_line() +
+  geom_col() +
   scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   facet_grid(os_factor~., scales = 'free') +
   geom_hline(yintercept = 0) +
