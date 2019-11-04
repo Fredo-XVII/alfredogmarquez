@@ -121,7 +121,11 @@ down_tot_by_d %>%
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10) 
+           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = "blue", alpha = 0.75) +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
+           y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = "red", alpha = 0.5) 
 
 
 
@@ -142,13 +146,18 @@ g_os_lvl <- down_tot_by_os %>%
   annotate(geom = "text", 
          x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
          y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-         size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+         size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "blue", alpha = 0.75) +
   annotate(geom = "text", 
            x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
            y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+           size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "red", alpha = 0.5) +
   theme_light() + theme(legend.position = "none") +
-  labs(x = 'Week', y = '', title = "R Downloads from RStudio Cranlogs by Week") 
+  labs(x = 'Week', y = '', title = "R Downloads from RStudio Cranlogs by Week",
+       caption = "
+       Current R major version is 3.x.x \n
+       Blue Line: R minor version releases\n
+       Red Dotted Line: R version patches \n       .
+       ")
 g_os_lvl
 
 g_os_yoy <- down_tot_by_os %>% 
@@ -163,25 +172,21 @@ g_os_yoy <- down_tot_by_os %>%
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+           size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "blue", alpha = 0.75) +
   annotate(geom = "text", 
            x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
            y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+           size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "red", alpha = 0.5) +
   theme_light() + theme(legend.position = "none") +
   labs(x = 'Week', y = '', title = "R Downloads Year Over Year Change from RStudio Cranlogs by Week",
-       caption = "Blue Line: R minor version releases\n
-       Red Line: R version patches \n
-       Note: No major versions released during this time.
+       caption = "
+       Current R major version is 3.x.x \n
+       Blue Line: R minor version releases\n
+       Red Dotted Line: R version patches \n  
        ")
 g_os_yoy
 
 gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
-
-down_tot_by_os %>% dplyr::group_by(os_factor) %>% summarise_all(mean,na.rm = TRUE)
-down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f),
-                                    by = "yr_wk") %>% 
-  dplyr::group_by(os_factor,ver_3_5_f) %>% summarise_all(mean,na.rm = TRUE)
 
 down_tot_by_os %>% 
   # dplyr::left_join(R_ver_hist_major, by = c('yr_wk' = 'yr_wk_ver')) %>% 
@@ -194,6 +199,14 @@ down_tot_by_os %>%
                    perc_wks_10pct = tot_over_10pct/rows_after_3.5 * 100,
                    tot_over_100pct = sum(yoy_gtr_100),
                    perc_wks_100pct = tot_over_100pct/rows_after_3.5 * 100)
+
+
+down_tot_by_os %>% dplyr::group_by(os_factor) %>% summarise_all(mean,na.rm = TRUE)
+down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f),
+                                    by = "yr_wk") %>% 
+  dplyr::group_by(os_factor,ver_3_5_f) %>% summarise_all(mean,na.rm = TRUE)
+
+
 
   
   
