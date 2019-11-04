@@ -29,8 +29,7 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
                 yr_wk_ver = tsibble::yearweek(as.Date(greg_d))
   ) %>% 
   dplyr::select(version,vers_i,nickname,greg_d,yr_wk_ver) %>% 
-  dplyr::filter(greg_d >= as.Date('2015-01-01')) # %>%
-  #dplyr::filter(!vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
+  dplyr::filter(greg_d >= as.Date('2015-01-01')) 
 
 R_ver_hist_major <- R_ver_hist %>%  
   dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
@@ -49,7 +48,7 @@ cran_R_downloads <- cran_R_downloads_raw %>%
          week = lubridate::week(date),
          yr_mo = tsibble::yearmonth(date),
          yr_wk = tsibble::yearweek(date),
-         ver_3_5_f = ifelse(date >= subset(R_ver_hist_major, version == '3.6.0')$greg_d,1,0)
+         ver_3_5_f = ifelse(date >= subset(R_ver_hist_major, version == '3.5.0')$greg_d,1,0)
   ) %>% 
   dplyr::filter(yr_wk != max(cran_R_downloads$yr_wk)) %>% 
   dplyr::left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
@@ -144,6 +143,10 @@ g_os_lvl <- down_tot_by_os %>%
          x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
          y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
          size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
+           y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10) +
   theme_light() + theme(legend.position = "none") +
   labs(x = 'Week', y = '', title = "R Downloads from RStudio Cranlogs by Week") 
 g_os_lvl
@@ -161,6 +164,10 @@ g_os_yoy <- down_tot_by_os %>%
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
            size=4, angle=90, vjust=-0.10, hjust=-0.10) +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
+           y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10) +
   theme_light() + theme(legend.position = "none") +
   labs(x = 'Week', y = '', title = "R Downloads Year Over Year Change from RStudio Cranlogs by Week",
        caption = "Blue Line: R minor version releases\n
@@ -175,6 +182,24 @@ down_tot_by_os %>% dplyr::group_by(os_factor) %>% summarise_all(mean,na.rm = TRU
 down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f),
                                     by = "yr_wk") %>% 
   dplyr::group_by(os_factor,ver_3_5_f) %>% summarise_all(mean,na.rm = TRUE)
+
+down_tot_by_os %>% 
+  # dplyr::left_join(R_ver_hist_major, by = c('yr_wk' = 'yr_wk_ver')) %>% 
+  dplyr::filter(yr_wk >= subset(R_ver_hist_major, version == '3.5.0')$yr_wk) %>%
+  dplyr::mutate(yoy_gtr_10 = ifelse(yoy_perc >= 10,1,0),
+                yoy_gtr_100 = ifelse(yoy_perc >= 100,1,0)) %>% 
+  group_by(os_factor) %>% 
+  dplyr::summarise(rows_after_3.5 = n(),
+                   tot_over_10pct = sum(yoy_gtr_10),
+                   perc_wks_10pct = tot_over_10pct/rows_after_3.5 * 100,
+                   tot_over_100pct = sum(yoy_gtr_100),
+                   perc_wks_100pct = tot_over_100pct/rows_after_3.5 * 100)
+
+  
+  
+
+# ----- Not using any code below this ----- #
+# ----------------------------------------- #
 
 # What does the trend look like by os by version
 down_tot_by_ver <- cran_R_downloads %>% 
