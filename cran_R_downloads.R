@@ -255,8 +255,10 @@ g_ver_yoy
 
 # Google Trends: Why is there a bump in the fall of 2018.
 
+terms <- c("R",'r','r-project','dplyr','tidyverse')
+terms <- c("tidyverse")
 categ <- c(1299, 1252, 675, 31, 900)
-R_gtrends <- gtrendsR::gtrends(keyword = c("R",'r','r-project','dplyr','tidyverse'),
+R_gtrends <- gtrendsR::gtrends(keyword = terms,
                                geo = c("US"),
                                time = sprintf("2010-01-01 %s",lubridate::today())
                                #gprop = c("web","youtube"),
