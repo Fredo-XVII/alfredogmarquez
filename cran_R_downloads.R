@@ -271,7 +271,9 @@ r_trends_t <- R_gtrends$interest_over_time %>%
   dplyr::mutate(yr_wk = tsibble::yearweek(date),
                 hits_q = as.numeric(hits))
 
-r_trends_t %>% head()
+r_trends_t %>% tail()
+
+ggplot(r_trends_t, aes(hits)) + geom_histogram()
 
 r_trends_tot_wk <- r_trends_t %>% 
   dplyr::group_by(yr_wk) %>% 

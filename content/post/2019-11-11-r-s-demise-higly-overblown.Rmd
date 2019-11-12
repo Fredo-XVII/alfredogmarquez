@@ -1,0 +1,34 @@
+---
+title: R's Demise Higly Overblown
+author: Alfredo G Marquez
+date: '2019-11-11'
+slug: r-s-demise-higly-overblown
+categories:
+  - R
+tags:
+  - R Programming Cranlogs
+keywords:
+  - tech
+autoThumbnailImage: false
+thumbnailImagePosition: "top"
+thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/6/69/Julia_prog_language.svg
+coverImage: /images/256px-Julia_prog_language.svg
+metaAlignment: center
+coverMeta: out
+coverSize: partial
+summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
+draft: false
+---
+
+<!--more-->
+
+
+# 
+
+In this post I will provide evidence that contradicts recent reports that the R Programming languange is declining in popularity.
+
+-----
+
+In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicted what I was seeing in my day to day life.  Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting R because it feels more comfortable than Python and they are not interested in building software or building production pipelines.  These souls are highly ignored by the software community, but they are embraced by the R community because at the end of the day we just care about the data.
+
+-----
