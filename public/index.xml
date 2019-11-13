@@ -2,41 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Alfredo&#39;s Sandbox</title>
-    <link>https://www.alfredogmarquez.com/</link>
+    <link>/</link>
     <description>Recent content on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.alfredogmarquez.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>R&#39;s Demise Higly Overblown</title>
+      <link>/2019/11/11/r-s-demise-higly-overblown/</link>
+      <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/11/11/r-s-demise-higly-overblown/</guid>
+      <description>In this post I will provide evidence that contradicts recent reports that the R Programming languange is declining in popularity.
+In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I was seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.</description>
+    </item>
+    
+    <item>
       <title>JuliaPro&#39;s Julia on Jupyter Notebooks</title>
-      <link>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</link>
+      <link>/2019/09/29/juliapro-on-jupyter/</link>
       <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</guid>
+      <guid>/2019/09/29/juliapro-on-jupyter/</guid>
       <description>In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
 I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.</description>
     </item>
     
     <item>
       <title>TEZ UP YOUR RODBC HIVE QUERIES</title>
-      <link>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
+      <link>/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
+      <guid>/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
       <description>In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
 Hive only a few years ago was rare occurrence in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.</description>
     </item>
     
     <item>
       <title>Spark Installation on Windows</title>
-      <link>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</link>
+      <link>/2018/05/15/spark-installation-on-windows/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</guid>
+      <guid>/2018/05/15/spark-installation-on-windows/</guid>
       <description>IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.
 Step #1: Download and InstallationInstall Spark
 First you will need to download Spark, which comes with the package for SparkR.</description>
@@ -44,37 +54,37 @@ First you will need to download Spark, which comes with the package for SparkR.<
     
     <item>
       <title>Ode to R, Happy 25th Birthday</title>
-      <link>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</link>
+      <link>/2018/03/31/ode-to-r/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</guid>
+      <guid>/2018/03/31/ode-to-r/</guid>
       <description>As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://www.alfredogmarquez.com/page/julia_library/</link>
+      <link>/page/julia_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/julia_library/</guid>
+      <guid>/page/julia_library/</guid>
       <description>Julia Librarycode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://www.alfredogmarquez.com/page/r_library/</link>
+      <link>/page/r_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/r_library/</guid>
+      <guid>/page/r_library/</guid>
       <description>R Librarycode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
     </item>
     
     <item>
       <title>Julia Library</title>
-      <link>https://www.alfredogmarquez.com/page/julia_library/</link>
+      <link>/page/julia_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/julia_library/</guid>
+      <guid>/page/julia_library/</guid>
       <description> Julia Workspace Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting: Mapping &amp;amp; Cartography:  Mapping
  Spacial Analysis
   Spark Econometrics Machine Learning Databases RAM Memory Library &amp;amp; Package management Julia Environmental variables ( related to Library Management above ) Docker Writing Packages </description>
@@ -82,10 +92,10 @@ First you will need to download Spark, which comes with the package for SparkR.<
     
     <item>
       <title>R Library</title>
-      <link>https://www.alfredogmarquez.com/page/r_library/</link>
+      <link>/page/r_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/r_library/</guid>
+      <guid>/page/r_library/</guid>
       <description>R Workspace The Workspace: http://www.statmethods.net/interface/workspace.html
 Hadley  R 4 Data Science: http://r4ds.had.co.nz/ http://stat545.com/bit001_dplyr-cheatsheet.html Writing Packages: http://r-pkgs.had.co.nz/  RStudio Server https://www.r-bloggers.com/setting-up-a-datascience-server/
 Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting:  https://www.ggplot2-exts.org/gganimate.html http://motioninsocial.com/tufte/?utm_content=bufferc1618&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer https://briatte.github.io/ggcorr/ https://journal.r-project.org/archive/2013-1/kahle-wickham.pdf https://plot.ly/feed/ https://plotly-book.cpsievert.me/index.html - book on Plotly and R https://www.r-graph-gallery.com/ Radial: http://rstudio-pubs-static.s3.amazonaws.com/72298_c1ba7f77276a4f27a0f375cadc9fac5d.html  Mapping &amp;amp; Cartography:  Census

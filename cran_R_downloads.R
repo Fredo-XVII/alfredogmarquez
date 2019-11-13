@@ -10,7 +10,7 @@
 library(cranlogs)
 library(lubridate)
 library(gridExtra)
-library(ggrepel)
+#library(ggrepel)
 library(tidyverse)
 library(tsibble)
 library(gtrendsR)

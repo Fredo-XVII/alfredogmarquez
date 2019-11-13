@@ -3,236 +3,247 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</loc>
+    <loc>/2019/11/11/r-s-demise-higly-overblown/</loc>
+    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/09/29/juliapro-on-jupyter/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</loc>
+    <loc>/2019/03/24/tez-up-your-rodbc-hive-queries/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</loc>
+    <loc>/2018/05/15/spark-installation-on-windows/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</loc>
+    <loc>/2018/03/31/ode-to-r/</loc>
     <lastmod>2018-03-31T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/page/julia_library/</loc>
+    <loc>/page/julia_library/</loc>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/page/r_library/</loc>
+    <loc>/page/r_library/</loc>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/</loc>
-    <lastmod>2019-09-29T00:00:00+00:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/archives/</loc>
+    <loc>/archives/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/books/</loc>
+    <loc>/categories/books/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/hive/</loc>
+    <loc>/tags/hive/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/installation/</loc>
+    <loc>/tags/installation/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/julia/</loc>
+    <loc>/categories/julia/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/julia-books/</loc>
+    <loc>/tags/julia-books/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</loc>
+    <loc>/tags/julia-juliapro-jupyter-kernel/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/page/julia_library/</loc>
+    <loc>/page/julia_library/</loc>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/julia-programming/</loc>
+    <loc>/tags/julia-programming/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/julia-references/</loc>
+    <loc>/tags/julia-references/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/julia-resources/</loc>
+    <loc>/tags/julia-resources/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/julialang/</loc>
+    <loc>/tags/julialang/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/links/</loc>
+    <loc>/categories/links/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/page/</loc>
+    <loc>/page/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/post/</loc>
-    <lastmod>2019-09-29T00:00:00+00:00</lastmod>
+    <loc>/post/</loc>
+    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/query/</loc>
+    <loc>/tags/query/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/r/</loc>
-    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+    <loc>/categories/r/</loc>
+    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-books/</loc>
+    <loc>/tags/r-books/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</loc>
+    <loc>/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</loc>
     <lastmod>2018-03-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/page/r_library/</loc>
+    <loc>/page/r_library/</loc>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-links/</loc>
+    <loc>/tags/r-links/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-programming/</loc>
+    <loc>/tags/r-programming/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-project/</loc>
+    <loc>/tags/r-programming-cranlogs-trends-popularity/</loc>
+    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r-project/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-references/</loc>
+    <loc>/tags/r-references/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-resources/</loc>
+    <loc>/tags/r-resources/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/references/</loc>
+    <loc>/categories/references/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/resources/</loc>
+    <loc>/categories/resources/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/rodbc/</loc>
+    <loc>/tags/rodbc/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/spark/</loc>
+    <loc>/categories/spark/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/spark/</loc>
+    <loc>/tags/spark/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/sparkr/</loc>
+    <loc>/categories/sparkr/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/sparkr/</loc>
+    <loc>/tags/sparkr/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/tez/</loc>
+    <loc>/categories/tez/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/categories/tez/</loc>
+    <loc>/tags/tez/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://www.alfredogmarquez.com/tags/windows/</loc>
+    <loc>/tags/windows/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

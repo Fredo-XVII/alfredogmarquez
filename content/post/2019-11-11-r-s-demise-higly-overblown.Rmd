@@ -2,22 +2,25 @@
 title: R's Demise Higly Overblown
 author: Alfredo G Marquez
 date: '2019-11-11'
-slug: r-s-demise-higly-overblown
 categories:
   - R
 tags:
-  - R Programming Cranlogs
+  - R Programming Cranlogs trends popularity
+slug: r-s-demise-higly-overblown
 keywords:
-  - tech
-autoThumbnailImage: false
-thumbnailImagePosition: "top"
-thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/6/69/Julia_prog_language.svg
-coverImage: /images/256px-Julia_prog_language.svg
+  - R
+  - popular
+  - popularity
+  - trends
+autoThumbnailImage: no
+thumbnailImagePosition: top
+thumbnailImage: https://www.r-project.org/logo/Rlogo.svg
+coverImage: https://www.r-project.org/logo/Rlogo.svg
 metaAlignment: center
 coverMeta: out
 coverSize: partial
-summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
-draft: false
+summary: Today I will provide evidence that R's demise are highly overblown.
+draft: no
 ---
 
 <!--more-->
@@ -29,6 +32,56 @@ In this post I will provide evidence that contradicts recent reports that the R 
 
 -----
 
-In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicted what I was seeing in my day to day life.  Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting R because it feels more comfortable than Python and they are not interested in building software or building production pipelines.  These souls are highly ignored by the software community, but they are embraced by the R community because at the end of the day we just care about the data.
+In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I was seeing in my day to day life.  Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.  These souls are highly ignored by the software community, but they are embraced by the R community because at the end of the day we just care about the data and the stories that they tell, and R is great for telling stories.
 
 -----
+
+# Introduction
+
+As I have read all these posts about python impacting the demand for R and implying that R was on the decline, I though about how I could adress this question empirically.  I thought to myself, if the rise in Python for Data Science is decreasing the demand for R for Data Science, then naturally, you would see a decrease in R downloads as users moved from R to Python.  Therefore, my experiment is designed as below:
+
+#### **Design of Experiment:**
+
+> **Null Hypothesis (H0):** No change to R downloads, given the rise in Python.
+>
+> **Alternative Hypothesis (H1):** R downloads decline, given the rise in Python.
+>
+> **Basic Assumption:** R downloads are conducted by users intending to use the language. In other words, users are not downloading R just because they enjoy downloading stuff; they actually intend to use the download.
+
+# Data
+
+Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time.  My thought was to start the analysis from 2010 to the present in order to capture the rise of both languages.  From this point, you can conduct Granger Causality Test to see if Python is truely impacting the demand for R.  Unfortunately, I was not able to find a downloadable count of Python downloads since 2010.  I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.  
+
+R fared a little better but not much.  CRAN has many mirrors around the world that are self hosted.  In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded.  Luckily, @RStudio has provided a way to obtain the downloads of R from there mirror in the R package **cranlogs**.
+
+
+
+#
+
+```{r libaries, results='hide', message=FALSE}
+# Libraries
+library(cranlogs)
+library(lubridate)
+library(gridExtra)
+#library(ggrepel)
+library(tidyverse)
+library(tsibble)
+library(gtrendsR)
+library(rversions)
+library(scales)
+```
+
+
+
+# Reference
+
+  - https://cran.r-project.org/web/packages/cranlogs/cranlogs.pdf
+  - https://github.com/r-hub/cranlogs.app
+
+
+# Session Info
+```{r}
+sessionInfo()
+```
+
+
