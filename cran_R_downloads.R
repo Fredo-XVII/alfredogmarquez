@@ -50,7 +50,7 @@ cran_R_downloads <- cran_R_downloads_raw %>%
          yr_wk = tsibble::yearweek(date),
          ver_3_5_f = ifelse(date >= subset(R_ver_hist_major, version == '3.5.0')$greg_d,1,0)
   ) %>% 
-  dplyr::filter(yr_wk != max(cran_R_downloads$yr_wk)) %>% 
+  dplyr::filter(yr_wk != max(.$yr_wk)) %>% 
   dplyr::left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
   
 summary(cran_R_downloads)

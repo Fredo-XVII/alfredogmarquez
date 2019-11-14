@@ -15,7 +15,7 @@ keywords:
 autoThumbnailImage: no
 thumbnailImagePosition: top
 thumbnailImage: https://www.r-project.org/logo/Rlogo.svg
-coverImage: https://www.r-project.org/logo/Rlogo.svg
+coverImage: 
 metaAlignment: center
 coverMeta: out
 coverSize: partial
@@ -32,7 +32,7 @@ In this post I will provide evidence that contradicts recent reports that the R 
 
 -----
 
-In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I was seeing in my day to day life.  Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.  These souls are highly ignored by the software community, but they are embraced by the R community because at the end of the day we just care about the data and the stories that they tell, and R is great for telling stories.
+In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life.  Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.  These souls are highly ignored by the software community, but they are embraced by the R community because at the end of the day we just care about the data and the stories that they tell, and R is great for telling stories.
 
 -----
 
@@ -50,13 +50,19 @@ As I have read all these posts about python impacting the demand for R and imply
 
 # Data
 
-Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time.  My thought was to start the analysis from 2010 to the present in order to capture the rise of both languages.  From this point, you can conduct Granger Causality Test to see if Python is truely impacting the demand for R.  Unfortunately, I was not able to find a downloadable count of Python downloads since 2010.  I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.  
+Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time.  My thought was to start the analysis from 2015 to the present in order to capture the rise of both languages.  From this point, you can conduct Granger Causality Test to see if Python is truely impacting the demand for R.  Unfortunately, I was not able to find a downloadable count of Python downloads since 2015.  I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.  
 
 R fared a little better but not much.  CRAN has many mirrors around the world that are self hosted.  In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded.  Luckily, @RStudio has provided a way to obtain the downloads of R from there mirror in the R package **cranlogs**.
 
+The **cranlogs** package not only gives you downloads for R itself, but also for packages that are downloaded from the @RStudio cran mirror.  Because @RStudio has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using @RStudio as an IDE. 
+
+In contrast, I will not make the same assumption about installing R itself.  Normally, I install R core from the https://www.r-project.org/ website and then I install @RStudio IDE. This is important because I will use the @RStudio R downloads as a proxy of R downloads.
 
 
-#
+
+# Analysis
+
+To begin my analysis, I will use the packages loaded below.  
 
 ```{r libaries, results='hide', message=FALSE}
 # Libraries
@@ -69,6 +75,95 @@ library(tsibble)
 library(gtrendsR)
 library(rversions)
 library(scales)
+```
+
+
+### Build Data
+
+In this section I will download 2 datasets.  The first will be the R downloads from the **cranlogs** package, and the second will be data from the **rversions** package in order to get R version release dates.  The version dates data will be used to label the graphs.
+```{r}
+# Download R download data and version dates
+R_ver_hist_raw <- rversions::r_versions() 
+R_ver_hist_raw$vers_d <- as.POSIXct(R_ver_hist_raw$date)
+
+R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>% 
+  dplyr::mutate(greg_d = lubridate::as_date(vers_d),
+                vers_i = forcats::as_factor(version),
+                nickname = forcats::as_factor(nickname),
+                yr_wk_ver = tsibble::yearweek(as.Date(greg_d))
+  ) %>% 
+  dplyr::select(version,vers_i,nickname,greg_d,yr_wk_ver) %>% 
+  dplyr::filter(greg_d >= as.Date('2015-01-01')) 
+
+R_ver_hist_major <- R_ver_hist %>%  
+  dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
+
+cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+cran_R_downloads <- cran_R_downloads_raw %>% 
+  dplyr::filter(!version %in% c('devel','release','release.exe','latest')) %>% 
+  dplyr::mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
+         ver_factor =forcats::fct_inorder(forcats::as_factor(version)),
+         ver_lvl = sub("*[.^]", "", version) %>% sub("\\..*", "", .) %>% as.integer(),
+         ver_lvl_factor =forcats::fct_inorder(forcats::as_factor(ver_lvl)),
+         ver_lvl_top = stringr::str_sub(version,1,1) %>% as.integer(),
+         ver_lvl_top_factor =forcats::fct_inorder(forcats::as_factor(ver_lvl_top)),
+         year = lubridate::year(date),
+         month = lubridate::month(date),
+         week = lubridate::week(date),
+         yr_mo = tsibble::yearmonth(date),
+         yr_wk = tsibble::yearweek(date),
+         ver_3_5_f = ifelse(date >= subset(R_ver_hist_major, version == '3.5.0')$greg_d,1,0)
+  ) %>% 
+  dplyr::filter(yr_wk != max(.$yr_wk)) %>% 
+  dplyr::left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
+```
+
+Here is a quick look at the data.  I created some new features, date factors and period dummy variables, in order to drill into the data graphically.
+```{r}
+tail(cran_R_downloads,10)
+```
+
+
+# EDA
+
+### Yearly View
+I was first curiuos about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 but about 1 million downloads short from its 2015 level.  Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by almost 50% to 15 million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
+
+```{r, echo=FALSE}
+# Build Aggregation Views
+# What does the trend look at by Year
+down_tot_by_yr <- cran_R_downloads %>% 
+  dplyr::group_by(year) %>% 
+  dplyr::summarise(total = sum(count)) %>% 
+  dplyr::mutate(yoy = total/dplyr::lag(total),
+                yoy_perc = (total/dplyr::lag(total) - 1)*100,
+                ) %>% 
+  tsibble::as_tsibble(index = year) 
+
+g_tot_by_yr <- down_tot_by_yr %>% 
+  ggplot(aes(x = year, y = total, color = year)) +
+  geom_line() +
+  theme_light() + theme(legend.position = "none") +
+  xlim(2015, 2020) +
+  labs(x = 'Year', y = 'Total Downloads', title = "R Downloads from RStudio Cranlogs by Year") +
+  scale_y_continuous(labels = scales::unit_format(unit = "M", scale = 1e-05, digits = 4))
+
+
+g_tot_by_yoy <- down_tot_by_yr %>% 
+  ggplot(aes(x = year, y = yoy_perc, fill = yoy_perc)) +
+  geom_col() +
+  theme_light() + theme(legend.position = "none") +
+  xlim(2015, 2020) +
+  annotate(geom = "text", 
+           x=down_tot_by_yr$year, 
+           y=0, 
+           label=paste0(round(down_tot_by_yr$yoy_perc,0),'%'),
+           size=5, angle=0, vjust= -.25, hjust= 0.50) +
+  labs(x = 'Year', y = 'YOY % Growth') +
+  scale_y_continuous(labels = scales::percent_format(scale = 1))
+
+gridExtra::grid.arrange(g_tot_by_yr,g_tot_by_yoy)
+
 ```
 
 

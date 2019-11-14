@@ -14,8 +14,8 @@ keywords:
   - trends
 autoThumbnailImage: no
 thumbnailImagePosition: top
-thumbnailImage: https://www.r-project.org/logo/Rlogo.png
-coverImage: https://www.r-project.org/logo/Rlogo.svg
+thumbnailImage: https://www.r-project.org/logo/Rlogo.svg
+coverImage: 
 metaAlignment: center
 coverMeta: out
 coverSize: partial
@@ -30,7 +30,7 @@ draft: no
 <h1></h1>
 <p>In this post I will provide evidence that contradicts recent reports that the R Programming languange is declining in popularity.</p>
 <hr />
-<p>In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I was seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines. These souls are highly ignored by the software community, but they are embraced by the R community because at the end of the day we just care about the data and the stories that they tell, and R is great for telling stories.</p>
+<p>In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines. These souls are highly ignored by the software community, but they are embraced by the R community because at the end of the day we just care about the data and the stories that they tell, and R is great for telling stories.</p>
 <hr />
 </div>
 <div id="introduction" class="section level1">
@@ -47,11 +47,14 @@ draft: no
 </div>
 <div id="data" class="section level1">
 <h1>Data</h1>
-<p>Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time. My thought was to start the analysis from 2010 to the present in order to capture the rise of both languages. From this point, you can conduct Granger Causality Test to see if Python is truely impacting the demand for R. Unfortunately, I was not able to find a downloadable count of Python downloads since 2010. I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.</p>
+<p>Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time. My thought was to start the analysis from 2015 to the present in order to capture the rise of both languages. From this point, you can conduct Granger Causality Test to see if Python is truely impacting the demand for R. Unfortunately, I was not able to find a downloadable count of Python downloads since 2015. I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.</p>
 <p>R fared a little better but not much. CRAN has many mirrors around the world that are self hosted. In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded. Luckily, <span class="citation">@RStudio</span> has provided a way to obtain the downloads of R from there mirror in the R package <strong>cranlogs</strong>.</p>
+<p>The <strong>cranlogs</strong> package not only gives you downloads for R itself, but also for packages that are downloaded from the <span class="citation">@RStudio</span> cran mirror. Because <span class="citation">@RStudio</span> has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using <span class="citation">@RStudio</span> as an IDE.</p>
+<p>In contrast, I will not make the same assumption about installing R itself. Normally, I install R core from the <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a> website and then I install <span class="citation">@RStudio</span> IDE. This is important because I will use the <span class="citation">@RStudio</span> R downloads as a proxy of R downloads.</p>
 </div>
-<div id="section-1" class="section level1">
-<h1></h1>
+<div id="analysis" class="section level1">
+<h1>Analysis</h1>
+<p>To begin my analysis, I will use the packages loaded below.</p>
 <pre class="r"><code># Libraries
 library(cranlogs)
 library(lubridate)
@@ -62,6 +65,88 @@ library(tsibble)
 library(gtrendsR)
 library(rversions)
 library(scales)</code></pre>
+<div id="build-data" class="section level3">
+<h3>Build Data</h3>
+<p>In this section I will download 2 datasets. The first will be the R downloads from the <strong>cranlogs</strong> package, and the second will be data from the <strong>rversions</strong> package in order to get R version release dates. The version dates data will be used to label the graphs.</p>
+<pre class="r"><code># Download R download data and version dates
+R_ver_hist_raw &lt;- rversions::r_versions() 
+R_ver_hist_raw$vers_d &lt;- as.POSIXct(R_ver_hist_raw$date)
+
+R_ver_hist &lt;- R_ver_hist_raw %&gt;% dplyr::select(-date) %&gt;% 
+  dplyr::mutate(greg_d = lubridate::as_date(vers_d),
+                vers_i = forcats::as_factor(version),
+                nickname = forcats::as_factor(nickname),
+                yr_wk_ver = tsibble::yearweek(as.Date(greg_d))
+  ) %&gt;% 
+  dplyr::select(version,vers_i,nickname,greg_d,yr_wk_ver) %&gt;% 
+  dplyr::filter(greg_d &gt;= as.Date(&#39;2015-01-01&#39;)) 
+
+R_ver_hist_major &lt;- R_ver_hist %&gt;%  
+  dplyr::filter(vers_i %in% c(&quot;3.2.0&quot;,&quot;3.3.0&quot;,&quot;3.4.0&quot;,&quot;3.5.0&quot;,&quot;3.6.0&quot;))
+
+cran_R_downloads_raw &lt;- cranlogs::cran_downloads(&#39;R&#39;, from = &quot;2010-01-01&quot;, to = lubridate::today())
+cran_R_downloads &lt;- cran_R_downloads_raw %&gt;% 
+  dplyr::filter(!version %in% c(&#39;devel&#39;,&#39;release&#39;,&#39;release.exe&#39;,&#39;latest&#39;)) %&gt;% 
+  dplyr::mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
+         ver_factor =forcats::fct_inorder(forcats::as_factor(version)),
+         ver_lvl = sub(&quot;*[.^]&quot;, &quot;&quot;, version) %&gt;% sub(&quot;\\..*&quot;, &quot;&quot;, .) %&gt;% as.integer(),
+         ver_lvl_factor =forcats::fct_inorder(forcats::as_factor(ver_lvl)),
+         ver_lvl_top = stringr::str_sub(version,1,1) %&gt;% as.integer(),
+         ver_lvl_top_factor =forcats::fct_inorder(forcats::as_factor(ver_lvl_top)),
+         year = lubridate::year(date),
+         month = lubridate::month(date),
+         week = lubridate::week(date),
+         yr_mo = tsibble::yearmonth(date),
+         yr_wk = tsibble::yearweek(date),
+         ver_3_5_f = ifelse(date &gt;= subset(R_ver_hist_major, version == &#39;3.5.0&#39;)$greg_d,1,0)
+  ) %&gt;% 
+  dplyr::filter(yr_wk != max(.$yr_wk)) %&gt;% 
+  dplyr::left_join(R_ver_hist, by = c(&quot;yr_wk&quot; = &quot;yr_wk_ver&quot;)) </code></pre>
+<p>Here is a quick look at the data. I created some new features, date factors and period dummy variables, in order to drill into the data graphically.</p>
+<pre class="r"><code>tail(cran_R_downloads,10)</code></pre>
+<pre><code>##             date version.x  os count os_factor ver_factor ver_lvl
+## 72654 2019-11-10     3.2.0 osx     1       osx      3.2.0      32
+## 72655 2019-11-10     3.2.4 osx     1       osx      3.2.4      32
+## 72656 2019-11-10     3.6.1 win  1824       win      3.6.1      36
+## 72657 2019-11-10    2.13.0 win     1       win     2.13.0     213
+## 72658 2019-11-10     3.5.3 osx    40       osx      3.5.3      35
+## 72659 2019-11-10     3.2.2 src     1       src      3.2.2      32
+## 72660 2019-11-10     3.6.0 win     9       win      3.6.0      36
+## 72661 2019-11-10     3.1.2 src     4       src      3.1.2      31
+## 72662 2019-11-10     3.0.2 osx     1       osx      3.0.2      30
+## 72663 2019-11-10     3.0.0 osx     2       osx      3.0.0      30
+##       ver_lvl_factor ver_lvl_top ver_lvl_top_factor year month week
+## 72654             32           3                  3 2019    11   45
+## 72655             32           3                  3 2019    11   45
+## 72656             36           3                  3 2019    11   45
+## 72657            213           2                  2 2019    11   45
+## 72658             35           3                  3 2019    11   45
+## 72659             32           3                  3 2019    11   45
+## 72660             36           3                  3 2019    11   45
+## 72661             31           3                  3 2019    11   45
+## 72662             30           3                  3 2019    11   45
+## 72663             30           3                  3 2019    11   45
+##          yr_mo      yr_wk ver_3_5_f version.y vers_i nickname greg_d
+## 72654 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72655 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72656 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72657 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72658 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72659 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72660 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72661 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72662 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 72663 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;</code></pre>
+</div>
+</div>
+<div id="eda" class="section level1">
+<h1>EDA</h1>
+<div id="yearly-view" class="section level3">
+<h3>Yearly View</h3>
+<p>I was first curiuos about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 but about 1 million downloads short from its 2015 level. Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads. Finally, R downloads have grown by almost 50% to 15 million downloads this year. I have to admit those totals are more than I would have thought. This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location. In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.</p>
+<pre><code>## Warning: Removed 1 rows containing missing values (position_stack).</code></pre>
+<p><img src="/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
 </div>
 <div id="reference" class="section level1">
 <h1>Reference</h1>
@@ -101,12 +186,12 @@ library(scales)</code></pre>
 ##  [9] yaml_2.2.0       rlang_0.4.0      pillar_1.4.2     glue_1.3.1      
 ## [13] withr_2.1.2      modelr_0.1.5     readxl_1.3.1     lifecycle_0.1.0 
 ## [17] anytime_0.3.6    munsell_0.5.0    blogdown_0.16    gtable_0.3.0    
-## [21] cellranger_1.1.0 rvest_0.3.4      evaluate_0.14    knitr_1.25      
-## [25] curl_4.2         broom_0.5.2      Rcpp_1.0.1       backports_1.1.5 
-## [29] jsonlite_1.6     hms_0.5.1        digest_0.6.21    stringi_1.4.3   
-## [33] bookdown_0.14    grid_3.6.1       cli_1.1.0        tools_3.6.1     
-## [37] magrittr_1.5     lazyeval_0.2.2   crayon_1.3.4     pkgconfig_2.0.3 
-## [41] zeallot_0.1.0    xml2_1.2.2       assertthat_0.2.1 rmarkdown_1.16  
-## [45] httr_1.4.1       rstudioapi_0.10  R6_2.4.0         nlme_3.1-141    
-## [49] compiler_3.6.1</code></pre>
+## [21] cellranger_1.1.0 rvest_0.3.4      evaluate_0.14    labeling_0.3    
+## [25] knitr_1.25       curl_4.2         broom_0.5.2      Rcpp_1.0.1      
+## [29] backports_1.1.5  jsonlite_1.6     hms_0.5.1        digest_0.6.21   
+## [33] stringi_1.4.3    bookdown_0.14    grid_3.6.1       cli_1.1.0       
+## [37] tools_3.6.1      magrittr_1.5     lazyeval_0.2.2   crayon_1.3.4    
+## [41] pkgconfig_2.0.3  zeallot_0.1.0    ellipsis_0.3.0   xml2_1.2.2      
+## [45] assertthat_0.2.1 rmarkdown_1.16   httr_1.4.1       rstudioapi_0.10 
+## [49] R6_2.4.0         nlme_3.1-141     compiler_3.6.1</code></pre>
 </div>
