@@ -85,7 +85,7 @@ draft: false
 <li><p><code>cp -avr /c/Users/marqu/AppData/Roaming/jupyter/kernels/julia-1.2 \ /c/Users/marqu/AppData/Roaming/jupyter/kernels/juliapro-1.2</code></p></li>
 <li><p>cd /kernels/juliapro-1.2</p></li>
 <li><p>vi kernel.json</p></li>
-<li><p>Hit “i” to insert, change <code>&quot;display_name&quot;: &quot;Julia 1.2.0&quot;</code> to <code>&quot;display_name&quot;: &quot;JuliaPro 1.2.0&quot;</code></p></li>
+<li><p>Hit “i” to insert, change <code>"display_name": "Julia 1.2.0"</code> to <code>"display_name": "JuliaPro 1.2.0"</code></p></li>
 <li><p>Hit ESC, then type <code>:wq</code> and hit Enter.</p></li>
 </ul>
 </div>
@@ -93,15 +93,17 @@ draft: false
 <div id="fix-julia-1.2.0-jupyter-kernel" class="section level2">
 <h2>Fix Julia-1.2.0 Jupyter Kernel</h2>
 <ol start="5" style="list-style-type: decimal">
-<li><strong>Reset the Julia-1.2.0 kernel</strong>: Open the Julia-1.2.0 interactive app and rebuild the <code>IJulia</code> package using <code>Pkg.build(&quot;IJulia&quot;)</code>. This will reset the Julia kernel.json in Jupyter. Big thanks to <strong>Avik Sengupta</strong> at Julia Computing for the tip; this saves me from using vi to change the kernel.json file for Julia-1.2.0. Now the Jupyter kernel list will display the proper names for each Julia executable (see below). You also know what packages are installed where as the packages installed on JuliaPro-1.2.0 are not in the same environment path as the ones installed in Julia-1.2.0.</li>
+<li><strong>Reset the Julia-1.2.0 kernel</strong>: Open the Julia-1.2.0 interactive app and rebuild the <code>IJulia</code> package using <code>Pkg.build("IJulia")</code>. This will reset the Julia kernel.json in Jupyter. Big thanks to <strong>Avik Sengupta</strong> at Julia Computing for the tip; this saves me from using vi to change the kernel.json file for Julia-1.2.0. Now the Jupyter kernel list will display the proper names for each Julia executable (see below). You also know what packages are installed where as the packages installed on JuliaPro-1.2.0 are not in the same environment path as the ones installed in Julia-1.2.0.</li>
 </ol>
 <p>Julia Interpreter Command Lind:</p>
 <ul>
 <li><code>using Pkg</code></li>
-<li><code>Pkg.build(&quot;IJulia&quot;)</code></li>
+<li><code>Pkg.build("IJulia")</code></li>
 </ul>
-<p>The code above builds this file for you, no vi needed. <img src="/images/GitBash_JuliaPro_after.PNG" alt="Jupyter Julia-1.2.0 Kernel.json After" /></p>
-<p>And clarifies which Julia kernel you can choose. <img src="/images/Jupyter_JuliaPro_after.PNG" alt="Jupyter Julia-1.2.0 Kernel After" /></p>
+<p>The code above builds this file for you, no vi needed.
+<img src="/images/GitBash_JuliaPro_after.PNG" alt="Jupyter Julia-1.2.0 Kernel.json After" /></p>
+<p>And clarifies which Julia kernel you can choose.
+<img src="/images/Jupyter_JuliaPro_after.PNG" alt="Jupyter Julia-1.2.0 Kernel After" /></p>
 <p><br></br></p>
 </div>
 </div>

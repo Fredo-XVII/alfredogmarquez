@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R Programming Cranlogs Trends Popularity on Alfredo&#39;s Sandbox</title>
-    <link>/tags/r-programming-cranlogs-trends-popularity/</link>
+    <link>https://www.alfredogmarquez.com/tags/r-programming-cranlogs-trends-popularity/</link>
     <description>Recent content in R Programming Cranlogs Trends Popularity on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/r-programming-cranlogs-trends-popularity/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.alfredogmarquez.com/tags/r-programming-cranlogs-trends-popularity/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R&#39;s Demise Higly Overblown</title>
-      <link>/2019/11/11/r-s-demise-higly-overblown/</link>
+      <link>https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/11/11/r-s-demise-higly-overblown/</guid>
+      <guid>https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/</guid>
       <description>In this post I will provide evidence that contradicts recent reports that the R Programming languange is declining in popularity.
 In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.</description>
     </item>

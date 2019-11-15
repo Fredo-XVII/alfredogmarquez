@@ -84,7 +84,9 @@ R_ver_hist &lt;- R_ver_hist_raw %&gt;% dplyr::select(-date) %&gt;%
 R_ver_hist_major &lt;- R_ver_hist %&gt;%  
   dplyr::filter(vers_i %in% c(&quot;3.2.0&quot;,&quot;3.3.0&quot;,&quot;3.4.0&quot;,&quot;3.5.0&quot;,&quot;3.6.0&quot;))
 
-cran_R_downloads_raw &lt;- cranlogs::cran_downloads(&#39;R&#39;, from = &quot;2010-01-01&quot;, to = lubridate::today())
+#cran_R_downloads_raw &lt;- cranlogs::cran_downloads(&#39;R&#39;, from = &quot;2010-01-01&quot;, to = lubridate::today())
+cran_R_downloads_raw &lt;- readRDS(file = paste0(&quot;C:/Users/marqu/OneDrive/Documents/blog/alfredogmarquez/data&quot;, &quot;/cran_R_downloads_raw.rds&quot;))
+
 cran_R_downloads &lt;- cran_R_downloads_raw %&gt;% 
   dplyr::filter(!version %in% c(&#39;devel&#39;,&#39;release&#39;,&#39;release.exe&#39;,&#39;latest&#39;)) %&gt;% 
   dplyr::mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
@@ -105,38 +107,38 @@ cran_R_downloads &lt;- cran_R_downloads_raw %&gt;%
 <p>Here is a quick look at the data. I created some new features, date factors and period dummy variables, in order to drill into the data graphically.</p>
 <pre class="r"><code>tail(cran_R_downloads,10)</code></pre>
 <pre><code>##             date version.x  os count os_factor ver_factor ver_lvl
-## 72654 2019-11-10     3.2.0 osx     1       osx      3.2.0      32
-## 72655 2019-11-10     3.2.4 osx     1       osx      3.2.4      32
-## 72656 2019-11-10     3.6.1 win  1824       win      3.6.1      36
-## 72657 2019-11-10    2.13.0 win     1       win     2.13.0     213
-## 72658 2019-11-10     3.5.3 osx    40       osx      3.5.3      35
-## 72659 2019-11-10     3.2.2 src     1       src      3.2.2      32
-## 72660 2019-11-10     3.6.0 win     9       win      3.6.0      36
-## 72661 2019-11-10     3.1.2 src     4       src      3.1.2      31
-## 72662 2019-11-10     3.0.2 osx     1       osx      3.0.2      30
-## 72663 2019-11-10     3.0.0 osx     2       osx      3.0.0      30
+## 71319 2019-10-20     3.5.3 win    28       win      3.5.3      35
+## 71320 2019-10-20    2.14.1 win     1       win     2.14.1     214
+## 71321 2019-10-20     3.2.1 osx     4       osx      3.2.1      32
+## 71322 2019-10-20    2.12.1 osx     1       osx     2.12.1     212
+## 71323 2019-10-20     3.0.3 osx     2       osx      3.0.3      30
+## 71324 2019-10-20     3.4.2 win     2       win      3.4.2      34
+## 71325 2019-10-20     3.2.2 osx     1       osx      3.2.2      32
+## 71326 2019-10-20    2.12.0 osx     2       osx     2.12.0     212
+## 71327 2019-10-20     3.6.0 win    18       win      3.6.0      36
+## 71328 2019-10-20     3.5.0 osx     4       osx      3.5.0      35
 ##       ver_lvl_factor ver_lvl_top ver_lvl_top_factor year month week
-## 72654             32           3                  3 2019    11   45
-## 72655             32           3                  3 2019    11   45
-## 72656             36           3                  3 2019    11   45
-## 72657            213           2                  2 2019    11   45
-## 72658             35           3                  3 2019    11   45
-## 72659             32           3                  3 2019    11   45
-## 72660             36           3                  3 2019    11   45
-## 72661             31           3                  3 2019    11   45
-## 72662             30           3                  3 2019    11   45
-## 72663             30           3                  3 2019    11   45
+## 71319             35           3                  3 2019    10   42
+## 71320            214           2                  2 2019    10   42
+## 71321             32           3                  3 2019    10   42
+## 71322            212           2                  2 2019    10   42
+## 71323             30           3                  3 2019    10   42
+## 71324             34           3                  3 2019    10   42
+## 71325             32           3                  3 2019    10   42
+## 71326            212           2                  2 2019    10   42
+## 71327             36           3                  3 2019    10   42
+## 71328             35           3                  3 2019    10   42
 ##          yr_mo      yr_wk ver_3_5_f version.y vers_i nickname greg_d
-## 72654 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72655 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72656 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72657 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72658 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72659 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72660 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72661 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72662 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
-## 72663 2019 Nov 2019-11-04         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;</code></pre>
+## 71319 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71320 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71321 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71322 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71323 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71324 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71325 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71326 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71327 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;
+## 71328 2019 Oct 2019-10-14         1      &lt;NA&gt;   &lt;NA&gt;     &lt;NA&gt;   &lt;NA&gt;</code></pre>
 </div>
 </div>
 <div id="eda" class="section level1">
@@ -146,7 +148,13 @@ cran_R_downloads &lt;- cran_R_downloads_raw %&gt;%
 <p>I was first curiuos about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 but about 1 million downloads short from its 2015 level. Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads. Finally, R downloads have grown by almost 50% to 15 million downloads this year. I have to admit those totals are more than I would have thought. This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location. In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.</p>
 <pre><code>## Warning: Removed 1 rows containing missing values (position_stack).</code></pre>
 <p><img src="/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. But there are some other interesting variables in the data set that I would like to explore.</p>
 </div>
+</div>
+<div id="weekly-view-by-operating-system-os" class="section level1">
+<h1>Weekly View by Operating System (OS)</h1>
+<p>One of the questions I had was where is the growth coming from in the last year? From the graphs below,
+<img src="/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 </div>
 <div id="reference" class="section level1">
 <h1>Reference</h1>
@@ -181,17 +189,18 @@ cran_R_downloads &lt;- cran_R_downloads_raw %&gt;%
 ## [13] tidyverse_1.2.1 gridExtra_2.3   lubridate_1.7.4 cranlogs_2.1.1 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_0.2.5 xfun_0.10        haven_2.1.1      lattice_0.20-38 
-##  [5] colorspace_1.4-1 vctrs_0.2.0      generics_0.0.2   htmltools_0.4.0 
-##  [9] yaml_2.2.0       rlang_0.4.0      pillar_1.4.2     glue_1.3.1      
-## [13] withr_2.1.2      modelr_0.1.5     readxl_1.3.1     lifecycle_0.1.0 
-## [17] anytime_0.3.6    munsell_0.5.0    blogdown_0.16    gtable_0.3.0    
-## [21] cellranger_1.1.0 rvest_0.3.4      evaluate_0.14    labeling_0.3    
-## [25] knitr_1.25       curl_4.2         broom_0.5.2      Rcpp_1.0.1      
-## [29] backports_1.1.5  jsonlite_1.6     hms_0.5.1        digest_0.6.21   
-## [33] stringi_1.4.3    bookdown_0.14    grid_3.6.1       cli_1.1.0       
-## [37] tools_3.6.1      magrittr_1.5     lazyeval_0.2.2   crayon_1.3.4    
-## [41] pkgconfig_2.0.3  zeallot_0.1.0    ellipsis_0.3.0   xml2_1.2.2      
-## [45] assertthat_0.2.1 rmarkdown_1.16   httr_1.4.1       rstudioapi_0.10 
-## [49] R6_2.4.0         nlme_3.1-141     compiler_3.6.1</code></pre>
+##  [1] tidyselect_0.2.5 xfun_0.10        reshape2_1.4.3   haven_2.1.1     
+##  [5] lattice_0.20-38  colorspace_1.4-1 vctrs_0.2.0      generics_0.0.2  
+##  [9] htmltools_0.4.0  yaml_2.2.0       rlang_0.4.0      pillar_1.4.2    
+## [13] glue_1.3.1       withr_2.1.2      modelr_0.1.5     readxl_1.3.1    
+## [17] plyr_1.8.4       lifecycle_0.1.0  anytime_0.3.6    munsell_0.5.0   
+## [21] blogdown_0.16    gtable_0.3.0     cellranger_1.1.0 rvest_0.3.4     
+## [25] evaluate_0.14    labeling_0.3     knitr_1.25       curl_4.2        
+## [29] broom_0.5.2      Rcpp_1.0.1       backports_1.1.5  jsonlite_1.6    
+## [33] hms_0.5.1        digest_0.6.21    stringi_1.4.3    bookdown_0.14   
+## [37] grid_3.6.1       cli_1.1.0        tools_3.6.1      magrittr_1.5    
+## [41] lazyeval_0.2.2   crayon_1.3.4     pkgconfig_2.0.3  zeallot_0.1.0   
+## [45] ellipsis_0.3.0   xml2_1.2.2       assertthat_0.2.1 rmarkdown_1.16  
+## [49] httr_1.4.1       rstudioapi_0.10  R6_2.4.0         nlme_3.1-141    
+## [53] compiler_3.6.1</code></pre>
 </div>

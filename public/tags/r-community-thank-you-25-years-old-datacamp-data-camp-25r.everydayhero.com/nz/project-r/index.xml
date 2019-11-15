@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R Community Thank You 25 Years Old Datacamp Data Camp 25r.everydayhero.com/Nz/Project R on Alfredo&#39;s Sandbox</title>
-    <link>/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
+    <link>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
     <description>Recent content in R Community Thank You 25 Years Old Datacamp Data Camp 25r.everydayhero.com/Nz/Project R on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 31 Mar 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ode to R, Happy 25th Birthday</title>
-      <link>/2018/03/31/ode-to-r/</link>
+      <link>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/31/ode-to-r/</guid>
+      <guid>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</guid>
       <description>As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</description>
     </item>
     

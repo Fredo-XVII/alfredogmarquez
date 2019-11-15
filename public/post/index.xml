@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Alfredo&#39;s Sandbox</title>
-    <link>/post/</link>
+    <link>https://www.alfredogmarquez.com/post/</link>
     <description>Recent content in Posts on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Nov 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.alfredogmarquez.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R&#39;s Demise Higly Overblown</title>
-      <link>/2019/11/11/r-s-demise-higly-overblown/</link>
+      <link>https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/</link>
       <pubDate>Mon, 11 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/11/11/r-s-demise-higly-overblown/</guid>
+      <guid>https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/</guid>
       <description>In this post I will provide evidence that contradicts recent reports that the R Programming languange is declining in popularity.
 In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.</description>
     </item>
     
     <item>
       <title>JuliaPro&#39;s Julia on Jupyter Notebooks</title>
-      <link>/2019/09/29/juliapro-on-jupyter/</link>
+      <link>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</link>
       <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/09/29/juliapro-on-jupyter/</guid>
+      <guid>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</guid>
       <description>In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
 I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.</description>
     </item>
     
     <item>
       <title>TEZ UP YOUR RODBC HIVE QUERIES</title>
-      <link>/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
+      <link>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
+      <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
       <description>In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
 Hive only a few years ago was rare occurrence in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.</description>
     </item>
     
     <item>
       <title>Spark Installation on Windows</title>
-      <link>/2018/05/15/spark-installation-on-windows/</link>
+      <link>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/05/15/spark-installation-on-windows/</guid>
+      <guid>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</guid>
       <description>IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.
 Step #1: Download and InstallationInstall Spark
 First you will need to download Spark, which comes with the package for SparkR.</description>
@@ -54,10 +54,10 @@ First you will need to download Spark, which comes with the package for SparkR.<
     
     <item>
       <title>Ode to R, Happy 25th Birthday</title>
-      <link>/2018/03/31/ode-to-r/</link>
+      <link>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/03/31/ode-to-r/</guid>
+      <guid>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</guid>
       <description>As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</description>
     </item>
     

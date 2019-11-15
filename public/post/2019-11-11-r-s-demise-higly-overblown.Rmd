@@ -98,7 +98,9 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
 R_ver_hist_major <- R_ver_hist %>%  
   dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
 
-cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+#cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+cran_R_downloads_raw <- readRDS(file = paste0("C:/Users/marqu/OneDrive/Documents/blog/alfredogmarquez/data", "/cran_R_downloads_raw.rds"))
+
 cran_R_downloads <- cran_R_downloads_raw %>% 
   dplyr::filter(!version %in% c('devel','release','release.exe','latest')) %>% 
   dplyr::mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
@@ -166,6 +168,79 @@ gridExtra::grid.arrange(g_tot_by_yr,g_tot_by_yoy)
 
 ```
 
+
+At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. But there are some other interesting variables in the data set that I would like to explore.  
+
+# Weekly View by Operating System (OS)
+
+```{r, echo=FALSE}
+# What does the trend look like by os
+down_tot_by_os <- cran_R_downloads %>% 
+  dplyr:: group_by(os_factor,yr_wk) %>% 
+  dplyr::summarise(total = sum(count)) %>% 
+  dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
+                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
+  )
+
+g_os_lvl <- down_tot_by_os %>% 
+  ggplot(aes(x = yr_wk, y = total, col = os_factor, group = os_factor)) +
+  geom_line() +
+  facet_grid(os_factor~., scales = 'free') +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  geom_vline(data = R_ver_hist, aes(xintercept = yr_wk_ver), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+         x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+         y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+         size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "blue", alpha = 0.75) +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
+           y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "red", alpha = 0.5) +
+  theme_light() + theme(legend.position = "none") +
+  labs(x = 'Week', y = '', title = "R Downloads from RStudio Cranlogs by Week",
+       caption = "
+       Current R major version is 3.x.x \n
+       Blue Line: R minor version releases\n
+       Red Dotted Line: R version patches \n       .
+       ")
+#g_os_lvl
+
+g_os_yoy <- down_tot_by_os %>% 
+  ggplot(aes(x = yr_wk, y = yoy_perc, col = os_factor, group = os_factor)) +
+  #geom_line() +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  facet_grid(os_factor~., scales = 'free') +
+  geom_hline(yintercept = 0) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "blue", alpha = 0.75) +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
+           y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "red", alpha = 0.5) +
+  theme_light() + theme(legend.position = "none") +
+  labs(x = 'Week', y = '', title = "R Downloads Year Over Year Change from RStudio Cranlogs by Week",
+       caption = "
+       Current R major version is 3.x.x \n
+       Blue Line: R minor version releases\n
+       Red Dotted Line: R version patches \n  
+       ")
+#g_os_yoy
+
+#gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
+```
+
+One of the questions I had was where is the growth coming from in the last year? From the graphs below, 
+```{r, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
+g_os_lvl
+g_os_yoy
+```
 
 
 # Reference

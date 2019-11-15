@@ -21,6 +21,8 @@ library(scales)
 # Download R download data and version dates
 R_ver_hist_raw <- rversions::r_versions() 
 R_ver_hist_raw$vers_d <- as.POSIXct(R_ver_hist_raw$date)
+#saveRDS(cran_R_downloads_raw, file = paste0(file.path(getwd(),"data"), "/R_ver_hist_raw.rds"))
+#R_ver_hist_raw.rds <- readRDS(file = paste0(file.path(getwd(),"data"), "/R_ver_hist_raw.rds"))
 
 R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>% 
   dplyr::mutate(greg_d = lubridate::as_date(vers_d),
@@ -34,7 +36,9 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
 R_ver_hist_major <- R_ver_hist %>%  
   dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
 
-cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+#cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+#saveRDS(cran_R_downloads_raw, file = paste0(file.path(getwd(),"data"), "/cran_R_downloads_raw.rds"))
+cran_R_downloads_raw <- readRDS(file = paste0(file.path(getwd(),"data"), "/cran_R_downloads_raw.rds"))
 cran_R_downloads <- cran_R_downloads_raw %>% 
   dplyr::filter(!version %in% c('devel','release','release.exe','latest')) %>% 
   dplyr::mutate(os_factor = forcats::fct_inorder(forcats::as_factor(os)),
@@ -141,6 +145,7 @@ g_os_lvl <- down_tot_by_os %>%
   ggplot(aes(x = yr_wk, y = total, col = os_factor, group = os_factor)) +
   geom_line() +
   facet_grid(os_factor~., scales = 'free') +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   geom_vline(data = R_ver_hist, aes(xintercept = yr_wk_ver), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
   annotate(geom = "text", 
@@ -167,6 +172,7 @@ g_os_yoy <- down_tot_by_os %>%
   scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   facet_grid(os_factor~., scales = 'free') +
   geom_hline(yintercept = 0) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
   annotate(geom = "text", 
