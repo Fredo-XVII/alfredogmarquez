@@ -16,6 +16,7 @@ library(tsibble)
 library(gtrendsR)
 library(rversions)
 library(scales)
+library(corrr)
 
 
 # Download R download data and version dates
@@ -312,15 +313,76 @@ down_tot_by_d_t <- down_tot_by_d %>%
                 ) %>% 
   dplyr::select(yr_wk,hits,keyword)
 
+# Hadley Announces Tidyverse at useR 2016 conference week of: 2016-06-26
+# resource: https://user2016.r-project.org//
+# tidyverse released 1.0.0 on 2016-09-15: https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/
+hadley_tidyverse <- as.Date('2016-06-26')
+tidy_searches_beg <- as.Date('2016-07-31')
+
 all_trends <- dplyr::bind_rows(r_trends_t,dplyr_t,tverse_t,ggplot_t,down_tot_by_d_t) %>%
   dplyr::mutate(keyword_f = as_factor(keyword)) %>% 
   dplyr::select(yr_wk,hits,keyword_f)
 
-
-
+# Plot the trend of the search keywords and the 
 ggplot(all_trends, aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f)) + 
   geom_line() +
-  facet_grid(keyword_f~.)
+  facet_grid(keyword_f~.) +
+  geom_vline(xintercept = hadley_tidyverse) +
+  geom_vline(xintercept = tidy_searches_beg, color = 'red')
 
-unique(all_trends$trend)  
+ggplot(tverse_t, aes(x = yr_wk, y = hits)) + geom_line() +
+  geom_vline(xintercept = tidy_searches_beg, color = 'red')
+  
+# 1 week differences
+diff1_trends <- all_trends %>% 
+  dplyr::group_by(keyword_f) %>% 
+  dplyr::mutate(lag1_hits = dplyr::lag(hits),
+                diff1_hits = difference(hits)
+                )
 
+
+ggplot(diff1_trends, aes(x = yr_wk, y = diff1_hits, group = keyword_f, col = keyword_f)) + 
+  geom_line() +
+  facet_grid(keyword_f~.) +
+  geom_vline(xintercept = hadley_tidyverse) +
+  geom_vline(xintercept = tidy_searches_beg, color = 'red') 
+  
+
+
+# Correlate differences
+corr_trends_base <- diff1_trends %>% 
+  dplyr::select(yr_wk,keyword_f, diff1_hits) %>% 
+  tidyr::pivot_wider(names_from = keyword_f,
+                     values_from = diff1_hits)
+
+corrr::correlate(corr_trends_base[,2:6])
+
+broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ ., data = corr_trends_base[,2:5]))
+
+broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ 
+                 lag(corr_trends_base$tidyverse, n = 1L) +
+                 lag(corr_trends_base$tidyverse, n = 2L) +
+                 lag(corr_trends_base$tidyverse, n = 3L) +
+                 lag(corr_trends_base$tidyverse, n = 4L) +
+                 lag(corr_trends_base$`R Downloads`, n = 1L) +
+                 lag(corr_trends_base$`R Downloads`, n = 2L) +
+                 lag(corr_trends_base$`R Downloads`, n = 3L) +
+                 lag(corr_trends_base$`R Downloads`, n = 4L) 
+               , data = corr_trends_base[,2:5]))
+
+lm_4_diff <- function(col) {
+  broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ 
+                 lag(col, n = 1L) +
+                 lag(col, n = 2L) +
+                 lag(col, n = 3L) +
+                 lag(col, n = 4L) +
+                 lag(corr_trends_base$`R Downloads`, n = 1L) +
+                 lag(corr_trends_base$`R Downloads`, n = 2L) +
+                 lag(corr_trends_base$`R Downloads`, n = 3L) +
+                 lag(corr_trends_base$`R Downloads`, n = 4L) 
+               , data = corr_trends_base[,2:5]))
+}
+
+lm_4_diff(col = corr_trends_base$ggplot2)
+lm_4_diff(col = corr_trends_base$dplyr)
+lm_4_diff(col = corr_trends_base$`R programming`)
