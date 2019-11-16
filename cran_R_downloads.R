@@ -261,32 +261,66 @@ g_ver_yoy
 
 # Google Trends: Why is there a bump in the fall of 2018.
 
-terms <- c("R",'r','r-project','dplyr','tidyverse')
-terms <- c("tidyverse")
-categ <- c(1299, 1252, 675, 31, 900)
+terms <- c("R programming") # TIOBE
 R_gtrends <- gtrendsR::gtrends(keyword = terms,
                                geo = c("US"),
-                               time = sprintf("2010-01-01 %s",lubridate::today())
-                               #gprop = c("web","youtube"),
-                               #category = categ
+                               time = sprintf("2015-01-01 %s",lubridate::today())
                                )
 
-plot(R_gtrends)
+terms <- c("dplyr")
+dplyr_gtrends <- gtrendsR::gtrends(keyword = terms,
+                               geo = c("US"),
+                               time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+terms <- c("tidyverse")
+tverse_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                   geo = c("US"),
+                                   time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+terms <- c("ggplot2")
+ggplot_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                    geo = c("US"),
+                                    time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+plot(ggplot_gtrends)
 
 r_trends_t <- R_gtrends$interest_over_time %>% 
-  dplyr::mutate(yr_wk = tsibble::yearweek(date),
-                hits_q = as.numeric(hits))
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
 
-r_trends_t %>% tail()
+dplyr_t <- dplyr_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
 
-ggplot(r_trends_t, aes(hits)) + geom_histogram()
+tverse_t <- tverse_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
 
-r_trends_tot_wk <- r_trends_t %>% 
-  dplyr::group_by(yr_wk) %>% 
-  dplyr::summarise(total = sum(hits_q, na.rm = TRUE)) 
+ggplot_t <- ggplot_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
 
-r_trends_tot_wk %>% ggplot(aes(x = yr_wk, y = total)) +
-  geom_line()
+down_tot_by_d_t <- down_tot_by_d %>% 
+  dplyr::ungroup() %>% 
+  dplyr::select(yr_wk,total) %>% 
+  dplyr::summarise(total = sum(total)) %>% 
+  dplyr::mutate(hits = (.$total / (max(down_tot_by_d$total) - min(down_tot_by_d$total)))*100,
+                keyword = "R Downloads"
+                ) %>% 
+  dplyr::select(yr_wk,hits,keyword)
 
-r_trends_tot_wk %>% ggplot(aes(x = yr_wk, y = log10(total))) +
-  geom_line()
+all_trends <- dplyr::bind_rows(r_trends_t,dplyr_t,tverse_t,ggplot_t,down_tot_by_d_t) %>%
+  dplyr::mutate(keyword_f = as_factor(keyword)) %>% 
+  dplyr::select(yr_wk,hits,keyword_f)
+
+
+
+ggplot(all_trends, aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f)) + 
+  geom_line() +
+  facet_grid(keyword_f~.)
+
+unique(all_trends$trend)  
+
