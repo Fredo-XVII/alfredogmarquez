@@ -123,6 +123,7 @@ down_tot_by_d %>%
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  #geom_vline(aes(xintercept = tidyvere_release_1_0), linetype = 1, color = "black") +
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
@@ -218,43 +219,8 @@ down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f)
   
   
 
-# ----- Not using any code below this ----- #
+# ----- THE PROBLEM WITH WEB TRENDS ----- #
 # ----------------------------------------- #
-
-# What does the trend look like by os by version
-down_tot_by_ver <- cran_R_downloads %>% 
-  dplyr:: group_by(ver_lvl_top_factor,os,yr_wk) %>%
-  #dplyr:: arrange(ver_lvl_top_factor,os,yr_wk) %>%
-  dplyr::summarise(total = sum(count)) %>% 
-  dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
-                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
-  )
-
-g_ver_lvl <- down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_top_factor, group = ver_lvl_top_factor)) +
-  geom_line() +
-  facet_grid(os~ver_lvl_top_factor)+
-  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
-  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
-  theme_light() +
-  annotate(geom = "text", 
-           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
-           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10)
-g_ver_lvl
-
-g_ver_yoy <- down_tot_by_ver %>% filter(ver_lvl_top_factor == 3) %>% 
-  ggplot(aes(x = yr_wk, y = yoy_perc, col = ver_lvl_top_factor, group = ver_lvl_top_factor)) +
-  geom_line() +
-  facet_grid(os~ver_lvl_top_factor, scales = 'free') +
-  geom_hline(yintercept = 0) +
-  geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
-  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
-  theme_light() +
-  annotate(geom = "text", 
-           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
-           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10)
-g_ver_yoy
 
 # add layered bar chart or wave
 
@@ -307,21 +273,22 @@ ggplot_t <- ggplot_gtrends$interest_over_time %>%
 down_tot_by_d_t <- down_tot_by_d %>% 
   dplyr::ungroup() %>% 
   dplyr::select(yr_wk,total) %>% 
-  dplyr::summarise(total = sum(total)) %>% 
-  dplyr::mutate(hits = (.$total / (max(down_tot_by_d$total) - min(down_tot_by_d$total)))*100,
+  dplyr::summarise(wkly_tot = sum(total)) %>% 
+  dplyr::mutate(hits = (.$wkly_tot - min(down_tot_by_d$total)) / (max(down_tot_by_d$total) - min(down_tot_by_d$total))*100,
                 keyword = "R Downloads"
-                ) %>% 
-  dplyr::select(yr_wk,hits,keyword)
+                ) 
 
 # Hadley Announces Tidyverse at useR 2016 conference week of: 2016-06-26
 # resource: https://user2016.r-project.org//
 # tidyverse released 1.0.0 on 2016-09-15: https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/
 hadley_tidyverse <- as.Date('2016-06-26')
 tidy_searches_beg <- as.Date('2016-07-31')
+tidyvere_release_1_0 <- as.Date('2016-09-15')
 
-all_trends <- dplyr::bind_rows(r_trends_t,dplyr_t,tverse_t,ggplot_t,down_tot_by_d_t) %>%
+all_trends <- dplyr::bind_rows(r_trends_t,dplyr_t,tverse_t,ggplot_t,
+                               down_tot_by_d_t %>% select(yr_wk,hits,keyword)) %>%
   dplyr::mutate(keyword_f = as_factor(keyword)) %>% 
-  dplyr::select(yr_wk,hits,keyword_f)
+  dplyr::select(yr_wk,hits,keyword_f) 
 
 # Plot the trend of the search keywords and the 
 ggplot(all_trends, aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f)) + 
@@ -353,13 +320,15 @@ ggplot(diff1_trends, aes(x = yr_wk, y = diff1_hits, group = keyword_f, col = key
 corr_trends_base <- diff1_trends %>% 
   dplyr::select(yr_wk,keyword_f, diff1_hits) %>% 
   tidyr::pivot_wider(names_from = keyword_f,
-                     values_from = diff1_hits)
+                     values_from = diff1_hits) %>% 
+  dplyr::filter(.$yr_wk >= hadley_tidyverse)
 
 corrr::correlate(corr_trends_base[,2:6])
 
 broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ ., data = corr_trends_base[,2:5]))
 
 broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ 
+                 corr_trends_base$tidyverse +
                  lag(corr_trends_base$tidyverse, n = 1L) +
                  lag(corr_trends_base$tidyverse, n = 2L) +
                  lag(corr_trends_base$tidyverse, n = 3L) +
@@ -371,7 +340,8 @@ broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~
                , data = corr_trends_base[,2:5]))
 
 lm_4_diff <- function(col) {
-  broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ 
+  broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~
+                 col +
                  lag(col, n = 1L) +
                  lag(col, n = 2L) +
                  lag(col, n = 3L) +
@@ -386,3 +356,72 @@ lm_4_diff <- function(col) {
 lm_4_diff(col = corr_trends_base$ggplot2)
 lm_4_diff(col = corr_trends_base$dplyr)
 lm_4_diff(col = corr_trends_base$`R programming`)
+
+broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ 
+                 corr_trends_base$tidyverse +
+                 lag(corr_trends_base$tidyverse, n = 1L) +
+                 lag(corr_trends_base$tidyverse, n = 2L) +
+                 lag(corr_trends_base$tidyverse, n = 3L) +
+                 lag(corr_trends_base$tidyverse, n = 4L) +
+                 corr_trends_base$ggplot2 +
+                 lag(corr_trends_base$ggplot2, n = 1L) +
+                 lag(corr_trends_base$ggplot2, n = 2L) +
+                 lag(corr_trends_base$ggplot2, n = 3L) +
+                 lag(corr_trends_base$ggplot2, n = 4L) +
+                 corr_trends_base$tidyverse +
+                 lag(corr_trends_base$dplyr, n = 1L) +
+                 lag(corr_trends_base$dplyr, n = 2L) +
+                 lag(corr_trends_base$dplyr, n = 3L) +
+                 lag(corr_trends_base$dplyr, n = 4L) +
+                 corr_trends_base$tidyverse +
+                 lag(corr_trends_base$`R programming`, n = 1L) +
+                 lag(corr_trends_base$`R programming`, n = 2L) +
+                 lag(corr_trends_base$`R programming`, n = 3L) +
+                 lag(corr_trends_base$`R programming`, n = 4L) +                 
+                 lag(corr_trends_base$`R Downloads`, n = 1L) +
+                 lag(corr_trends_base$`R Downloads`, n = 2L) +
+                 lag(corr_trends_base$`R Downloads`, n = 3L) +
+                 lag(corr_trends_base$`R Downloads`, n = 4L) 
+               , data = corr_trends_base[,2:5]))
+
+
+
+
+
+
+# ---- NOT USIND CODE BELOW ---- #
+# What does the trend look like by os by version
+
+down_tot_by_ver <- cran_R_downloads %>% 
+  dplyr:: group_by(ver_lvl_top_factor,os,yr_wk) %>%
+  #dplyr:: arrange(ver_lvl_top_factor,os,yr_wk) %>%
+  dplyr::summarise(total = sum(count)) %>% 
+  dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
+                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
+  )
+
+g_ver_lvl <- down_tot_by_ver %>% ggplot(aes(x = yr_wk, y = total, col = ver_lvl_top_factor, group = ver_lvl_top_factor)) +
+  geom_line() +
+  facet_grid(os~ver_lvl_top_factor)+
+  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  theme_light() +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10)
+g_ver_lvl
+
+g_ver_yoy <- down_tot_by_ver %>% filter(ver_lvl_top_factor == 3) %>% 
+  ggplot(aes(x = yr_wk, y = yoy_perc, col = ver_lvl_top_factor, group = ver_lvl_top_factor)) +
+  geom_line() +
+  facet_grid(os~ver_lvl_top_factor, scales = 'free') +
+  geom_hline(yintercept = 0) +
+  geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  theme_light() +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10)
+g_ver_yoy
