@@ -82,9 +82,10 @@ options(scipen = 999)
 ```
 
 
-### Build Data
+### The Data
 
-In this section I will download 2 datasets.  The first will be the R downloads from the **cranlogs** package, and the second will be data from the **rversions** package in order to get R version release dates.  The version dates data will be used to label the graphs.
+There will be 3 sets of data that I will be working with for this analysis.  The first will be the R downloads from the **cranlogs** package.  This data comes from the RStudio CRAN mirror, so it is just 1 CRAN mirror of dozens of mirrors available around the world.  I will use this dataset as a proxy for all R downloads world wide.  Second, I will use data from the **rversions** package in order to get R version release dates.  The version dates data will be used to label the graphs and to understand some of the behavior in the downloads.  The third data set that will use comes from the **gtrends** package.  I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index.  Finally, I research some dates that I felt were relevant after analyzing the data.  For example, Hadley Wickham's introduction of the tidyverse at teh useR! 2016 conference at the end of June 2016.
+
 ```{r, echo=FALSE}
 # Download R download data and version dates
 R_ver_hist_raw <- rversions::r_versions() 
@@ -124,9 +125,9 @@ cran_R_downloads <- cran_R_downloads_raw %>%
   dplyr::left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
 ```
 
-Here is a quick look at the data.  I created some new features, date factors and period dummy variables, in order to drill into the data graphically.
-```{r}
-tail(cran_R_downloads,10) %>% knitr::kable() %>% kableExtra::kable_styling()
+Here is a quick look at the download data from the **cranlogs** package.  I created some new features, date factors and period dummy variables, in order to drill into the data graphically. I will show examples of the other data down below.
+```{r, echo=FALSE, warning=FALSE}
+tail(cran_R_downloads,5) %>% knitr::kable() %>% kableExtra::kable_styling()
 ```
 
 
@@ -251,9 +252,9 @@ get_os_summary <- function(os, post351, metric) {
 }
 ```
 
-One of the questions I had was where is the growth coming from in the last year? My first thought was to overlay the version releases for R; the blue line represents the minor version releases, and the red dotted line represents patch releases. There were no major releases during this time.  You can see right away that downloads start trending after the R 3.5 version release.  The R 3.5 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster.  However, you don't see the increase in downloads right away and that was because the upgrades had an issue where it wouldn't work with older versions of R packages.  This is normally why I wait for at least 1 patch release before installing R after a minor release.  For example, I have just now started to upgrade to R 3.6.x even though that minor release was in the fall of last year.
+One of the questions I had was where is the growth coming from in the last year? My first thought was to overlay the version releases for R; the blue line represents the minor version releases, and the red dotted line represents patch releases. There were no major releases during this time.  You can see right away that downloads start trending after the R 3.5 version release.  The R 3.5 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster.  However, you don't see the increase in downloads right away and that was because the upgrades had issues with packages built on the older versions of R.  This is normally why I wait for at least 1 patch release before installing R after a minor release.  For example, I have just now started to upgrade to R 3.6.x even though that minor release was in the fall of last year.
 
-From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of `r get_os_summary(os = 'win', post351 = 0, metric = 'total')` downloads/week before the release of R 3.5.1., and `r get_os_summary(os = 'win', post351 = 1, metric = 'total')` downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads.  Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have not evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis.  Now R has a bad rap for having an uphill learning curve, but I believe with the tidyverse, this is no longer the case.  I will show some evidence to this point below.  I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2.  Basically, anything that they can do in excel, now they can do with R, and more.
+From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of `r get_os_summary(os = 'win', post351 = 0, metric = 'total')` downloads/week before the release of R 3.5.1., and `r get_os_summary(os = 'win', post351 = 1, metric = 'total')` downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads.  Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have not evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis.  R has a bad rap for having an uphill learning curve, but I believe with the tidyverse, this is no longer the case and anyone who says differently hasn't used R in the last 3yrs.  In other words, they are speaking from inexperience with the recent improvements in the R ecosystem. I will show some evidence to this point below.  I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2.  Basically, anything that they can do in excel, now they can do with R, and more.
 
 My second surprise from looking at the OS break out was the large increase in Mac users.  I am not sure why this would be the case except that Macs are now more common at work.  For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire.  If this is happening across industries, then this may explain some of this growth in addition to the university effect where Mac seems to be quite common.  R downloads for Mac averaged `r get_os_summary(os = 'osx', post351 = 0, metric = 'total')` in the period before the R 3.5.1 release and has averaged `r get_os_summary(os = 'osx', post351 = 1, metric = 'total')`, more than doubling its weekly average downloads.  The upward trend for Mac R downloads doesn't seem to waning so there may be growth to come over the next year.
 
@@ -267,7 +268,7 @@ g_os_lvl
 ```
 
 
-In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system.  The average weekly YOY growth rate for Windows for the pre-period is `r paste0(get_os_summary(os = 'win', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'win', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for Mac for the pre-period is `r paste0(get_os_summary(os = 'osx', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'osx', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for Windows for the pre-period is `r paste0(get_os_summary(os = 'src', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'src', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  Imagine for a second if you were a product manager, and your product was experiencing 80% plus growth on average every week for nearly 2 years; how ecstatic would you be?
+In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system.  The average weekly YOY growth rate for Windows for the pre-period is `r paste0(get_os_summary(os = 'win', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'win', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for Mac for the pre-period is `r paste0(get_os_summary(os = 'osx', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'osx', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for "SRC" for the pre-period is `r paste0(get_os_summary(os = 'src', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'src', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  Imagine for a second you are a product manager, and your product was experiencing 80% plus growth on average every week for nearly 2 years; how ecstatic would you be?
 
 
 
