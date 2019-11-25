@@ -228,31 +228,50 @@ down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f)
 
 # Google Trends: Why is there a bump in the fall of 2018.
 
+gtrends_search <- funtion( terms = terms) {
+  gtrendsR::gtrends(keyword = terms,
+                                    #geo = c("US"),
+                                    time = sprintf("2015-01-01 %s",lubridate::today())
+                    )
+}
+
 terms <- c("R programming") # TIOBE
 R_gtrends <- gtrendsR::gtrends(keyword = terms,
-                               geo = c("US"),
+                               #geo = c("US"),
                                time = sprintf("2015-01-01 %s",lubridate::today())
                                )
 
 terms <- c("dplyr")
 dplyr_gtrends <- gtrendsR::gtrends(keyword = terms,
-                               geo = c("US"),
+                               #geo = c("US"),
                                time = sprintf("2015-01-01 %s",lubridate::today())
 )
 
 terms <- c("tidyverse")
 tverse_gtrends <- gtrendsR::gtrends(keyword = terms,
-                                   geo = c("US"),
+                                   #geo = c("US"),
                                    time = sprintf("2015-01-01 %s",lubridate::today())
 )
 
 terms <- c("ggplot2")
 ggplot_gtrends <- gtrendsR::gtrends(keyword = terms,
-                                    geo = c("US"),
+                                    #geo = c("US"),
                                     time = sprintf("2015-01-01 %s",lubridate::today())
 )
 
-plot(ggplot_gtrends)
+terms <- c("R tutorials")
+pypl_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                    #geo = c("US"),
+                                    time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+terms <- c("DataCamp")
+camp_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                  #geo = c("US"),
+                                  time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+plot(camp_gtrends)
 
 r_trends_t <- R_gtrends$interest_over_time %>% 
   dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
@@ -267,6 +286,14 @@ tverse_t <- tverse_gtrends$interest_over_time %>%
   dplyr::select(yr_wk,hits,keyword)
 
 ggplot_t <- ggplot_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+pypl_t <- pypl_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+camp_t <- camp_gtrends$interest_over_time %>% 
   dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
   dplyr::select(yr_wk,hits,keyword)
 
@@ -285,7 +312,7 @@ hadley_tidyverse <- as.Date('2016-06-26')
 tidy_searches_beg <- as.Date('2016-07-31')
 tidyvere_release_1_0 <- as.Date('2016-09-15')
 
-all_trends <- dplyr::bind_rows(r_trends_t,dplyr_t,tverse_t,ggplot_t,
+all_trends <- dplyr::bind_rows(r_trends_t, pypl_t, dplyr_t, ggplot_t, tverse_t, camp_t,
                                down_tot_by_d_t %>% select(yr_wk,hits,keyword)) %>%
   dplyr::mutate(keyword_f = as_factor(keyword)) %>% 
   dplyr::select(yr_wk,hits,keyword_f) 
@@ -293,12 +320,15 @@ all_trends <- dplyr::bind_rows(r_trends_t,dplyr_t,tverse_t,ggplot_t,
 # Plot the trend of the search keywords and the 
 ggplot(all_trends, aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f)) + 
   geom_line() +
-  facet_grid(keyword_f~.) +
+  facet_grid(keyword_f~., scales = 'free') +
   geom_vline(xintercept = hadley_tidyverse) +
-  geom_vline(xintercept = tidy_searches_beg, color = 'red')
+  geom_vline(xintercept = tidy_searches_beg, color = 'red') +
+  geom_vline(xintercept = tidyvere_release_1_0, color = 'orange')
 
-ggplot(tverse_t, aes(x = yr_wk, y = hits)) + geom_line() +
-  geom_vline(xintercept = tidy_searches_beg, color = 'red')
+ggplot(down_tot_by_d_t, aes(x = yr_wk, y = hits)) + geom_line() +
+  geom_vline(xintercept = tidy_searches_beg, color = 'red') +
+  geom_vline(xintercept = tidyvere_release_1_0, color = 'blue') +
+  geom_vline(xintercept = hadley_tidyverse, color = 'orange')
   
 # 1 week differences
 diff1_trends <- all_trends %>% 
@@ -323,7 +353,7 @@ corr_trends_base <- diff1_trends %>%
                      values_from = diff1_hits) %>% 
   dplyr::filter(.$yr_wk >= hadley_tidyverse)
 
-corrr::correlate(corr_trends_base[,2:6])
+corrr::correlate(corr_trends_base[,2:8])
 
 broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~ ., data = corr_trends_base[,2:5]))
 
@@ -382,7 +412,7 @@ broom::tidy(lm(formula = corr_trends_base$`R Downloads` ~
                  lag(corr_trends_base$`R Downloads`, n = 2L) +
                  lag(corr_trends_base$`R Downloads`, n = 3L) +
                  lag(corr_trends_base$`R Downloads`, n = 4L) 
-               , data = corr_trends_base[,2:5]))
+               , data = corr_trends_base[,2:5])) %>% View()
 
 
 
