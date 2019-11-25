@@ -28,7 +28,7 @@ draft: false
 
 # 
 
-In this post I will provide evidence that contradicts recent reports that the R Programming languange is declining in popularity.
+In this post I will provide evidence that contradicts recent reports that the R Programming language is declining in popularity.
 
 -----
 
@@ -38,7 +38,7 @@ In last few months I have come across several blog posts that suggest that Pytho
 
 # Introduction
 
-As I have read all these posts about python impacting the demand for R and implying that R was on the decline, I though about how I could adress this question empirically.  I thought to myself, if the rise in Python for Data Science is decreasing the demand for R for Data Science, then naturally, you would see a decrease in R downloads as users moved from R to Python.  Therefore, my experiment is designed as below:
+As I have read all these posts about python impacting the demand for R and implying that R was on the decline, I though about how I could address this question empirically.  I thought to myself, if the rise in Python for Data Science is decreasing the demand for R for Data Science, then naturally, you would see a decrease in R downloads as users moved from R to Python.  Therefore, my experiment is designed as below:
 
 #### **Design of Experiment:**
 
@@ -50,7 +50,7 @@ As I have read all these posts about python impacting the demand for R and imply
 
 # Data
 
-Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time.  My thought was to start the analysis from 2015 to the present in order to capture the rise of both languages.  From this point, you can conduct Granger Causality Test to see if Python is truely impacting the demand for R.  Unfortunately, I was not able to find a downloadable count of Python downloads since 2015.  I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.  
+Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time.  My thought was to start the analysis from 2015 to the present in order to capture the rise of both languages.  From this point, you can conduct Granger Causality Test to see if Python is truly impacting the demand for R.  Unfortunately, I was not able to find a downloadable count of Python downloads since 2015.  I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.  
 
 R fared a little better but not much.  CRAN has many mirrors around the world that are self hosted.  In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded.  Luckily, @RStudio has provided a way to obtain the downloads of R from there mirror in the R package **cranlogs**.
 
@@ -133,7 +133,7 @@ tail(cran_R_downloads,10) %>% knitr::kable() %>% kableExtra::kable_styling()
 # EDA and Understanding the Data
 
 ### Yearly View
-I was first curiuos about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 but about 1 million downloads short from its 2015 level.  Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by almost 50% to 15 million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
+I was first curious about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 but about 1 million downloads short from its 2015 level.  Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by almost 50% to 15 million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
 
 ```{r, echo=FALSE, warning=FALSE}
 # Build Aggregation Views
@@ -257,7 +257,7 @@ From the graphs below, we observe that the operating system (OS) with the most d
 
 My second surprise from looking at the OS break out was the large increase in Mac users.  I am not sure why this would be the case except that Macs are now more common at work.  For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire.  If this is happening across industries, then this may explain some of this growth in addition to the university effect where Mac seems to be quite common.  R downloads for Mac averaged `r get_os_summary(os = 'osx', post351 = 0, metric = 'total')` in the period before the R 3.5.1 release and has averaged `r get_os_summary(os = 'osx', post351 = 1, metric = 'total')`, more than doubling its weekly average downloads.  The upward trend for Mac R downloads doesn't seem to waning so there may be growth to come over the next year.
 
-Finally, I will not discuss the OS labled "NA" as it is really small, I just present it for completeness.  I was not able to determine if the OS for "SRC" was building R from source, or whether it was for Linux.  In any case, R downloads for "SRC" have been consisten throughout the entire time frame with some large growth after the R 3.5.2 release.  The average download for "SRC" is `r get_os_summary(os = 'src', post351 = 0, metric = 'total')` in the period before R 3.5.1 release and `r get_os_summary(os = 'src', post351 = 1, metric = 'total')` after.
+Finally, I will not discuss the OS labeled "NA" as it is really small, I just present it for completeness.  I was not able to determine if the OS for "SRC" was building R from source, or whether it was for Linux.  In any case, R downloads for "SRC" have been consistent throughout the entire time frame with some large growth after the R 3.5.2 release.  The average download for "SRC" is `r get_os_summary(os = 'src', post351 = 0, metric = 'total')` in the period before R 3.5.1 release and `r get_os_summary(os = 'src', post351 = 1, metric = 'total')` after.
 
 
 
@@ -267,7 +267,10 @@ g_os_lvl
 ```
 
 
-The average weekly YOY growth rate by week for Windows for those periods is `r paste0(get_os_summary(os = 'win', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'win', post351 = 1, metric = 'yoy_perc'), '%')`, respectively.
+In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system.  The average weekly YOY growth rate for Windows for the pre-period is `r paste0(get_os_summary(os = 'win', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'win', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for Mac for the pre-period is `r paste0(get_os_summary(os = 'osx', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'osx', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for Windows for the pre-period is `r paste0(get_os_summary(os = 'src', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'src', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  Imagine for a second if you were a product manager, and your product was experiencing 80% plus growth on average every week for nearly 2 years; how ecstatic would you be?
+
+
+
 ```{r yoy_growth_os, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
 g_os_yoy
 ```
