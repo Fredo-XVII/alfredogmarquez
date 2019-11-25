@@ -210,13 +210,19 @@ down_tot_by_os %>%
 
 
 down_tot_by_os %>% dplyr::group_by(os_factor) %>% summarise_all(mean,na.rm = TRUE)
-down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f),
+down_os_summary <- down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f),
                                     by = "yr_wk") %>% 
   dplyr::group_by(os_factor,ver_3_5_f) %>% summarise_all(mean,na.rm = TRUE)
 
+down_os_summary
+down_os_summary %>% filter(os_factor == 'win',ver_3_5_f == 0) %>% ungroup() %>% select(total) %>% round()
 
+get_os_summary <- function(os, post351, metric) {
+  down_os_summary %>% filter(os_factor == !!os,ver_3_5_f == !!post351) %>% 
+    ungroup() %>% select(!!metric) %>% round()
+}
 
-  
+get_os_summary(os = 'win', post351 = 1, metric = 'total')
   
 
 # ----- THE PROBLEM WITH WEB TRENDS ----- #

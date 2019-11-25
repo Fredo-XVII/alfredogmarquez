@@ -20,7 +20,7 @@ metaAlignment: center
 coverMeta: out
 coverSize: partial
 summary: Today I will provide evidence that R's demise are highly overblown.
-draft: no
+draft: false
 ---
 
 <!--more-->
@@ -75,6 +75,10 @@ library(tsibble)
 library(gtrendsR)
 library(rversions)
 library(scales)
+library(kableExtra)
+
+# Options
+options(scipen = 999)
 ```
 
 
@@ -99,7 +103,7 @@ R_ver_hist_major <- R_ver_hist %>%
   dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
 
 #cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
-cran_R_downloads_raw <- readRDS(file = paste0("C:/Users/marqu/OneDrive/Documents/blog/alfredogmarquez/data", "/cran_R_downloads_raw.rds"))
+cran_R_downloads_raw <- readRDS(file = paste0("C:\\Users\\marqu\\OneDrive\\Documents\\blog\\alfredogmarquez\\data", "\\cran_R_downloads_raw.rds"))
 
 cran_R_downloads <- cran_R_downloads_raw %>% 
   dplyr::filter(!version %in% c('devel','release','release.exe','latest')) %>% 
@@ -122,11 +126,11 @@ cran_R_downloads <- cran_R_downloads_raw %>%
 
 Here is a quick look at the data.  I created some new features, date factors and period dummy variables, in order to drill into the data graphically.
 ```{r}
-tail(cran_R_downloads,10)
+tail(cran_R_downloads,10) %>% knitr::kable() %>% kableExtra::kable_styling()
 ```
 
 
-# EDA
+# EDA and Understanding the Data
 
 ### Yearly View
 I was first curiuos about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 but about 1 million downloads short from its 2015 level.  Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by almost 50% to 15 million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
@@ -169,9 +173,9 @@ gridExtra::grid.arrange(g_tot_by_yr,g_tot_by_yoy)
 ```
 
 
-At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. But there are some other interesting variables in the data set that I would like to explore.  
+At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. But there are some other interesting variables in the data that I would like to explore.  
 
-# Weekly View by Operating System (OS)
+### Weekly View by Operating System (OS)
 
 ```{r, echo=FALSE}
 # What does the trend look like by os
@@ -234,19 +238,51 @@ g_os_yoy <- down_tot_by_os %>%
 #g_os_yoy
 
 #gridExtra::grid.arrange(g_os_lvl, g_os_yoy)
+
+# Summary Stats
+down_os_summary <- down_tot_by_os %>% dplyr::left_join(cran_R_downloads %>% select(yr_wk,ver_3_5_f),
+                                    by = "yr_wk") %>% 
+  dplyr::group_by(os_factor,ver_3_5_f) %>% summarise_all(mean,na.rm = TRUE)
+
+# Function to grab metrics in writing
+get_os_summary <- function(os, post351, metric) {
+  down_os_summary %>% filter(os_factor == !!os,ver_3_5_f == !!post351) %>% 
+    ungroup() %>% select(!!metric) %>% round()
+}
 ```
 
-One of the questions I had was where is the growth coming from in the last year? From the graphs below, 
-```{r, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
+One of the questions I had was where is the growth coming from in the last year? My first thought was to overlay the version release for R; the blue line represents the minor version releases, and the red dotted line represents patch releases. There were no major releases during this time.  You can see right away that downloads start trending after the R 3.5 version release.  The R 3.5 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster.  However, you don't see the increase in downloads right away and that was because the upgrades had an issue where it wouldn't work with older versions of R packages.  This is normally why I wait for at least 1 patch release before installing R after a minor release.  For example, I have just now started to upgrade to R 3.6.1 even though that release was in the spring of this year.
+
+From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of `r get_os_summary(os = 'win', post351 = 0, metric = 'total')` downloads/week before the release of R 3.5.1., and `r get_os_summary(os = 'win', post351 = 1, metric = 'total')` downloads/week post the R 3.5.1 release. 
+
+
+```{r wkly_trend_os, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
 g_os_lvl
+
+```
+
+
+The average weekly YOY growth rate by week for Windows for those periods is `r paste0(get_os_summary(os = 'win', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'win', post351 = 1, metric = 'yoy_perc'), '%')`, respectively.
+```{r yoy_growth_os, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
 g_os_yoy
 ```
 
+
+# The Problems with Using Search Trends
+
+The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static which , or from the product perspective, consumers approach their searches of the R Programming language the same regardless of where the R Programming language is in its product life cycle.  For example, the TIOBE Index uses **+"<language> programming"** for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below).  So for R the search would be "R programming**  
+
+
+
+# The Probability of Coincidences
 
 # Reference
 
   - https://cran.r-project.org/web/packages/cranlogs/cranlogs.pdf
   - https://github.com/r-hub/cranlogs.app
+  - Google Trend Results: https://trends.google.com/trends/explore?date=2010-01-01%202019-11-23&geo=US&q=%22R%20programming%22,Tidyverse,dplyr,ggplot2
+  - TIOBE Index Definition: https://www.tiobe.com/tiobe-index/programming-languages-definition/
+  - PYPL Index Definition: 
 
 
 # Session Info
