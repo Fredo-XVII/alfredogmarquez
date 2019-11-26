@@ -123,7 +123,7 @@ down_tot_by_d %>%
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
   geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
-  #geom_vline(aes(xintercept = tidyvere_release_1_0), linetype = 1, color = "black") +
+  #geom_vline(aes(xintercept = as.Date('2018-07-09')), linetype = 1, color = "black") + useR2018
   annotate(geom = "text", 
            x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
            y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
@@ -133,7 +133,29 @@ down_tot_by_d %>%
            y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
            size=4, angle=90, vjust=-0.10, hjust=-0.10, color = "red", alpha = 0.5) 
 
+### Impact of Tidyverse
+tidy_fulcrum <- ggplot(down_tot_by_d, aes(x = yr_wk, y = total)) + 
+  geom_line() +
+  geom_vline(xintercept = hadley_tidyverse, color = 'steelblue', linetype = 4, alpha = 0.75) +
+  geom_vline(xintercept = tidy_searches_beg, color = 'red') +
+  geom_vline(xintercept = tidyvere_release_1_0, color = 'steelblue', linetype = 4, alpha = 0.75) +
+  theme_bw() +
+  annotate(geom = "text", 
+           x=hadley_tidyverse, 
+           y=0, label="Hadley @ useR!2016",
+           size=4, angle=90, vjust=-0.8, hjust=-1.35,  color = "steelblue", alpha = 0.75) +
+  annotate(geom = "text", 
+           x=tidy_searches_beg, 
+           y=0, label="Tidyverse Searches Begin",
+           size=4, angle=90, vjust=-0.0, hjust=-0.5,  color = "red", alpha = 0.75) +
+  annotate(geom = "text", 
+           x=tidyvere_release_1_0, 
+           y=0, label="Tidyverse 1.0.0",
+           size=4, angle=90, vjust=1.5, hjust=-1.90,  color = "steelblue", alpha = 0.75) +
+  #theme_light() + theme(legend.position = "none") +
+  labs(x = 'Week', y = '', title = "Tidyverse Impacts R Downloads Trend",caption = "")
 
+tidy_fulcrum
 
 # What does the trend look like by os
 down_tot_by_os <- cran_R_downloads %>% 
@@ -331,10 +353,6 @@ ggplot(all_trends, aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f))
   geom_vline(xintercept = tidy_searches_beg, color = 'red') +
   geom_vline(xintercept = tidyvere_release_1_0, color = 'orange')
 
-ggplot(down_tot_by_d_t, aes(x = yr_wk, y = hits)) + geom_line() +
-  geom_vline(xintercept = tidy_searches_beg, color = 'red') +
-  geom_vline(xintercept = tidyvere_release_1_0, color = 'blue') +
-  geom_vline(xintercept = hadley_tidyverse, color = 'orange')
   
 # 1 week differences
 diff1_trends <- all_trends %>% 
