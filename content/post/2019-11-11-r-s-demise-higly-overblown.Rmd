@@ -105,7 +105,7 @@ R_ver_hist_major <- R_ver_hist %>%
   dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
 
 #cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
-cran_R_downloads_raw <- readRDS(file = paste0("C:\\Users\\marqu\\OneDrive\\Documents\\blog\\alfredogmarquez\\data", "\\cran_R_downloads_raw.rds"))
+cran_R_downloads_raw <- readRDS(file = paste0("C:\\Users\\marqu\\OneDrive\\Documents\\blog\\alfredogmarquez\\data\\cran_R_downloads_raw.rds"))
 
 cran_R_downloads <- cran_R_downloads_raw %>% 
   dplyr::filter(!version %in% c('devel','release','release.exe','latest')) %>% 
@@ -177,41 +177,18 @@ At this point, I could probably be done because I think that there is sufficient
 
 
 ## The Probability of Coincidences: Tale of 2 Bends
-
-From the yearly trend above there are 2 interesting behaviors.  First, is the year over year decline in 2016 and the recovery in 2017.  Second is the large increase in year over year growth in 2019.
-```{r}
+```{r, echo=FALSE,warning=FALSE}
 # What does the trend look like?
 down_tot_by_d <- cran_R_downloads %>% 
   dplyr::group_by(yr_wk,greg_d,forcats::fct_explicit_na(vers_i)) %>% 
   dplyr::summarise(total = sum(count)) %>% 
   tsibble::as_tsibble(index = yr_wk)
-
-R351_fulcrum <- down_tot_by_d %>% 
-  ggplot(aes(x = yr_wk, y = total)) +
-  geom_line() +
-  theme_light() +
-  labs(x = 'Week', y = 'Weekly Downloads', title = "R Downloads from RStudio Cranlogs by Week",
-       caption = "Blue Line: R minor version releases\n
-       Red Line: R version patches \n
-       Note: No major versions released during this time.
-       ") +
-  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
-  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
-  annotate(geom = "text", 
-           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
-           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = "blue", alpha = 0.75) +
-  annotate(geom = "text", 
-           x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
-           y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = "red", alpha = 0.5)
 ```
 
-```{r}
-R351_fulcrum
-```
 
+From the yearly trend above there are 2 interesting behaviors.  First, is the year over year decline in 2016 and the recovery in 2017.  If you look at the graph below you will notice that R downloads are in declline all of 2015 and bottom out in the middle of 2016.  I wondered what happened in 2016 that broke the downward trend.  As I thought about 2016, I remembered that I attended the useR! Conference in Palo Alto that summer.  At the conference Hadley Wickham officially announced idea of the **Tidyverse**, and ending all references to the term **Hadleyverse**, which was the name that had been circling to describe the Tidyverse ecosystem.  We all laugh as we watched Hadleyverse catch fire on screen because it conveyed how humble Hadley truely is.  I regress.  His speech was given on Wednesday June 29th, 2016 (see below week of June 26th).  The week of July 31st 2016 is the start of searches on Google (data from gtrend package) and Tidyverse 1.0.0 is released 1.5 months later.  Below you can see that the week that the term tidyverse search begin to appear on Google Trends R downloads bottom out and rebound.  
+
+In statistics there is this idea that the probability of 2 independents events corresponding together is nearly zero.  In other words, if there is a policy change and a change in the outcome, the probability that these 2 things occur together would be nearly zero if it were to happen by chance.
 ```{r tidyverse_release, echo=FALSE, warning=FALSE}
 tidy_fulcrum <- ggplot(down_tot_by_d, aes(x = yr_wk, y = total)) + 
   geom_line() +
@@ -240,6 +217,37 @@ tidy_fulcrum <- ggplot(down_tot_by_d, aes(x = yr_wk, y = total)) +
 ```{r , echo=FALSE, warning=FALSE}
 tidy_fulcrum
 ```
+
+Second, is the large increase in year over year growth in 2019.
+```{r, echo=FALSE, warning=FALSE}
+
+R351_fulcrum <- down_tot_by_d %>% 
+  ggplot(aes(x = yr_wk, y = total)) +
+  geom_line() +
+  theme_bw() +
+  labs(x = 'Week', y = 'Weekly Downloads', title = "R Downloads from RStudio Cranlogs by Week",
+       caption = "Blue Line: R minor version releases\n
+       Red Line: R version patches \n
+       Note: No major versions released during this time.
+       ") +
+  scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
+  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
+  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist_major, version == '3.5.0')$yr_wk, 
+           y=0, label=subset(R_ver_hist_major, version == '3.5.0')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = "blue", alpha = 0.75) +
+  annotate(geom = "text", 
+           x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
+           y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
+           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = "red", alpha = 0.5)
+```
+
+```{r,echo=FALSE, warning=FALSE}
+R351_fulcrum
+```
+
+
 
 
 
