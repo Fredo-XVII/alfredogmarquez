@@ -175,7 +175,7 @@ gridExtra::grid.arrange(g_tot_by_yr,g_tot_by_yoy)
 At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. But there are some other interesting variables in the data that I would like to explore.  
 
 
-## The Probability of Coincidences: Tale of 2 Bends
+## Natural Experiments: Tale of 2 Bends
 ```{r, echo=FALSE,warning=FALSE}
 # What does the trend look like?
 down_tot_by_d <- cran_R_downloads %>% 
@@ -184,10 +184,10 @@ down_tot_by_d <- cran_R_downloads %>%
   tsibble::as_tsibble(index = yr_wk)
 ```
 
-
+### 1. Tidyverse's Positive Impact
 From the yearly trend above there are 2 interesting behaviors.  First, is the year over year decline in 2016 and the recovery in 2017.  If you look at the graph below you will notice that R downloads are in decline all of 2015 and bottom out in the middle of 2016.  I wondered what happened in 2016 that broke the downward trend.  As I thought about 2016, I remembered that I attended the useR! 2016 Conference in Palo Alto that summer.  At the conference Hadley Wickham officially announced idea of the **Tidyverse**, ending all references to the term **Hadleyverse**, which was the name that had been circling to describe the Tidyverse ecosystem at the time.  We all laughed as we watched Hadleyverse catch fire on screen because it conveyed how humble Hadley truly is.  His speech was given on Wednesday June 29th, 2016 (see below week of June 26th).  The week of July 31st, 2016 is the term "tidyverse" starts to appear in searches on Google Trends (data from gtrend package), or 35 days after Hadley's speech, and Tidyverse 1.0.0 is released on September 15, 2016, or 81 days after Hadley's speech.  In the section below on Google Trends you will see correlation between the tidyverse search term on Google Trends, R downloads bottoming out and rebounding.  
 
-Because economist are not allowed to conduct large scale social experiments with people for moral reasons, we take advantage of natural experiments.  A natural experiment is when there is a policy change or natural event that has a large impact on society.  We can use this event to measure the impact of these large events.  The logic for natural experiments comes from statistics.  In statistics there is this idea that the probability of 2 independents events corresponding together is nearly zero.  In other words, if there is a policy change (treatment) and a corresponding change in an outcome, the probability that these 2 things occur together would be nearly zero if it were to happen by chance.  Although I have no way to prove this, but from the data below I would make the argument that the introduction of the Tidyverse paradigm (treatment) has had a positive impact on R downloads (outcome).  From my experience, dplyr really made R familiar, approachable, easy to pick up.  Base R was much harder to pick up in comparison.  What this shows is that the Tidyverse reduce the barriers to entry for new R users by making R easier to learn and use.  In economics this would translate to a reduction in the costs of learning R and thereby increasing the return on investment for each minute spent on learning R.  Furthoremore, the cost of using R will continue to decrease as other packages also adopt the concept of the Tidyverse.  One example is the tsibble package, which is becoming one of my new favorites.  By adopting tidy principles, this package has made manipulating time series data much easier than using the zoo or the xts package.
+Because economist are not allowed to conduct large scale social experiments with people for moral reasons, we take advantage of natural experiments.  A natural experiment is when there is a policy change or natural event that has a large impact on society.  We can use this event to explain and measure the impact of these large events.  The logic for natural experiments comes from statistics.  In statistics there is this idea that the probability of 2 independents events corresponding together is nearly zero.  In other words, if there is a policy change (treatment) and a corresponding change in an outcome, the probability that these 2 things occur together would be nearly zero if it were to happen by chance.  Although I have no way to prove this, but from the data below I would make the argument that the introduction of the Tidyverse paradigm (treatment) has had a positive impact on R downloads (outcome).  From my experience, dplyr really made R familiar, approachable, easy to pick up.  Base R was much harder to pick up in comparison.  What this shows is that the Tidyverse reduces barriers to entry for new R users by making R easier to learn and use.  In economics this would translate to a reduction in the costs of learning R and thereby increasing the return on investment for each minute spent on learning R.  Furthoremore, the cost of using R will continue to decrease as other packages also adopt the concept of the Tidyverse.  One example is the tsibble package, which is becoming one of my new favorites.  By adopting tidy principles, this package has made manipulating time series data much easier than using the zoo or the xts package.
 ```{r tidyverse_release, echo=FALSE, warning=FALSE}
 tidy_fulcrum <- ggplot(down_tot_by_d, aes(x = yr_wk, y = total)) + 
   geom_line() +
@@ -217,11 +217,10 @@ tidy_fulcrum <- ggplot(down_tot_by_d, aes(x = yr_wk, y = total)) +
 tidy_fulcrum
 ```
 
+### 2. R 3.5.1 Marks Growth
 The second event is the large increase in year over year growth in 2019.  I could not think of any really good natural experiment to explain the large increase in R downloads in the first half of 2018.  So I decided to overlay the release dates of the different versions of R; the blue line represents the minor version releases, and the red dotted line represents patch releases.  There were no major releases during this time.  You can see from the graph below that the release of R 3.5.1 marks the beginning of a change in the slope of R downloads at the beginning of 2018 from a relatively flat trend to an increasing trend.  Now why would this be? 
 
-The R 3.5.0 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster.  But why no increase in downloads at this point?  Well because the new R upgrades had issues with packages built on the older versions of R.  Thus, a lot of your packages broke or wouldn't even download.  But a lot of these issues were resolved by the R 3.5.1 release.  So this explains why we see a drop in R downloads after the R 3.5.0 release and an increase with the R 3.5.1 release.  But, why would such a release convince data scientist and analyst to adopt R?  Can you image MS Excel users sitting around waiting for the R 3.5.1 release and jumping up in excitement...I cannot.  This natural experiment is harder to justify than the announcement of the Tidyverse because the Tidyverse changed the way users learned and use R.  What I can say is the release of the R 3.5.1 correspond with something that I cannot currently measure and it marks the beginning of a large adoption in the R programming language. Or maybe I am greatly underestimating the value of speed. 
-
-You can see right away that downloads start trending after the R 3.5 version release.      This is normally why I wait for at least 1 patch release before installing R after a minor release.  For example, I have just now started to upgrade to R 3.6.x even though that minor release was in the fall of last year.
+The R 3.5.0 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster.  But why no increase in downloads at this point?  Well because the new R upgrades had issues with packages built on the older versions of R.  Thus, a lot of your packages broke or wouldn't even download.  But a lot of these issues were resolved by the R 3.5.1 release.  So this explains why we see a drop in R downloads after the R 3.5.0 release and an increase with the R 3.5.1 release.  But, why would such a release convince potential users, such as data scientists, data analysts and business analysts, to adopt R?  Can you image MS Excel business analysts sitting around waiting for the R 3.5.1 release and jumping up in excitement...I cannot.  This natural experiment is harder to justify than the announcement of the Tidyverse because the Tidyverse changed the way users learned and use R.  What I can say is the release of the R 3.5.1 correspond with something that I cannot currently measure and it marks the beginning of a large adoption in the R programming language. Or maybe I am greatly underestimating the value of speed. 
 
 
 ```{r, echo=FALSE, warning=FALSE}
@@ -256,7 +255,7 @@ R351_fulcrum
 
 
 
-### Weekly View by Operating System (OS)
+## Weekly View by Operating System (OS)
 
 ```{r, echo=FALSE}
 # What does the trend look like by os
@@ -333,10 +332,10 @@ get_os_summary <- function(os, post351, metric) {
 ```
 
 
+### 1. Windows Leads the way, Mac Grows Rapidly
+Now that we have established that the R 3.5.1 is an inflection point, lets see what is behind the growth in downloads.  From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of `r get_os_summary(os = 'win', post351 = 0, metric = 'total')` downloads/week before the release of R 3.5.1., and `r get_os_summary(os = 'win', post351 = 1, metric = 'total')` downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads.  Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have no evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis.  R has a bad rap for having an uphill learning curve, but I believe with the tidyverse, this is no longer the case and anyone who says differently hasn't used R in the last 3 years.  In other words, they are speaking from inexperience with the recent improvements in the R ecosystem. **I will show some evidence to this point below.**  I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2.  Basically, anything that they can do in excel, now they can do with R, and more.
 
-From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of `r get_os_summary(os = 'win', post351 = 0, metric = 'total')` downloads/week before the release of R 3.5.1., and `r get_os_summary(os = 'win', post351 = 1, metric = 'total')` downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads.  Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have not evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis.  R has a bad rap for having an uphill learning curve, but I believe with the tidyverse, this is no longer the case and anyone who says differently hasn't used R in the last 3yrs.  In other words, they are speaking from inexperience with the recent improvements in the R ecosystem. I will show some evidence to this point below.  I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2.  Basically, anything that they can do in excel, now they can do with R, and more.
-
-My second surprise from looking at the OS break out was the large increase in Mac users.  I am not sure why this would be the case except that Macs are now more common at work.  For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire.  If this is happening across industries, then this may explain some of this growth in addition to the university effect where Mac seems to be quite common.  R downloads for Mac averaged `r get_os_summary(os = 'osx', post351 = 0, metric = 'total')` in the period before the R 3.5.1 release and has averaged `r get_os_summary(os = 'osx', post351 = 1, metric = 'total')`, more than doubling its weekly average downloads.  The upward trend for Mac R downloads doesn't seem to waning so there may be growth to come over the next year.
+My second surprise from looking at the OS break out was the large increase in Mac users.  I am not sure why this would be the case except that Macs are now more common at work.  For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire.  If this is happening across industries, then this may explain some of this growth in addition to the university effect where Mac seem to be quite common.  R downloads for Mac averaged `r get_os_summary(os = 'osx', post351 = 0, metric = 'total')` in the period before the R 3.5.1 release and has averaged `r get_os_summary(os = 'osx', post351 = 1, metric = 'total')`, more than doubling its weekly average downloads.  The upward trend for Mac R downloads doesn't seem to waning so there may be more growth to come over the next year.
 
 Finally, I will not discuss the OS labeled "NA" as it is really small, I just present it for completeness.  I was not able to determine if the OS for "SRC" was building R from source, or whether it was for Linux.  In any case, R downloads for "SRC" have been consistent throughout the entire time frame with some large growth after the R 3.5.2 release.  The average download for "SRC" is `r get_os_summary(os = 'src', post351 = 0, metric = 'total')` in the period before R 3.5.1 release and `r get_os_summary(os = 'src', post351 = 1, metric = 'total')` after.
 
@@ -347,7 +346,7 @@ g_os_lvl
 
 ```
 
-
+### 2. Skyrocketing Year Over Year Growth
 In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system.  The average weekly YOY growth rate for Windows for the pre-period is `r paste0(get_os_summary(os = 'win', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'win', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for Mac for the pre-period is `r paste0(get_os_summary(os = 'osx', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'osx', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  The average weekly YOY growth rate for "SRC" for the pre-period is `r paste0(get_os_summary(os = 'src', post351 = 0, metric = 'yoy_perc'),'%')` and `r paste0(get_os_summary(os = 'src', post351 = 1, metric = 'yoy_perc'), '%')` for the post period.  Imagine for a second you are a product manager, and your product was experiencing 80% plus YOY growth on average every week for nearly 2 years; how ecstatic would you be?
 
 
@@ -358,18 +357,23 @@ g_os_yoy
 
 
 
+
+# The Problem with Using Search Trends
+
+The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static. In other words, it ignores how consumers have learned and adapted to new technology.  For example, a few years ago the R programming language was new to the masses, meaning analysts not in tech, nor statisticians, nor data scientist. At this point most curious analyst would search terms such as "R Programming Language" in order to online research on Google.  But as time passes, the knowlege base is spread by word of mouth and experience.  Those early innovator will spread the word but they won't waste their coworkers time by saying google "R Programming Language."  Instead they would suggest search for "dplyr" or "ggplot2" or "DataCamp" for a learning platform.  From my experience, I cannot remember the last time I searched for the "R Programming Language;" its been years.  But I search for R topics every single day.  My searches normally look like this "r <package> <function>" or "r <function> <error>.  So when I am teaching R to my coworkers this is the format that I use; never do I ever say "R programming Language." 
+
+For example, the TIOBE Index uses **+"<language> programming"** for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below).  So for R the search would be "R programming"  
+
+The PLPY Index is a little better, but not much better.  They use the term "<language> tutorial" to build their index.  I like this better because it suggest that potential users/analysts are interested in finding courses where they can learn R for example.  It tries to get at the way potential R users would go about learning R; it gets at consumer behavior.  However, this search term is quickly undermind by the current R users.  For example, I always recommend DataCamp for learning R, and even Python.  So now my coworkers no longer search for "tutorials" they are now searching for "DataCamp."  There are many other websights that provide training, so once you have found what you are looking for, you don't ever search for "R tutorials" even though you are continue to learn R.
+
+
+Whatever methods they use are irrelevant; the problem is that the search terms don't accurately reflect the behavior of the consumer.
+
 # Summary 1
 - Growth is increasing
 - Windows has leading in downloads by a large margin, both Windows and Macs are driving the growth after the R 3.5.1 release.
 - Tidyverse changed the course of history.
-
-# The Problems with Using Search Trends
-
-The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static which , or from the product perspective, consumers approach their searches of the R Programming language the same regardless of where the R Programming language is in its product life cycle.  For example, the TIOBE Index uses **+"<language> programming"** for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below).  So for R the search would be "R programming**  
-
-Whatever methods they use are irrelevant; the problem is that the search terms don't accurately reflect the behavior of the consumer.
-
-
+- Search Trends Lack Rigor
 
 # Reference
 
