@@ -369,6 +369,119 @@ The PLPY Index is a little better, but not much better.  They use the term **"\<
 
 Whatever methods they use are irrelevant; the problem is that the search terms don't accurately reflect the behavior of the consumer.
 
+```{r all_trends}
+# Get Trends
+terms <- c("R programming") # TIOBE
+R_gtrends <- gtrendsR::gtrends(keyword = terms,
+                               #geo = c("US"),
+                               time = sprintf("2015-01-01 %s",lubridate::today())
+                               )
+
+terms <- c("dplyr")
+dplyr_gtrends <- gtrendsR::gtrends(keyword = terms,
+                               #geo = c("US"),
+                               time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+terms <- c("tidyverse")
+tverse_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                   #geo = c("US"),
+                                   time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+terms <- c("ggplot2")
+ggplot_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                    #geo = c("US"),
+                                    time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+terms <- c("R tutorials")
+pypl_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                    #geo = c("US"),
+                                    time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+terms <- c("DataCamp")
+camp_gtrends <- gtrendsR::gtrends(keyword = terms,
+                                  #geo = c("US"),
+                                  time = sprintf("2015-01-01 %s",lubridate::today())
+)
+
+plot(camp_gtrends)
+
+r_trends_t <- R_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+dplyr_t <- dplyr_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+tverse_t <- tverse_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+ggplot_t <- ggplot_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+pypl_t <- pypl_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+camp_t <- camp_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+down_tot_by_d_t <- down_tot_by_d %>% 
+  dplyr::ungroup() %>% 
+  dplyr::select(yr_wk,total) %>% 
+  dplyr::summarise(wkly_tot = sum(total)) %>% 
+  dplyr::mutate(hits = (.$wkly_tot - min(down_tot_by_d$total)) / (max(down_tot_by_d$total) - min(down_tot_by_d$total))*100,
+                keyword = "R Downloads"
+                ) 
+
+# Summarise Trends
+r_trends_t <- R_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+dplyr_t <- dplyr_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+tverse_t <- tverse_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+ggplot_t <- ggplot_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+pypl_t <- pypl_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+camp_t <- camp_gtrends$interest_over_time %>% 
+  dplyr::mutate(yr_wk = tsibble::yearweek(date)) %>% 
+  dplyr::select(yr_wk,hits,keyword)
+
+down_tot_by_d_t <- down_tot_by_d %>% 
+  dplyr::ungroup() %>% 
+  dplyr::select(yr_wk,total) %>% 
+  dplyr::summarise(wkly_tot = sum(total)) %>% 
+  dplyr::mutate(hits = (.$wkly_tot - min(down_tot_by_d$total)) / (max(down_tot_by_d$total) - min(down_tot_by_d$total))*100,
+                keyword = "R Downloads"
+                ) 
+
+# Merge Trends
+all_trends <- dplyr::bind_rows(r_trends_t, pypl_t, dplyr_t, ggplot_t, tverse_t, camp_t,
+                               down_tot_by_d_t %>% select(yr_wk,hits,keyword)) %>%
+  dplyr::mutate(keyword_f = as_factor(keyword)) %>% 
+  dplyr::select(yr_wk,hits,keyword_f) 
+```
+
+
 ###Where Trends Fail at Prediction
 
 In the graph below I will show why such "search trend" based predictions are risky for forecasters.  Both the TOIBE Index ("R programming") and the PLPY Index ("R tutorials") show interest for R peaking 2017 and steadily declining over time.  So If you believe that correlation = causation, then you would conclude that the interest for R has been in decline, and R is on the way out.  This would explain the blog post over that last year or so claiming that R was doomed.  Second, they go even further and extrapolate that the cause is due to the adoption of Python.  As I have discussed above, and you can see below, R downloads actually been on the rise since 2017.  This data shows that search trends are not good predictors if you don't know your consumer/user.
@@ -390,7 +503,7 @@ Let's discuss a situation where you might know your R consumer/user.  As an R us
 
 The first thing to notice is dplyr and ggplot2 are increasing early on because these packages where around before the tidyverse package.  My original thought was dplyr and ggplot2 would predict R downloads, but as you can see that they do not trend very well with R downloads.  What I conclude is that dplyr and ggplot2 were very popular with current users but those 2 packages alone were not enough to get new users to jump on board with R. Remember that before Hadley's announcement (black line) there was no cohesive ecosystem of packages for data analysis in R.
 
-Second, we continue to see the importance of Hadley's annoucement of the tidyverse ecosystem.  As discussed above, it takes 35 days for searches to appear in Google Trends after Hadley's tidyverse announcement, which means that the daily search trends reaches at least 5000 hits per day (red line). The week where **"tidyverse"** begin is the week that R downloads bottom out, or the bottom of the parabola, the smooth line.  The next week you see a jump in R downloads.  From that point on R downloads have been increasing.  As I argued above, tidyverse has changed the attractiveness of R for new R users, but from I see below, I would not use tidyverse search trends to predict the R downloads because even though both are increasing, they don't really trend very closely.
+Second, we continue to see the importance of Hadley's annoucement of the tidyverse ecosystem.  As discussed above, it takes 35 days for searches to appear in Google Trends after Hadley's tidyverse announcement, which means that the daily search trends reaches at least 5000 hits per day (red line). The week where **"tidyverse"** hits begin is the week that R downloads bottom out, the bottom of the parabola on the smooth line.  The next week you see a jump in R downloads (purple line).  From that point on R downloads have been increasing.  As I argued above, tidyverse has changed the attractiveness of R for new R users, but from I see below, I would not use tidyverse search trends to predict the R downloads because even though both are increasing, they don't really trend very closely.
 
 
 ```{r}
