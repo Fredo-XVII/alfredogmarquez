@@ -1,5 +1,5 @@
 ---
-title: "R's Demise Higly Overblown"
+title: "R's Demise Highly Overblown"
 author: "Alfredo G Marquez"
 date: '2019-11-11'
 coverImage: null
@@ -187,7 +187,7 @@ down_tot_by_d <- cran_R_downloads %>%
 ### 1. Tidyverse's Positive Impact
 From the yearly trend above there are 2 interesting behaviors.  First, is the year over year decline in 2016 and the recovery in 2017.  If you look at the graph below you will notice that R downloads are in decline all of 2015 and bottom out in the middle of 2016.  I wondered what happened in 2016 that broke the downward trend.  As I thought about 2016, I remembered that I attended the useR! 2016 Conference in Palo Alto that summer.  At the conference Hadley Wickham officially announced idea of the **Tidyverse**, ending all references to the term **Hadleyverse**, which was the name that had been circling to describe the Tidyverse ecosystem at the time.  We all laughed as we watched Hadleyverse catch fire on screen because it conveyed how humble Hadley truly is.  His speech was given on Wednesday June 29th, 2016 (see below week of June 26th).  The week of July 31st, 2016 is the term "tidyverse" starts to appear in searches on Google Trends (data from gtrend package), or 35 days after Hadley's speech, and Tidyverse 1.0.0 is released on September 15, 2016, or 81 days after Hadley's speech.  In the section below on Google Trends you will see correlation between the tidyverse search term on Google Trends, R downloads bottoming out and rebounding.  
 
-Because economist are not allowed to conduct large scale social experiments with people for moral reasons, we take advantage of natural experiments.  A natural experiment is when there is a policy change or natural event that has a large impact on society.  We can use this event to explain and measure the impact of these large events.  The logic for natural experiments comes from statistics.  In statistics there is this idea that the probability of 2 independents events corresponding together is nearly zero.  In other words, if there is a policy change (treatment) and a corresponding change in an outcome, the probability that these 2 things occur together would be nearly zero if it were to happen by chance.  Although I have no way to prove this, but from the data below I would make the argument that the introduction of the Tidyverse paradigm (treatment) has had a positive impact on R downloads (outcome).  From my experience, dplyr really made R familiar, approachable, easy to pick up.  Base R was much harder to pick up in comparison.  What this shows is that the Tidyverse reduces barriers to entry for new R users by making R easier to learn and use.  In economics this would translate to a reduction in the costs of learning R and thereby increasing the return on investment for each minute spent on learning R.  Furthoremore, the cost of using R will continue to decrease as other packages also adopt the concept of the Tidyverse.  One example is the tsibble package, which is becoming one of my new favorites.  By adopting tidy principles, this package has made manipulating time series data much easier than using the zoo or the xts package.
+Because economist are not allowed to conduct large scale social experiments with people for moral reasons, we take advantage of natural experiments.  A natural experiment is when there is a policy change or natural event that has a large impact on society.  We can use this event to explain and measure the impact of these large events.  The logic for natural experiments comes from statistics.  In statistics there is this idea that the probability of 2 independents events corresponding together is nearly zero.  In other words, if there is a policy change (treatment) and a corresponding change in an outcome, the probability that these 2 things occur together would be nearly zero if it were to happen by chance.  Although I have no way to prove this, but from the data below I would make the argument that the introduction of the Tidyverse paradigm (treatment) has had a positive impact on R downloads (outcome).  From my experience, dplyr really made R familiar, approachable, easy to pick up.  Base R was much harder to pick up in comparison.  What this shows is that the Tidyverse reduces barriers to entry for new R users by making R easier to learn and use.  In economics this would translate to a reduction in the costs of learning R and thereby increasing the return on investment for each minute spent on learning R.  Furthermore, the cost of using R will continue to decrease as other packages also adopt the concept of the Tidyverse.  One example is the tsibble package, which is becoming one of my new favorites.  By adopting tidy principles, this package has made manipulating time series data much easier than using the zoo or the xts package.
 ```{r tidyverse_release, echo=FALSE, warning=FALSE}
 tidy_fulcrum <- ggplot(down_tot_by_d, aes(x = yr_wk, y = total)) + 
   geom_line() +
@@ -360,14 +360,46 @@ g_os_yoy
 
 # The Problem with Using Search Trends
 
-The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static. In other words, it ignores how consumers have learned and adapted to new technology.  For example, a few years ago the R programming language was new to the masses, meaning analysts not in tech, nor statisticians, nor data scientist. At this point most curious analyst would search terms such as "R Programming Language" in order to online research on Google.  But as time passes, the knowlege base is spread by word of mouth and experience.  Those early innovator will spread the word but they won't waste their coworkers time by saying google "R Programming Language."  Instead they would suggest search for "dplyr" or "ggplot2" or "DataCamp" for a learning platform.  From my experience, I cannot remember the last time I searched for the "R Programming Language;" its been years.  But I search for R topics every single day.  My searches normally look like this "r <package> <function>" or "r <function> <error>.  So when I am teaching R to my coworkers this is the format that I use; never do I ever say "R programming Language." 
+The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static. In other words, it ignores how consumers have learned and adapted to new technology.  For example, a few years ago the R programming language was new to the masses, meaning analysts not in tech, nor statisticians, nor data scientist. At this point most curious analyst would search terms such as "R Programming Language" on Google.  But as time passes, the knowledge base is spread by word of mouth and experience.  Those early innovators will spread the word but they won't waste their coworkers time by saying google "R Programming Language."  Instead they would suggest search for "dplyr" or "ggplot2" or "DataCamp" for a learning platform based on their experience.  From my experience, I cannot remember the last time I searched for the "R Programming Language;" its been years.  But I search for R topics every single day.  My searches normally look like this "r package function" or "r function error".  So when I am teaching R to my coworkers this is the format that I use; never do I ever say search for "R Programming Language." 
 
-For example, the TIOBE Index uses **+"<language> programming"** for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below).  So for R the search would be "R programming"  
+For example, the TIOBE Index uses **+"\<language\> programming"** for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below).  So for R the search would be "R programming."  
 
-The PLPY Index is a little better, but not much better.  They use the term "<language> tutorial" to build their index.  I like this better because it suggest that potential users/analysts are interested in finding courses where they can learn R for example.  It tries to get at the way potential R users would go about learning R; it gets at consumer behavior.  However, this search term is quickly undermind by the current R users.  For example, I always recommend DataCamp for learning R, and even Python.  So now my coworkers no longer search for "tutorials" they are now searching for "DataCamp."  There are many other websights that provide training, so once you have found what you are looking for, you don't ever search for "R tutorials" even though you are continue to learn R.
+The PLPY Index is a little better, but not much better.  They use the term **"\<language\> tutorial"** to build their index.  I like this better because it suggest that potential users/analysts are interested in  courses where they can learn R suggesting they are in a learning phase.  It tries to get at the way potential R users would go about learning R; it gets at consumer behavior.  However, this search term is quickly undermined by the current R users.  For example, I always recommend DataCamp for learning R, or even Python.  So now my coworkers no longer search for "tutorials" they are now searching for "DataCamp."  There are many other websites that provide training, so once you have found what you are looking for, you don't ever search for "R tutorials" even though you are continue to learn R.
 
 
 Whatever methods they use are irrelevant; the problem is that the search terms don't accurately reflect the behavior of the consumer.
+
+###Where Trends Fail at Prediction
+
+In the graph below I will show why such "search trend" based predictions are risky for forecasters.  Both the TOIBE Index ("R programming") and the PLPY Index ("R tutorials") show interest for R peaking 2017 and steadily declining over time.  So If you believe that correlation = causation, then you would conclude that the interest for R has been in decline, and R is on the way out.  This would explain the blog post over that last year or so claiming that R was doomed.  Second, they go even further and extrapolate that the cause is due to the adoption of Python.  As I have discussed above, and you can see below, R downloads actually been on the rise since 2017.  This data shows that search trends are not good predictors if you don't know your consumer/user.
+```{r}
+ggplot(all_trends %>% dplyr::filter(keyword_f %in% c("R programming", "R tutorials", "R Downloads")),
+       aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f)) + 
+  geom_line() +
+  facet_grid(keyword_f~., scales = 'free') +
+  # geom_vline(xintercept = hadley_tidyverse) +
+  # geom_vline(xintercept = tidy_searches_beg, color = 'red') +
+  # geom_vline(xintercept = tidyvere_release_1_0, color = 'orange') +
+  geom_smooth(method = "loess")
+```
+
+
+###Where Trends Succeed at Prediction
+
+Let's discuss a situation where you might know your R consumer/user.  As an R user I know that the main packages for data munging in R are tidyverse and data.table for data in the hundreds of millions of rows. I will focus on tidyverse since I have discussed in this post above.  As an R user I know that I use dplyr and ggplot2 as my core packages for data manipulation and visualization.  So I do a lot of daily searching on "r dplyr function," or "r ggplot2 visualization" for example. So I downloaded their search trends along with tidyverse.
+
+
+```{r}
+ggplot(all_trends %>% dplyr::filter(keyword_f %in% c("dplyr", "ggplot2", "tidyverse", "R Downloads")),
+       aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f)) + 
+  geom_line() +
+  facet_grid(keyword_f~., scales = 'free') +
+  geom_vline(xintercept = hadley_tidyverse) +
+  geom_vline(xintercept = tidy_searches_beg, color = 'red') +
+  geom_vline(xintercept = tidyvere_release_1_0, color = 'orange') +
+  geom_smooth(method = "loess")
+```
+
 
 # Summary 1
 - Growth is increasing

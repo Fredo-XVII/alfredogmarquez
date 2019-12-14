@@ -257,12 +257,12 @@ get_os_summary(os = 'win', post351 = 1, metric = 'total')
 
 # Google Trends: Why is there a bump in the fall of 2018.
 
-gtrends_search <- funtion( terms = terms) {
-  gtrendsR::gtrends(keyword = terms,
-                                    #geo = c("US"),
-                                    time = sprintf("2015-01-01 %s",lubridate::today())
-                    )
-}
+# gtrends_search <- funtion( terms = terms) {
+#   gtrendsR::gtrends(keyword = terms,
+#                                     #geo = c("US"),
+#                                     time = sprintf("2015-01-01 %s",lubridate::today())
+#                     )
+# }
 
 terms <- c("R programming") # TIOBE
 R_gtrends <- gtrendsR::gtrends(keyword = terms,
