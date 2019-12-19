@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/</loc>
-    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
   </url>
@@ -36,8 +31,12 @@
   </url>
   
   <url>
+    <loc>https://www.alfredogmarquez.com/1/01/01/</loc>
+  </url>
+  
+  <url>
     <loc>https://www.alfredogmarquez.com/</loc>
-    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -121,7 +120,7 @@
   
   <url>
     <loc>https://www.alfredogmarquez.com/post/</loc>
-    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-09-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -133,7 +132,7 @@
   
   <url>
     <loc>https://www.alfredogmarquez.com/categories/r/</loc>
-    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -159,12 +158,6 @@
   
   <url>
     <loc>https://www.alfredogmarquez.com/tags/r-programming/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-programming-cranlogs-trends-popularity/</loc>
-    <lastmod>2019-11-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
