@@ -364,7 +364,7 @@ g_os_yoy
 
 # The Problem with Using Search Trends
 
-The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static. In other words, it ignores how consumers have learned and adapted to new technology.  For example, a few years ago the R programming language was new to the masses, meaning analysts not in tech, nor statisticians, nor data scientist. At this point most curious analyst would search terms such as "R Programming Language" on Google.  But as time passes, the knowledge base is spread by word of mouth and experience.  Those early innovators will spread the word but they won't waste their coworkers time by saying google "R Programming Language."  Instead they would suggest search for "dplyr" or "ggplot2" or "DataCamp" based on their experience.  From my experience, I cannot remember the last time I searched for the "R Programming Language;" its been years.  But I search for R topics every single day.  My searches normally look like this "r package function" or "r function error".  So when I am teaching R to my coworkers this is the format that I use; never do I say search for "R Programming Language." 
+Let's get back to the subject at hand.  The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static. In other words, it ignores how consumers have learned and adapted to new technology.  For example, a few years ago the R programming language was new to the masses, meaning analysts not in tech, nor statisticians, nor data scientist. At this point most curious analyst would search terms such as "R Programming Language" on Google.  But as time passes, the knowledge base is spread by word of mouth and experience.  Those early innovators will spread the word but they won't waste their coworkers time by saying google "R Programming Language."  Instead they would suggest searches such as "dplyr" or "ggplot2" or "DataCamp" based on their experience.  From my experience, I cannot remember the last time I searched for the "R Programming Language;" its been years.  But I search for R topics every single day.  My searches normally look like this: "r package function" or "r function error."  So when I am teaching R to my coworkers this is the format that I use; never do I say search for "R Programming Language." 
 
 For example, the TIOBE Index uses **+"\<language\> programming"** for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below).  So for R the search would be "R programming."  
 
@@ -487,7 +487,7 @@ all_trends <- dplyr::bind_rows(r_trends_t, pypl_t, dplyr_t, ggplot_t, tverse_t, 
 
 ### Where Popular Search Trends Indexes Fail at Prediction
 
-In the graph below I will show why such "search trend" based predictions are risky for forecasters.  Both the TOIBE Index ("R programming") and the PLPY Index ("R tutorials") show interest for R peaking 2017 and steadily declining over time.  So If you believe that correlation = causation, then you would conclude that the interest for R has been in decline, and R is on the way out.  This would explain the blog posts over that last year or so claiming that R was doomed.  Second, they go even further and extrapolate that the cause is due to the adoption of Python.  As I have discussed above, and you can see below, R downloads actually hvae been on the rise since 2017.  This data shows that search trends are not good predictors if you don't know where on the product life cycle your consumer/user is currently in.
+In the graph below I will show why such "search trend" based predictions are risky for forecasters.  Both the TOIBE Index ("R programming") and the PLPY Index ("R tutorials") show interest for R peaking 2017 and steadily declining over time.  So If you believe that correlation = causation, then you would conclude that the interest for R has been in decline, and R is on the way out.  This would explain the blog posts over that last year or so claiming that R was doomed.  Second, they go even further and extrapolate that the cause is due to the adoption of Python, without any evidence.  Yes, Python is on the rise and no one contradicts that, but we all know that correlation does not equal causation.   As I have discussed above, and you can see below, R downloads actually hvae been on the rise since 2017.  The data below shows that search trends are not good predictors if you don't know where on the product life cycle your consumer/user is currently in.
 
 
 ```{r, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
@@ -500,24 +500,23 @@ ggplot(all_trends %>% dplyr::filter(keyword_f %in% c("R programming", "R tutoria
   # geom_vline(xintercept = tidyvere_release_1_0, color = 'orange') +
   geom_smooth(method = "loess") +
   theme_bw() + theme(legend.position = "none") +
-  labs(x = 'Week', y = '', title = "Google Search Trends vs. R Downloads from RStudio Cranlogs by Week",
+  labs(x = 'Week', y = '', title = "TOIBE/PLPY Index Search Terms vs. R Downloads from RStudio Cranlogs by Week",
        caption = "
-       Current R major version is 3.x.x \n
-       Blue Line: R minor version releases\n
-       Red Dotted Line: R version patches \n       .
+       TOIBE Index - orange line \n
+       PLPY Index - green line\n
        ")   
 ```
 
 
-### Even Targeted Search Trends fail at Prediction
+### Even Targeted/Informed Search Trends fail at Prediction
 
-Let's discuss a situation where you might know your R consumer/user.  As an R user I know that the main packages for data munging in R are tidyverse and data.table for data in the hundreds of millions of rows. I will focus on tidyverse since I have discussed in this post above.  As an R user I know that I use dplyr and ggplot2 as my core packages for data manipulation and visualization.  So I do a lot of daily searching on "r dplyr function," or "r ggplot2 visualization" for example. So I downloaded their search trends along with tidyverse because tidyverse now includes both dplyr and ggplot2 among a few other packages.  I also include the dates for the tidyverse 1.0.0 release and announcement in the graph below. 
+Let's discuss a situation where you might know your R consumer/user.  As an R user I know that the main packages for data munging in R are tidyverse and data.table for data in the hundreds of millions of rows. I will focus on tidyverse since I have discussed in this post above.  As an R user I know that I use dplyr and ggplot2 as my core packages from the tidyverse ecosystem for data manipulation and visualization.  So I do a lot of daily searching on "r dplyr function," or "r ggplot2 visualization" for example. So I downloaded their search trends along with tidyverse because tidyverse now includes both dplyr and ggplot2 among a few other packages.  I also include the dates for the tidyverse 1.0.0 release and announcement in the graph below. 
 
-The first thing to notice is dplyr and ggplot2 are increasing early on because these packages where around before the tidyverse package and tidyverse ecosystem of packages.  My original thought was dplyr and ggplot2 would predict R downloads, but as you can see that they do not trend very well with R downloads.  What I conclude is that dplyr and ggplot2 were very popular with current users but those 2 packages alone were not enough to get new users to jump on board with R. Remember that before Hadley's announcement (black line) there was no cohesive ecosystem of packages for data analysis in R.
+The first thing to notice is dplyr and ggplot2 are increasing early on because these packages where around before the tidyverse package and tidyverse ecosystem of packages.  My original thought was dplyr and ggplot2 would predict R downloads, but as you can see that they do not trend very well with R downloads.  What I conclude is that dplyr and ggplot2 were very popular with current users but those 2 packages alone were not enough to get new users to jump on board with R. Remember that before Hadley's announcement ( black dashed line) there was no cohesive ecosystem of packages for data analysis in R.
 
-Second, we continue to see the importance of Hadley's annoucement of the tidyverse ecosystem.  As discussed above, it takes 35 days for searches to appear in Google Trends after Hadley's tidyverse announcement, which means that the daily search trends reaches at least 5000 hits per day (red line). The week where **"tidyverse"** hits begin is the week that R downloads bottom out, the bottom of the parabola on the smooth line.  The next week you see a jump in R downloads (purple line).  From that point on R downloads have been increasing.  As I argued above, tidyverse has changed the attractiveness of R for new R users, but from evidence I see below, I would not use tidyverse search trends to predict the R downloads because even though both are increasing, they don't really trend very closely.
+Second, we continue to see the importance of Hadley's annoucement of the tidyverse ecosystem.  As discussed above, it takes 35 days for searches to appear in Google Trends after Hadley's tidyverse announcement, which means that the daily search trends reaches at least 5000 hits per day (red trend line). The week where **"tidyverse"** hits begin is the week that R downloads bottom out, the bottom of the parabola on the smooth purple line.  The next week you see a jump in R downloads (purple line).  From that point on R downloads have been increasing.  As I argued above, tidyverse has changed the attractiveness of R for new R users, but from evidence I see below, I would not use tidyverse search trends to predict the R downloads because even though both are increasing, they don't really trend very closely until 2018 and after.  But even then I would be skeptical that the relationship would hold for long as consumer behavior evolves and they begin to look for specific features within the tidyverse, such as the purrr package.
 
-This shows that even when you are being more mindful about what terms describe your consumers behavior, you may still be at risk when making generalizing predictions.
+This shows that even when you are being more mindful about your consumers behavior and search patterns, you may still be at risk when making generalizing predictions.
 
 
 ```{r, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
@@ -525,33 +524,43 @@ ggplot(all_trends %>% dplyr::filter(keyword_f %in% c("dplyr", "ggplot2", "tidyve
        aes(x = yr_wk, y = hits, group = keyword_f, col = keyword_f)) + 
   geom_line() +
   facet_grid(keyword_f~., scales = 'free') +
-  geom_vline(xintercept = hadley_tidyverse, color = 'steelblue', linetype = 4, alpha = 0.75) +
+  geom_vline(xintercept = hadley_tidyverse, color = 'black', linetype = 4, alpha = 0.75) +
   geom_vline(xintercept = tidy_searches_beg, color = 'red') +
   geom_vline(xintercept = tidyvere_release_1_0, color = 'steelblue', linetype = 4, alpha = 0.75) +
+  # annotate(geom = "text", 
+  #          x=hadley_tidyverse, 
+  #          y=0, label="Hadley @ useR!2016",
+  #          size=3, angle=90, vjust=-0.8, hjust=0,  color = "steelblue", alpha = 0.75) +
+  # annotate(geom = "text", 
+  #          x=tidy_searches_beg, 
+  #          y=0, label="Tidyverse Searches Begin",
+  #          size=3, angle=90, vjust=-0.0, hjust=0,  color = "red", alpha = 0.75) +
+  # annotate(geom = "text", 
+  #          x=tidyvere_release_1_0, 
+  #          y=0, label="Tidyverse 1.0.0",
+  #          size=3, angle=90, vjust=1.5, hjust=0,  color = "steelblue", alpha = 0.75) +
   geom_smooth(method = "loess") +
   theme_bw() + theme(legend.position = "none") +
-  labs(x = 'Week', y = '', title = "Google Search Trends vs. R Downloads from RStudio Cranlogs by Week",
+  labs(x = 'Week', y = '', 
+       title = "R Packages Search Trends vs. R Downloads from RStudio Cranlogs", 
+       subtitle = "by Week",
        caption = "
-       Current R major version is 3.x.x \n
-       Blue Line: R minor version releases\n
-       Red Dotted Line: R version patches \n       .
+       Black dashed vertical line: Hadley announces Tidyverse\n
+       Red solid vertical line: Tidyverse searches begin to show up on Google Trends\n
+       Blue dashed vertical line: Tidyverse 1.0.0 release\n
        ")  
 ```
 
 
 # Conclusions
 
-What are the take aways from this analysis? First, R downloads have been increasing for the last several years, clearly conveying that more users are adopting R to conduct their data analysis and data science work.  In addition, it also provides evidence that the growth in Python may not be have no impact on the adoption of R.  Second, Windows dominates R downloads by large margins, and both Windows and Macs are driving the growth after the R 3.5.1 version release.  Third, a simple idea that data should be [tidy](https://vita.had.co.nz/papers/tidy-data.pdf) can lower barriers to entry for non-software users, and unify a community to be highly thoughtful, cohesive, and innovative when building packages.  Finally, using search trends for prediction lacks rigor.  This example shows that even when trends are moving in the same direction, it is questionable as to whether they can be used for predictions.  Forecasting data has a relatively high bar; the data needs to be consistently accurate at predicting over time.  Having a model that does well this month and not next month is evidence of overfitting and lacks any real theory about what is truely happening in the data generating process.  In other words, you got lucky.
+What are the take aways from this analysis? First, R downloads have been increasing for the last several years, clearly conveying that more users are adopting R to conduct their data analysis and data science work.  In addition, it also provides evidence that the growth in Python has had no impact on the adoption of R.  Second, Windows dominates R downloads by large margins, and both Windows and Macs are driving the growth after the R 3.5.1 version release.  Third, a simple idea that data should be [tidy](https://vita.had.co.nz/papers/tidy-data.pdf) can lower barriers to entry for non-software users, and unify a community to be highly thoughtful, cohesive, and innovative when building packages.  Finally, using search trends for prediction lacks rigor.  This example shows that even when trends are moving in the same direction, it is questionable as to whether they can be used for predictions.  Forecasting data has a relatively high bar; the data needs to be consistently accurate at predicting over time.  Having a model that does well this month and not next month is evidence of overfitting and lacks any real theory about what is truely happening in the data generating process.  In other words, you got lucky.
 
-Further research opportunities or concerns
- - R downloads represent the popularity of RStudio and not of R.  RStudio is mostly used for R, and their are more mirrors than there used to be.
+## Further research opportunities:
+One concern that I have about using RStudio CRAN mirror for this analysis is that the increase in R downloads is due to the popularity of the RStudio IDE and not of R.  Since RStudio is mostly used for R, I believe that this analysis still holds; it would only fail if millions of current users instead of new users were migrating from a different IDE and using RStudio for their R downloads, where before they just went to r-project.org to download R.  It would be nice to be able to control for RStudio downloads, but I don't have that data.
 
-In closing I want to say that this post does not in any way down play the importance of Python.  What it does show that their should be more thought put into articles that make large claims about anything.  Like they used to say in the early 2000's, don't believe everything you read on the internet.  I hope you enjoyed this post. 
+In closing I want to say that this post does not in any way down play the importance of Python.  What it does show is that their should be more thought put into articles that make large claims about anything, especially when using web search terms for explanatory variables.  Like they used to say in the early 2000's, don't believe everything you read on the internet.  I hope you enjoyed this post. 
 
-- Growth is increasing
-- Windows has leading in downloads by a large margin, both Windows and Macs are driving the growth after the R 3.5.1 release.
-- Tidyverse changed the course of history.
-- Search Trends Lack Rigor
 
 # Reference
 
