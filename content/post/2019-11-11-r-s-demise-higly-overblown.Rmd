@@ -36,7 +36,7 @@ In last few months I have come across several blog posts that suggest that Pytho
 
 # Introduction
 
-As I have read all these posts about python impacting the demand for R and implying that R was on the decline, I thought about how I could address this question empirically.  I thought to myself, if the rise in Python for data science is decreasing the demand for R for data science, then naturally, you would see a decrease in R downloads as users moved from R to Python.  Therefore, my experiment is designed as below:
+As I have read all these posts about Python impacting the demand for R and implying that R was on the decline, I thought about how I could address this question empirically.  I thought to myself, if the rise in Python for data science is decreasing the demand for R for data science, then naturally, you would see a decrease in R downloads as users moved from R to Python.  Therefore, my experiment is designed below:
 
 #### **Design of Experiment:**
 
@@ -52,11 +52,11 @@ Ideally, I would collect the number of times R is download from the CRAN mirrors
 
 R fared a little better but not much.  CRAN has dozens of mirrors around the world that are self hosted.  In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded.  Luckily, [RStudio](https://rstudio.com/) has provided a way to obtain the downloads of R from their mirror with the R package **cranlogs**.   
 
-The **cranlogs** package not only gives you downloads for R itself, but also for packages that are downloaded from the RStudio cran mirror.  Because RStudio has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using RStudio as an IDE.
+The **cranlogs** package not only gives you downloads for R itself, but also for packages that are downloaded from the RStudio cran mirror.  Because RStudio has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using RStudio IDE from this cran mirror.
 
-In contrast, I will not make the same assumption about installing R itself.  Normally, I install R core from the https://www.r-project.org/ website and then I install RStudio IDE. This is important because I will use the RStudio R downloads as a proxy for all R downloads worldwide.  In other words, the total for R downloads in this analysis is only a subset of all R downloads.
+In contrast, I will not make the same assumption about installing R itself.  Normally, I install R core from the https://www.r-project.org/ website and then I install RStudio IDE. This is important because I will use the RStudio R downloads as a proxy for all R downloads worldwide.  In other words, the total for R downloads in this analysis is only a subset of all R downloads. I make this assumption because the way you download R is subjective based on you prior experience.
 
-There will be 3 sets of data that I will be working with for this analysis.  First is the data from the cranlogs discussed above.  Second, I will use data from the **rversions** package in order to get R version release dates.  The version dates data will be used to label the graphs and to understand some of the behavior in the downloads.  The third data set that will use comes from the **gtrends** package.  I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index.  Finally, I research some dates that I felt were relevant after analyzing the data.  For example, Hadley Wickham's introduction of the tidyverse at the useR! 2016 conference at the end of June 2016.
+There will be 3 sets of data that I will be working with for this analysis.  First is the data from the cranlogs discussed above.  Second, I will use data from the **rversions** package in order to get R version release dates.  The version dates data will be used to label the graphs and to understand some of the behavior in the downloads.  The third data set that will use comes from the **gtrends** package.  I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index, creaters of web search trend indexes.  Finally, I research some dates that I felt were relevant after analyzing the data.  For example, Hadley Wickham's introduction of the Tidyverse at the useR! 2016 conference at the end of June 2016.
 
 # Analysis
 
@@ -67,7 +67,6 @@ To begin my analysis, I will use the packages loaded below.
 library(cranlogs)
 library(lubridate)
 library(gridExtra)
-#library(ggrepel)
 library(tidyverse)
 library(tsibble)
 library(gtrendsR)
@@ -168,7 +167,12 @@ g_tot_by_yoy <- down_tot_by_yr %>%
   scale_y_continuous(labels = scales::percent_format(scale = 1))
 ```
 
-At first, I was curious about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 by about 1 million downloads, short from its 2015 level.  Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by more than 60% to `r (down_tot_by_yr %>% dplyr::filter(year == 2019) %>% dplyr::select(total))[[1]]` million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
+At first, I was curious about the overall trend of the data. You can see that R downloads growth is 
+`r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2016) %>% dplyr::select(yoy_perc),0)[[1]],"%")` 
+from 2015 to 2016, recovering in 2017 by `r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2017) %>% dplyr::select(yoy_perc),0)[[1]],"%")`, but about 1 million downloads short from its 2015 level.  Then in 2018 R downloads grow by 2 million downloads, or by `r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2018) %>% dplyr::select(yoy_perc),0)[[1]],"%")`, to 
+`r round(down_tot_by_yr %>% dplyr::filter(year == 2018) %>% dplyr::select(total)[[1]]/100000,0)` million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by more than 
+`r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2019) %>% dplyr::select(yoy_perc),0)[[1]],"%")` to 
+`r round(down_tot_by_yr %>% dplyr::filter(year == 2019) %>% dplyr::select(total)[[1]]/100000,0)` million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan CRAN mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
 
 ```{r, echo=FALSE, warning=FALSE}
 
