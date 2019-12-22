@@ -170,9 +170,9 @@ g_tot_by_yoy <- down_tot_by_yr %>%
 At first, I was curious about the overall trend of the data. You can see that R downloads growth is 
 `r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2016) %>% dplyr::select(yoy_perc),0)[[1]],"%")` 
 from 2015 to 2016, recovering in 2017 by `r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2017) %>% dplyr::select(yoy_perc),0)[[1]],"%")`, but about 1 million downloads short from its 2015 level.  Then in 2018 R downloads grow by 2 million downloads, or by `r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2018) %>% dplyr::select(yoy_perc),0)[[1]],"%")`, to 
-`r round(down_tot_by_yr %>% dplyr::filter(year == 2018) %>% dplyr::select(total)[[1]]/100000,0)` million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by more than 
+`r round((down_tot_by_yr %>% dplyr::filter(year == 2018) %>% dplyr::select(total))[[1]]/100000,0)` million and surpasses its 2015 level by 1 million downloads.  Finally, R downloads have grown by more than 
 `r paste0(round(down_tot_by_yr %>% dplyr::filter(year == 2019) %>% dplyr::select(yoy_perc),0)[[1]],"%")` to 
-`r round(down_tot_by_yr %>% dplyr::filter(year == 2019) %>% dplyr::select(total)[[1]]/100000,0)` million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan CRAN mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
+`r round((down_tot_by_yr %>% dplyr::filter(year == 2019) %>% dplyr::select(total))[[1]]/100000,0)` million downloads this year.  I have to admit those totals are more than I would have thought.  This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan CRAN mirror being the closet to my location.  In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.
 
 ```{r, echo=FALSE, warning=FALSE}
 
