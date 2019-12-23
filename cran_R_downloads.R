@@ -161,7 +161,7 @@ down_tot_by_os <- cran_R_downloads %>%
   dplyr:: group_by(os_factor,yr_wk) %>% 
   dplyr::summarise(total = sum(count)) %>% 
   dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
-                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
+                yoy_perc = round((total/dplyr::lag(total,n = 52) - 1)*100,0)
   )
 
 g_os_lvl <- down_tot_by_os %>% 
@@ -188,7 +188,7 @@ g_os_lvl <- down_tot_by_os %>%
        ")
 g_os_lvl
 
-g_os_yoy <- down_tot_by_os %>% 
+g_os_yoy <- down_tot_by_os %>% filter(os_factor == "osx") %>% 
   ggplot(aes(x = yr_wk, y = yoy_perc, col = os_factor, group = os_factor)) +
   #geom_line() +
   geom_col() +
@@ -196,7 +196,6 @@ g_os_yoy <- down_tot_by_os %>%
   facet_grid(os_factor~., scales = 'free') +
   geom_hline(yintercept = 0) +
   scale_x_date(date_breaks = "1 year", date_labels = "%Y") +
-  #geom_vline(xintercept = tidy_searches_beg, color = 'red') +
   geom_vline(data = R_ver_hist, mapping = aes(xintercept = greg_d), linetype = 4, color = "red", alpha = 0.5) +
   geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = "blue") +
   annotate(geom = "text", 
@@ -207,13 +206,13 @@ g_os_yoy <- down_tot_by_os %>%
            x=subset(R_ver_hist, version == '3.5.1')$yr_wk, 
            y=0, label=subset(R_ver_hist, version == '3.5.1')$version,
            size=4, angle=90, vjust=-0.10, hjust=-0.10,  color = "red", alpha = 0.5) +
-  theme_bw() + theme(legend.position = "none") +
+  theme_light() + theme(legend.position = "none") +
   labs(x = 'Week', y = '', title = "R Downloads Year Over Year Change from RStudio Cranlogs by Week",
-       caption = "
+       caption = '
        Current R major version is 3.x.x \n
        Blue Line: R minor version releases\n
        Red Dotted Line: R version patches \n  
-       ")
+       ')
 g_os_yoy
 
 gridExtra::grid.arrange(g_os_lvl, g_os_yoy)

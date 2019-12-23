@@ -73,6 +73,7 @@ library(gtrendsR)
 library(rversions)
 library(scales)
 library(kableExtra)
+library(plotly)
 
 # Options
 options(scipen = 999)
@@ -271,7 +272,7 @@ down_tot_by_os <- cran_R_downloads %>%
   dplyr:: group_by(os_factor,yr_wk) %>% 
   dplyr::summarise(total = sum(count)) %>% 
   dplyr::mutate(yoy = total/dplyr::lag(total, n = 52),
-                yoy_perc = (total/dplyr::lag(total,n = 52) - 1)*100
+                yoy_perc = round((total/dplyr::lag(total,n = 52) - 1)*100,0)
   )
 
 g_os_lvl <- down_tot_by_os %>% 
@@ -321,7 +322,8 @@ g_os_yoy <- down_tot_by_os %>%
        caption = '
        Current R major version is 3.x.x \n
        Blue Line: R minor version releases\n
-       Red Dotted Line: R version patches \n  
+       Red Dotted Line: R version patches \n 
+       Y-axis error: 1st 200% should be 150%
        ')
 #g_os_yoy
 
@@ -349,7 +351,7 @@ Finally, I will not discuss the OS labeled "NA" as it is really small; I just pr
 
 
 
-```{r wkly_trend_os, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
+```{r wkly_trend_os, fig.hieght=20, fig.asp= .67, echo=FALSE, warning=FALSE}
 g_os_lvl
 
 ```
@@ -359,7 +361,7 @@ In this section, I will quickly describe the year over year (YOY) growth in R do
 
 
 
-```{r yoy_growth_os, fig.hieght=10, fig.asp= .67, echo=FALSE, warning=FALSE}
+```{r yoy_growth_os, fig.hieght=20, fig.asp= .67, echo=FALSE, warning=FALSE}
 g_os_yoy
 ```
 
