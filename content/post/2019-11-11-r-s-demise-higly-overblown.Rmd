@@ -87,8 +87,8 @@ tidyvere_release_1_0 <- as.Date('2016-09-15')
 
 ```{r, echo=FALSE}
 # Download R download data and version dates
-#R_ver_hist_raw <- rversions::r_versions() 
-R_ver_hist_raw <- readRDS(file = "C:\\Users\\marqu\\OneDrive\\Documents\\blog\\alfredogmarquez\\data\\R_ver_hist_raw.rds")
+R_ver_hist_raw <- rversions::r_versions() 
+# R_ver_hist_raw <- readRDS(file = #"C:\\Users\\marqu\\OneDrive\\Documents\\blog\\alfredogmarquez\\data\\R_ver_hist_raw.rds")
 R_ver_hist_raw$vers_d <- as.POSIXct(R_ver_hist_raw$date)
 
 R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>% 
@@ -103,8 +103,8 @@ R_ver_hist <- R_ver_hist_raw %>% dplyr::select(-date) %>%
 R_ver_hist_major <- R_ver_hist %>%  
   dplyr::filter(vers_i %in% c("3.2.0","3.3.0","3.4.0","3.5.0","3.6.0"))
 
-#cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
-cran_R_downloads_raw <- readRDS(file = "C:\\Users\\marqu\\OneDrive\\Documents\\blog\\alfredogmarquez\\data\\cran_R_downloads_raw.rds")
+cran_R_downloads_raw <- cranlogs::cran_downloads('R', from = "2010-01-01", to = lubridate::today())
+# cran_R_downloads_raw <- readRDS(file = #"C:\\Users\\marqu\\OneDrive\\Documents\\blog\\alfredogmarquez\\data\\cran_R_downloads_raw.rds")
 
 cran_R_downloads <- cran_R_downloads_raw %>% 
   dplyr::filter(!version %in% c('devel','release','release.exe','latest')) %>% 
@@ -323,7 +323,8 @@ g_os_yoy <- down_tot_by_os %>%
        Current R major version is 3.x.x \n
        Blue Line: R minor version releases\n
        Red Dotted Line: R version patches \n 
-       Y-axis error: 1st 200% should be 150%
+       Y-axis osx error: 2nd 0% should be 50%, \n
+                     1st 200% should be 150%
        ')
 #g_os_yoy
 
