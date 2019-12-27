@@ -11,7 +11,7 @@ keywords:
 - R
 - popular
 - popularity
-- trends
+- google trends
 metaAlignment: center
 slug: r-s-demise-higly-overblown
 summary: Today I will provide evidence that R's demise are highly overblown.
