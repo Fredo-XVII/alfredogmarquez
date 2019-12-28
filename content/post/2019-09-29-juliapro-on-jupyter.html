@@ -1,0 +1,128 @@
+---
+title: JuliaPro's Julia on Jupyter Notebooks
+author: Alfredo G Marquez
+date: '2019-09-29'
+slug: juliapro-on-jupyter
+categories:
+  - Julia
+tags:
+  - Julia JuliaPro Jupyter Kernel
+keywords:
+  - Julia
+  - JuliaPro
+  - Jupyter
+  - Kernel
+  - windows
+autoThumbnailImage: false
+thumbnailImagePosition: "top"
+thumbnailImage: https://upload.wikimedia.org/wikipedia/commons/6/69/Julia_prog_language.svg
+coverImage: /images/256px-Julia_prog_language.svg
+metaAlignment: center
+coverMeta: out
+coverSize: partial
+summary: "Today I will discuss how to install Apache Spark onto a Windows machine."
+draft: false
+---
+
+
+
+<!--more-->
+<div id="section" class="section level1">
+<h1></h1>
+<p>In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.</p>
+<hr />
+<p>I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.</p>
+<hr />
+</div>
+<div id="julia-introduction" class="section level1">
+<h1>Julia Introduction</h1>
+<p>Before I begin, I should describe <a href="https://julialang.org/">Julia</a>. Julia is a numerical and scientific computing programming language. By extension, Julia is also a data analysis and data science programming language. This is what gets me excited about Julia, the fact that it originally designed to perform mathematics and statistics, and this is the reason why I love the R programming language. In addition, it solves the 2 language problem where you develop code once on your local and you can easily take your code and distribute it on a cluster. Finally, it is a high level langauge that performs at the speed of low level languages such as C.</p>
+<p><a href="https://juliacomputing.com/products/juliapro.html">JuliaPro</a> is a solution created by the foks at Julia Computing to get you up and running with Julia fast and without dependencies to other languages such as Python. JuliaPro reminds me of Rstudio, and my favorite feature is the ability to build .jl scripts without the cell like structure of Jupyter Notebooks.</p>
+</div>
+<div id="how-to-set-jupyter-notebook-for-juliapro" class="section level1">
+<h1>How to set Jupyter notebook for JuliaPro</h1>
+<p>I have been using Jupyter Notebooks as my main IDE for learning Julia. I also use it at work when I am working on our Hadoop platform to build analysis with SparkR where RStudio is not available. My experience at work is where I learned the solution below.</p>
+<p>when I installed JuliaPro 1.2.0 I got the Jupyter kernel list shown below. So you could see my delimma, which Julia environment am I using? JuliaPro or base Julia? This is important because Julia really focuses on isolating environments for reproducibility.</p>
+<div class="figure">
+<img src="/images/Jupyter_JuliaPro_before.PNG" alt="Jupyter Before" />
+<p class="caption">Jupyter Before</p>
+</div>
+<p><br></br></p>
+<div id="file-location-and-resources" class="section level2">
+<h2>File location and Resources</h2>
+<p>In order to change to the name of the kernal, we will need to change the name in the <strong>kernel.json</strong> file. On Windows, this file can be found at the <strong>%APPDATA%/jupter/kernels</strong> folder according to the <a href="https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html">Jupyter Documentation</a>. In my installation of Windows it is under <strong>%APPDATA%/Roaming/jupter/kernels</strong>. In this folder you will see folders for all the kernels that are installed in your version of Jupyter. If you are on a Mac or Linux, go to Jupyter Documentation for the path to the kernels folder.</p>
+</div>
+<div id="in-juliajuliaprojupyter-notebooks" class="section level2">
+<h2>In Julia/JuliaPro/Jupyter Notebooks</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Get App location</strong>: Launch Julia with JuliaPro, Julia Interpreter, or Jupyter notebooks. Type <code>ENV</code> to get the environmetal variables associated with Julia. Look for the “<strong>APPDATA</strong>” file path; you will need this below. Note, this is how I discovered that my kernel was under the <strong>Roaming</strong> folder.</li>
+</ol>
+</div>
+<div id="in-gitbash-for-windows" class="section level2">
+<h2>In GitBash (for Windows)</h2>
+<ol start="2" style="list-style-type: decimal">
+<li><p><strong>Change Directory to Jupyter’s kernel folder</strong>: <code>cd C:\\Users\\marqu\\AppData\Roaming\jupyter\kernels</code>. This folder will list all the kernels available to your Jupyter installation.</p></li>
+<li><p><strong>Check out kernel.json in folder julia-1.2</strong>: When you cat the kernel.json in the julia-1.2 folder, you will see that the path in the <code>argv</code> is referencing the JuliaPro Julia executable. We need to change this to the reference your julia-1.2 Julia executable and we will need to create a new file for in the folder JuliaPro-1.2.</p></li>
+</ol>
+<p>GitBash Commands:</p>
+<ul>
+<li><p>cd julia-1.2</p></li>
+<li><p>ls -la</p></li>
+<li><p>cat kernel.json</p></li>
+</ul>
+<div class="figure">
+<img src="/images/GitBash_JuliaPro_before.PNG" alt="Jupyter Julia-1.2.0 Kernel.json Before" />
+<p class="caption">Jupyter Julia-1.2.0 Kernel.json Before</p>
+</div>
+<p><br></br></p>
+<div id="copy-basic-julia-1.2.0-kernel.json-to-a-folder-named-juliapro-1.2.0" class="section level3">
+<h3>Copy basic Julia-1.2.0 kernel.json to a folder named Juliapro-1.2.0</h3>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Make a copy of the Julia-1.2 folder, renamed JuliaPro-1.2</strong>: Change the new kernel.json file in the JuliaPro-1.2.0 Julia executable. Change the <code>display name</code> to JuliaPro 1.2.0 from Julia 1.2.0. Now Jupyter will display JuliaPro-1.2.0 for the JuliaPro-1.2.0 install instead of Julia-1.2.0.</li>
+</ol>
+<p>GitBash Commands:</p>
+<ul>
+<li><p><code>cp -avr /c/Users/marqu/AppData/Roaming/jupyter/kernels/julia-1.2 \ /c/Users/marqu/AppData/Roaming/jupyter/kernels/juliapro-1.2</code></p></li>
+<li><p>cd /kernels/juliapro-1.2</p></li>
+<li><p>vi kernel.json</p></li>
+<li><p>Hit “i” to insert, change <code>&quot;display_name&quot;: &quot;Julia 1.2.0&quot;</code> to <code>&quot;display_name&quot;: &quot;JuliaPro 1.2.0&quot;</code></p></li>
+<li><p>Hit ESC, then type <code>:wq</code> and hit Enter.</p></li>
+</ul>
+</div>
+</div>
+<div id="fix-julia-1.2.0-jupyter-kernel" class="section level2">
+<h2>Fix Julia-1.2.0 Jupyter Kernel</h2>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Reset the Julia-1.2.0 kernel</strong>: Open the Julia-1.2.0 interactive app and rebuild the <code>IJulia</code> package using <code>Pkg.build(&quot;IJulia&quot;)</code>. This will reset the Julia kernel.json in Jupyter. Big thanks to <strong>Avik Sengupta</strong> at Julia Computing for the tip; this saves me from using vi to change the kernel.json file for Julia-1.2.0. Now the Jupyter kernel list will display the proper names for each Julia executable (see below). You also know what packages are installed where as the packages installed on JuliaPro-1.2.0 are not in the same environment path as the ones installed in Julia-1.2.0.</li>
+</ol>
+<p>Julia Interpreter Command Lind:</p>
+<ul>
+<li><code>using Pkg</code></li>
+<li><code>Pkg.build(&quot;IJulia&quot;)</code></li>
+</ul>
+<p>The code above builds this file for you, no vi needed. <img src="/images/GitBash_JuliaPro_after.PNG" alt="Jupyter Julia-1.2.0 Kernel.json After" /></p>
+<p>And clarifies which Julia kernel you can choose. <img src="/images/Jupyter_JuliaPro_after.PNG" alt="Jupyter Julia-1.2.0 Kernel After" /></p>
+<p><br></br></p>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>Some people may ask why go through all this work? Either chose one or the other IDE to build your Julia projects. At home this strategy makes sense, but at work you are bounded by the strategic choices made by your IT or platform team. I currently build all my analytical work in RStudio, but when I have work with big data on our Hadoop platform, then I have not joice but to use Jupyter notebooks to build my SparkR code. I hope that the folks at the Julia Computing come across this blog and consider making this change within JuliaPro.</p>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<ul>
+<li><p>Julia: <a href="https://julialang.org/" class="uri">https://julialang.org/</a></p></li>
+<li><p>JuliaPro <a href="https://juliacomputing.com/products/juliapro" class="uri">https://juliacomputing.com/products/juliapro</a></p></li>
+<li><p>Julia Discourse: <a href="https://discourse.julialang.org/" class="uri">https://discourse.julialang.org/</a></p></li>
+<li><p>Join Julia Slack: <a href="https://slackinvite.julialang.org/" class="uri">https://slackinvite.julialang.org/</a></p></li>
+<li><p>GitBash vi: <a href="https://teamtreehouse.com/community/git-bash-text-editor" class="uri">https://teamtreehouse.com/community/git-bash-text-editor</a></p></li>
+<li><p>Jupyter: <a href="https://jupyter.org" class="uri">https://jupyter.org</a></p></li>
+<li><p>Jupyter Common Directories: <a href="https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html" class="uri">https://jupyter.readthedocs.io/en/latest/projects/jupyter-directories.html</a></p></li>
+</ul>
+<hr />
+<p>Kudos for the Julia image goes to:</p>
+<blockquote>
+<p>Julia - Julia and JuliaPro logos are trademarks of Julia Language and JuliaComputing. All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+</blockquote>
+</div>
