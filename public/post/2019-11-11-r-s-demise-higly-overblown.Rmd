@@ -1,24 +1,30 @@
 ---
-title: "R's Demise Highly Overblown"
+title: "R's Demise is Highly Overblown"
 author: "Alfredo G Marquez"
 date: '2019-11-11'
-coverImage: null
-coverMeta: out
-coverSize: partial
-categories: R
-draft: no
+slug: r-s-demise-higly-overblown
+categories:
+  - R
+tags: 
+  - R 
+  - Programming 
+  - Cranlogs 
+  - trends 
+  - popularity
 keywords:
 - R
 - popular
 - popularity
-- trends
-metaAlignment: center
-slug: r-s-demise-higly-overblown
-summary: Today I will provide evidence that R's demise are highly overblown.
-tags: R Programming Cranlogs trends popularity
+- google trends
+autoThumbnailImage: false
+thumbnailImagePosition: "top"
 thumbnailImage: https://www.r-project.org/logo/Rlogo.svg
-thumbnailImagePosition: top
-autoThumbnailImage: no
+coverImage: 
+metaAlignment: center
+coverMeta: out
+coverSize: partial
+summary: "Today I will provide evidence that R's predicted demise is highly overblown."
+draft: false
 ---
 
 <!--more-->
@@ -54,7 +60,7 @@ R fared a little better but not much.  CRAN has dozens of mirrors around the wor
 
 The **cranlogs** package not only gives you downloads for R itself, but also for packages that are downloaded from the RStudio cran mirror.  Because RStudio has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using RStudio IDE from this cran mirror.
 
-In contrast, I will not make the same assumption about installing R itself.  Normally, I install R core from the https://www.r-project.org/ website and then I install RStudio IDE. This is important because I will use the RStudio R downloads as a proxy for all R downloads worldwide.  In other words, the total for R downloads in this analysis is only a subset of all R downloads. I make this assumption because the way you download R is subjective based on you prior experience.
+In contrast, I will not make the same assumption about installing R itself.  Normally, I install R core from the https://www.r-project.org/ website and then I install RStudio IDE. This is important because I will use the RStudio R downloads as a proxy for all R downloads worldwide.  In other words, the total for R downloads in this analysis is only a subset of all R downloads. I make this assumption because the way you download R is subjective based on your prior experience.
 
 There will be 3 sets of data that I will be working with for this analysis.  First is the data from the cranlogs discussed above.  Second, I will use data from the **rversions** package in order to get R version release dates.  The version dates data will be used to label the graphs and to understand some of the behavior in the downloads.  The third data set that will use comes from the **gtrends** package.  I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index, creaters of web search trend indexes.  Finally, I research some dates that I felt were relevant after analyzing the data.  For example, Hadley Wickham's introduction of the Tidyverse at the useR! 2016 conference at the end of June 2016.
 
@@ -62,7 +68,7 @@ There will be 3 sets of data that I will be working with for this analysis.  Fir
 
 To begin my analysis, I will use the packages loaded below.  
 
-```{r libaries, results='hide', message=FALSE}
+```{r libaries, results='hide', message=FALSE, warning=FALSE}
 # Libraries
 library(cranlogs)
 library(lubridate)
@@ -230,7 +236,7 @@ tidy_fulcrum
 ```
 
 ### 2. R 3.5.1 Release Marks Turning Point
-The second event is the large increase in year over year growth in 2019.  I could not think of any really good natural experiment to explain the large increase in R downloads in the first half of 2018.  So I decided to overlay the release dates of the different versions of R; the blue line represents the minor version releases, and the red dotted line represents patch releases.  There were no major releases during this time.  You can see from the graph below that the release of R 3.5.1 marks the beginning of a change in the slope of R downloads at the beginning of 2018 from a slightly increasing trend to a highly increasing trend.  Now why would this be? 
+The second event is the large increase in year over year growth in the second half of 2018 and all of 2019.  I could not think of any really good natural experiment to explain the large increase in R downloads in the second half of 2018.  So I decided to overlay the release dates of the different versions of R; the blue line represents the minor version releases, and the red dotted line represents patch releases.  There were no major releases during this time.  You can see from the graph below that the release of R 3.5.1 marks the beginning of a change in the slope of R downloads at the beginning of 2018 from a slightly increasing trend to a highly increasing trend.  Now why would this be? 
 
 The R 3.5.0 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster.  But why no increase in downloads at this point?  Well because the new R upgrades had issues with packages built on the older versions of R.  Thus, a lot of your packages broke or wouldn't even download.  But a lot of these issues were resolved by the R 3.5.1 release.  So this explains why we see a drop in R downloads after the R 3.5.0 release and an increase with the R 3.5.1 release.  But, why would such a release convince potential users, such as data scientists, data analysts and business analysts, to adopt R?  Can you image MS Excel business analysts sitting around waiting for the R 3.5.1 release and jumping up in excitement...I cannot.  This natural experiment is harder to justify than the announcement of the Tidyverse because the Tidyverse changed the way users learned and use R.  What I can say is the release of the R 3.5.1 correspond with something that I cannot currently measure, an ommitted variable, and it marks the beginning of a large adoption in the R programming language. Or maybe I am greatly underestimating the value of faster code. 
 
@@ -348,7 +354,7 @@ Now that we have established that the R 3.5.1 is an inflection point, lets see w
 
 My second surprise from looking at the OS break out was the large increase in Mac users.  I am not sure why this would be the case except that Macs are now more common at work.  For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire.  If this is happening across industries, then this may explain some of this growth in addition to the university effect where Macs seem to be quite common.  R downloads for Mac averaged `r get_os_summary(os = 'osx', post351 = 0, metric = 'total')` in the period before the R 3.5.1 release and has averaged `r get_os_summary(os = 'osx', post351 = 1, metric = 'total')`, more than doubling its weekly average downloads.  The upward trend for Mac R downloads doesn't seem to be waning so there may be more growth to come over the next year.
 
-Finally, I will not discuss the OS labeled "NA" as it is really small; I just present it for completeness.  I was not able to determine if the OS for "SRC" was building R from source, or whether it was for Linux.  In any case, R downloads for "SRC" have been consistent throughout the entire time frame with some large growth after the R 3.5.2 release.  The average download for "SRC" is `r get_os_summary(os = 'src', post351 = 0, metric = 'total')` in the period before R 3.5.1 release and `r get_os_summary(os = 'src', post351 = 1, metric = 'total')` after, although this is quite misleading as you have a two contrasting periods, one with low R download volume and one with much higher download volume during the post R 3.5.1 release.
+Finally, I will not discuss the OS labeled "NA" as it is really small; I just present it for completeness.  I was not able to determine if the OS for "SRC" was building R from source, or whether it was for Linux.  In any case, R downloads for "SRC" have been consistent throughout the entire time frame with some large growth after the R 3.6.1 release.  The average download for "SRC" is `r get_os_summary(os = 'src', post351 = 0, metric = 'total')` in the period before R 3.5.1 release and `r get_os_summary(os = 'src', post351 = 1, metric = 'total')` after, although this is quite misleading as you have a two contrasting periods, one with low R download volume and one with much higher download volume during the post R 3.5.1 release.
 
 
 
@@ -511,6 +517,7 @@ ggplot(all_trends %>% dplyr::filter(keyword_f %in% c("R programming", "R tutoria
        caption = "
        TOIBE Index - orange line \n
        PLPY Index - green line\n
+       Note: R Downloads have been range scaled. 
        ")   
 ```
 
@@ -566,21 +573,32 @@ What are the take aways from this analysis? First, R downloads have been increas
 ## Further research opportunities:
 One concern that I have about using RStudio CRAN mirror for this analysis is that the increase in R downloads is due to the popularity of the RStudio IDE and not of R.  Since RStudio is mostly used for R, I believe that this analysis still holds; it would only fail if millions of current users instead of new users were migrating from a different IDE and using RStudio for their R downloads, where before they just went to r-project.org to download R.  It would be nice to be able to control for RStudio downloads, but I don't have that data.
 
-In closing I want to say that this post does not in any way down play Python.  What it does show is that their should be more thought put into articles that make large claims about anything, especially when using web search terms for explanatory variables.  Like they used to say in the early 2000's, don't believe everything you read on the internet.  I hope you enjoyed this post. 
+In closing I want to say that this post does not in any way down play Python.  What it does show is that their should be more thought put into articles that make large claims about anything, especially when using web search terms for explanatory variables.  Please do not make life altering decisions based on web search indexes such as the TOIBE Index or PLPY Index; do your research and use common sense.  Like they used to say in the early 2000's, don't believe everything you read on the internet.  I hope you enjoyed this post. 
 
 
 # Reference
 
-  - Cranlogs: 
+ - Cranlogs: 
     - https://cran.r-project.org/web/packages/cranlogs/cranlogs.pdf
     - https://github.com/r-hub/cranlogs.app
-  - Hadley Announces Tidyverse at useR! 2016 conference week of 2016-06-26: https://user2016.r-project.org//
-  - Tidyverse released 1.0.0 on 2016-09-15: https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/
-  - Tidy Data: https://vita.had.co.nz/papers/tidy-data.pdf
-  - Google Trend Results: https://trends.google.com/trends/explore?date=2010-01-01%202019-11-23&geo=US&q=%22R%20programming%22,Tidyverse,dplyr,ggplot2
-  - TIOBE Index Definition: https://www.tiobe.com/tiobe-index/programming-languages-definition/
-  - PYPL Index Definition: http://pypl.github.io/PYPL.html?country=US
+    
+ - Hadley Announces Tidyverse at useR! 2016 conference week of 2016-06-26: https://user2016.r-project.org//
+  
+ - Tidyverse released 1.0.0 on 2016-09-15: https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/
+  
+ - Tidy Data: https://vita.had.co.nz/papers/tidy-data.pdf
+  
+ - Google Trend Results: https://trends.google.com/trends/explore?date=2010-01-01%202019-11-23&geo=US&q=%22R%20programming%22,Tidyverse,dplyr,ggplot2
+  
+ - TIOBE Index Definition: https://www.tiobe.com/tiobe-index/programming-languages-definition/
+  
+ - PYPL Index Definition: http://pypl.github.io/PYPL.html?country=US
 
+-----
+
+Kudos for the R image goes to: 
+
+> The R logo is © 2016 The R Foundation. https://www.r-project.org/logo/
 
 # Session Info
 ```{r}

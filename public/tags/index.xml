@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alfredo&#39;s Sandbox</title>
@@ -6,13 +6,67 @@
     <description>Recent content in Tags on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.alfredogmarquez.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Hive</title>
+      <title>Cranlogs</title>
+      <link>https://www.alfredogmarquez.com/tags/cranlogs/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/cranlogs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>popularity</title>
+      <link>https://www.alfredogmarquez.com/tags/popularity/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/popularity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>https://www.alfredogmarquez.com/tags/programming/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://www.alfredogmarquez.com/tags/r/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trends</title>
+      <link>https://www.alfredogmarquez.com/tags/trends/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/trends/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Julia JuliaPro Jupyter Kernel</title>
+      <link>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</link>
+      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HIVE</title>
       <link>https://www.alfredogmarquez.com/tags/hive/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
@@ -21,7 +75,43 @@
     </item>
     
     <item>
-      <title>Installation</title>
+      <title>QUERY</title>
+      <link>https://www.alfredogmarquez.com/tags/query/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/query/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>r-project</title>
+      <link>https://www.alfredogmarquez.com/tags/r-project/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/r-project/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RODBC</title>
+      <link>https://www.alfredogmarquez.com/tags/rodbc/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/rodbc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TEZ</title>
+      <link>https://www.alfredogmarquez.com/tags/tez/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/tez/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>installation</title>
       <link>https://www.alfredogmarquez.com/tags/installation/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
@@ -30,20 +120,47 @@
     </item>
     
     <item>
-      <title>Julia Books</title>
-      <link>https://www.alfredogmarquez.com/tags/julia-books/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Spark</title>
+      <link>https://www.alfredogmarquez.com/tags/spark/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/tags/julia-books/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/spark/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Julia Juliapro Jupyter Kernel</title>
-      <link>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</link>
-      <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
+      <title>SparkR</title>
+      <link>https://www.alfredogmarquez.com/tags/sparkr/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/sparkr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://www.alfredogmarquez.com/tags/windows/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R community thank you 25 years old DataCamp Data Camp 25r.everydayhero.com/nz/project-r</title>
+      <link>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
+      <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Julia books</title>
+      <link>https://www.alfredogmarquez.com/tags/julia-books/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/julia-books/</guid>
       <description></description>
     </item>
     
@@ -57,7 +174,7 @@
     </item>
     
     <item>
-      <title>Julia References</title>
+      <title>Julia references</title>
       <link>https://www.alfredogmarquez.com/tags/julia-references/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -66,7 +183,7 @@
     </item>
     
     <item>
-      <title>Julia Resources</title>
+      <title>Julia resources</title>
       <link>https://www.alfredogmarquez.com/tags/julia-resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -84,29 +201,11 @@
     </item>
     
     <item>
-      <title>Query</title>
-      <link>https://www.alfredogmarquez.com/tags/query/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/query/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R Books</title>
+      <title>R books</title>
       <link>https://www.alfredogmarquez.com/tags/r-books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/tags/r-books/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R Community Thank You 25 Years Old Datacamp Data Camp 25r.everydayhero.com/Nz/Project R</title>
-      <link>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
-      <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</guid>
       <description></description>
     </item>
     
@@ -129,16 +228,7 @@
     </item>
     
     <item>
-      <title>R Project</title>
-      <link>https://www.alfredogmarquez.com/tags/r-project/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/r-project/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R References</title>
+      <title>R references</title>
       <link>https://www.alfredogmarquez.com/tags/r-references/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -147,56 +237,11 @@
     </item>
     
     <item>
-      <title>R Resources</title>
+      <title>R resources</title>
       <link>https://www.alfredogmarquez.com/tags/r-resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/tags/r-resources/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rodbc</title>
-      <link>https://www.alfredogmarquez.com/tags/rodbc/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/rodbc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spark</title>
-      <link>https://www.alfredogmarquez.com/tags/spark/</link>
-      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/spark/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sparkr</title>
-      <link>https://www.alfredogmarquez.com/tags/sparkr/</link>
-      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/sparkr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tez</title>
-      <link>https://www.alfredogmarquez.com/tags/tez/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/tez/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://www.alfredogmarquez.com/tags/windows/</link>
-      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/windows/</guid>
       <description></description>
     </item>
     

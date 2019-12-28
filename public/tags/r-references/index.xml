@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R References on Alfredo&#39;s Sandbox</title>
+    <title>R references on Alfredo&#39;s Sandbox</title>
     <link>https://www.alfredogmarquez.com/tags/r-references/</link>
-    <description>Recent content in R References on Alfredo&#39;s Sandbox</description>
+    <description>Recent content in R references on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -18,9 +18,9 @@
       <guid>https://www.alfredogmarquez.com/page/r_library/</guid>
       <description>R Workspace The Workspace: http://www.statmethods.net/interface/workspace.html
 Hadley  R 4 Data Science: http://r4ds.had.co.nz/ http://stat545.com/bit001_dplyr-cheatsheet.html Writing Packages: http://r-pkgs.had.co.nz/  RStudio Server https://www.r-bloggers.com/setting-up-a-datascience-server/
-Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting:  https://www.ggplot2-exts.org/gganimate.html http://motioninsocial.com/tufte/?utm_content=bufferc1618&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer https://briatte.github.io/ggcorr/ https://journal.r-project.org/archive/2013-1/kahle-wickham.pdf https://plot.ly/feed/ https://plotly-book.cpsievert.me/index.html - book on Plotly and R https://www.r-graph-gallery.com/ Radial: http://rstudio-pubs-static.s3.amazonaws.com/72298_c1ba7f77276a4f27a0f375cadc9fac5d.html  Mapping &amp;amp; Cartography:  Census
- ACS  Package: http://eglenn.scripts.mit.edu/citystate/wp-content/uploads/2013/06/wpid-working_with_acs_R3.pdf https://www.r-bloggers.com/how-to-search-for-census-data-from-r/ https://rudeboybert.github.io/MATH216/jekyll/update/2016/11/02/HW-4.html   Mapping
- Simple Features (sf) - https://cran.r-project.org/web/packages/sf/vignettes/sf1.html https://cran.</description>
+ Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting:  https://www.ggplot2-exts.org/gganimate.html http://motioninsocial.com/tufte/?utm_content=bufferc1618&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer https://briatte.github.io/ggcorr/ https://journal.r-project.org/archive/2013-1/kahle-wickham.pdf https://plot.ly/feed/ https://plotly-book.cpsievert.me/index.html - book on Plotly and R https://www.r-graph-gallery.com/ Radial: http://rstudio-pubs-static.s3.amazonaws.com/72298_c1ba7f77276a4f27a0f375cadc9fac5d.html  Mapping &amp;amp; Cartography:   Census
+ ACS Package: http://eglenn.scripts.mit.edu/citystate/wp-content/uploads/2013/06/wpid-working_with_acs_R3.pdf https://www.r-bloggers.com/how-to-search-for-census-data-from-r/ https://rudeboybert.github.io/MATH216/jekyll/update/2016/11/02/HW-4.html    Mapping
+ Simple Features (sf) - https://cran.</description>
     </item>
     
   </channel>

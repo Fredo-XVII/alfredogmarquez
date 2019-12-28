@@ -1,62 +1,97 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.36 with theme Tranquilpeak 0.4.3-BETA">
-    <title>R&#39;s Demise Higly Overblown</title>
-    <meta name="author" content="Alfredo G Marquez">
-    <meta name="keywords" content="R, popular, popularity, trends, R, r-project, data analysis, statistic, analytics, Julia, Julialang">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.62.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Alfredo G Marquez">
+<meta name="keywords" content="R, popular, popularity, google trends, R, r-project, data analysis, statistic, analytics, Julia, Julialang">
+<meta name="description" content="
+
+
+
+">
+
+
+<meta property="og:description" content="
+
+
+
+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R&#39;s Demise is Highly Overblown">
+<meta name="twitter:title" content="R&#39;s Demise is Highly Overblown">
+<meta property="og:url" content="https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/">
+<meta property="twitter:url" content="https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/">
+<meta property="og:site_name" content="Alfredo&#39;s Sandbox">
+<meta property="og:description" content="
+
+
+
+">
+<meta name="twitter:description" content="
+
+
+
+">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2019-11-11T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2019-11-11T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="R">
+    
+  
+  
+    
+      <meta property="article:tag" content="R">
+    
+      <meta property="article:tag" content="Programming">
+    
+      <meta property="article:tag" content="Cranlogs">
+    
+      <meta property="article:tag" content="trends">
+    
+      <meta property="article:tag" content="popularity">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://www.r-project.org/logo/Rlogo.svg">
+  <meta property="twitter:image" content="https://www.r-project.org/logo/Rlogo.svg">
+
+
+
+
+
+  <meta property="og:image" content="https://www.alfredogmarquez.com/images/me_profile_trans_80x80.jpg">
+  <meta property="twitter:image" content="https://www.alfredogmarquez.com/images/me_profile_trans_80x80.jpg">
+
+
+    <title>R&#39;s Demise is Highly Overblown</title>
 
     <link rel="icon" href="https://www.alfredogmarquez.com/favicon.png">
     
 
     
-    <meta name="description" content="In this post I will provide evidence that contradicts recent reports that the R Programming language is declining in popularity.
-In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.">
-    <meta property="og:description" content="In this post I will provide evidence that contradicts recent reports that the R Programming language is declining in popularity.
-In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="R&#39;s Demise Higly Overblown">
-    <meta property="og:url" content="/2019/11/11/r-s-demise-higly-overblown/">
-    <meta property="og:site_name" content="Alfredo&#39;s Sandbox">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Alfredo&#39;s Sandbox">
-    <meta name="twitter:description" content="In this post I will provide evidence that contradicts recent reports that the R Programming language is declining in popularity.
-In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.">
-    
-    
 
-    
-    
-
-    
-      <meta property="og:image" content="https://www.alfredogmarquez.com/images/me_profile_trans_80x80.jpg">
-    
-
-    
-      <meta property="og:image" content="https://www.r-project.org/logo/Rlogo.svg">
-    
-    
-    
-
-    
+    <link rel="canonical" href="https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -64,30 +99,25 @@ In last few months I have come across several blog posts that suggest that Pytho
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://www.alfredogmarquez.com/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://www.alfredogmarquez.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-114303412-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114303412-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5682145105593159",
-          enable_page_level_ads: true
-     });
-</script>
- 
     
     
   </head>
@@ -111,7 +141,7 @@ ga('send', 'pageview');
       
     
     </a>
-   
+  
 </header>
 
       <nav id="sidebar" data-behavior="5">
@@ -254,7 +284,7 @@ ga('send', 'pageview');
             <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title" itemprop="headline">
-      R&#39;s Demise Higly Overblown
+      R&#39;s Demise is Highly Overblown
     </h1>
   
   
@@ -281,11 +311,7 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <script src="https://www.alfredogmarquez.com/rmarkdown-libs/kePrint/kePrint.js"></script>
-
-
-<!--more-->
-<div id="section" class="section level1">
+              <div id="section" class="section level1">
 <h1></h1>
 <p>In this post I will provide evidence that contradicts recent reports that the R Programming language is declining in popularity.</p>
 <hr />
@@ -294,22 +320,22 @@ ga('send', 'pageview');
 </div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>As I have read all these posts about python impacting the demand for R and implying that R was on the decline, I though about how I could address this question empirically. I thought to myself, if the rise in Python for Data Science is decreasing the demand for R for Data Science, then naturally, you would see a decrease in R downloads as users moved from R to Python. Therefore, my experiment is designed as below:</p>
+<p>As I have read all these posts about Python impacting the demand for R and implying that R was on the decline, I thought about how I could address this question empirically. I thought to myself, if the rise in Python for data science is decreasing the demand for R for data science, then naturally, you would see a decrease in R downloads as users moved from R to Python. Therefore, my experiment is designed below:</p>
 <div id="design-of-experiment" class="section level4">
 <h4><strong>Design of Experiment:</strong></h4>
 <blockquote>
-<p><strong>Null Hypothesis (H0):</strong> No change to R downloads, given the rise in Python.</p>
+<p><strong>Null Hypothesis (H0):</strong> No measurable impact to R downloads, given the rise in Python.</p>
 <p><strong>Alternative Hypothesis (H1):</strong> R downloads decline, given the rise in Python.</p>
 <p><strong>Basic Assumption:</strong> R downloads are conducted by users intending to use the language. In other words, users are not downloading R just because they enjoy downloading stuff; they actually intend to use the download.</p>
 </blockquote>
 </div>
 <div id="the-data" class="section level3">
 <h3>The Data</h3>
-<p>Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time. My thought was to start the analysis from 2015 to the present in order to capture the rise of both languages. From this point, you can conduct Granger Causality Test to see if Python is truly impacting the demand for R. Unfortunately, I was not able to find a downloadable count of Python downloads since 2015. I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.</p>
-<p>R fared a little better but not much. CRAN has dozens of mirrors around the world that are self hosted. In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded. Luckily, <span class="citation">@RStudio</span> has provided a way to obtain the downloads of R from there mirror in the R package <strong>cranlogs</strong>.</p>
-<p>The <strong>cranlogs</strong> package not only gives you downloads for R itself, but also for packages that are downloaded from the <span class="citation">@RStudio</span> cran mirror. Because <span class="citation">@RStudio</span> has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using <span class="citation">@RStudio</span> as an IDE.</p>
-<p>In contrast, I will not make the same assumption about installing R itself. Normally, I install R core from the <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a> website and then I install <span class="citation">@RStudio</span> IDE. This is important because I will use the <span class="citation">@RStudio</span> R downloads as a proxy for all R downloads worldwide.</p>
-<p>There will be 3 sets of data that I will be working with for this analysis. First is the data from the cranlogs discussed above. Second, I will use data from the <strong>rversions</strong> package in order to get R version release dates. The version dates data will be used to label the graphs and to understand some of the behavior in the downloads. The third data set that will use comes from the <strong>gtrends</strong> package. I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index. Finally, I research some dates that I felt were relevant after analyzing the data. For example, Hadley Wickham’s introduction of the tidyverse at teh useR! 2016 conference at the end of June 2016.</p>
+<p>Ideally, I would collect the number of times R is download from the CRAN mirrors, as well as, collect the number of times Python is downloaded over time. My thought was to start the analysis from 2015 because it would give me 260 weeks of data, and because this a time period that Python has been on the rise. From this point, you can conduct Granger Causality Test to see if Python is truly impacting the demand for R. Unfortunately, I was not able to find a downloadable count of Python downloads since 2015. I did find a page that provide the last 30 days of download statistics, but nothing that you can download that was relevant to this exercise.</p>
+<p>R fared a little better but not much. CRAN has dozens of mirrors around the world that are self hosted. In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded. Luckily, <a href="https://rstudio.com/">RStudio</a> has provided a way to obtain the downloads of R from their mirror with the R package <strong>cranlogs</strong>.</p>
+<p>The <strong>cranlogs</strong> package not only gives you downloads for R itself, but also for packages that are downloaded from the RStudio cran mirror. Because RStudio has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using RStudio IDE from this cran mirror.</p>
+<p>In contrast, I will not make the same assumption about installing R itself. Normally, I install R core from the <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a> website and then I install RStudio IDE. This is important because I will use the RStudio R downloads as a proxy for all R downloads worldwide. In other words, the total for R downloads in this analysis is only a subset of all R downloads. I make this assumption because the way you download R is subjective based on your prior experience.</p>
+<p>There will be 3 sets of data that I will be working with for this analysis. First is the data from the cranlogs discussed above. Second, I will use data from the <strong>rversions</strong> package in order to get R version release dates. The version dates data will be used to label the graphs and to understand some of the behavior in the downloads. The third data set that will use comes from the <strong>gtrends</strong> package. I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index, creaters of web search trend indexes. Finally, I research some dates that I felt were relevant after analyzing the data. For example, Hadley Wickham’s introduction of the Tidyverse at the useR! 2016 conference at the end of June 2016.</p>
 </div>
 </div>
 <div id="analysis" class="section level1">
@@ -319,13 +345,13 @@ ga('send', 'pageview');
 library(cranlogs)
 library(lubridate)
 library(gridExtra)
-#library(ggrepel)
 library(tidyverse)
 library(tsibble)
 library(gtrendsR)
 library(rversions)
 library(scales)
 library(kableExtra)
+library(plotly)
 
 # Options
 options(scipen = 999)
@@ -334,7 +360,7 @@ options(scipen = 999)
 hadley_tidyverse &lt;- as.Date(&#39;2016-06-26&#39;)
 tidy_searches_beg &lt;- as.Date(&#39;2016-07-31&#39;)
 tidyvere_release_1_0 &lt;- as.Date(&#39;2016-09-15&#39;)</code></pre>
-Here is a quick look at the download data from the <strong>cranlogs</strong> package. I created some new features, date factors and period dummy variables, in order to drill into the data graphically. I will show examples of the other data down below.
+<p>Here is a quick look at the download data from the <strong>cranlogs</strong> package. I created some new features, date factors and period dummy variables, in order to drill into the data graphically.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -405,13 +431,13 @@ greg_d
 <tbody>
 <tr>
 <td style="text-align:left;">
-73105
+75567
 </td>
 <td style="text-align:left;">
-2019-11-17
+2019-12-22
 </td>
 <td style="text-align:left;">
-2.11.0
+3.2.2
 </td>
 <td style="text-align:left;">
 osx
@@ -423,34 +449,34 @@ osx
 osx
 </td>
 <td style="text-align:left;">
-2.11.0
+3.2.2
 </td>
 <td style="text-align:right;">
-211
+32
 </td>
 <td style="text-align:left;">
-211
+32
 </td>
 <td style="text-align:right;">
-2
+3
 </td>
 <td style="text-align:left;">
-2
+3
 </td>
 <td style="text-align:right;">
 2019
 </td>
 <td style="text-align:right;">
-11
+12
 </td>
 <td style="text-align:right;">
-46
+51
 </td>
 <td style="text-align:left;">
-2019 Nov
+2019 Dec
 </td>
 <td style="text-align:left;">
-2019-11-11
+2019-12-16
 </td>
 <td style="text-align:right;">
 1
@@ -470,90 +496,25 @@ NA
 </tr>
 <tr>
 <td style="text-align:left;">
-73106
+75568
 </td>
 <td style="text-align:left;">
-2019-11-17
+2019-12-22
 </td>
 <td style="text-align:left;">
-3.1.3
-</td>
-<td style="text-align:left;">
-osx
-</td>
-<td style="text-align:right;">
-5
+3.4.0
 </td>
 <td style="text-align:left;">
 osx
 </td>
-<td style="text-align:left;">
-3.1.3
-</td>
 <td style="text-align:right;">
-31
+2
 </td>
 <td style="text-align:left;">
-31
-</td>
-<td style="text-align:right;">
-3
+osx
 </td>
 <td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:right;">
-46
-</td>
-<td style="text-align:left;">
-2019 Nov
-</td>
-<td style="text-align:left;">
-2019-11-11
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-73107
-</td>
-<td style="text-align:left;">
-2019-11-17
-</td>
-<td style="text-align:left;">
-3.4.4
-</td>
-<td style="text-align:left;">
-win
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-win
-</td>
-<td style="text-align:left;">
-3.4.4
+3.4.0
 </td>
 <td style="text-align:right;">
 34
@@ -571,81 +532,16 @@ win
 2019
 </td>
 <td style="text-align:right;">
-11
+12
 </td>
 <td style="text-align:right;">
-46
+51
 </td>
 <td style="text-align:left;">
-2019 Nov
+2019 Dec
 </td>
 <td style="text-align:left;">
-2019-11-11
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-73108
-</td>
-<td style="text-align:left;">
-2019-11-17
-</td>
-<td style="text-align:left;">
-3.5.3
-</td>
-<td style="text-align:left;">
-src
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-src
-</td>
-<td style="text-align:left;">
-3.5.3
-</td>
-<td style="text-align:right;">
-35
-</td>
-<td style="text-align:left;">
-35
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:right;">
-46
-</td>
-<td style="text-align:left;">
-2019 Nov
-</td>
-<td style="text-align:left;">
-2019-11-11
+2019-12-16
 </td>
 <td style="text-align:right;">
 1
@@ -665,31 +561,31 @@ NA
 </tr>
 <tr>
 <td style="text-align:left;">
-73109
+75569
 </td>
 <td style="text-align:left;">
-2019-11-17
+2019-12-22
 </td>
 <td style="text-align:left;">
-3.6.1patched
+3.3.0
 </td>
 <td style="text-align:left;">
-NA
+osx
 </td>
 <td style="text-align:right;">
 1
 </td>
 <td style="text-align:left;">
-NA
+osx
 </td>
 <td style="text-align:left;">
-3.6.1patched
+3.3.0
 </td>
 <td style="text-align:right;">
-36
+33
 </td>
 <td style="text-align:left;">
-36
+33
 </td>
 <td style="text-align:right;">
 3
@@ -701,16 +597,146 @@ NA
 2019
 </td>
 <td style="text-align:right;">
-11
+12
 </td>
 <td style="text-align:right;">
-46
+51
 </td>
 <td style="text-align:left;">
-2019 Nov
+2019 Dec
 </td>
 <td style="text-align:left;">
-2019-11-11
+2019-12-16
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+75570
+</td>
+<td style="text-align:left;">
+2019-12-22
+</td>
+<td style="text-align:left;">
+3.3.1
+</td>
+<td style="text-align:left;">
+src
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+src
+</td>
+<td style="text-align:left;">
+3.3.1
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+2019 Dec
+</td>
+<td style="text-align:left;">
+2019-12-16
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+75571
+</td>
+<td style="text-align:left;">
+2019-12-22
+</td>
+<td style="text-align:left;">
+3.3.1
+</td>
+<td style="text-align:left;">
+osx
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+osx
+</td>
+<td style="text-align:left;">
+3.3.1
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:left;">
+2019 Dec
+</td>
+<td style="text-align:left;">
+2019-12-16
 </td>
 <td style="text-align:right;">
 1
@@ -732,81 +758,95 @@ NA
 </table>
 <div id="yearly-trend" class="section level2">
 <h2>Yearly Trend</h2>
-<p>I was first curious about the overall trend of the data. You can see that R downloads decreased from 2015 to 2016, recovering in 2017 but about 1 million downloads short from its 2015 level. Then in 2018 R downloads grow by 2 million downloads, or 23%, to 10 million and surpasses its 2015 level by 1 million downloads. Finally, R downloads have grown by almost 50% to 15 million downloads this year. I have to admit those totals are more than I would have thought. This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan Mirror being the closet to my location. In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.</p>
-<p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. But there are some other interesting variables in the data that I would like to explore.</p>
+<p>At first, I was curious about the overall trend of the data. You can see that R downloads growth is
+-26%
+from 2015 to 2016, recovering in 2017 by 24%, but about 1 million downloads short from its 2015 level. Then in 2018 R downloads grow by 2 million downloads, or by 23%, to
+10 million and surpasses its 2015 level by 1 million downloads. Finally, R downloads have grown by more than
+69% to
+17 million downloads in 2019. I have to admit those totals are more than I would have thought. This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan CRAN mirror being the closet to my location. In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.</p>
+<p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. On the contrary, R is having its most robust year in the last 5 years. But there are some other interesting variables in the data that I would like to explore.</p>
 </div>
-<div id="the-probability-of-coincidences-tale-of-2-bends" class="section level2">
-<h2>The Probability of Coincidences: Tale of 2 Bends</h2>
-<p>From the yearly trend above there are 2 interesting behaviors. First, is the year over year decline in 2016 and the recovery in 2017. Second is the large increase in year over year growth in 2019.</p>
-<pre class="r"><code># What does the trend look like?
-down_tot_by_d &lt;- cran_R_downloads %&gt;% 
-  dplyr::group_by(yr_wk,greg_d,forcats::fct_explicit_na(vers_i)) %&gt;% 
-  dplyr::summarise(total = sum(count)) %&gt;% 
-  tsibble::as_tsibble(index = yr_wk)
-
-R351_fulcrum &lt;- down_tot_by_d %&gt;% 
-  ggplot(aes(x = yr_wk, y = total)) +
-  geom_line() +
-  theme_light() +
-  labs(x = &#39;Week&#39;, y = &#39;Weekly Downloads&#39;, title = &quot;R Downloads from RStudio Cranlogs by Week&quot;,
-       caption = &quot;Blue Line: R minor version releases\n
-       Red Line: R version patches \n
-       Note: No major versions released during this time.
-       &quot;) +
-  scale_x_date(date_breaks = &quot;1 year&quot;, date_labels = &quot;%Y&quot;) +
-  geom_vline(data = R_ver_hist, aes(xintercept = greg_d), linetype = 4, color = &quot;red&quot;, alpha = 0.5) +
-  geom_vline(data = R_ver_hist_major, aes(xintercept = greg_d), linetype = 1, color = &quot;blue&quot;) +
-  annotate(geom = &quot;text&quot;, 
-           x=subset(R_ver_hist_major, version == &#39;3.5.0&#39;)$yr_wk, 
-           y=0, label=subset(R_ver_hist_major, version == &#39;3.5.0&#39;)$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = &quot;blue&quot;, alpha = 0.75) +
-  annotate(geom = &quot;text&quot;, 
-           x=subset(R_ver_hist, version == &#39;3.5.1&#39;)$yr_wk, 
-           y=0, label=subset(R_ver_hist, version == &#39;3.5.1&#39;)$version,
-           size=4, angle=90, vjust=-0.10, hjust=-0.10, color = &quot;red&quot;, alpha = 0.5)</code></pre>
-<pre class="r"><code>R351_fulcrum</code></pre>
-<p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="natural-experiments-tale-of-2-bends" class="section level2">
+<h2>Natural Experiments: Tale of 2 Bends</h2>
+<div id="tidyverses-positive-impact" class="section level3">
+<h3>1. Tidyverse’s Positive Impact</h3>
+<p>From the yearly trend above there are 2 interesting behaviors. First, is the year over year decline in 2016 and the recovery in 2017. If you look at the graph below you will notice that R downloads are in decline all of 2015 and bottom out in the middle of 2016. I wondered what happened in 2016 that broke the downward trend. As I thought about 2016, I remembered that I attended the useR! 2016 Conference at Standford University that summer. At the conference Hadley Wickham officially announced idea of the <strong>Tidyverse</strong>, ending all references to the term <strong>Hadleyverse</strong>, which was the name that had been circling to describe the Tidyverse ecosystem at the time. We all laughed as we watched Hadleyverse catch fire on screen because it conveyed how humble Hadley truly is. His speech was given on Wednesday June 29th, 2016 (see below week of June 26th). The week of July 31st, 2016 is when the term “tidyverse” starts to appear in searches on Google Trends (data from gtrend package), or 35 days after Hadley’s speech, and Tidyverse 1.0.0 is released on September 15, 2016, or 81 days after Hadley’s speech. In the section below on Google Trends you will see correlation between the Tidyverse search term on Google Trends and R downloads bottoming out and rebounding.</p>
+<p>Because economist are not allowed to conduct large scale social experiments with people for moral reasons, we take advantage of natural experiments. A natural experiment is when there is a policy change or natural event that has a large impact on society. We can use this event to explain and measure the impact of these large events. The logic for natural experiments comes from statistics. In statistics there is this idea that the probability of 2 independents events corresponding together is nearly zero. In other words, if there is a policy change (treatment) and a corresponding change in an outcome, the probability that these 2 things occur together would be nearly zero if it were to happen by chance. Although I have no way to prove this, but from the data below I would make the argument that the introduction of the Tidyverse paradigm (treatment) has had a positive impact on R downloads (outcome). In other words, from the point that the Tidyverse was officially introduced, R downloads have increased year over year for the last 3 years by large margins. From my experience, dplyr really made R familiar, approachable, and easy to pick up. Base R was much harder to pick up by comparison. What this shows is that the Tidyverse reduces barriers to entry for new R users by making R easier to learn and use. Put differently, Tidyverse reduces the cost of learning R and thereby increases the return on investment for each minute spent on learning R. Furthermore, the cost of using R will continue to decrease as other packages also adopt the ideas and concepts of tidy data. One example is the tsibble package and its tidy time series ecosystem, which is becoming one of my new favorites. By adopting tidy principles, this package has made manipulating time series data much easier than using the zoo or the xts package.</p>
 <p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div id="weekly-view-by-operating-system-os" class="section level3">
-<h3>Weekly View by Operating System (OS)</h3>
-<p>One of the questions I had was where is the growth coming from in the last year? My first thought was to overlay the version releases for R; the blue line represents the minor version releases, and the red dotted line represents patch releases. There were no major releases during this time. You can see right away that downloads start trending after the R 3.5 version release. The R 3.5 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster. However, you don’t see the increase in downloads right away and that was because the upgrades had issues with packages built on the older versions of R. This is normally why I wait for at least 1 patch release before installing R after a minor release. For example, I have just now started to upgrade to R 3.6.x even though that minor release was in the fall of last year.</p>
-<p>From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of 11788 downloads/week before the release of R 3.5.1., and 22671 downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads. Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have not evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis. R has a bad rap for having an uphill learning curve, but I believe with the tidyverse, this is no longer the case and anyone who says differently hasn’t used R in the last 3yrs. In other words, they are speaking from inexperience with the recent improvements in the R ecosystem. I will show some evidence to this point below. I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2. Basically, anything that they can do in excel, now they can do with R, and more.</p>
-<p>My second surprise from looking at the OS break out was the large increase in Mac users. I am not sure why this would be the case except that Macs are now more common at work. For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire. If this is happening across industries, then this may explain some of this growth in addition to the university effect where Mac seems to be quite common. R downloads for Mac averaged 2506 in the period before the R 3.5.1 release and has averaged 5736, more than doubling its weekly average downloads. The upward trend for Mac R downloads doesn’t seem to waning so there may be growth to come over the next year.</p>
-<p>Finally, I will not discuss the OS labeled “NA” as it is really small, I just present it for completeness. I was not able to determine if the OS for “SRC” was building R from source, or whether it was for Linux. In any case, R downloads for “SRC” have been consistent throughout the entire time frame with some large growth after the R 3.5.2 release. The average download for “SRC” is 1373 in the period before R 3.5.1 release and 1167 after.</p>
+</div>
+<div id="r-3.5.1-release-marks-turning-point" class="section level3">
+<h3>2. R 3.5.1 Release Marks Turning Point</h3>
+<p>The second event is the large increase in year over year growth in the second half of 2018 and all of 2019. I could not think of any really good natural experiment to explain the large increase in R downloads in the second half of 2018. So I decided to overlay the release dates of the different versions of R; the blue line represents the minor version releases, and the red dotted line represents patch releases. There were no major releases during this time. You can see from the graph below that the release of R 3.5.1 marks the beginning of a change in the slope of R downloads at the beginning of 2018 from a slightly increasing trend to a highly increasing trend. Now why would this be?</p>
+<p>The R 3.5.0 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster. But why no increase in downloads at this point? Well because the new R upgrades had issues with packages built on the older versions of R. Thus, a lot of your packages broke or wouldn’t even download. But a lot of these issues were resolved by the R 3.5.1 release. So this explains why we see a drop in R downloads after the R 3.5.0 release and an increase with the R 3.5.1 release. But, why would such a release convince potential users, such as data scientists, data analysts and business analysts, to adopt R? Can you image MS Excel business analysts sitting around waiting for the R 3.5.1 release and jumping up in excitement…I cannot. This natural experiment is harder to justify than the announcement of the Tidyverse because the Tidyverse changed the way users learned and use R. What I can say is the release of the R 3.5.1 correspond with something that I cannot currently measure, an ommitted variable, and it marks the beginning of a large adoption in the R programming language. Or maybe I am greatly underestimating the value of faster code.</p>
+<p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div id="weekly-view-by-operating-system-os" class="section level2">
+<h2>Weekly View by Operating System (OS)</h2>
+<div id="windows-leads-the-way-mac-grows-rapidly" class="section level3">
+<h3>1. Windows Leads the way, Mac Grows Rapidly</h3>
+<p>Now that we have established that the R 3.5.1 is an inflection point, lets see what is behind the growth in downloads. From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of 11788 downloads/week before the release of R 3.5.1., and 22758 downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads. Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have no evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis. R has a bad rap for having an uphill learning curve, but I believe with the Tidyverse ecosystem, this is no longer the case and anyone who says differently hasn’t used R in the last 3 to 5 years. In other words, they are speaking from inexperience with the recent improvements in the R ecosystem. I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2. Basically, anything that they can do in excel, now they can do with R, and much much more.</p>
+<p>My second surprise from looking at the OS break out was the large increase in Mac users. I am not sure why this would be the case except that Macs are now more common at work. For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire. If this is happening across industries, then this may explain some of this growth in addition to the university effect where Macs seem to be quite common. R downloads for Mac averaged 2506 in the period before the R 3.5.1 release and has averaged 5808, more than doubling its weekly average downloads. The upward trend for Mac R downloads doesn’t seem to be waning so there may be more growth to come over the next year.</p>
+<p>Finally, I will not discuss the OS labeled “NA” as it is really small; I just present it for completeness. I was not able to determine if the OS for “SRC” was building R from source, or whether it was for Linux. In any case, R downloads for “SRC” have been consistent throughout the entire time frame with some large growth after the R 3.6.1 release. The average download for “SRC” is 1373 in the period before R 3.5.1 release and 1172 after, although this is quite misleading as you have a two contrasting periods, one with low R download volume and one with much higher download volume during the post R 3.5.1 release.</p>
 <p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/wkly_trend_os-1.png" width="672" /></p>
-<p>In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system. The average weekly YOY growth rate for Windows for the pre-period is 14% and 81% for the post period. The average weekly YOY growth rate for Mac for the pre-period is 20% and 82% for the post period. The average weekly YOY growth rate for “SRC” for the pre-period is -3% and 57% for the post period. Imagine for a second you are a product manager, and your product was experiencing 80% plus YOY growth on average every week for nearly 2 years; how ecstatic would you be?</p>
+</div>
+<div id="skyrocketing-year-over-year-growth" class="section level3">
+<h3>2. Skyrocketing Year Over Year Growth</h3>
+<p>In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system comparing the time before the R 3.5.1 release and the time after. The average weekly YOY growth rate for Windows for the pre-period is 14% and 77% for the post period. The average weekly YOY growth rate for Mac for the pre-period is 20% and 80% for the post period. The average weekly YOY growth rate for “SRC” for the pre-period is -3% and 55% for the post period. Imagine for a second you are a product manager, and your product was experiencing nearly 80% YOY growth on average every week for nearly 2 years; how ecstatic would you be? That kind of growth for any product is pretty remarkable.</p>
 <p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/yoy_growth_os-1.png" width="672" /></p>
 </div>
 </div>
 </div>
-<div id="summary-1" class="section level1">
-<h1>Summary 1</h1>
-<ul>
-<li>Growth is increasing</li>
-<li>Windows has leading in downloads by a large margin, both Windows and Macs are driving the growth after the R 3.5.1 release.</li>
-<li>Tidyverse changed the course of history.</li>
-</ul>
+<div id="the-problem-with-using-search-trends" class="section level1">
+<h1>The Problem with Using Search Trends</h1>
+<p>Let’s get back to the subject at hand. The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static. In other words, it ignores how consumers have learned and adapted to new technology. For example, a few years ago the R programming language was new to the masses, meaning analysts not in tech, nor statisticians, nor data scientist. At this point most curious analyst would search terms such as “R Programming Language” on Google. But as time passes, the knowledge base is spread by word of mouth and experience. Those early innovators will spread the word but they won’t waste their coworkers time by saying google “R Programming Language.” Instead they would suggest searches such as “dplyr” or “ggplot2” or “DataCamp” based on their experience. From my experience, I cannot remember the last time I searched for the “R Programming Language;” its been years. But I search for R topics every single day. My searches normally look like this: “r package function” or “r function error.” So when I am teaching R to my coworkers this is the format that I use; never do I say search for “R Programming Language.”</p>
+<p>For example, the TIOBE Index uses <strong>+“&lt;language&gt; programming”</strong> for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below). So for R the search would be “R programming.”</p>
+<p>The PLPY Index is a little better, but not much better. They use the term <strong>“&lt;language&gt; tutorial”</strong> to build their index. I like this better because it suggest that potential users/analysts are interested in courses where they can learn R, discovering potential new users. It tries to get at the way potential R users would go about learning R; it gets at consumer behavior. However, this search term is quickly undermined by the current R users. For example, I always recommend DataCamp for learning R, or even Python. So now my coworkers no longer search for “tutorials” they are now searching for “DataCamp.” There are many other websites that provide training, so once you have found what you are looking for, you don’t ever search for “R tutorials” even though you are continue to learn R.</p>
+<p>Whatever methods they use are irrelevant; the problem is that the search terms don’t accurately reflect the changes in behavior and maturity of the consumer over time.</p>
+<div id="where-popular-search-trends-indexes-fail-at-prediction" class="section level3">
+<h3>Where Popular Search Trends Indexes Fail at Prediction</h3>
+<p>In the graph below I will show why such “search trend” based predictions are risky for forecasters. Both the TOIBE Index (“R programming”) and the PLPY Index (“R tutorials”) show interest for R peaking 2017 and steadily declining over time. So If you believe that correlation = causation, then you would conclude that the interest for R has been in decline, and R is on the way out. This would explain the blog posts over that last year or so claiming that R was doomed. Second, they go even further and extrapolate that the cause is due to the adoption of Python, without any evidence. Yes, Python is on the rise and no one contradicts that, but we all know that correlation does not equal causation. As I have discussed above, and you can see below, R downloads actually have been on the rise since 2017. The data below shows that search trends are not good predictors if you don’t know where on the product life cycle your consumer/user is currently in.</p>
+<p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
-<div id="the-problems-with-using-search-trends" class="section level1">
-<h1>The Problems with Using Search Trends</h1>
-<p>The problem using search trends to make predictions is that it makes large assumptions that your consumer remains static which , or from the product perspective, consumers approach their searches of the R Programming language the same regardless of where the R Programming language is in its product life cycle. For example, the TIOBE Index uses <strong>+“<language> programming”</strong> for its search query and then counts the hits generated from dozens of search engines, and finally applies a standardization method (see references below). So for R the search would be "R programming**</p>
-<p>Whatever methods they use are irrelevant; the problem is that the search terms don’t accurately reflect the behavior of the consumer.</p>
+<div id="even-targetedinformed-search-trends-fail-at-prediction" class="section level3">
+<h3>Even Targeted/Informed Search Trends fail at Prediction</h3>
+<p>Let’s discuss a situation where you might know your R consumer/user. As an R user I know that the main packages for data munging in R are Tidyverse, and data.table for data in the hundreds of millions of rows. I will focus on Tidyverse since I have discussed this in post above. As an R user I know that I use dplyr and ggplot2 as my core packages from the Tidyverse ecosystem for data manipulation and visualization. So I do a lot of daily searching on “r dplyr function,” or “r ggplot2 visualization” for example. So I downloaded their search trends along with Tidyverse because Tidyverse now includes both dplyr and ggplot2 among a few other packages. I also include the dates for the Tidyverse 1.0.0 release and announcement in the graph below.</p>
+<p>The first thing to notice is dplyr and ggplot2 are increasing early on because these packages where around before the Tidyverse package and Tidyverse ecosystem of packages. My original thought was dplyr and ggplot2 would predict R downloads, but as you can see that they do not trend very well with R downloads. What I conclude is that dplyr and ggplot2 were very popular with current users but those 2 packages alone were not enough to get new users to jump on board with R. Remember that before Hadley’s announcement ( black dashed line) there was no cohesive ecosystem of packages for data analysis in R.</p>
+<p>Second, we continue to see the importance of Hadley’s annoucement of the Tidyverse ecosystem. As discussed above, it takes 35 days for searches to appear in Google Trends after Hadley’s Tidyverse announcement, which means that the daily search trends reaches at least 5000 hits per day (red vertical line). The week where <strong>“tidyverse”</strong> hits begin is the week that R downloads bottom out, the bottom of the parabola on the smooth purple line. The next week you see a jump in R downloads (purple line). From that point on R downloads have been increasing. As I argued above, Tidyverse has changed the attractiveness of R for new R users, but from evidence I see below, I would not use “tidyverse” search trends to predict the R downloads because even though both are increasing, they don’t really trend very closely until 2018 and after. But even then I would be skeptical that the relationship would hold for long as consumer behavior evolves and they begin to look for specific features within the Tidyverse, such as the purrr package, to solve less generalizable problems.</p>
+<p>This shows that even when you are being more mindful about your consumers behavior and search patterns, you may still be at risk when making generalizing predictions.</p>
+<p><img src="https://www.alfredogmarquez.com/post/2019-11-11-r-s-demise-higly-overblown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions</h1>
+<p>What are the take aways from this analysis? First, R downloads have been increasing for the last several years, clearly conveying that more users are adopting R to conduct their data analysis and data science work. In addition, it also provides evidence that the growth in Python has had no impact on the adoption of R. Second, Windows dominates R downloads by large margins, and both Windows and Macs are driving the growth after the R 3.5.1 version release. Third, a simple idea that data should be <a href="https://vita.had.co.nz/papers/tidy-data.pdf">tidy</a> can lower barriers to entry for non-software users, and unify a community to be highly thoughtful, cohesive, and innovative when building packages. Finally, using search trends for prediction lacks rigor. This example shows that even when trends are moving in the same direction, it is questionable as to whether they can be used for predictions. Forecasting data has a relatively high bar; the data needs to be consistently accurate at predicting over time. Having a model that does well this month and not next month is evidence of overfitting and lacks any real theory about what is truely happening in the data generating process. In other words, you got lucky.</p>
+<div id="further-research-opportunities" class="section level2">
+<h2>Further research opportunities:</h2>
+<p>One concern that I have about using RStudio CRAN mirror for this analysis is that the increase in R downloads is due to the popularity of the RStudio IDE and not of R. Since RStudio is mostly used for R, I believe that this analysis still holds; it would only fail if millions of current users instead of new users were migrating from a different IDE and using RStudio for their R downloads, where before they just went to r-project.org to download R. It would be nice to be able to control for RStudio downloads, but I don’t have that data.</p>
+<p>In closing I want to say that this post does not in any way down play Python. What it does show is that their should be more thought put into articles that make large claims about anything, especially when using web search terms for explanatory variables. Please do not make life altering decisions based on web search indexes such as the TOIBE Index or PLPY Index; do your research and use common sense. Like they used to say in the early 2000’s, don’t believe everything you read on the internet. I hope you enjoyed this post.</p>
+</div>
 </div>
 <div id="reference" class="section level1">
 <h1>Reference</h1>
 <ul>
-<li>Cranlogs:
+<li><p>Cranlogs:</p>
 <ul>
 <li><a href="https://cran.r-project.org/web/packages/cranlogs/cranlogs.pdf" class="uri">https://cran.r-project.org/web/packages/cranlogs/cranlogs.pdf</a></li>
 <li><a href="https://github.com/r-hub/cranlogs.app" class="uri">https://github.com/r-hub/cranlogs.app</a></li>
-<li>Hadley Announces Tidyverse at useR 2016 conference week of 2016-06-26: <a href="https://user2016.r-project.org//" class="uri">https://user2016.r-project.org//</a></li>
-<li>Tidyverse released 1.0.0 on 2016-09-15: <a href="https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/" class="uri">https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/</a></li>
-<li>Google Trend Results: <a href="https://trends.google.com/trends/explore?date=2010-01-01%202019-11-23&amp;geo=US&amp;q=%22R%20programming%22,Tidyverse,dplyr,ggplot2" class="uri">https://trends.google.com/trends/explore?date=2010-01-01%202019-11-23&amp;geo=US&amp;q=%22R%20programming%22,Tidyverse,dplyr,ggplot2</a></li>
-<li>TIOBE Index Definition: <a href="https://www.tiobe.com/tiobe-index/programming-languages-definition/" class="uri">https://www.tiobe.com/tiobe-index/programming-languages-definition/</a></li>
-<li>PYPL Index Definition: <a href="http://pypl.github.io/PYPL.html?country=US" class="uri">http://pypl.github.io/PYPL.html?country=US</a></li>
 </ul></li>
+<li><p>Hadley Announces Tidyverse at useR! 2016 conference week of 2016-06-26: <a href="https://user2016.r-project.org//" class="uri">https://user2016.r-project.org//</a></p></li>
+<li><p>Tidyverse released 1.0.0 on 2016-09-15: <a href="https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/" class="uri">https://blog.rstudio.com/2016/09/15/tidyverse-1-0-0/</a></p></li>
+<li><p>Tidy Data: <a href="https://vita.had.co.nz/papers/tidy-data.pdf" class="uri">https://vita.had.co.nz/papers/tidy-data.pdf</a></p></li>
+<li><p>Google Trend Results: <a href="https://trends.google.com/trends/explore?date=2010-01-01%202019-11-23&amp;geo=US&amp;q=%22R%20programming%22,Tidyverse,dplyr,ggplot2" class="uri">https://trends.google.com/trends/explore?date=2010-01-01%202019-11-23&amp;geo=US&amp;q=%22R%20programming%22,Tidyverse,dplyr,ggplot2</a></p></li>
+<li><p>TIOBE Index Definition: <a href="https://www.tiobe.com/tiobe-index/programming-languages-definition/" class="uri">https://www.tiobe.com/tiobe-index/programming-languages-definition/</a></p></li>
+<li><p>PYPL Index Definition: <a href="http://pypl.github.io/PYPL.html?country=US" class="uri">http://pypl.github.io/PYPL.html?country=US</a></p></li>
 </ul>
+<hr />
+<p>Kudos for the R image goes to:</p>
+<blockquote>
+<p>The R logo is © 2016 The R Foundation. <a href="https://www.r-project.org/logo/" class="uri">https://www.r-project.org/logo/</a></p>
+</blockquote>
 </div>
 <div id="session-info" class="section level1">
 <h1>Session Info</h1>
@@ -828,33 +868,33 @@ R351_fulcrum &lt;- down_tot_by_d %&gt;%
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] kableExtra_1.1.0 scales_1.0.0     rversions_2.0.0  gtrendsR_1.4.4  
-##  [5] tsibble_0.8.4    forcats_0.4.0    stringr_1.4.0    dplyr_0.8.3     
-##  [9] purrr_0.3.2      readr_1.3.1      tidyr_1.0.0      tibble_2.1.3    
-## [13] ggplot2_3.2.1    tidyverse_1.2.1  gridExtra_2.3    lubridate_1.7.4 
-## [17] cranlogs_2.1.1  
+##  [1] plotly_4.9.1     kableExtra_1.1.0 scales_1.0.0     rversions_2.0.0 
+##  [5] gtrendsR_1.4.4   tsibble_0.8.4    forcats_0.4.0    stringr_1.4.0   
+##  [9] dplyr_0.8.3      purrr_0.3.2      readr_1.3.1      tidyr_1.0.0     
+## [13] tibble_2.1.3     ggplot2_3.2.1    tidyverse_1.2.1  gridExtra_2.3   
+## [17] lubridate_1.7.4  cranlogs_2.1.1  
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.1        lattice_0.20-38   assertthat_0.2.1 
-##  [4] zeallot_0.1.0     digest_0.6.21     utf8_1.1.4       
-##  [7] R6_2.4.0          cellranger_1.1.0  plyr_1.8.4       
+##  [1] Rcpp_1.0.1        lattice_0.20-38   utf8_1.1.4       
+##  [4] assertthat_0.2.1  zeallot_0.1.0     digest_0.6.21    
+##  [7] plyr_1.8.4        R6_2.4.0          cellranger_1.1.0 
 ## [10] backports_1.1.5   evaluate_0.14     httr_1.4.1       
 ## [13] highr_0.8         blogdown_0.16     pillar_1.4.2     
 ## [16] rlang_0.4.0       lazyeval_0.2.2    curl_4.2         
-## [19] readxl_1.3.1      rstudioapi_0.10   rmarkdown_1.16   
-## [22] labeling_0.3      webshot_0.5.2     munsell_0.5.0    
-## [25] broom_0.5.2       anytime_0.3.6     compiler_3.6.1   
-## [28] modelr_0.1.5      xfun_0.10         pkgconfig_2.0.3  
-## [31] htmltools_0.4.0   tidyselect_0.2.5  bookdown_0.14    
-## [34] fansi_0.4.0       viridisLite_0.3.0 crayon_1.3.4     
-## [37] withr_2.1.2       grid_3.6.1        nlme_3.1-141     
-## [40] jsonlite_1.6      gtable_0.3.0      lifecycle_0.1.0  
-## [43] magrittr_1.5      cli_1.1.0         stringi_1.4.3    
-## [46] reshape2_1.4.3    xml2_1.2.2        ellipsis_0.3.0   
-## [49] generics_0.0.2    vctrs_0.2.0       tools_3.6.1      
-## [52] glue_1.3.1        hms_0.5.1         yaml_2.2.0       
-## [55] colorspace_1.4-1  rvest_0.3.4       knitr_1.25       
-## [58] haven_2.1.1</code></pre>
+## [19] readxl_1.3.1      rstudioapi_0.10   data.table_1.12.4
+## [22] rmarkdown_1.16    labeling_0.3      webshot_0.5.2    
+## [25] htmlwidgets_1.5.1 munsell_0.5.0     broom_0.5.2      
+## [28] anytime_0.3.6     compiler_3.6.1    modelr_0.1.5     
+## [31] xfun_0.10         pkgconfig_2.0.3   htmltools_0.4.0  
+## [34] tidyselect_0.2.5  bookdown_0.14     fansi_0.4.0      
+## [37] viridisLite_0.3.0 crayon_1.3.4      withr_2.1.2      
+## [40] grid_3.6.1        nlme_3.1-141      jsonlite_1.6     
+## [43] gtable_0.3.0      lifecycle_0.1.0   magrittr_1.5     
+## [46] cli_1.1.0         stringi_1.4.3     reshape2_1.4.3   
+## [49] xml2_1.2.2        ellipsis_0.3.0    generics_0.0.2   
+## [52] vctrs_0.2.0       tools_3.6.1       glue_1.3.1       
+## [55] hms_0.5.1         yaml_2.2.0        colorspace_1.4-1 
+## [58] rvest_0.3.4       knitr_1.25        haven_2.1.1</code></pre>
 </div>
 
               
@@ -868,14 +908,22 @@ R351_fulcrum &lt;- down_tot_by_d %&gt;%
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://www.alfredogmarquez.com/tags/r-programming-cranlogs-trends-popularity/">R Programming Cranlogs trends popularity</a>
+  <a class="tag tag--primary tag--small" href="https://www.alfredogmarquez.com/tags/r/">R</a>
+
+  <a class="tag tag--primary tag--small" href="https://www.alfredogmarquez.com/tags/programming/">Programming</a>
+
+  <a class="tag tag--primary tag--small" href="https://www.alfredogmarquez.com/tags/cranlogs/">Cranlogs</a>
+
+  <a class="tag tag--primary tag--small" href="https://www.alfredogmarquez.com/tags/trends/">trends</a>
+
+  <a class="tag tag--primary tag--small" href="https://www.alfredogmarquez.com/tags/popularity/">popularity</a>
 
                   </div>
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -934,8 +982,8 @@ R351_fulcrum &lt;- down_tot_by_d %&gt;%
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -954,8 +1002,8 @@ R351_fulcrum &lt;- down_tot_by_d %&gt;%
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -1014,8 +1062,8 @@ R351_fulcrum &lt;- down_tot_by_d %&gt;%
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="5">
@@ -1068,131 +1116,14 @@ R351_fulcrum &lt;- down_tot_by_d %&gt;%
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/">
-                <h3 class="media-heading">R&#39;s Demise Higly Overblown</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Nov 11, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">In this post I will provide evidence that contradicts recent reports that the R Programming language is declining in popularity.
-In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/">
-                <h3 class="media-heading">JuliaPro&#39;s Julia on Jupyter Notebooks</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Sep 9, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
-I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/">
-                <h3 class="media-heading">TEZ UP YOUR RODBC HIVE QUERIES</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
-Hive only a few years ago was rare occurrence in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/">
-                <h3 class="media-heading">Spark Installation on Windows</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  May 5, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.
-Step #1: Download and InstallationInstall Spark
-First you will need to download Spark, which comes with the package for SparkR.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2018/03/31/ode-to-r/">
-                <h3 class="media-heading">Ode to R, Happy 25th Birthday</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         5 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
     
-    <div id="cover" style="background-image:url('https://www.alfredogmarquez.com/images/cover_cabin.jpg');"></div>
+      
+      <div id="cover" style="background-image:url('https://www.alfredogmarquez.com/images/cover_cabin.jpg');"></div>
+    
   
 
 
@@ -1204,9 +1135,23 @@ First you will need to download Spark, which comes with the package for SparkR.<
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://www.alfredogmarquez.com/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://www.alfredogmarquez.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
 
 <script>
 $(document).ready(function() {
@@ -1246,6 +1191,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 

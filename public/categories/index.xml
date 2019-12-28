@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Alfredo&#39;s Sandbox</title>
@@ -6,16 +6,17 @@
     <description>Recent content in Categories on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 26 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.alfredogmarquez.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Books</title>
-      <link>https://www.alfredogmarquez.com/categories/books/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>R</title>
+      <link>https://www.alfredogmarquez.com/categories/r/</link>
+      <pubDate>Thu, 26 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/categories/books/</guid>
+      <guid>https://www.alfredogmarquez.com/categories/r/</guid>
       <description></description>
     </item>
     
@@ -29,20 +30,47 @@
     </item>
     
     <item>
+      <title>TEZ</title>
+      <link>https://www.alfredogmarquez.com/categories/tez/</link>
+      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/categories/tez/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spark</title>
+      <link>https://www.alfredogmarquez.com/categories/spark/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/categories/spark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SparkR</title>
+      <link>https://www.alfredogmarquez.com/categories/sparkr/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/categories/sparkr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Books</title>
+      <link>https://www.alfredogmarquez.com/categories/books/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/categories/books/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Links</title>
       <link>https://www.alfredogmarquez.com/categories/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/categories/links/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R</title>
-      <link>https://www.alfredogmarquez.com/categories/r/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/categories/r/</guid>
       <description></description>
     </item>
     
@@ -61,33 +89,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/categories/resources/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spark</title>
-      <link>https://www.alfredogmarquez.com/categories/spark/</link>
-      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/categories/spark/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sparkr</title>
-      <link>https://www.alfredogmarquez.com/categories/sparkr/</link>
-      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/categories/sparkr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tez</title>
-      <link>https://www.alfredogmarquez.com/categories/tez/</link>
-      <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/categories/tez/</guid>
       <description></description>
     </item>
     

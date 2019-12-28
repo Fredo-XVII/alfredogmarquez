@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hive on Alfredo&#39;s Sandbox</title>
+    <title>HIVE on Alfredo&#39;s Sandbox</title>
     <link>https://www.alfredogmarquez.com/tags/hive/</link>
-    <description>Recent content in Hive on Alfredo&#39;s Sandbox</description>
+    <description>Recent content in HIVE on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
-      <description>In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
-Hive only a few years ago was rare occurrence in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.</description>
+      <description>Set Tez Options in RODBC</description>
     </item>
     
   </channel>
