@@ -1,7 +1,7 @@
 ---
 title: R's Demise is Highly Overblown
 author: Alfredo G Marquez
-date: '2019-12-26'
+date: '2019-12-29'
 categories:
   - R
 tags:
@@ -130,7 +130,7 @@ cran_R_downloads <- cran_R_downloads_raw %>%
   dplyr::left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) 
 ```
 
-Here is a quick look at the download data from the **cranlogs** package.  I created some new features, date factors and period dummy variables, in order to drill into the data graphically. 
+Here is a quick look at the download data from the **cranlogs** package.  I created some new features, date factors and period dummy variables, in order to drill into the data graphically. (**NOTE:** download data exludes the last 3 days of 2019, so no data for 29th - 31st, 2019.)
 
 ```{r table_1, echo=FALSE, warning=FALSE}
 tail(cran_R_downloads,5) %>% knitr::kable() %>% kableExtra::kable_styling()
