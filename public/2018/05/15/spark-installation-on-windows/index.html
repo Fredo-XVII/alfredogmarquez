@@ -1,67 +1,84 @@
-
-
-  
-    
-  
-
-
-  
-
-
-
-
-
-  
-
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.36 with theme Tranquilpeak 0.4.3-BETA">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.62.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="Alfredo G Marquez">
+<meta name="keywords" content="SparkR, Spark, Windows, Installation, R, r-project, data analysis, statistic, analytics, Julia, Julialang">
+<meta name="description" content="Today I will discuss how to install Apache Spark onto a Windows machine.">
+
+
+<meta property="og:description" content="Today I will discuss how to install Apache Spark onto a Windows machine.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Installation on Windows">
+<meta name="twitter:title" content="Spark Installation on Windows">
+<meta property="og:url" content="https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/">
+<meta property="twitter:url" content="https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/">
+<meta property="og:site_name" content="Alfredo&#39;s Sandbox">
+<meta property="og:description" content="Today I will discuss how to install Apache Spark onto a Windows machine.">
+<meta name="twitter:description" content="Today I will discuss how to install Apache Spark onto a Windows machine.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2018-05-15T00:00:00">
+  
+  
+    <meta property="article:modified_time" content="2018-05-15T00:00:00">
+  
+  
+  
+    
+      <meta property="article:section" content="Spark">
+    
+      <meta property="article:section" content="SparkR">
+    
+  
+  
+    
+      <meta property="article:tag" content="Spark">
+    
+      <meta property="article:tag" content="SparkR">
+    
+      <meta property="article:tag" content="installation">
+    
+      <meta property="article:tag" content="windows">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg">
+  <meta property="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg">
+
+
+  <meta property="og:image" content="https://www.alfredogmarquez.com/images/Apache%20Spark%20logo.jpeg">
+  <meta property="twitter:image" content="https://www.alfredogmarquez.com/images/Apache%20Spark%20logo.jpeg">
+
+
+
+
+  <meta property="og:image" content="https://www.alfredogmarquez.com/images/me_profile_trans_80x80.jpg">
+  <meta property="twitter:image" content="https://www.alfredogmarquez.com/images/me_profile_trans_80x80.jpg">
+
+
     <title>Spark Installation on Windows</title>
-    <meta name="author" content="Alfredo G Marquez">
-    <meta name="keywords" content="SparkR, Spark, Windows, Installation, R, r-project, data analysis, statistic, analytics, Julia, Julialang">
 
     <link rel="icon" href="https://www.alfredogmarquez.com/favicon.png">
     
 
     
-    <meta name="description" content="IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.
-Step #1: Download and InstallationInstall Spark
-First you will need to download Spark, which comes with the package for SparkR.">
-    <meta property="og:description" content="IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.
-Step #1: Download and InstallationInstall Spark
-First you will need to download Spark, which comes with the package for SparkR.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Spark Installation on Windows">
-    <meta property="og:url" content="/2018/05/15/spark-installation-on-windows/">
-    <meta property="og:site_name" content="Alfredo&#39;s Sandbox">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Alfredo&#39;s Sandbox">
-    <meta name="twitter:description" content="IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.
-Step #1: Download and InstallationInstall Spark
-First you will need to download Spark, which comes with the package for SparkR.">
-    
-    
 
-    
-    
-
-    
-      <meta property="og:image" content="https://www.alfredogmarquez.com/images/me_profile_trans_80x80.jpg">
-    
-
-    
-      <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg">
-    
-    
-      <meta property="og:image" content="https://www.alfredogmarquez.com/images/Apache%20Spark%20logo.jpeg">
-    
-    
-
-    
+    <link rel="canonical" href="https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -69,30 +86,25 @@ First you will need to download Spark, which comes with the package for SparkR."
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://www.alfredogmarquez.com/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    <link rel="stylesheet" href="https://www.alfredogmarquez.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
 
     
       
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-114303412-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-114303412-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5682145105593159",
-          enable_page_level_ads: true
-     });
-</script>
- 
     
     
   </head>
@@ -116,7 +128,7 @@ ga('send', 'pageview');
       
     
     </a>
-   
+  
 </header>
 
       <nav id="sidebar" data-behavior="5">
@@ -136,7 +148,7 @@ ga('send', 'pageview');
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://www.alfredogmarquez.com/">
+      <a class="sidebar-button-link " href="https://www.alfredogmarquez.com/post">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -296,7 +308,10 @@ ga('send', 'pageview');
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <div id="intro" class="section level1">
+              
+
+
+<div id="intro" class="section level1">
 <h1>Intro</h1>
 <p><em>Today I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.</em></p>
 <hr />
@@ -544,8 +559,8 @@ df %&gt;% SparkR::collect() %&gt;%
                 
               
             
-            
-  <div class="post-actions-wrap">
+            <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -604,8 +619,8 @@ df %&gt;% SparkR::collect() %&gt;%
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
             
               
@@ -624,8 +639,8 @@ df %&gt;% SparkR::collect() %&gt;%
 
       </div>
       <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
-        
-  <div class="post-actions-wrap">
+        <div class="post-actions-wrap">
+  
       <nav >
         <ul class="post-actions post-action-nav">
           
@@ -684,8 +699,8 @@ df %&gt;% SparkR::collect() %&gt;%
         </a>
       </li>
     </ul>
-  </div>
-
+  
+</div>
 
       </div>
       <div id="share-options-bar" class="share-options-bar" data-behavior="5">
@@ -725,7 +740,7 @@ df %&gt;% SparkR::collect() %&gt;%
       <div id="about-card-job">
         <i class="fa fa-briefcase"></i>
         <br/>
-        Sr. Data Analyst
+        Lead Data Scientist
       </div>
     
     
@@ -738,131 +753,14 @@ df %&gt;% SparkR::collect() %&gt;%
   </div>
 </div>
 
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Search" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">no post found</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2019/11/11/r-s-demise-higly-overblown/">
-                <h3 class="media-heading">R&#39;s Demise Highly Overblown</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Nov 11, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">In this post I will provide evidence that contradicts recent reports that the R Programming language is declining in popularity.
-In last few months I have come across several blog posts that suggest that Python is reducing the demand for R. Yet, it contradicts what I am seeing in my day to day life. Many analyst at work from different parts of the business that are not associated with data science or software engineering are adopting the R programming language because it feels more comfortable than Python and they are not interested in building software or building production pipelines.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/">
-                <h3 class="media-heading">JuliaPro&#39;s Julia on Jupyter Notebooks</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Sep 9, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">In this post I will show you how to set JuliaPro’s installation of Julia on a separate kernel in Jupyter on Windows.
-I recently installed JuliaPro at the suggestion by one of my coworkers, but doing so changed the local installation of the Julia kernel on Jupyter. If you don’t currently use Julia and JuliaPro is your first and only install, then you may not need to read any further as the Julia kernel in your Jupyter will be the one from JuliaPro.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/">
-                <h3 class="media-heading">TEZ UP YOUR RODBC HIVE QUERIES</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2019
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">In this post I will show you how you can add TEZ options to your Hive ODBC connection and thus your RODBC queries in R.
-Hive only a few years ago was rare occurrence in most corporate data warehouses, but these days Hive, Spark, Tez, among others open source data warehouses are all the buzz in the corporate world and data analysts need to adapt to this changing world.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/">
-                <h3 class="media-heading">Spark Installation on Windows</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  May 5, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">IntroToday I will discuss how to install Apache Spark onto a Windows machine. I have just walked through the process a second time at work due to a laptop swap and it takes me some time to remember all the steps to get the install right, so I thought I would document the process.
-Step #1: Download and InstallationInstall Spark
-First you will need to download Spark, which comes with the package for SparkR.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://www.alfredogmarquez.com/2018/03/31/ode-to-r/">
-                <h3 class="media-heading">Ode to R, Happy 25th Birthday</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2018
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="no post found"
-         data-message-one="1 post found"
-         data-message-other="{n} posts found">
-         5 posts found
-      </p>
-    </div>
-  </div>
-</div>
+    
+
     
   
     
-    <div id="cover" style="background-image:url('https://www.alfredogmarquez.com/images/cover_cabin.jpg');"></div>
+      
+      <div id="cover" style="background-image:url('https://www.alfredogmarquez.com/images/cover_cabin.jpg');"></div>
+    
   
 
 
@@ -874,9 +772,23 @@ First you will need to download Spark, which comes with the package for SparkR.<
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://www.alfredogmarquez.com/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+<script src="https://www.alfredogmarquez.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
 
 <script>
 $(document).ready(function() {
@@ -916,6 +828,7 @@ $(document).ready(function() {
       </script>
     
   
+
 
 
 
