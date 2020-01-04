@@ -26,7 +26,15 @@ summary: Today I will provide evidence that R's predicted demise is highly overb
 draft: no
 ---
 
-<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/datatables-binding/datatables.js"></script>
+<link href="/rmarkdown-libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/rmarkdown-libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
 
 
 <!--more-->
@@ -54,7 +62,7 @@ draft: no
 <p>R fared a little better but not much. CRAN has dozens of mirrors around the world that are self hosted. In other words, unless the mirror owners publish there download history, there is no way to know how many times R is being downloaded. Luckily, <a href="https://rstudio.com/">RStudio</a> has provided a way to obtain the downloads of R from their mirror with the R package <strong>cranlogs</strong>.</p>
 <p>The <strong>cranlogs</strong> package not only gives you downloads for R itself, but also for packages that are downloaded from the RStudio cran mirror. Because RStudio has an easy GUI interface for downloading packages, and is extremely popular among R users, I will assume that a majority of the package downloads are downloaded by users using RStudio IDE from this cran mirror.</p>
 <p>In contrast, I will not make the same assumption about installing R itself. Normally, I install R core from the <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a> website and then I install RStudio IDE. This is important because I will use the RStudio R downloads as a proxy for all R downloads worldwide. In other words, the total for R downloads in this analysis is only a subset of all R downloads. I make this assumption because the way you download R is subjective based on your prior experience.</p>
-<p>There will be 3 sets of data that I will be working with for this analysis. First is the data from the cranlogs discussed above. Second, I will use data from the <strong>rversions</strong> package in order to get R version release dates. The version dates data will be used to label the graphs and to understand some of the behavior in the downloads. The third data set that will use comes from the <strong>gtrends</strong> package. I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index, creaters of web search trend indexes. Finally, I research some dates that I felt were relevant after analyzing the data. For example, Hadley Wickham’s introduction of the Tidyverse at the useR! 2016 conference at the end of June 2016.</p>
+<p>There will be 3 sets of data that I will be working with for this analysis. First is the data from the cranlogs discussed above. Second, I will use data from the <strong>rversions</strong> package in order to get R version release dates. The version dates data will be used to label the graphs and to understand some of the behavior in the downloads. The third data set that will use comes from the <strong>gtrends</strong> package. I will use this data as a proxy for what the is being observed by the TOIBE Index and the PYPL Index, creators of web search trend indexes. Finally, I research some dates that I felt were relevant after analyzing the data. For example, Hadley Wickham’s introduction of the Tidyverse at the useR! 2016 conference at the end of June 2016.</p>
 </div>
 </div>
 <div id="analysis" class="section level1">
@@ -79,409 +87,16 @@ options(scipen = 999)
 hadley_tidyverse &lt;- as.Date(&#39;2016-06-26&#39;)
 tidy_searches_beg &lt;- as.Date(&#39;2016-07-31&#39;)
 tidyvere_release_1_0 &lt;- as.Date(&#39;2016-09-15&#39;)</code></pre>
-<p>Here is a quick look at the download data from the <strong>cranlogs</strong> package. I created some new features, date factors and period dummy variables, in order to drill into the data graphically. (<strong>NOTE:</strong> download data exludes the last 3 days of 2019, so no data for 29th - 31st, 2019.)</p>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-date
-</th>
-<th style="text-align:left;">
-version.x
-</th>
-<th style="text-align:left;">
-os
-</th>
-<th style="text-align:right;">
-count
-</th>
-<th style="text-align:left;">
-os_factor
-</th>
-<th style="text-align:left;">
-ver_factor
-</th>
-<th style="text-align:right;">
-ver_lvl
-</th>
-<th style="text-align:left;">
-ver_lvl_factor
-</th>
-<th style="text-align:right;">
-ver_lvl_top
-</th>
-<th style="text-align:left;">
-ver_lvl_top_factor
-</th>
-<th style="text-align:right;">
-year
-</th>
-<th style="text-align:right;">
-month
-</th>
-<th style="text-align:right;">
-week
-</th>
-<th style="text-align:left;">
-yr_mo
-</th>
-<th style="text-align:left;">
-yr_wk
-</th>
-<th style="text-align:right;">
-ver_3_5_f
-</th>
-<th style="text-align:left;">
-version.y
-</th>
-<th style="text-align:left;">
-vers_i
-</th>
-<th style="text-align:left;">
-nickname
-</th>
-<th style="text-align:left;">
-greg_d
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-75567
-</td>
-<td style="text-align:left;">
-2019-12-22
-</td>
-<td style="text-align:left;">
-3.3.1
-</td>
-<td style="text-align:left;">
-src
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:left;">
-src
-</td>
-<td style="text-align:left;">
-3.3.1
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:left;">
-33
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:left;">
-2019 Dec
-</td>
-<td style="text-align:left;">
-2019-12-16
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-75568
-</td>
-<td style="text-align:left;">
-2019-12-22
-</td>
-<td style="text-align:left;">
-3.3.3
-</td>
-<td style="text-align:left;">
-win
-</td>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:left;">
-win
-</td>
-<td style="text-align:left;">
-3.3.3
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:left;">
-33
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:left;">
-2019 Dec
-</td>
-<td style="text-align:left;">
-2019-12-16
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-75569
-</td>
-<td style="text-align:left;">
-2019-12-22
-</td>
-<td style="text-align:left;">
-3.2.1
-</td>
-<td style="text-align:left;">
-osx
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-osx
-</td>
-<td style="text-align:left;">
-3.2.1
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:left;">
-32
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:left;">
-2019 Dec
-</td>
-<td style="text-align:left;">
-2019-12-16
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-75570
-</td>
-<td style="text-align:left;">
-2019-12-22
-</td>
-<td style="text-align:left;">
-3.3.0
-</td>
-<td style="text-align:left;">
-osx
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-osx
-</td>
-<td style="text-align:left;">
-3.3.0
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:left;">
-33
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:left;">
-2019 Dec
-</td>
-<td style="text-align:left;">
-2019-12-16
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-75571
-</td>
-<td style="text-align:left;">
-2019-12-22
-</td>
-<td style="text-align:left;">
-3.3.1
-</td>
-<td style="text-align:left;">
-osx
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-osx
-</td>
-<td style="text-align:left;">
-3.3.1
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:left;">
-33
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:left;">
-2019 Dec
-</td>
-<td style="text-align:left;">
-2019-12-16
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-</tbody>
-</table>
+<p>Here is a quick look at the download data from the <strong>cranlogs</strong> package. I created some new features, date factors and period dummy variables, in order to drill into the data graphically. (<strong>NOTE:</strong> download data excludes the last 3 days of 2019, so no data for 29th - 31st, 2019.)</p>
+<div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["76036","76037","76038","76039","76040"],["2019-12-29","2019-12-29","2019-12-29","2019-12-29","2019-12-29"],["2.10.0","3.6.1","2.14.0","3.4.4","3.4.2"],["osx","win","osx","osx","osx"],[2,6,2,2,2],["osx","win","osx","osx","osx"],["2.10.0","3.6.1","2.14.0","3.4.4","3.4.2"],[210,36,214,34,34],["210","36","214","34","34"],[2,3,2,3,3],["2","3","2","3","3"],[2019,2019,2019,2019,2019],[12,12,12,12,12],[52,52,52,52,52],["2019-12-01","2019-12-01","2019-12-01","2019-12-01","2019-12-01"],["2019-12-23","2019-12-23","2019-12-23","2019-12-23","2019-12-23"],[1,1,1,1,1],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null],[null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>date<\/th>\n      <th>version.x<\/th>\n      <th>os<\/th>\n      <th>count<\/th>\n      <th>os_factor<\/th>\n      <th>ver_factor<\/th>\n      <th>ver_lvl<\/th>\n      <th>ver_lvl_factor<\/th>\n      <th>ver_lvl_top<\/th>\n      <th>ver_lvl_top_factor<\/th>\n      <th>year<\/th>\n      <th>month<\/th>\n      <th>week<\/th>\n      <th>yr_mo<\/th>\n      <th>yr_wk<\/th>\n      <th>ver_3_5_f<\/th>\n      <th>version.y<\/th>\n      <th>vers_i<\/th>\n      <th>nickname<\/th>\n      <th>greg_d<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[4,7,9,11,12,13,16]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <div id="yearly-trend" class="section level2">
 <h2>Yearly Trend</h2>
 <p>At first, I was curious about the overall trend of the data. You can see that R downloads growth is
 -26%
 from 2015 to 2016, recovering in 2017 by 24%, but about 1 million downloads short from its 2015 level. Then in 2018 R downloads grow by 2 million downloads, or by 23%, to
 10 million and surpasses its 2015 level by 1 million downloads. Finally, R downloads have grown by more than
-69% to
+71% to
 17 million downloads in 2019. I have to admit those totals are more than I would have thought. This growth might explain why the Michigan CRAN mirror has added a second CRAN mirror; the Michigan CRAN mirror being the closet to my location. In any case, this evidence contradicts the suggestion that Python is having a negative impact on the adoption of R.</p>
 <p><img src="/post/2019-12-29-r-s-demise-higly-overblown_files/figure-html/yr_trend-1.png" width="672" /></p>
 <p>At this point, I could probably be done because I think that there is sufficient evidence to support that the growth in R is not being negatively impacted by the growth in Python. On the contrary, R is having its most robust year in the last 5 years. But there are some other interesting variables in the data that I would like to explore.</p>
@@ -490,14 +105,14 @@ from 2015 to 2016, recovering in 2017 by 24%, but about 1 million downloads shor
 <h2>Natural Experiments: Tale of 2 Bends</h2>
 <div id="tidyverses-positive-impact" class="section level3">
 <h3>1. Tidyverse’s Positive Impact</h3>
-<p>From the yearly trend above there are 2 interesting behaviors. First, is the year over year decline in 2016 and the recovery in 2017. If you look at the graph below you will notice that R downloads are in decline all of 2015 and bottom out in the middle of 2016. I wondered what happened in 2016 that broke the downward trend. As I thought about 2016, I remembered that I attended the useR! 2016 Conference at Standford University that summer. At the conference Hadley Wickham officially announced idea of the <strong>Tidyverse</strong>, ending all references to the term <strong>Hadleyverse</strong>, which was the name that had been circling to describe the Tidyverse ecosystem at the time. We all laughed as we watched Hadleyverse catch fire on screen because it conveyed how humble Hadley truly is. His speech was given on Wednesday June 29th, 2016 (see below week of June 26th). The week of July 31st, 2016 is when the term “tidyverse” starts to appear in searches on Google Trends (data from gtrend package), or 35 days after Hadley’s speech, and Tidyverse 1.0.0 is released on September 15, 2016, or 81 days after Hadley’s speech. In the section below on Google Trends you will see correlation between the Tidyverse search term on Google Trends and R downloads bottoming out and rebounding.</p>
+<p>From the yearly trend above there are 2 interesting behaviors. First, is the year over year decline in 2016 and the recovery in 2017. If you look at the graph below you will notice that R downloads are in decline all of 2015 and bottom out in the middle of 2016. I wondered what happened in 2016 that broke the downward trend. As I thought about 2016, I remembered that I attended the useR! 2016 Conference at Stanford University that summer. At the conference Hadley Wickham officially announced idea of the <strong>Tidyverse</strong>, ending all references to the term <strong>Hadleyverse</strong>, which was the name that had been circling to describe the Tidyverse ecosystem at the time. We all laughed as we watched Hadleyverse catch fire on screen because it conveyed how humble Hadley truly is. His speech was given on Wednesday June 29th, 2016 (see below week of June 26th). The week of July 31st, 2016 is when the term “tidyverse” starts to appear in searches on Google Trends (data from gtrend package), or 35 days after Hadley’s speech, and Tidyverse 1.0.0 is released on September 15, 2016, or 81 days after Hadley’s speech. In the section below on Google Trends you will see correlation between the Tidyverse search term on Google Trends and R downloads bottoming out and rebounding.</p>
 <p>Because economist are not allowed to conduct large scale social experiments with people for moral reasons, we take advantage of natural experiments. A natural experiment is when there is a policy change or natural event that has a large impact on society. We can use this event to explain and measure the impact of these large events. The logic for natural experiments comes from statistics. In statistics there is this idea that the probability of 2 independents events corresponding together is nearly zero. In other words, if there is a policy change (treatment) and a corresponding change in an outcome, the probability that these 2 things occur together would be nearly zero if it were to happen by chance. Although I have no way to prove this, but from the data below I would make the argument that the introduction of the Tidyverse paradigm (treatment) has had a positive impact on R downloads (outcome). In other words, from the point that the Tidyverse was officially introduced, R downloads have increased year over year for the last 3 years by large margins. From my experience, dplyr really made R familiar, approachable, and easy to pick up. Base R was much harder to pick up by comparison. What this shows is that the Tidyverse reduces barriers to entry for new R users by making R easier to learn and use. Put differently, Tidyverse reduces the cost of learning R and thereby increases the return on investment for each minute spent on learning R. Furthermore, the cost of using R will continue to decrease as other packages also adopt the ideas and concepts of tidy data. One example is the tsibble package and its tidy time series ecosystem, which is becoming one of my new favorites. By adopting tidy principles, this package has made manipulating time series data much easier than using the zoo or the xts package.</p>
 <p><img src="/post/2019-12-29-r-s-demise-higly-overblown_files/figure-html/tidy_fulcrum-1.png" width="672" /></p>
 </div>
 <div id="r-3.5.1-release-marks-turning-point" class="section level3">
 <h3>2. R 3.5.1 Release Marks Turning Point</h3>
 <p>The second event is the large increase in year over year growth in the second half of 2018 and all of 2019. I could not think of any really good natural experiment to explain the large increase in R downloads in the second half of 2018. So I decided to overlay the release dates of the different versions of R; the blue line represents the minor version releases, and the red dotted line represents patch releases. There were no major releases during this time. You can see from the graph below that the release of R 3.5.1 marks the beginning of a change in the slope of R downloads at the beginning of 2018 from a slightly increasing trend to a highly increasing trend. Now why would this be?</p>
-<p>The R 3.5.0 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster. But why no increase in downloads at this point? Well because the new R upgrades had issues with packages built on the older versions of R. Thus, a lot of your packages broke or wouldn’t even download. But a lot of these issues were resolved by the R 3.5.1 release. So this explains why we see a drop in R downloads after the R 3.5.0 release and an increase with the R 3.5.1 release. But, why would such a release convince potential users, such as data scientists, data analysts and business analysts, to adopt R? Can you image MS Excel business analysts sitting around waiting for the R 3.5.1 release and jumping up in excitement…I cannot. This natural experiment is harder to justify than the announcement of the Tidyverse because the Tidyverse changed the way users learned and use R. What I can say is the release of the R 3.5.1 correspond with something that I cannot currently measure, an ommitted variable, and it marks the beginning of a large adoption in the R programming language. Or maybe I am greatly underestimating the value of faster code.</p>
+<p>The R 3.5.0 release was a really big release with many upgrades to the internal components of R, with some changes that made R work faster. But why no increase in downloads at this point? Well because the new R upgrades had issues with packages built on the older versions of R. Thus, a lot of your packages broke or wouldn’t even download. But a lot of these issues were resolved by the R 3.5.1 release. So this explains why we see a drop in R downloads after the R 3.5.0 release and an increase with the R 3.5.1 release. But, why would such a release convince potential users, such as data scientists, data analysts and business analysts, to adopt R? Can you image MS Excel business analysts sitting around waiting for the R 3.5.1 release and jumping up in excitement…I cannot. This natural experiment is harder to justify than the announcement of the Tidyverse because the Tidyverse changed the way users learned and use R. What I can say is the release of the R 3.5.1 correspond with something that I cannot currently measure, an omitted variable, and it marks the beginning of a large adoption in the R programming language. Or maybe I am greatly underestimating the value of faster code.</p>
 <p><img src="/post/2019-12-29-r-s-demise-higly-overblown_files/figure-html/R351_fulcrum-1.png" width="672" /></p>
 </div>
 </div>
@@ -505,14 +120,14 @@ from 2015 to 2016, recovering in 2017 by 24%, but about 1 million downloads shor
 <h2>Weekly View by Operating System (OS)</h2>
 <div id="windows-leads-the-way-mac-grows-rapidly" class="section level3">
 <h3>1. Windows Leads the way, Mac Grows Rapidly</h3>
-<p>Now that we have established that the R 3.5.1 is an inflection point, lets see what is behind the growth in downloads. From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of 11788 downloads/week before the release of R 3.5.1., and 22758 downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads. Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have no evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis. R has a bad rap for having an uphill learning curve, but I believe with the Tidyverse ecosystem, this is no longer the case and anyone who says differently hasn’t used R in the last 3 to 5 years. In other words, they are speaking from inexperience with the recent improvements in the R ecosystem. I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2. Basically, anything that they can do in excel, now they can do with R, and much much more.</p>
-<p>My second surprise from looking at the OS break out was the large increase in Mac users. I am not sure why this would be the case except that Macs are now more common at work. For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire. If this is happening across industries, then this may explain some of this growth in addition to the university effect where Macs seem to be quite common. R downloads for Mac averaged 2506 in the period before the R 3.5.1 release and has averaged 5808, more than doubling its weekly average downloads. The upward trend for Mac R downloads doesn’t seem to be waning so there may be more growth to come over the next year.</p>
-<p>Finally, I will not discuss the OS labeled “NA” as it is really small; I just present it for completeness. I was not able to determine if the OS for “SRC” was building R from source, or whether it was for Linux. In any case, R downloads for “SRC” have been consistent throughout the entire time frame with some large growth after the R 3.6.1 release. The average download for “SRC” is 1373 in the period before R 3.5.1 release and 1172 after, although this is quite misleading as you have a two contrasting periods, one with low R download volume and one with much higher download volume during the post R 3.5.1 release.</p>
+<p>Now that we have established that the R 3.5.1 is an inflection point, lets see what is behind the growth in downloads. From the graphs below, we observe that the operating system (OS) with the most downloads/week is Windows, with an average of 11788 downloads/week before the release of R 3.5.1., and 22657 downloads/week post the R 3.5.1 release. I was pleasantly surprised to see that Windows was the leading OS for downloads. Most software engineers that I know use Macs for their development, so who are all these windows users? My guess, and I have no evidence to support this, is that analyst on the business side that traditionally have used excel for their work are now picking up R for the day to day analysis. R has a bad rap for having an uphill learning curve, but I believe with the Tidyverse ecosystem, this is no longer the case and anyone who says differently hasn’t used R in the last 3 to 5 years. In other words, they are speaking from inexperience with the recent improvements in the R ecosystem. I have easily brought people up to speed at work with just 2 packages, dplyr and ggplot2. Basically, anything that they can do in excel, now they can do with R, and much much more.</p>
+<p>My second surprise from looking at the OS break out was the large increase in Mac users. I am not sure why this would be the case except that Macs are now more common at work. For a long time it was very difficult to request a Mac at work, but over the last 3 years or so, it has been much easier to obtain a Mac if you so desire. If this is happening across industries, then this may explain some of this growth in addition to the university effect where Macs seem to be quite common. R downloads for Mac averaged 2506 in the period before the R 3.5.1 release and has averaged 5782, more than doubling its weekly average downloads. The upward trend for Mac R downloads doesn’t seem to be waning so there may be more growth to come over the next year.</p>
+<p>Finally, I will not discuss the OS labeled “NA” as it is really small; I just present it for completeness. I was not able to determine if the OS for “SRC” was building R from source, or whether it was for Linux. In any case, R downloads for “SRC” have been consistent throughout the entire time frame with some large growth after the R 3.6.1 release. The average download for “SRC” is 1373 in the period before R 3.5.1 release and 1167 after, although this is quite misleading as you have a two contrasting periods, one with low R download volume and one with much higher download volume during the post R 3.5.1 release.</p>
 <p><img src="/post/2019-12-29-r-s-demise-higly-overblown_files/figure-html/wkly_trend_os-1.png" width="672" /></p>
 </div>
 <div id="skyrocketing-year-over-year-growth" class="section level3">
 <h3>2. Skyrocketing Year Over Year Growth</h3>
-<p>In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system comparing the time before the R 3.5.1 release and the time after. The average weekly YOY growth rate for Windows for the pre-period is 14% and 77% for the post period. The average weekly YOY growth rate for Mac for the pre-period is 20% and 80% for the post period. The average weekly YOY growth rate for “SRC” for the pre-period is -3% and 55% for the post period. Imagine for a second you are a product manager, and your product was experiencing nearly 80% YOY growth on average every week for nearly 2 years; how ecstatic would you be? That kind of growth for any product is pretty remarkable.</p>
+<p>In this section, I will quickly describe the year over year (YOY) growth in R downloads for each type of operating system comparing the time before the R 3.5.1 release and the time after. The average weekly YOY growth rate for Windows for the pre-period is 14% and 77% for the post period. The average weekly YOY growth rate for Mac for the pre-period is 20% and 79% for the post period. The average weekly YOY growth rate for “SRC” for the pre-period is -3% and 55% for the post period. Imagine for a second you are a product manager, and your product was experiencing nearly 80% YOY growth on average every week for nearly 2 years; how ecstatic would you be? That kind of growth for any product is pretty remarkable.</p>
 <p><img src="/post/2019-12-29-r-s-demise-higly-overblown_files/figure-html/yoy_growth_os-1.png" width="672" /></p>
 </div>
 </div>
@@ -569,7 +184,7 @@ from 2015 to 2016, recovering in 2017 by 24%, but about 1 million downloads shor
 </div>
 <div id="session-info" class="section level1">
 <h1>Session Info</h1>
-<pre class="r"><code>sessionInfo()</code></pre>
+<pre class="r"><code>print(sessionInfo())</code></pre>
 <pre><code>## R version 3.6.1 (2019-07-05)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
 ## Running under: Windows 10 x64 (build 17763)
@@ -596,22 +211,25 @@ from 2015 to 2016, recovering in 2017 by 24%, but about 1 million downloads shor
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_1.0.1        lattice_0.20-38   utf8_1.1.4       
 ##  [4] assertthat_0.2.1  zeallot_0.1.0     digest_0.6.21    
-##  [7] plyr_1.8.4        R6_2.4.0          cellranger_1.1.0 
-## [10] backports_1.1.5   evaluate_0.14     httr_1.4.1       
-## [13] highr_0.8         blogdown_0.16     pillar_1.4.2     
+##  [7] mime_0.7          plyr_1.8.4        R6_2.4.0         
+## [10] cellranger_1.1.0  backports_1.1.5   evaluate_0.14    
+## [13] httr_1.4.1        blogdown_0.16     pillar_1.4.2     
 ## [16] rlang_0.4.0       lazyeval_0.2.2    curl_4.2         
 ## [19] readxl_1.3.1      rstudioapi_0.10   data.table_1.12.4
-## [22] rmarkdown_1.16    labeling_0.3      webshot_0.5.2    
-## [25] htmlwidgets_1.5.1 munsell_0.5.0     broom_0.5.2      
-## [28] anytime_0.3.6     compiler_3.6.1    modelr_0.1.5     
-## [31] xfun_0.10         pkgconfig_2.0.3   htmltools_0.4.0  
-## [34] tidyselect_0.2.5  bookdown_0.14     fansi_0.4.0      
-## [37] viridisLite_0.3.0 crayon_1.3.4      withr_2.1.2      
-## [40] grid_3.6.1        nlme_3.1-141      jsonlite_1.6     
-## [43] gtable_0.3.0      lifecycle_0.1.0   magrittr_1.5     
-## [46] cli_1.1.0         stringi_1.4.3     reshape2_1.4.3   
-## [49] xml2_1.2.2        ellipsis_0.3.0    generics_0.0.2   
-## [52] vctrs_0.2.0       tools_3.6.1       glue_1.3.1       
-## [55] hms_0.5.1         yaml_2.2.0        colorspace_1.4-1 
-## [58] rvest_0.3.4       knitr_1.25        haven_2.1.1</code></pre>
+## [22] DT_0.9            rmarkdown_1.16    labeling_0.3     
+## [25] webshot_0.5.2     htmlwidgets_1.5.1 munsell_0.5.0    
+## [28] shiny_1.3.2       broom_0.5.2       anytime_0.3.6    
+## [31] httpuv_1.5.2      compiler_3.6.1    modelr_0.1.5     
+## [34] xfun_0.10         pkgconfig_2.0.3   htmltools_0.4.0  
+## [37] tidyselect_0.2.5  bookdown_0.14     fansi_0.4.0      
+## [40] viridisLite_0.3.0 later_1.0.0       crayon_1.3.4     
+## [43] withr_2.1.2       grid_3.6.1        xtable_1.8-4     
+## [46] nlme_3.1-141      jsonlite_1.6      gtable_0.3.0     
+## [49] lifecycle_0.1.0   magrittr_1.5      cli_1.1.0        
+## [52] stringi_1.4.3     reshape2_1.4.3    promises_1.1.0   
+## [55] xml2_1.2.2        ellipsis_0.3.0    generics_0.0.2   
+## [58] vctrs_0.2.0       tools_3.6.1       glue_1.3.1       
+## [61] hms_0.5.1         crosstalk_1.0.0   yaml_2.2.0       
+## [64] colorspace_1.4-1  rvest_0.3.4       knitr_1.25       
+## [67] haven_2.1.1</code></pre>
 </div>
