@@ -11,7 +11,16 @@
   - sparkR -
     - groupby with ifelse
     - SparkR::read.df(path, "csv", inferSchema = "true")
-    - Baruta package (feature selection) on economic variables
+  - Baruta package (feature selection) on economic variables
+  - Economic Leading indicator Variables
+    - Transportation tonnage (FRED)
+    - # of States that will be in recession (FRED)
+  - TrelliscopeJS
+  - Tidy Time Series:
+    - tsibble
+    - fable 
+    - feast
+  - mlr
 
 # backlog of Julia ideas:
   - Move Library to new version: type ] - for Pkg>, st - for package list.
