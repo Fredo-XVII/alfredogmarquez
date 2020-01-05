@@ -79,6 +79,7 @@ library(rversions)
 library(scales)
 library(kableExtra)
 library(plotly)
+library(widgetframe)
 
 # Options
 options(scipen = 999)
@@ -128,14 +129,13 @@ cran_R_downloads <- cran_R_downloads_raw %>%
   ) %>% 
   dplyr::filter(yr_wk != max(.$yr_wk)) %>% 
   dplyr::left_join(R_ver_hist, by = c("yr_wk" = "yr_wk_ver")) %>% 
-  dplyr::filter(date <= as.Date('2019-12-29'))
+  dplyr::filter(.$date <= as.Date('2019-12-29'))
 ```
 
 Here is a quick look at the download data from the **cranlogs** package.  I created some new features, date factors and period dummy variables, in order to drill into the data graphically. (**NOTE:** download data excludes the last 3 days of 2019, so no data for 29th - 31st, 2019.)
 
-```{r table_1, echo=FALSE, warning=FALSE}
-#tail(cran_R_downloads,5) %>% knitr::kable() %>% kableExtra::kable_styling()
-DT::datatable(tail(cran_R_downloads,5)) 
+```{r table_1, echo=FALSE, warning=FALSE, out.width = "100%"}
+tail(cran_R_downloads,5) %>% knitr::kable() %>% kableExtra::kable_styling()
 ```
 
 
