@@ -79,7 +79,6 @@ library(rversions)
 library(scales)
 library(kableExtra)
 library(plotly)
-library(widgetframe)
 
 # Options
 options(scipen = 999)
