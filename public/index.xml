@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Alfredo&#39;s Sandbox</title>
-    <link>https://www.alfredogmarquez.com/</link>
+    <link>/</link>
     <description>Recent content on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.alfredogmarquez.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R&#39;s Demise is Highly Overblown</title>
-      <link>https://www.alfredogmarquez.com/2019/12/29/r-s-demise-higly-overblown/</link>
+      <link>/2019/12/29/r-s-demise-higly-overblown/</link>
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/12/29/r-s-demise-higly-overblown/</guid>
+      <guid>/2019/12/29/r-s-demise-higly-overblown/</guid>
       <description>
-&lt;script src=&#34;https://www.alfredogmarquez.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -26,10 +26,10 @@
     
     <item>
       <title>JuliaPro&#39;s Julia on Jupyter Notebooks</title>
-      <link>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</link>
+      <link>/2019/09/29/juliapro-on-jupyter/</link>
       <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</guid>
+      <guid>/2019/09/29/juliapro-on-jupyter/</guid>
       <description>
 
 
@@ -38,55 +38,55 @@
     
     <item>
       <title>TEZ UP YOUR RODBC HIVE QUERIES</title>
-      <link>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
+      <link>/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
+      <guid>/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
       <description>Set Tez Options in RODBC</description>
     </item>
     
     <item>
       <title>Spark Installation on Windows</title>
-      <link>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</link>
+      <link>/2018/05/15/spark-installation-on-windows/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</guid>
+      <guid>/2018/05/15/spark-installation-on-windows/</guid>
       <description>Today I will discuss how to install Apache Spark onto a Windows machine.</description>
     </item>
     
     <item>
       <title>Ode to R, Happy 25th Birthday</title>
-      <link>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</link>
+      <link>/2018/03/31/ode-to-r/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</guid>
+      <guid>/2018/03/31/ode-to-r/</guid>
       <description>As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://www.alfredogmarquez.com/page/julia_library/</link>
+      <link>/page/julia_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/julia_library/</guid>
+      <guid>/page/julia_library/</guid>
       <description>Julia Librarycode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://www.alfredogmarquez.com/page/r_library/</link>
+      <link>/page/r_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/r_library/</guid>
+      <guid>/page/r_library/</guid>
       <description>R Librarycode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
     </item>
     
     <item>
       <title>Julia Library</title>
-      <link>https://www.alfredogmarquez.com/page/julia_library/</link>
+      <link>/page/julia_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/julia_library/</guid>
+      <guid>/page/julia_library/</guid>
       <description>Julia Workspace  Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting: Mapping &amp;amp; Cartography:   Mapping
   Spacial Analysis
    Spark  Econometrics  Machine Learning  Databases  RAM Memory  Library &amp;amp; Package management  Julia Environmental variables ( related to Library Management above )  Docker  Writing Packages  </description>
@@ -94,10 +94,10 @@
     
     <item>
       <title>R Library</title>
-      <link>https://www.alfredogmarquez.com/page/r_library/</link>
+      <link>/page/r_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/page/r_library/</guid>
+      <guid>/page/r_library/</guid>
       <description>R Workspace The Workspace: http://www.statmethods.net/interface/workspace.html
 Hadley  R 4 Data Science: http://r4ds.had.co.nz/ http://stat545.com/bit001_dplyr-cheatsheet.html Writing Packages: http://r-pkgs.had.co.nz/  RStudio Server https://www.r-bloggers.com/setting-up-a-datascience-server/
  Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting:  https://www.ggplot2-exts.org/gganimate.html http://motioninsocial.com/tufte/?utm_content=bufferc1618&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer https://briatte.github.io/ggcorr/ https://journal.r-project.org/archive/2013-1/kahle-wickham.pdf https://plot.ly/feed/ https://plotly-book.cpsievert.me/index.html - book on Plotly and R https://www.r-graph-gallery.com/ Radial: http://rstudio-pubs-static.s3.amazonaws.com/72298_c1ba7f77276a4f27a0f375cadc9fac5d.html  Mapping &amp;amp; Cartography:   Census

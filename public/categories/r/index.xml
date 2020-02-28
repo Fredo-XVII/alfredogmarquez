@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Alfredo&#39;s Sandbox</title>
-    <link>https://www.alfredogmarquez.com/categories/r/</link>
+    <link>/categories/r/</link>
     <description>Recent content in R on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.alfredogmarquez.com/categories/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R&#39;s Demise is Highly Overblown</title>
-      <link>https://www.alfredogmarquez.com/2019/12/29/r-s-demise-higly-overblown/</link>
+      <link>/2019/12/29/r-s-demise-higly-overblown/</link>
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/12/29/r-s-demise-higly-overblown/</guid>
+      <guid>/2019/12/29/r-s-demise-higly-overblown/</guid>
       <description>
-&lt;script src=&#34;https://www.alfredogmarquez.com/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 </description>
@@ -26,19 +26,19 @@
     
     <item>
       <title>TEZ UP YOUR RODBC HIVE QUERIES</title>
-      <link>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
+      <link>/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
+      <guid>/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
       <description>Set Tez Options in RODBC</description>
     </item>
     
     <item>
       <title>Ode to R, Happy 25th Birthday</title>
-      <link>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</link>
+      <link>/2018/03/31/ode-to-r/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</guid>
+      <guid>/2018/03/31/ode-to-r/</guid>
       <description>As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</description>
     </item>
     

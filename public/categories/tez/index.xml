@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TEZ on Alfredo&#39;s Sandbox</title>
-    <link>https://www.alfredogmarquez.com/categories/tez/</link>
+    <link>/categories/tez/</link>
     <description>Recent content in TEZ on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.alfredogmarquez.com/categories/tez/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/tez/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TEZ UP YOUR RODBC HIVE QUERIES</title>
-      <link>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
+      <link>/2019/03/24/tez-up-your-rodbc-hive-queries/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
+      <guid>/2019/03/24/tez-up-your-rodbc-hive-queries/</guid>
       <description>Set Tez Options in RODBC</description>
     </item>
     

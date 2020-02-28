@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Julia JuliaPro Jupyter Kernel on Alfredo&#39;s Sandbox</title>
-    <link>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</link>
+    <link>/tags/julia-juliapro-jupyter-kernel/</link>
     <description>Recent content in Julia JuliaPro Jupyter Kernel on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Sep 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/julia-juliapro-jupyter-kernel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JuliaPro&#39;s Julia on Jupyter Notebooks</title>
-      <link>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</link>
+      <link>/2019/09/29/juliapro-on-jupyter/</link>
       <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</guid>
+      <guid>/2019/09/29/juliapro-on-jupyter/</guid>
       <description>
 
 

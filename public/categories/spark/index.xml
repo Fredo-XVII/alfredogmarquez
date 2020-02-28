@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spark on Alfredo&#39;s Sandbox</title>
-    <link>https://www.alfredogmarquez.com/categories/spark/</link>
+    <link>/categories/spark/</link>
     <description>Recent content in Spark on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.alfredogmarquez.com/categories/spark/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/spark/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spark Installation on Windows</title>
-      <link>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</link>
+      <link>/2018/05/15/spark-installation-on-windows/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</guid>
+      <guid>/2018/05/15/spark-installation-on-windows/</guid>
       <description>Today I will discuss how to install Apache Spark onto a Windows machine.</description>
     </item>
     
