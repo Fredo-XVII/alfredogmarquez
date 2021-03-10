@@ -21,6 +21,10 @@
     - fable 
     - feast
   - mlr
+  - Counter Factuals and Causality
+    - What has been the impact of diseases that require socializing? Examples include but not limited to: Sexually transmitted disease (Chlamidia), the Flu? Others?
+    - Trend of Deaths as counter factual to evidence for COVID-19.
+    - 
 
 # backlog of Julia ideas:
   - Move Library to new version: type ] - for Pkg>, st - for package list.
