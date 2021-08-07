@@ -63,14 +63,15 @@
     
       
 <script type="application/javascript">
-var doNotTrack = false;
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
 if (!doNotTrack) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-114303412-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>
@@ -216,6 +217,16 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
+      <a class="sidebar-button-link " href="https://www.alfredogmarquez.com/page/julia_library/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-lock"></i>
+      
+      <span class="sidebar-button-desc">Privacy Policy</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
       <a class="sidebar-button-link " href="https://www.alfredogmarquez.com/index.xml">
     
       <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
@@ -270,6 +281,44 @@ if (!doNotTrack) {
       
       <p>
         <a href="https://www.alfredogmarquez.com/page/julia_library/" class="postShorten-excerpt_link link">Continue reading</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+      
+        
+      
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://www.alfredogmarquez.com/page/privacy_policy/">
+          Privacy Policy
+        </a>
+      </h1>
+      
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      
+        This website uses cookies to ensure you get the best experience on our website.
+All the following points should be read as “to the best of my knowledge,” as I am not an expert in web design or computer science. I do not take responsibility on how this website is actually implemented. I can only tell you about my intentions. My intentions is to create great content, where I can generate some revenue from advertisements placed by Google Analytics to fund the work associated with creating content.
+      
+      <p>
+        <a href="https://www.alfredogmarquez.com/page/privacy_policy/" class="postShorten-excerpt_link link">Continue reading</a>
         
       </p>
     </div>

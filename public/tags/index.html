@@ -63,14 +63,15 @@
     
       
 <script type="application/javascript">
-var doNotTrack = false;
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
 if (!doNotTrack) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 	ga('create', 'UA-114303412-1', 'auto');
-	
+	ga('set', 'anonymizeIp', true);
 	ga('send', 'pageview');
 }
 </script>
@@ -216,6 +217,16 @@ if (!doNotTrack) {
       
   <li class="sidebar-button">
     
+      <a class="sidebar-button-link " href="https://www.alfredogmarquez.com/page/julia_library/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-lock"></i>
+      
+      <span class="sidebar-button-desc">Privacy Policy</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
       <a class="sidebar-button-link " href="https://www.alfredogmarquez.com/index.xml">
     
       <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
@@ -285,6 +296,10 @@ if (!doNotTrack) {
               
                 <a class="tag tag--primary tag--small" href="#popularity-list" data-tag="popularity">
                   popularity
+                </a>
+              
+                <a class="tag tag--primary tag--small" href="#privacy-policy-list" data-tag="privacy-policy">
+                  privacy-policy
                 </a>
               
                 <a class="tag tag--primary tag--small" href="#programming-list" data-tag="programming">
@@ -557,6 +572,26 @@ if (!doNotTrack) {
                         </a>
                         <span class="archive-post-date"> - 
   December 29, 2019
+</span>
+                      </li>
+                    
+                  </ul>
+                </div>
+              
+                <div id="privacy-policy-list" class="archive box" data-tag="privacy-policy">
+                  <h4 class="archive-title">
+                    <a class="link-unstyled" href="privacy-policy">
+                      privacy-policy (1)
+                    </a>
+                  </h4>
+                  <ul class="archive-posts">
+                    
+                      <li class="archive-post">
+                        <a class="archive-post-title" href="https://www.alfredogmarquez.com/page/privacy_policy/">
+                          Privacy Policy
+                        </a>
+                        <span class="archive-post-date"> - 
+  January 1, 1
 </span>
                       </li>
                     

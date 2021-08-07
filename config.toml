@@ -107,10 +107,18 @@ location = "US"
 
 [[menu.misc]]
   weight = 1
+  identifier = "Privacy"
+  name = "Privacy Policy"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-lock\"></i>"
+  url = "/page/Julia_library/" 
+  
+[[menu.misc]]
+  weight = 2
   identifier = "rss"
   name = "RSS"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-rss\"></i>"
   url = "/index.xml"
+ 
 
 [params]
   # Customize date format use to render blog post date, categories and other
@@ -256,9 +264,9 @@ location = "US"
 disable = false
 
 [privacy.googleAnalytics]
-anonymizeIP = false
+anonymizeIP = true
 disable = false
-respectDoNotTrack = false
+respectDoNotTrack = true
 useSessionStorage = false
 
 [privacy.instagram]
