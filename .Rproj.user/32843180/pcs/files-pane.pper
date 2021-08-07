@@ -1,9 +1,9 @@
 {
-    "path" : "~/blog/alfredogmarquez/content/post",
-    "sortOrder" : [
+    "path": "~/blog/alfredogmarquez",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

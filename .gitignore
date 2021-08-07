@@ -1,6 +1,9 @@
-
+# blogdown files
 blogdown/
 Thumbs.db
+.DS_Store
+/public/
+/resources/
 
 # R files
 .RData

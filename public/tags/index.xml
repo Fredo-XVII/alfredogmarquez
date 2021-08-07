@@ -2,246 +2,246 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Alfredo&#39;s Sandbox</title>
-    <link>/tags/</link>
+    <link>https://www.alfredogmarquez.com/tags/</link>
     <description>Recent content in Tags on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 29 Dec 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.alfredogmarquez.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cranlogs</title>
-      <link>/tags/cranlogs/</link>
+      <link>https://www.alfredogmarquez.com/tags/cranlogs/</link>
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/cranlogs/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/cranlogs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>popularity</title>
-      <link>/tags/popularity/</link>
+      <link>https://www.alfredogmarquez.com/tags/popularity/</link>
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/popularity/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/popularity/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming</title>
-      <link>/tags/programming/</link>
+      <link>https://www.alfredogmarquez.com/tags/programming/</link>
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/programming/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
+      <link>https://www.alfredogmarquez.com/tags/r/</link>
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>trends</title>
-      <link>/tags/trends/</link>
+      <link>https://www.alfredogmarquez.com/tags/trends/</link>
       <pubDate>Sun, 29 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/trends/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/trends/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Julia JuliaPro Jupyter Kernel</title>
-      <link>/tags/julia-juliapro-jupyter-kernel/</link>
+      <link>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</link>
       <pubDate>Sun, 29 Sep 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/julia-juliapro-jupyter-kernel/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HIVE</title>
-      <link>/tags/hive/</link>
+      <link>https://www.alfredogmarquez.com/tags/hive/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/hive/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/hive/</guid>
       <description></description>
     </item>
     
     <item>
       <title>QUERY</title>
-      <link>/tags/query/</link>
+      <link>https://www.alfredogmarquez.com/tags/query/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/query/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/query/</guid>
       <description></description>
     </item>
     
     <item>
       <title>r-project</title>
-      <link>/tags/r-project/</link>
+      <link>https://www.alfredogmarquez.com/tags/r-project/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r-project/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r-project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RODBC</title>
-      <link>/tags/rodbc/</link>
+      <link>https://www.alfredogmarquez.com/tags/rodbc/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rodbc/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/rodbc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>TEZ</title>
-      <link>/tags/tez/</link>
+      <link>https://www.alfredogmarquez.com/tags/tez/</link>
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tez/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/tez/</guid>
       <description></description>
     </item>
     
     <item>
       <title>installation</title>
-      <link>/tags/installation/</link>
+      <link>https://www.alfredogmarquez.com/tags/installation/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/installation/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/installation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spark</title>
-      <link>/tags/spark/</link>
+      <link>https://www.alfredogmarquez.com/tags/spark/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/spark/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/spark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SparkR</title>
-      <link>/tags/sparkr/</link>
+      <link>https://www.alfredogmarquez.com/tags/sparkr/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/sparkr/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/sparkr/</guid>
       <description></description>
     </item>
     
     <item>
       <title>windows</title>
-      <link>/tags/windows/</link>
+      <link>https://www.alfredogmarquez.com/tags/windows/</link>
       <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/windows/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R community thank you 25 years old DataCamp Data Camp 25r.everydayhero.com/nz/project-r</title>
-      <link>/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
+      <link>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
       <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Julia books</title>
-      <link>/tags/julia-books/</link>
+      <link>https://www.alfredogmarquez.com/tags/julia-books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/julia-books/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/julia-books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Julia Programming</title>
-      <link>/tags/julia-programming/</link>
+      <link>https://www.alfredogmarquez.com/tags/julia-programming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/julia-programming/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/julia-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Julia references</title>
-      <link>/tags/julia-references/</link>
+      <link>https://www.alfredogmarquez.com/tags/julia-references/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/julia-references/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/julia-references/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Julia resources</title>
-      <link>/tags/julia-resources/</link>
+      <link>https://www.alfredogmarquez.com/tags/julia-resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/julia-resources/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/julia-resources/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Julialang</title>
-      <link>/tags/julialang/</link>
+      <link>https://www.alfredogmarquez.com/tags/julialang/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/julialang/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/julialang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R books</title>
-      <link>/tags/r-books/</link>
+      <link>https://www.alfredogmarquez.com/tags/r-books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r-books/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r-books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Links</title>
-      <link>/tags/r-links/</link>
+      <link>https://www.alfredogmarquez.com/tags/r-links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r-links/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r-links/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R Programming</title>
-      <link>/tags/r-programming/</link>
+      <link>https://www.alfredogmarquez.com/tags/r-programming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r-programming/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R references</title>
-      <link>/tags/r-references/</link>
+      <link>https://www.alfredogmarquez.com/tags/r-references/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r-references/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r-references/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R resources</title>
-      <link>/tags/r-resources/</link>
+      <link>https://www.alfredogmarquez.com/tags/r-resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r-resources/</guid>
+      <guid>https://www.alfredogmarquez.com/tags/r-resources/</guid>
       <description></description>
     </item>
     

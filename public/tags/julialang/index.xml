@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Julialang on Alfredo&#39;s Sandbox</title>
-    <link>/tags/julialang/</link>
+    <link>https://www.alfredogmarquez.com/tags/julialang/</link>
     <description>Recent content in Julialang on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/tags/julialang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.alfredogmarquez.com/tags/julialang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Julia Library</title>
-      <link>/page/julia_library/</link>
+      <link>https://www.alfredogmarquez.com/page/julia_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/page/julia_library/</guid>
+      <guid>https://www.alfredogmarquez.com/page/julia_library/</guid>
       <description>Julia Workspace  Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting: Mapping &amp;amp; Cartography:   Mapping
   Spacial Analysis
    Spark  Econometrics  Machine Learning  Databases  RAM Memory  Library &amp;amp; Package management  Julia Environmental variables ( related to Library Management above )  Docker  Writing Packages  </description>
@@ -23,10 +23,10 @@
     
     <item>
       <title>Julia Library</title>
-      <link>/page/julia_library/</link>
+      <link>https://www.alfredogmarquez.com/page/julia_library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/page/julia_library/</guid>
+      <guid>https://www.alfredogmarquez.com/page/julia_library/</guid>
       <description>Julia Workspace  Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting: Mapping &amp;amp; Cartography:   Mapping
   Spacial Analysis
    Spark  Econometrics  Machine Learning  Databases  RAM Memory  Library &amp;amp; Package management  Julia Environmental variables ( related to Library Management above )  Docker  Writing Packages  </description>

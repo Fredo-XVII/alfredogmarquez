@@ -1,7 +1,7 @@
 {
-    "installOptions" : {
-        "installDependencies" : true,
-        "installFromRepository" : true,
-        "libraryPath" : "C:/Apps/R/R-3.6.1/library"
+    "installOptions": {
+        "installDependencies": true,
+        "installFromRepository": true,
+        "libraryPath": "C:/Apps/R/R-3.6.1/library"
     }
 }

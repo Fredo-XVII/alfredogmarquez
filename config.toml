@@ -232,7 +232,7 @@ location = "US"
   # Recommended options by blogdown book
 
   # Ignore Files
-  ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+  ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\\.md$"]
 
   enableEmoji = true
 
@@ -244,3 +244,8 @@ location = "US"
   #  google_adsense = "ca-pub-5682145105593159"
   #[params.adsense]
   #content = "google/AdSense"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
