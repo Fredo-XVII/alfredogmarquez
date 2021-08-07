@@ -110,7 +110,7 @@ location = "US"
   identifier = "Privacy"
   name = "Privacy Policy"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-lock\"></i>"
-  url = "/page/Julia_library/" 
+  url = "/page/privacy_policy/" 
   
 [[menu.misc]]
   weight = 2
