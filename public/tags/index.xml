@@ -6,11 +6,7 @@
     <description>Recent content in Tags on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 29 Dec 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://www.alfredogmarquez.com/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 29 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.alfredogmarquez.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cranlogs</title>
       <link>https://www.alfredogmarquez.com/tags/cranlogs/</link>
@@ -147,15 +143,6 @@
     </item>
     
     <item>
-      <title>R community thank you 25 years old DataCamp Data Camp 25r.everydayhero.com/nz/project-r</title>
-      <link>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
-      <pubDate>Sat, 31 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Julia books</title>
       <link>https://www.alfredogmarquez.com/tags/julia-books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -192,7 +179,7 @@
     </item>
     
     <item>
-      <title>Julialang</title>
+      <title>julialang</title>
       <link>https://www.alfredogmarquez.com/tags/julialang/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -215,6 +202,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/tags/r-books/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R community thank you 25 years old DataCamp Data Camp 25r.everydayhero.com/nz/project-r</title>
+      <link>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</guid>
       <description></description>
     </item>
     

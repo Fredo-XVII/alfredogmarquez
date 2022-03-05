@@ -1,239 +1,136 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://www.alfredogmarquez.com/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/cranlogs/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/popularity/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/post/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/programming/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/r/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/2019/12/29/r-s-demise-higly-overblown/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/trends/</loc>
     <lastmod>2019-12-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/julia/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/julia-juliapro-jupyter-kernel/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/2019/09/29/juliapro-on-jupyter/</loc>
     <lastmod>2019-09-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/hive/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/query/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-project/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/rodbc/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/tez/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/tez/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/2019/03/24/tez-up-your-rodbc-hive-queries/</loc>
     <lastmod>2019-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/installation/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.alfredogmarquez.com/categories/spark/</loc>
-    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/spark/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://www.alfredogmarquez.com/categories/spark/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/2018/05/15/spark-installation-on-windows/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/sparkr/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/sparkr/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/windows/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/2018/03/31/ode-to-r/</loc>
     <lastmod>2018-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</loc>
-    <lastmod>2018-03-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/archives/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/books/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/julia-books/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/page/julia_library/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/julia-programming/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/julia-references/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/julia-resources/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/julialang/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/links/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/page/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/privacy-policy/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/privacy-policy/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/page/privacy_policy/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-books/</loc>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://www.alfredogmarquez.com/tags/r-community-thank-you-25-years-old-datacamp-data-camp-25r.everydayhero.com/nz/project-r/</loc>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/page/r_library/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-links/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-programming/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-references/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-resources/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/references/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/categories/resources/</loc>
   </url>
-  
 </urlset>

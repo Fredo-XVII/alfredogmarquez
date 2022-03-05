@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Julialang on Alfredo&#39;s Sandbox</title>
+    <title>julialang on Alfredo&#39;s Sandbox</title>
     <link>https://www.alfredogmarquez.com/tags/julialang/</link>
-    <description>Recent content in Julialang on Alfredo&#39;s Sandbox</description>
+    <description>Recent content in julialang on Alfredo&#39;s Sandbox</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="https://www.alfredogmarquez.com/tags/julialang/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Julia Library</title>
-      <link>https://www.alfredogmarquez.com/page/julia_library/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/page/julia_library/</guid>
-      <description>Julia Workspace  Visualization (Graphing and Plotting and Mapping and Dashboarding) Graphing &amp;amp; Plotting: Mapping &amp;amp; Cartography:   Mapping
-  Spacial Analysis
-   Spark  Econometrics  Machine Learning  Databases  RAM Memory  Library &amp;amp; Package management  Julia Environmental variables ( related to Library Management above )  Docker  Writing Packages  </description>
-    </item>
-    
+    <language>en-us</language><atom:link href="https://www.alfredogmarquez.com/tags/julialang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Julia Library</title>
       <link>https://www.alfredogmarquez.com/page/julia_library/</link>
