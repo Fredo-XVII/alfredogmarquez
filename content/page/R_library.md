@@ -26,6 +26,7 @@ The Workspace: http://www.statmethods.net/interface/workspace.html
 
 ### Hadley
   - R 4 Data Science: http://r4ds.had.co.nz/
+  - Advanced R: https://adv-r.hadley.nz/
   - http://stat545.com/bit001_dplyr-cheatsheet.html
   - Writing Packages: http://r-pkgs.had.co.nz/
 
@@ -93,8 +94,15 @@ https://www.r-bloggers.com/setting-up-a-datascience-server/
     
 -----
 
+### Bayesian R
+
+  - Bayes Rules! An Introduction to Applied Bayesian Modeling: https://www.bayesrulesbook.com/
+
+-----
+
 ### Econometrics
 
+  - Econometrics with R: https://www.econometrics-with-r.org/
   - Heckman Selection: https://cran.r-project.org/web/packages/sampleSelection/vignettes/selection.pdf
 
 -----
