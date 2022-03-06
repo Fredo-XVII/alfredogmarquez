@@ -1,6 +1,10 @@
 {
-    "path": "~/blog/alfredogmarquez",
+    "path": "~/blog/alfredogmarquez/content/post/2022-03-05-building-a-holiday-package-with-timedate",
     "sortOrder": [
+        {
+            "columnIndex": 4,
+            "ascending": true
+        },
         {
             "columnIndex": 2,
             "ascending": true
