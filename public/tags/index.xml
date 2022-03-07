@@ -143,6 +143,15 @@
     </item>
     
     <item>
+      <title>holiday.dates</title>
+      <link>https://www.alfredogmarquez.com/tags/holiday.dates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/holiday.dates/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Julia books</title>
       <link>https://www.alfredogmarquez.com/tags/julia-books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -224,6 +233,15 @@
     </item>
     
     <item>
+      <title>r package</title>
+      <link>https://www.alfredogmarquez.com/tags/r-package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/r-package/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>R Programming</title>
       <link>https://www.alfredogmarquez.com/tags/r-programming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -247,6 +265,24 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.alfredogmarquez.com/tags/r-resources/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>timeDate</title>
+      <link>https://www.alfredogmarquez.com/tags/timedate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/timedate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>US Retail Holidays</title>
+      <link>https://www.alfredogmarquez.com/tags/us-retail-holidays/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.alfredogmarquez.com/tags/us-retail-holidays/</guid>
       <description></description>
     </item>
     

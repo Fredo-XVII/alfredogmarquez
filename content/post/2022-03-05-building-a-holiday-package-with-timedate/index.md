@@ -17,7 +17,11 @@ keywords:
 
 <!--more-->
 
-**Coming Soon**
+### Libraries
+```
+library(timeDate)
+library(holiday.dates)
+```
 
 ### Introduction
 
@@ -33,7 +37,7 @@ Source: https://cran.r-project.org/web/packages/timeDate/timeDate.pdf
 
 There are many useful functions in the `timeDate` package.  Today, I will only focus on a couple that allowed me to create custom dates that are important to my forecasting work.
 
-One type of function builds dates based on the year and the number of days from the beginning of the year.  If we look at how the `timeDate::NewYearsDay` function is built gives us template on how to create a holiday based on number of days in a year from the beginning of the year.
+One type of function builds dates based on the year and the number of days from the beginning of the year.  If we look at how the `timeDate::NewYearsDay` function is built, it gives us a template on how to create a holiday based on number of days in a year from the beginning of the year.
 
 ```
 timeDate::NewYearsDay

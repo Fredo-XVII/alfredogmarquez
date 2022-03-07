@@ -2,7 +2,7 @@
 title: "Building a Holiday Package with timeDate"
 author: "Alfredo G Marquez"
 date: "3/6/2022"
-output: blogdown::html_page
+output: html_document
 slug: building-a-holiday-package-with-timedate
 categories:
   - R
@@ -14,12 +14,19 @@ tags:
   - r package
 keywords:
   - R Package Holiday Dates
+  
+summary: Today I will discuss building custom dates with timeDate package.
+draft: yes  
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
 
 
-<p><strong>Coming Soon</strong></p>
+<div id="libraries" class="section level3">
+<h3>Libraries</h3>
+<pre><code>library(timeDate)
+library(holiday.dates)</code></pre>
+</div>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
 <p>It has been a while since my last post. You can probably imagine why with all that is going on in the world these days. Today I will talk about using the <code>timeDate</code> package to build custome dates for any project.</p>
@@ -100,15 +107,47 @@ keywords:
 ##     ans = year * 10000 + 101
 ##     timeDate(as.character(ans))
 ## }
-## &lt;bytecode: 0x000000001e5c62c8&gt;
+## &lt;bytecode: 0x000000001e835938&gt;
 ## &lt;environment: namespace:timeDate&gt;</code></pre>
 <p>We are going to change the 101 in the function above to 0214. I like including the <code>0</code> because it feels more like a date when you look at the function. The new USValentinesDay function is defined below.</p>
 <pre class="r"><code>USValentinesDay &lt;-
   function(year = timeDate::getRmetricsOptions(&quot;currentYear&quot;)) {
     ans = year*10000 + 0214
     timeDate::timeDate(as.character(ans)) }</code></pre>
-<p>The <code>year</code> argument for the function allows you to select any year to get the date for Valentines. For example, for 2022 I would expect to get 2022-02-14 for Valentines day. Lets try it:</p>
-<pre class="r"><code>USValentinesDay(year = 2022)</code></pre>
+<p>The <code>year</code> argument for the function allows you to select any year to get the date for Valentines. For example, for 2022 I would expect to get 2022-02-14 for Valentines day. Lets try it with a vector of years:</p>
+<pre class="r"><code>USValentinesDay(year = c(2019,2020,2021,2022))</code></pre>
 <pre><code>## GMT
-## [1] [2022-02-14]</code></pre>
+## [1] [2019-02-14] [2020-02-14] [2021-02-14] [2022-02-14]</code></pre>
+<p>The second type of function is based on a rule that determines when the holiday will happen. Let’s look into how the US Thanksgiving Day is built within the <code>timeDate</code>:</p>
+<pre class="r"><code>timeDate::USThanksgivingDay</code></pre>
+<pre><code>## function (year = getRmetricsOptions(&quot;currentYear&quot;)) 
+## {
+##     ans = .nth.of.nday(year, 11, 4, 4)
+##     timeDate(as.character(ans))
+## }
+## &lt;bytecode: 0x000000001ee8f118&gt;
+## &lt;environment: namespace:timeDate&gt;</code></pre>
+<p>You can see that the heart of this rule based solution is the <code>.nth.of.nday</code> function. The functions takes the following arguments: year, month, week number, day number. We can read the function arguments as: <strong>For year and November, find the 4th day of the 4th week.</strong></p>
+<p>For example, Mother’s Day in the US is in May on the 2nd Sunday of the month. This is how I built a solution for Mother’s Day in the US:</p>
+<pre class="r"><code>holiday.dates::USMothersDay</code></pre>
+<pre><code>## function (year = timeDate::getRmetricsOptions(&quot;currentYear&quot;)) 
+## {
+##     ans = .nth.of.nday(year, 5, 7, 2)
+##     timeDate::timeDate(as.character(ans))
+## }
+## &lt;bytecode: 0x000000001e7c6c48&gt;
+## &lt;environment: namespace:holiday.dates&gt;</code></pre>
+<p>The arguments for the <code>.nth.of.nday</code> read as: <strong>For year and May, find the 7th day of the second week.</strong></p>
+<p>Let’s test how it works for the years on <a href="https://en.wikipedia.org/wiki/Mother%27s_Day_(United_States)">Mother’s Day on Wikipedia</a>, 2021 to 2024. Here is a copy of the dates from the site:</p>
+<pre><code>Begins  2nd Sunday of May
+Date    Second Sunday in May
+2021 date   May 9
+2022 date   May 8
+2023 date   May 14
+2024 date   May 12
+Frequency   Annual</code></pre>
+<pre class="r"><code>holiday.dates::USMothersDay(c(2021, 2022, 2023, 2024))</code></pre>
+<pre><code>## GMT
+## [1] [2021-05-09] [2022-05-08] [2023-05-14] [2024-05-12]</code></pre>
+<p>As you can see that these dates match.</p>
 </div>

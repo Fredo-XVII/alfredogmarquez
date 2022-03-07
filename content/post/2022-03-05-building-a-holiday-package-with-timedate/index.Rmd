@@ -14,13 +14,20 @@ tags:
   - r package
 keywords:
   - R Package Holiday Dates
+  
+summary: Today I will discuss building custom dates with timeDate package.
+draft: yes  
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-**Coming Soon**
+### Libraries
+```
+library(timeDate)
+library(holiday.dates)
+```
 
 ### Introduction
 
@@ -63,6 +70,41 @@ The `year` argument for the function allows you to select any year to get the da
 ```{r}
 USValentinesDay(year = c(2019,2020,2021,2022))
 ```
+
+The second type of function is based on a rule that determines when the holiday will happen.  Let's look into how the US Thanksgiving Day is built within the `timeDate`:
+
+```{r}
+timeDate::USThanksgivingDay
+```
+
+You can see that the heart of this rule based solution is the `.nth.of.nday` function.  The functions takes the following arguments: year, month, week number, day number. We can read the function arguments as: **For year and November, find the 4th day of the 4th week.**
+
+For example, Mother's Day in the US is in May on the 2nd Sunday of the month.  This is how I built a solution for Mother's Day in the US:
+
+```{r}
+holiday.dates::USMothersDay
+```
+
+The arguments for the `.nth.of.nday` read as: **For year and May, find the 7th day of the second week.**
+
+Let's test how it works for the years on [Mother's Day on Wikipedia](https://en.wikipedia.org/wiki/Mother%27s_Day_(United_States)), 2021 to 2024.  Here is a copy of the dates from the site:
+
+```
+Begins	2nd Sunday of May
+Date	Second Sunday in May
+2021 date	May 9
+2022 date	May 8
+2023 date	May 14
+2024 date	May 12
+Frequency	Annual
+```
+
+```{r}
+holiday.dates::USMothersDay(c(2021, 2022, 2023, 2024))
+```
+
+As you can see that these dates match.
+
 
 
 

@@ -93,6 +93,10 @@
   </url><url>
     <loc>https://www.alfredogmarquez.com/categories/books/</loc>
   </url><url>
+    <loc>https://www.alfredogmarquez.com/1/01/01/building-a-holiday-package-with-timedate/</loc>
+  </url><url>
+    <loc>https://www.alfredogmarquez.com/tags/holiday.dates/</loc>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/julia-books/</loc>
   </url><url>
     <loc>https://www.alfredogmarquez.com/page/julia_library/</loc>
@@ -106,6 +110,8 @@
     <loc>https://www.alfredogmarquez.com/tags/julialang/</loc>
   </url><url>
     <loc>https://www.alfredogmarquez.com/categories/links/</loc>
+  </url><url>
+    <loc>https://www.alfredogmarquez.com/categories/package-building/</loc>
   </url><url>
     <loc>https://www.alfredogmarquez.com/page/</loc>
   </url><url>
@@ -123,6 +129,8 @@
   </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-links/</loc>
   </url><url>
+    <loc>https://www.alfredogmarquez.com/tags/r-package/</loc>
+  </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-programming/</loc>
   </url><url>
     <loc>https://www.alfredogmarquez.com/tags/r-references/</loc>
@@ -132,5 +140,9 @@
     <loc>https://www.alfredogmarquez.com/categories/references/</loc>
   </url><url>
     <loc>https://www.alfredogmarquez.com/categories/resources/</loc>
+  </url><url>
+    <loc>https://www.alfredogmarquez.com/tags/timedate/</loc>
+  </url><url>
+    <loc>https://www.alfredogmarquez.com/tags/us-retail-holidays/</loc>
   </url>
 </urlset>
