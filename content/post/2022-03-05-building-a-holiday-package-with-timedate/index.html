@@ -107,7 +107,7 @@ library(holiday.dates)</code></pre>
 ##     ans = year * 10000 + 101
 ##     timeDate(as.character(ans))
 ## }
-## &lt;bytecode: 0x000000001e835938&gt;
+## &lt;bytecode: 0x000000002283c6d0&gt;
 ## &lt;environment: namespace:timeDate&gt;</code></pre>
 <p>We are going to change the 101 in the function above to 0214. I like including the <code>0</code> because it feels more like a date when you look at the function. The new USValentinesDay function is defined below.</p>
 <pre class="r"><code>USValentinesDay &lt;-
@@ -125,7 +125,7 @@ library(holiday.dates)</code></pre>
 ##     ans = .nth.of.nday(year, 11, 4, 4)
 ##     timeDate(as.character(ans))
 ## }
-## &lt;bytecode: 0x000000001ee8f118&gt;
+## &lt;bytecode: 0x0000000022e8d4c8&gt;
 ## &lt;environment: namespace:timeDate&gt;</code></pre>
 <p>You can see that the heart of this rule based solution is the <code>.nth.of.nday</code> function. The functions takes the following arguments: year, month, week number, day number. We can read the function arguments as: <strong>For year and November, find the 4th day of the 4th week.</strong></p>
 <p>For example, Mother’s Day in the US is in May on the 2nd Sunday of the month. This is how I built a solution for Mother’s Day in the US:</p>
@@ -135,7 +135,7 @@ library(holiday.dates)</code></pre>
 ##     ans = .nth.of.nday(year, 5, 7, 2)
 ##     timeDate::timeDate(as.character(ans))
 ## }
-## &lt;bytecode: 0x000000001e7c6c48&gt;
+## &lt;bytecode: 0x00000000227bdb90&gt;
 ## &lt;environment: namespace:holiday.dates&gt;</code></pre>
 <p>The arguments for the <code>.nth.of.nday</code> read as: <strong>For year and May, find the 7th day of the second week.</strong></p>
 <p>Let’s test how it works for the years on <a href="https://en.wikipedia.org/wiki/Mother%27s_Day_(United_States)">Mother’s Day on Wikipedia</a>, 2021 to 2024. Here is a copy of the dates from the site:</p>
@@ -150,4 +150,8 @@ Frequency   Annual</code></pre>
 <pre><code>## GMT
 ## [1] [2021-05-09] [2022-05-08] [2023-05-14] [2024-05-12]</code></pre>
 <p>As you can see that these dates match.</p>
+</div>
+<div id="the-last-word" class="section level3">
+<h3>The Last Word</h3>
+<p>These 2 simple, but yet flexible functions, that allow you to customize dates for analysis or model building. In the next post I will discuss how I built a little package that allows you to find the major retail holidays in US that are not included in the <code>timeDate</code> package, that are important for what I needed in my work.</p>
 </div>

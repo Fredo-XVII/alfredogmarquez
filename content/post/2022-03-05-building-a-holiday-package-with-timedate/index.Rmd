@@ -105,6 +105,11 @@ holiday.dates::USMothersDay(c(2021, 2022, 2023, 2024))
 
 As you can see that these dates match.
 
+### The Last Word
+These 2 simple, but yet flexible functions, that allow you to customize dates for analysis or model building.  In the next post I will discuss how I built a little package that allows you to find the major retail holidays in US that are not included in the `timeDate` package, that are important for what I needed in my work.
+
+
+
 
 
 
