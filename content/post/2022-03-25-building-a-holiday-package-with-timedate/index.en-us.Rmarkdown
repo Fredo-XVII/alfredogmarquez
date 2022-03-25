@@ -112,7 +112,7 @@ As you can see that these dates match.
 
 Source: https://github.com/Fredo-XVII/holiday.dates
 
-For my work, I need a consistent calendar with dates categorized as holidays that drive demand for consumer or retail goods.  I categorize holidays into 2 types.  Federal holidays are defined by the government and can be for many different reasons.  Retail holidays are days that drive consumer demand for retail goods.  Halloween and Valentine's Day are some examples of retail holidays.  Note that federal holidays can be retail holidays if they drive demand consumer goods, such as Thanksgiving.
+For my work, I need a consistent calendar with dates categorized as holidays that drive demand for consumer or retail goods.  I categorize holidays into 2 types.  **Federal holidays** are defined by the government and can be for many different reasons.  **Retail holidays** are days that drive consumer demand for retail goods.  Halloween and Valentine's Day are some examples of retail holidays.  Note that federal holidays can be retail holidays if they drive demand consumer goods, such as Thanksgiving.
 
 The `timeDate` package functions are vectorized and so it is really nice for getting a vector of dates, but I wanted something more.  I want a data frame of dates for a given set of dates and holiday flags.  My solution is the `holiday.dates` package.
 

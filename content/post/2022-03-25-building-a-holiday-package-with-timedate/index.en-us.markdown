@@ -128,7 +128,7 @@ timeDate::NewYearsDay
 ##     ans = year * 10000 + 101
 ##     timeDate(as.character(ans))
 ## }
-## <bytecode: 0x0000000019935da0>
+## <bytecode: 0x000000001d925120>
 ## <environment: namespace:timeDate>
 ```
 
@@ -166,7 +166,7 @@ timeDate::USThanksgivingDay
 ##     ans = .nth.of.nday(year, 11, 4, 4)
 ##     timeDate(as.character(ans))
 ## }
-## <bytecode: 0x000000001a0189c0>
+## <bytecode: 0x000000001e007d40>
 ## <environment: namespace:timeDate>
 ```
 
@@ -185,7 +185,7 @@ holiday.dates::USMothersDay
 ##     ans = .nth.of.nday(year, 5, 7, 2)
 ##     timeDate::timeDate(as.character(ans))
 ## }
-## <bytecode: 0x000000001a3e9340>
+## <bytecode: 0x000000001e3d86c0>
 ## <environment: namespace:holiday.dates>
 ```
 
@@ -219,7 +219,7 @@ As you can see that these dates match.
 
 Source: https://github.com/Fredo-XVII/holiday.dates
 
-For my work, I need a consistent calendar with dates categorized as holidays that drive demand for consumer or retail goods.  I categorize holidays into 2 types.  Federal holidays are defined by the government and can be for many different reasons.  Retail holidays are days that drive consumer demand for retail goods.  Halloween and Valentine's Day are some examples of retail holidays.  Note that federal holidays can be retail holidays if they drive demand consumer goods, such as Thanksgiving.
+For my work, I need a consistent calendar with dates categorized as holidays that drive demand for consumer or retail goods.  I categorize holidays into 2 types.  **Federal holidays** are defined by the government and can be for many different reasons.  **Retail holidays** are days that drive consumer demand for retail goods.  Halloween and Valentine's Day are some examples of retail holidays.  Note that federal holidays can be retail holidays if they drive demand consumer goods, such as Thanksgiving.
 
 The `timeDate` package functions are vectorized and so it is really nice for getting a vector of dates, but I wanted something more.  I want a data frame of dates for a given set of dates and holiday flags.  My solution is the `holiday.dates` package.
 
