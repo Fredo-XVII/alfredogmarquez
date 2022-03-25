@@ -38,16 +38,5 @@
       <description>As R turns 25 years old this year, I thought it would only be appropriate to thank the creators of R, Ross Ihaka and Robert Gentleman, as well as the R global community for changing my life. I started learning R in 2014 because I was tired at how SAS had become like a curmudgeon old monopoly rather than a true innovator. But I guess that is what happens to companies with a first mover advantage; they get complacent and feel invincible.</description>
     </item>
     
-    <item>
-      <title>Building a Holiday Package with timeDate</title>
-      <link>https://www.alfredogmarquez.com/1/01/01/building-a-holiday-package-with-timedate/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.alfredogmarquez.com/1/01/01/building-a-holiday-package-with-timedate/</guid>
-      <description>Coming Soon
-IntroductionIt has been a while since my last post. You can probably imagine why with all that is going on in the world these days. Today I will talk about using the timeDate package to build custome dates for any project.
-Data ProblemIn my work to build time series models I need to account for the seasonality that occurs in retail. I discovered the timeDate package from another team at work.</description>
-    </item>
-    
   </channel>
 </rss>
